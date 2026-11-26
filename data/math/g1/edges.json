@@ -1,0 +1,434 @@
+[
+  {
+    "topic": "mat-geometrijske-figure",
+    "requires": "mat-geometrijska-tela",
+    "strength": "soft",
+    "reason": "Figure se upoznaju i kao otisci tela (kocka ostavlja kvadrat, a valjak krug), ali se mogu naučiti i bez tela."
+  },
+  {
+    "topic": "mat-grupisanje",
+    "requires": "mat-geometrijske-figure",
+    "strength": "soft",
+    "reason": "Grupisanje po obliku koristi nazive figura, ali predmete se može grupisati i po boji i po veličini."
+  },
+  {
+    "topic": "mat-grupisanje",
+    "requires": "mat-uporedjivanje-po-velicini",
+    "strength": "soft",
+    "reason": "Grupisanje po veličini koristi poređenje predmeta, ali nije uslov za grupisanje po drugim osobinama."
+  },
+  {
+    "topic": "mat-slaganje-figura",
+    "requires": "mat-geometrijske-figure",
+    "strength": "hard",
+    "reason": "Da bi rastavio složenu figuru, učenik mora da imenuje kvadrat, trougao i pravougaonik."
+  },
+  {
+    "topic": "mat-prava-kriva-izlomljena",
+    "requires": "mat-geometrijske-figure",
+    "strength": "soft",
+    "reason": "Ivice figura su linije (kvadrat ima prave, trougao izlomljenu, a krug krivu), ali to znanje nije uslov."
+  },
+  {
+    "topic": "mat-zatvorena-otvorena-linija",
+    "requires": "mat-prava-kriva-izlomljena",
+    "strength": "soft",
+    "reason": "Razlikovanje prave, krive i izlomljene linije pomaže pri praćenju linije od početka do kraja, ali nije uslov."
+  },
+  {
+    "topic": "mat-tacka-linija-duz",
+    "requires": "mat-prava-kriva-izlomljena",
+    "strength": "soft",
+    "reason": "Duž je deo prave linije, pa poznavanje prave linije pomaže, ali duž dete prepoznaje i po dva kraja."
+  },
+  {
+    "topic": "mat-crtanje-lenjirom",
+    "requires": "mat-tacka-linija-duz",
+    "strength": "hard",
+    "reason": "Da bi nacrtao duž, učenik mora da zna da je duž deo prave sa početkom i krajem."
+  },
+  {
+    "topic": "mat-crtanje-lenjirom",
+    "requires": "mat-prava-kriva-izlomljena",
+    "strength": "hard",
+    "reason": "Lenjirom se crta samo prava linija, pa učenik mora da je razlikuje od krive i izlomljene."
+  },
+  {
+    "topic": "mat-brojevna-prava",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Da bi našao broj na brojevnoj pravoj, učenik mora da poznaje brojeve do $10$ i njihov redosled."
+  },
+  {
+    "topic": "mat-poredjenje-do-10",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Brojeve do $10$ može da poredi samo onaj ko ih zna imenovati i zapisati."
+  },
+  {
+    "topic": "mat-poredjenje-do-10",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Na brojevnoj pravoj veći broj stoji desno od manjeg, što pomaže pri poređenju, ali nije uslov."
+  },
+  {
+    "topic": "mat-redni-brojevi",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Redni broj se određuje brojanjem, pa učenik mora da zna brojeve do $10$."
+  },
+  {
+    "topic": "mat-rastavljanje-na-sabirke",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Broj se rastavlja na sabirke samo uz poznavanje brojeva do $10$ i njihov redosled."
+  },
+  {
+    "topic": "mat-sabiranje-do-10",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Sabiranje brojeva do $10$ zahteva poznavanje samih brojeva do $10$."
+  },
+  {
+    "topic": "mat-sabiranje-do-10",
+    "requires": "mat-rastavljanje-na-sabirke",
+    "strength": "soft",
+    "reason": "Znanje sabiraka olakšava pamćenje rezultata sabiranja, ali se rezultat može naći i brojanjem."
+  },
+  {
+    "topic": "mat-oduzimanje-do-10",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Oduzimanje u okviru $10$ zahteva poznavanje brojeva do $10$ i njihov redosled."
+  },
+  {
+    "topic": "mat-oduzimanje-do-10",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "soft",
+    "reason": "Oduzimanje je suprotno sabiranju i njim se proverava, ali se može uraditi i brojanjem unazad."
+  },
+  {
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "requires": "mat-rastavljanje-na-sabirke",
+    "strength": "hard",
+    "reason": "Nepoznati broj u jednakosti nalazi se tako što se poznati broj rastavi na sabirke."
+  },
+  {
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "soft",
+    "reason": "Jednakosti s oduzimanjem traže poznavanje odnosa oduzimanja i sabiranja, ali se nepoznati broj može naći i iz samih sabiraka."
+  },
+  {
+    "topic": "mat-brojevi-do-20",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Brojevi druge desetice obrazuju se od jedne desetice (broja $10$) i jedinica, pa učenik mora da poznaje brojeve do $10$."
+  },
+  {
+    "topic": "mat-sabiranje-preko-desetice",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Prelaz preko desetice počinje dopunjavanjem do desetice, a to je sabiranje do $10$."
+  },
+  {
+    "topic": "mat-sabiranje-preko-desetice",
+    "requires": "mat-brojevi-do-20",
+    "strength": "hard",
+    "reason": "Zbir veći od $10$ je broj druge desetice, koji učenik mora da pročita i zapiše."
+  },
+  {
+    "topic": "mat-sabiranje-preko-desetice",
+    "requires": "mat-rastavljanje-na-sabirke",
+    "strength": "hard",
+    "reason": "Da bi dopunio do desetice, učenik drugi sabirak rastavlja na dva dela ($5$ na $2$ i $3$)."
+  },
+  {
+    "topic": "mat-oduzimanje-preko-desetice",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "hard",
+    "reason": "Oduzimanje s prelaskom svodi se na dva oduzimanja u okviru $10$."
+  },
+  {
+    "topic": "mat-oduzimanje-preko-desetice",
+    "requires": "mat-brojevi-do-20",
+    "strength": "hard",
+    "reason": "Umanjenik treba rastaviti na deseticu i jedinice ($13$ na $10$ i $3$)."
+  },
+  {
+    "topic": "mat-oduzimanje-preko-desetice",
+    "requires": "mat-rastavljanje-na-sabirke",
+    "strength": "hard",
+    "reason": "Umanjilac se rastavlja na dva dela ($6$ na $3$ i $3$), pa učenik mora da ume da rastavlja broj na sabirke."
+  },
+  {
+    "topic": "mat-oduzimanje-preko-desetice",
+    "requires": "mat-sabiranje-preko-desetice",
+    "strength": "soft",
+    "reason": "Rezultat oduzimanja s prelaskom proverava se sabiranjem s prelaskom, ali oduzimanje može da se uradi i bez toga."
+  },
+  {
+    "topic": "mat-osobine-sabiranja",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Osobine sabiranja se uočavaju i proveravaju na primerima sabiranja do $10$."
+  },
+  {
+    "topic": "mat-osobine-sabiranja",
+    "requires": "mat-brojevi-do-20",
+    "strength": "soft",
+    "reason": "Združivanje sabiraka radi lakšeg računanja daje zbirove veće od $10$, pa pomaže znanje brojeva do $20$."
+  },
+  {
+    "topic": "mat-brojevi-do-100",
+    "requires": "mat-brojevi-do-20",
+    "strength": "hard",
+    "reason": "Dvocifrene brojeve učenik čita i zapisuje tek posle brojeva druge desetice, od kojih polazi pojam desetice."
+  },
+  {
+    "topic": "mat-brojanje-unapred-unazad",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Brojanje u okviru $100$ traži da učenik zna niz brojeva do $100$ i da ih zapiše."
+  },
+  {
+    "topic": "mat-desetice-i-jedinice",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Da bi kazao koliko desetica ima broj, učenik mora da čita i zapisuje dvocifrene brojeve."
+  },
+  {
+    "topic": "mat-prethodnik-sledbenik",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Prethodnika i sledbenika u okviru $100$ učenik nalazi među brojevima do $100$ i mora da ih zapiše."
+  },
+  {
+    "topic": "mat-prethodnik-sledbenik",
+    "requires": "mat-brojanje-unapred-unazad",
+    "strength": "soft",
+    "reason": "Brojanje unapred ili unazad za jedan daje sledbenika, odnosno prethodnika, ali pomaže, a nije uslov."
+  },
+  {
+    "topic": "mat-parni-neparni",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "O parnosti dvocifrenog broja odlučuje cifra jedinica, pa učenik mora da čita dvocifrene brojeve."
+  },
+  {
+    "topic": "mat-parni-neparni",
+    "requires": "mat-brojanje-unapred-unazad",
+    "strength": "soft",
+    "reason": "Niz parnih brojeva je niz sa preskokom za dva, što pomaže, ali parnost se određuje i bez toga."
+  },
+  {
+    "topic": "mat-poredjenje-do-100",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Dvocifrene brojeve može da poredi samo onaj ko ih čita i zapisuje."
+  },
+  {
+    "topic": "mat-poredjenje-do-100",
+    "requires": "mat-poredjenje-do-10",
+    "strength": "hard",
+    "reason": "Poređenje dvocifrenih brojeva svodi se na poređenje broja desetica i broja jedinica, a to su brojevi do $10$."
+  },
+  {
+    "topic": "mat-poredjenje-do-100",
+    "requires": "mat-desetice-i-jedinice",
+    "strength": "soft",
+    "reason": "Razumevanje desetica i jedinica pomaže da se prvo porede desetice, ali nije uslov."
+  },
+  {
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Sabiranje bez prelaska svodi se na sabiranje do $10$ ($23 + 4$ je $20$ i još $3 + 4$)."
+  },
+  {
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "requires": "mat-desetice-i-jedinice",
+    "strength": "hard",
+    "reason": "Sabiranje bez prelaska traži da učenik broj rastavi na desetice i jedinice ($23$ na $20$ i $3$)."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "hard",
+    "reason": "Oduzimanje bez prelaska svodi se na oduzimanje u okviru $10$."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "requires": "mat-desetice-i-jedinice",
+    "strength": "hard",
+    "reason": "Oduzimanje bez prelaska traži da učenik broj rastavi na desetice i jedinice ($47$ na $40$ i $7$)."
+  },
+  {
+    "topic": "mat-pravilo-u-nizu",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Svaki niz brojeva, makar i u okviru $10$, traži da učenik poznaje brojeve i njihov redosled."
+  },
+  {
+    "topic": "mat-pravilo-u-nizu",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Sledeći član rastućeg niza nalazi se sabiranjem ($21 + 3$ je $24$), ali lakši nizovi ne traže dvocifrene brojeve."
+  },
+  {
+    "topic": "mat-pravilo-u-nizu",
+    "requires": "mat-oduzimanje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Pravilo i sledeći član opadajućeg niza nalaze se oduzimanjem ($40 - 2$ je $38$), ali lakši nizovi ne traže dvocifrene brojeve."
+  },
+  {
+    "topic": "mat-pravilo-u-nizu",
+    "requires": "mat-brojanje-unapred-unazad",
+    "strength": "soft",
+    "reason": "Brojanje sa preskokom pomaže da se pravilo niza brže uoči, ali nije uslov."
+  },
+  {
+    "topic": "mat-novac",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Vrednost svakog apoena do $100$ dinara je broj do $100$, koji učenik mora da čita i zapiše."
+  },
+  {
+    "topic": "mat-novac",
+    "requires": "mat-poredjenje-do-100",
+    "strength": "soft",
+    "reason": "Poređenje brojeva treba kod pitanja koji apoen vredi više, ali se apoene može prepoznati i bez toga."
+  },
+  {
+    "topic": "mat-novac",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Sabiranje do $100$ pomaže da se izračuna vrednost više apoena zajedno, ali nije uslov za raspoznavanje apoena."
+  },
+  {
+    "topic": "mat-citanje-dijagrama-tabela",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Podatak na dijagramu ili u tabeli je broj koji treba pročitati, pa učenik mora da zna brojeve do $10$."
+  },
+  {
+    "topic": "mat-citanje-dijagrama-tabela",
+    "requires": "mat-poredjenje-do-10",
+    "strength": "soft",
+    "reason": "Poređenje brojeva pomaže kod pitanja čega ima više, a čega manje, ali samo čitanje podataka ga ne traži."
+  },
+  {
+    "topic": "mat-citanje-dijagrama-tabela",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "soft",
+    "reason": "Oduzimanje pomaže kod pitanja koliko čega ima više, ali samo čitanje podataka ga ne traži."
+  },
+  {
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Svaki zadatak sa sabiranjem sadrži sabiranje dva jednocifrena broja, makar i unutar većih brojeva."
+  },
+  {
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "requires": "mat-sabiranje-preko-desetice",
+    "strength": "soft",
+    "reason": "Zadaci u okviru $20$ traže sabiranje s prelaskom preko desetice, ali se lakši zadaci rešavaju i bez toga."
+  },
+  {
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Zadaci s dvocifrenim brojevima traže sabiranje do $100$, ali se lakši zadaci rešavaju i bez toga."
+  },
+  {
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "hard",
+    "reason": "Svaki zadatak s oduzimanjem sadrži oduzimanje u okviru $10$, makar i unutar većih brojeva."
+  },
+  {
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "requires": "mat-oduzimanje-preko-desetice",
+    "strength": "soft",
+    "reason": "Zadaci u okviru $20$ traže oduzimanje s prelaskom preko desetice, ali se lakši zadaci rešavaju i bez toga."
+  },
+  {
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "requires": "mat-oduzimanje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Zadaci s dvocifrenim brojevima traže oduzimanje do $100$, ali se lakši zadaci rešavaju i bez toga."
+  },
+  {
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Rezultat merenja je broj jedinica, pa učenik mora da prebroji do $10$."
+  },
+  {
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "requires": "mat-tacka-linija-duz",
+    "strength": "soft",
+    "reason": "Merenje se radi na duži, pa pomaže znanje da duž ima početak i kraj, ali dete može da meri i dužinu predmeta."
+  },
+  {
+    "topic": "mat-kvadratna-mreza",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Uputstvo u mreži navodi red, kolonu i broj polja, pa učenik mora da broji do $10$."
+  },
+  {
+    "topic": "mat-kvadratna-mreza",
+    "requires": "mat-polozaj-u-prostoru",
+    "strength": "hard",
+    "reason": "Uputstvo za precrtavanje koristi smerove: levo, desno, gore i dole."
+  },
+  {
+    "topic": "mat-kvadratna-mreza",
+    "requires": "mat-geometrijske-figure",
+    "strength": "soft",
+    "reason": "Uz tačke se precrtavaju i figure, pa pomaže razlikovanje trougla, kvadrata i pravougaonika, ali nije uslov."
+  },
+  {
+    "topic": "mat-kvadratna-mreza",
+    "requires": "mat-redni-brojevi",
+    "strength": "soft",
+    "reason": "Mesto u mreži opisuje se rednim brojem (treći red), ali se može naći i običnim brojanjem."
+  },
+  {
+    "topic": "mat-sabiranje-preko-desetice",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Sabiranje s prelaskom prikazuje se i na brojevnoj pravoj, pa ona pomaže, ali se zbir računa i bez nje."
+  },
+  {
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Sabiranje bez prelaska prikazuje se i na brojevnoj pravoj, pa ona pomaže, ali se zbir računa i bez nje."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Oduzimanje bez prelaska prikazuje se i na brojevnoj pravoj, pa ona pomaže, ali se razlika računa i bez nje."
+  },
+  {
+    "topic": "mat-prethodnik-sledbenik",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Prethodnik i sledbenik su susedni brojevi na brojevnoj pravoj, što pomaže, ali se nalaze i običnim brojanjem."
+  },
+  {
+    "topic": "mat-citanje-dijagrama-tabela",
+    "requires": "mat-grupisanje",
+    "strength": "soft",
+    "reason": "Podaci u tabeli i dijagramu svrstani su u grupe, pa grupisanje pomaže, ali se vrednosti mogu pročitati i bez toga."
+  },
+  {
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "requires": "mat-uporedjivanje-po-velicini",
+    "strength": "soft",
+    "reason": "Merenje dužine polazi od poređenja po dužini, ali se duž može izmeriti i bez tog poređenja."
+  }
+]

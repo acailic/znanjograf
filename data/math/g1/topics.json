@@ -1,0 +1,634 @@
+[
+  {
+    "id": "mat-polozaj-u-prostoru",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Položaj predmeta u prostoru",
+    "summary": "Gde se šta nalazi: levo, desno, iznad, ispod, ispred, iza, između i pored drugog predmeta ili bića, te u odnosu na tlo. Od ovog znanja polazi orijentacija na listu papira i u kvadratnoj mreži.",
+    "mastery": [
+      "određuje međusobni položaj predmeta i bića (levo, desno, iznad, ispod, ispred, iza, između, pored)",
+      "određuje položaj predmeta ili bića u odnosu na tlo (na tlu, iznad tla, ispod tla)",
+      "nalazi predmet po opisanom položaju"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-001", "match": "exact"}
+    ],
+    "root_reason": "Orijentacija u prostoru polazi od svakodnevnog iskustva deteta i ne treba joj nijedna druga tema iz razreda."
+  },
+  {
+    "id": "mat-uporedjivanje-po-velicini",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Upoređivanje po veličini",
+    "summary": "Upoređuje predmete i bića po veličini: koji je veći, a koji manji, koji duži, viši ili širi. To je prvi korak ka merenju.",
+    "mastery": [
+      "uporedi dva predmeta po veličini i kaže koji je veći, a koji manji",
+      "uporedi predmete po dužini, visini i širini",
+      "poreda tri predmeta od najmanjeg do najvećeg"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-002", "match": "exact"}
+    ],
+    "root_reason": "Poređenje veličine dete uviđa gledajući i opipavajući predmete, pre nego što upozna ijedan broj ili oblik."
+  },
+  {
+    "id": "mat-geometrijska-tela",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Geometrijska tela",
+    "summary": "Geometrijska tela: lopta, kocka, kvadar, valjak, piramida i kupa. Dete ih imenuje i prepoznaje na predmetima iz okoline, poput lopte, kockice za igru ili limenke.",
+    "mastery": [
+      "imenuje tela: loptu, kocku, kvadar, valjak, piramidu i kupu",
+      "prepoznaje oblik tela na predmetu iz okoline",
+      "razlikuje kocku od kvadra i valjak od kupe"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-004", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-003", "match": "partial"}
+    ],
+    "root_reason": "Prepoznavanje oblika polazi od opažanja predmeta i ne treba mu nijedan prethodni pojam iz razreda."
+  },
+  {
+    "id": "mat-geometrijske-figure",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Geometrijske figure",
+    "summary": "Geometrijske figure: krug, pravougaonik, kvadrat i trougao. Dete ih imenuje, prepoznaje na predmetima iz okoline i razlikuje po stranicama i uglovima.",
+    "mastery": [
+      "imenuje figure: krug, pravougaonik, kvadrat i trougao",
+      "prepoznaje oblik figure na predmetu iz okoline",
+      "razlikuje kvadrat od pravougaonika i kaže da krug nema uglove"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-004", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-003", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-grupisanje",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Grupisanje predmeta",
+    "summary": "Predmete i bića koji imaju zajedničku osobinu svrstava u grupe, na primer po boji, veličini ili obliku. Od tog znanja polazi čitanje tabela i dijagrama.",
+    "mastery": [
+      "svrstava predmete ili bića u grupe po zajedničkoj osobini",
+      "imenuje osobinu po kojoj je grupa sastavljena",
+      "nalazi predmet koji ne pripada grupi"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-005", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-slaganje-figura",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "reasoning",
+    "name": "Slaganje i rastavljanje figura",
+    "summary": "Od poznatih figura slaže novu figuru, kao u slagalici, i rastavlja složenu figuru na oblike od kojih je sastavljena. Tako uviđa da se složena figura sastoji od jednostavnijih.",
+    "mastery": [
+      "rastavlja složenu figuru na figure od kojih je sastavljena",
+      "određuje koliko kojih figura čini složenu figuru",
+      "slaže figuru od zadatih oblika"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-006", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-prava-kriva-izlomljena",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Prava, kriva i izlomljena linija",
+    "summary": "Linije se razlikuju po obliku: prava, kriva i izlomljena. Dete ih prepoznaje na crtežu i u okolini, na primer ivicu table, granu drveta ili stazu koja skreće.",
+    "mastery": [
+      "razlikuje pravu, krivu i izlomljenu liniju",
+      "određuje koje su linije na crtežu prave, a koje krive ili izlomljene"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-007", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-zatvorena-otvorena-linija",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Zatvorena i otvorena linija",
+    "summary": "Zatvorena linija kreće se od jedne tačke i vraća se u nju, a otvorena linija ima početak i kraj. Zatvorenom linijom oivičena je svaka figura.",
+    "mastery": [
+      "razlikuje zatvorenu od otvorene linije",
+      "određuje da li linija na crtežu zatvara figuru"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-007", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-tacka-linija-duz",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Tačka, linija i duž",
+    "summary": "Duž je deo prave linije koji ima početak i kraj, a prava linija nema početak ni kraj.",
+    "mastery": [
+      "prepoznaje duž među drugim linijama",
+      "određuje početak i kraj duži",
+      "razlikuje duž od prave linije po tome što duž ima dva kraja"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-008", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-crtanje-lenjirom",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Crtanje lenjirom",
+    "summary": "Lenjirom crta pravu liniju kroz dve tačke i duž između dve tačke. Od toga polazi svako crtanje u kvadratnoj mreži.",
+    "mastery": [
+      "povlači lenjirom pravu liniju kroz dve zadate tačke",
+      "povlači lenjirom duž između dve zadate tačke",
+      "kaže kada je nacrtana duž, a kada prava linija"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-008", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-brojevi-do-10",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Brojevi do 10",
+    "summary": "Brojevi od $1$ do $10$ i nula: brojanje predmeta, čitanje i pisanje brojeva i njihov redosled. Od ove teme polazi sve ostalo u razredu.",
+    "mastery": [
+      "prebroji predmete i upiše koliko ih ima (do $10$)",
+      "čita i zapisuje brojeve do $10$ i nulu",
+      "nabraja brojeve do $10$ unapred i unazad"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+    ],
+    "root_reason": "Razvoj pojma broja nastavlja se na znanje iz predškolskog programa i ne polazi ni od jedne druge teme u razredu."
+  },
+  {
+    "id": "mat-brojevna-prava",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Brojevna prava",
+    "summary": "Brojevi se pokazuju tačkama na brojevnoj pravoj: svaki broj ima svoje mesto, a redosled brojeva vidi se s leva na desno. Kasnije se na brojevnoj pravoj pokazuju i sabiranje i oduzimanje.",
+    "mastery": [
+      "određuje koji je broj označen tačkom na brojevnoj pravoj",
+      "pokaže zadati broj tačkom na brojevnoj pravoj"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-poredjenje-do-10",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Poređenje brojeva do 10",
+    "summary": "Upoređuje brojeve do $10$: koji je veći, koji manji, a koji su jednaki. Služi se rečima „manji od“ i „veći od“ i znacima $<$, $>$ i $=$, i nalazi najveći i najmanji broj.",
+    "mastery": [
+      "uporedi dva broja do $10$ i kaže koji je veći, a koji manji",
+      "nađe najveći i najmanji broj među datim brojevima",
+      "poreda tri broja od najmanjeg do najvećeg"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-redni-brojevi",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Redni brojevi",
+    "summary": "Redni brojevi od prvog do desetog: koji je predmet po redu, ko je prvi, a ko poslednji, i koliko ih je pre ili posle nekoga.",
+    "mastery": [
+      "određuje koji je predmet po redu (prvi, treći, peti)",
+      "određuje koliko je predmeta pre ili posle predmeta zadatog rednog broja"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-011", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-rastavljanje-na-sabirke",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Rastavljanje broja na sabirke",
+    "summary": "Svaki broj se može rastaviti na dva sabirka: $5$ je $2$ i $3$, a $7$ je $4$ i $3$. Od tog znanja su lakše sabiranje, nalaženje nepoznatog broja i računanje preko desetice.",
+    "mastery": [
+      "rastavlja broj do $10$ na dva sabirka",
+      "nalazi sabirak koji nedostaje (jedan sabirak broja $7$ je $3$)",
+      "rastavlja isti broj na sabirke na više načina"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-sabiranje-do-10",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje do 10",
+    "summary": "Sabira dva jednocifrena broja sa zbirom do $10$, u glavi, bez zapisivanja postupka. Uz to upoznaje znakove $+$ i $=$ i nazive sabirak i zbir.",
+    "mastery": [
+      "sabira dva broja sa zbirom do $10$",
+      "imenuje sabirke i zbir u zapisu sabiranja"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-013", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-oduzimanje-do-10",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Oduzimanje do 10",
+    "summary": "Oduzima u okviru $10$, u glavi, bez zapisivanja postupka. Uz to upoznaje znak $-$ i nazive umanjenik, umanjilac i razlika.",
+    "mastery": [
+      "oduzima dva broja u okviru $10$",
+      "imenuje umanjenik, umanjilac i razliku u zapisu oduzimanja"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-013", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-nepoznati-broj-u-jednakosti",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Nepoznati broj u jednakosti",
+    "summary": "U jednakosti s jednom operacijom nalazi broj koji nije poznat: u $\\square + 3 = 7$ nedostaje $4$, jer se $7$ rastavlja na $3$ i $4$. Isto radi i kada je nepoznat umanjenik ili umanjilac.",
+    "mastery": [
+      "nalazi nepoznati sabirak u jednakosti sa sabiranjem",
+      "nalazi nepoznati broj u jednakosti sa oduzimanjem",
+      "proverava rešenje: leva i desna strana jednakosti moraju biti jednake"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-brojevi-do-20",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Brojevi do 20",
+    "summary": "Brojevi od $11$ do $20$ nastaju od jedne desetice i jedinica: $13$ je $10$ i $3$. Uz njih se upoznaje pojam desetice, osnova svih dvocifrenih brojeva.",
+    "mastery": [
+      "čita i zapisuje brojeve od $11$ do $20$",
+      "rastavlja broj druge desetice na deseticu i jedinice ($13$ je $10$ i $3$)",
+      "prebroji predmete grupisane u deseticu i jedinice"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-sabiranje-preko-desetice",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje s prelaskom preko desetice",
+    "summary": "Sabira dva jednocifrena broja čiji je zbir veći od $10$, na primer $8 + 5$: prvo dopuni deseticu ($8 + 2$ je $10$), pa doda ostatak ($10 + 3$ je $13$).",
+    "mastery": [
+      "sabira dva jednocifrena broja sa zbirom većim od $10$",
+      "dopunjuje broj do desetice ($8 + 2$ je $10$)",
+      "pokaže sabiranje s prelaskom na brojevnoj pravoj"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-oduzimanje-preko-desetice",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Oduzimanje s prelaskom preko desetice",
+    "summary": "Oduzima u okviru $20$ u dva koraka: prvo siđe do desetice, pa oduzme ostatak. Tako je $13 - 6$ jednako $7$, jer je $13 - 3$ jednako $10$, a $10 - 3$ jednako $7$.",
+    "mastery": [
+      "oduzima jednocifren broj od broja druge desetice s prelaskom preko desetice ($13 - 6$)",
+      "rastavlja umanjilac na dva dela da prvo dođe do desetice ($6$ na $3$ i $3$)",
+      "proverava rezultat sabiranjem"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-osobine-sabiranja",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Osobine sabiranja",
+    "summary": "Zbir se ne menja kada se sabirci zamene mesta ($3 + 4$ je isto što i $4 + 3$) i kada se združe ($2 + 5 + 5$ se lakše računa kao $2 + 10$). Od toga se računa lakše.",
+    "mastery": [
+      "proverava da zbir ostaje isti kada se sabirci zamene mesta",
+      "združuje sabirke koje zajedno daju deseticu",
+      "izračunava zbir tri broja lakše, pomoću zamene mesta ili združivanja"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-brojevi-do-100",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Brojevi do 100",
+    "summary": "Brojevi od $21$ do $100$: brojanje, čitanje i pisanje dvocifrenih brojeva i broja $100$, prve stotine.",
+    "mastery": [
+      "čita i zapisuje brojeve do $100$",
+      "prebroji predmete grupisane u desetice i upiše koliko ih ima",
+      "nabroji desetice od $10$ do $100$"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-brojanje-unapred-unazad",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Brojanje unapred, unazad i sa preskokom",
+    "summary": "Nabraja brojeve unapred i unazad od bilo kog broja do $100$, i sa preskokom: za dva ($2$, $4$, $6$), za pet ili za deset ($10$, $20$, $30$). Od toga su lakši sledbenik, parni brojevi i pravila u nizu.",
+    "mastery": [
+      "nastavlja brojati unapred od zadatog broja",
+      "nastavlja brojati unazad od zadatog broja",
+      "nastavlja niz brojeva sa preskokom (za dva, pet ili deset)"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-009", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-desetice-i-jedinice",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Desetice i jedinice",
+    "summary": "Cifra na mestu desetica kaže koliko broj ima desetica, a cifra na mestu jedinica koliko ima jedinica: $47$ je $4$ desetice i $7$ jedinica. Od toga zavise sabiranje i oduzimanje do $100$.",
+    "mastery": [
+      "rastavlja broj do $100$ na desetice i jedinice",
+      "sastavlja broj od datog broja desetica i jedinica",
+      "određuje šta znači ista cifra na mestu desetica i na mestu jedinica ($5$ u $56$ i u $65$)"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-prethodnik-sledbenik",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Prethodnik i sledbenik",
+    "summary": "Prethodnik je broj koji dolazi neposredno pre datog broja, a sledbenik broj koji dolazi neposredno posle njega: prethodnik broja $30$ je $29$, a sledbenik $31$.",
+    "mastery": [
+      "određuje prethodnika broja do $100$",
+      "određuje sledbenika broja do $100$"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-parni-neparni",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Parni i neparni brojevi",
+    "summary": "Parni broj može da se raspodeli u parove bez ostatka, a neparan ostavlja jedan višak. U nizu brojeva parni i neparni se smenjuju: $1$, $2$, $3$, $4$.",
+    "mastery": [
+      "razlikuje parne od neparnih brojeva",
+      "određuje parnost dvocifrenog broja po cifri jedinica",
+      "nabraja neparne, odnosno parne brojeve do $20$"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-poredjenje-do-100",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Poređenje brojeva do 100",
+    "summary": "Upoređuje dvocifrene brojeve: prvo poredi desetice, pa jedinice ($38$ je manje od $43$ jer ima manje desetica). Služi se znacima $<$, $>$ i $=$ i slaže brojeve po redu.",
+    "mastery": [
+      "uporedi dva broja do $100$",
+      "poreda tri broja od najmanjeg do najvećeg",
+      "nađe najveći i najmanji broj među datim brojevima"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"},
+      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-sabiranje-do-100-bez-prelaska",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje do 100 bez prelaska",
+    "summary": "Sabira brojeve do $100$ bez prelaska preko desetice ($23 + 4$, $42 + 35$): desetice se sabiraju s deseticama, a jedinice s jedinicama. Tu spada i sabiranje u okviru $20$ bez prelaska ($13 + 4$).",
+    "mastery": [
+      "sabira dvocifren i jednocifren broj bez prelaska preko desetice",
+      "sabira dva dvocifrena broja bez prelaska preko desetice",
+      "pokaže sabiranje bez prelaska na brojevnoj pravoj"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-015", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-oduzimanje-do-100-bez-prelaska",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Oduzimanje do 100 bez prelaska",
+    "summary": "Oduzima brojeve do $100$ bez prelaska preko desetice ($47 - 5$, $68 - 24$): jedinice se oduzimaju od jedinica, a desetice od desetica.",
+    "mastery": [
+      "oduzima jednocifren broj od dvocifrenog bez prelaska preko desetice",
+      "oduzima dvocifren broj od dvocifrenog bez prelaska preko desetice",
+      "pokaže oduzimanje bez prelaska na brojevnoj pravoj"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-015", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-pravilo-u-nizu",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Pravilo u nizu",
+    "summary": "U započetom nizu brojeva, oblika ili slika uoči pravilo (na primer: svaki put dodaj $3$ ili oduzmi $2$) i odredi koji je sledeći član: posle $6$, $9$, $12$ dolazi $15$.",
+    "mastery": [
+      "uoči pravilo u započetom nizu",
+      "određuje sledeći član niza",
+      "nastavlja niz za dva ili tri člana"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-019", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-novac",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Novac",
+    "summary": "Dinar, njegove kovanice i novčanice u vrednosti do $100$ dinara: razlikuje apoene po nazivu i izgledu i upoređuje ih po tome koliko vrede.",
+    "mastery": [
+      "imenuje vrednost kovanice ili novčanice do $100$ dinara",
+      "uporedi vrednost dva apoena i kaže koji vredi više"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-018", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-citanje-dijagrama-tabela",
+    "grade": 1,
+    "area": "data",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Čitanje dijagrama i tabela",
+    "summary": "Čita podatke prikazane jednostavnim stubičastim dijagramom, slikovnim dijagramom ili tabelom: koliko čega ima, čega ima najviše, a čega najmanje.",
+    "mastery": [
+      "očitava koliko čega ima iz stubičastog dijagrama, slikovnog dijagrama ili tabele",
+      "upoređuje podatke iz dijagrama ili tabele",
+      "odgovara na pitanje pomoću podataka iz dijagrama ili tabele"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-020", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-zadaci-sa-sabiranjem",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Zadaci sa sabiranjem",
+    "summary": "Rešava tekstualni zadatak jednim sabiranjem: razume šta je dato i šta se traži, zapiše sabiranje i odgovori na pitanje iz zadatka.",
+    "mastery": [
+      "prepoznaje da se zadatak rešava sabiranjem",
+      "zapisuje sabiranje i izračunava odgovor",
+      "odgovara na pitanje iz zadatka"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-017", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-zadaci-sa-oduzimanjem",
+    "grade": 1,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Zadaci sa oduzimanjem",
+    "summary": "Rešava tekstualni zadatak jednim oduzimanjem: koliko je ostalo kada se nešto uzme ili potroši, ili koliko čega ima više, a koliko manje.",
+    "mastery": [
+      "prepoznaje da se zadatak rešava oduzimanjem",
+      "zapisuje oduzimanje i izračunava odgovor",
+      "odgovara na pitanje iz zadatka"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-017", "match": "partial"}
+    ]
+  },
+  {
+    "id": "mat-merenje-nestandardnom-jedinicom",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Merenje dužine nestandardnom jedinicom",
+    "summary": "Dužina se meri jedinicom koja je zadata, a nije standardna: dlanom, štapom ili papirićem. Duž je duga onoliko jedinica koliko puta jedinica stane od početka do kraja duži.",
+    "mastery": [
+      "meri dužinu zadatom nestandardnom jedinicom",
+      "određuje koliko puta jedinica stane na duži",
+      "upoređuje dve duži po broju jedinica"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-021", "match": "exact"}
+    ]
+  },
+  {
+    "id": "mat-kvadratna-mreza",
+    "grade": 1,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Precrtavanje u kvadratnu mrežu",
+    "summary": "Prema datom uputstvu precrtava tačke i figure u kvadratnu mrežu: mesto tačke određeno redom i kolonom, i pomeranje za zadati broj polja.",
+    "mastery": [
+      "određuje mesto tačke u mreži po redu i koloni",
+      "precrta figuru pomestenu za zadati broj polja na levu, desnu, gornju ili donju stranu",
+      "precrtava figuru u kvadratnu mrežu prema datom uputstvu"
+    ],
+    "curriculum": [
+      {"edition": "g1-2026", "outcome": "g1-2026-022", "match": "exact"}
+    ]
+  }
+]

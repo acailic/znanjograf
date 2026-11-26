@@ -1,0 +1,2788 @@
+[
+  {
+    "id": "mat-polozaj-u-prostoru-q1",
+    "topic": "mat-polozaj-u-prostoru",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Mila stoji iza Pere. Gde je Pera u odnosu na Milu?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "iza Mile"
+      },
+      {
+        "id": "b",
+        "text": "ispred Mile"
+      },
+      {
+        "id": "c",
+        "text": "pored Mile"
+      }
+    ],
+    "answer": "b",
+    "check": "ispred Mile",
+    "explanation": "Mila stoji iza Pere, pa je Pera ispred Mile."
+  },
+  {
+    "id": "mat-polozaj-u-prostoru-q2",
+    "topic": "mat-polozaj-u-prostoru",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Mila je pustila balon. Balon sada leti visoko na nebu. Gde je balon u odnosu na tlo?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "na tlu"
+      },
+      {
+        "id": "b",
+        "text": "ispod tla"
+      },
+      {
+        "id": "c",
+        "text": "iznad tla"
+      }
+    ],
+    "answer": "c",
+    "check": "iznad tla",
+    "explanation": "Balon leti na nebu, iznad kuća i drveća, pa je iznad tla."
+  },
+  {
+    "id": "mat-polozaj-u-prostoru-q3",
+    "topic": "mat-polozaj-u-prostoru",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Ana na glavi nosi šešir. U desnoj ruci drži balon, a u drugoj ruci loptu. Gde je lopta?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "u levoj ruci"
+      },
+      {
+        "id": "b",
+        "text": "u desnoj ruci"
+      },
+      {
+        "id": "c",
+        "text": "na glavi"
+      }
+    ],
+    "answer": "a",
+    "check": "u levoj ruci",
+    "explanation": "Ana ima levu i desnu ruku. Balon je u desnoj ruci, pa je lopta u drugoj ruci, to jest u levoj."
+  },
+  {
+    "id": "mat-polozaj-u-prostoru-q4",
+    "topic": "mat-polozaj-u-prostoru",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na stolu su sveska, pernica i čaša soka. Ispod stola su lopta i papuča. Koliko predmeta je ispod stola? Upiši broj.",
+    "answer": "2",
+    "check": "2",
+    "explanation": "Ispod stola su lopta i papuča. To su $2$ predmeta."
+  },
+  {
+    "id": "mat-uporedjivanje-po-velicini-q1",
+    "topic": "mat-uporedjivanje-po-velicini",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Slon je veći od psa. Ko je manji?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "slon"
+      },
+      {
+        "id": "b",
+        "text": "pas"
+      },
+      {
+        "id": "c",
+        "text": "jednaki su"
+      }
+    ],
+    "answer": "b",
+    "check": "pas",
+    "explanation": "Slon je veći, pa je pas manji."
+  },
+  {
+    "id": "mat-uporedjivanje-po-velicini-q2",
+    "topic": "mat-uporedjivanje-po-velicini",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Na slici su dve trake. Koja traka je šira?",
+    "figure": {
+      "kind": "grid",
+      "alt": "Dve uspravne trake od kvadrata, leva i desna. Obe trake su visoke 5 kvadrata. Leva traka je široka 2 kvadrata, a desna traka je široka 3 kvadrata.",
+      "cols": 6,
+      "rows": 5,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    "choices": [
+      {
+        "id": "a",
+        "text": "desna traka"
+      },
+      {
+        "id": "b",
+        "text": "leva traka"
+      },
+      {
+        "id": "c",
+        "text": "obe trake su jednako široke"
+      }
+    ],
+    "answer": "a",
+    "check": "desna traka",
+    "explanation": "Desna traka je široka $3$ kvadrata, a leva $2$ kvadrata. Zato je desna traka šira."
+  },
+  {
+    "id": "mat-uporedjivanje-po-velicini-q3",
+    "topic": "mat-uporedjivanje-po-velicini",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na slici su tri kule. Poredaj ih od najniže do najviše. Koliko kvadrata ima druga kula u tom redu? Upiši broj.",
+    "figure": {
+      "kind": "grid",
+      "alt": "Tri kule od kvadrata stoje na istoj osnovi. Leva kula je visoka 5 kvadrata, kula u sredini 3 kvadrata, a desna kula 4 kvadrata.",
+      "cols": 5,
+      "rows": 5,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "answer": "4",
+    "check": "4",
+    "explanation": "Od najniže do najviše: kula u sredini ($3$), desna kula ($4$), leva kula ($5$). Druga po redu je desna kula, koja ima $4$ kvadrata."
+  },
+  {
+    "id": "mat-uporedjivanje-po-velicini-q4",
+    "topic": "mat-uporedjivanje-po-velicini",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Crvena olovka je duža od plave. Plava olovka je duža od žute. Koliko olovaka je duže od žute? Upiši broj.",
+    "answer": "2",
+    "check": "(+ 1 1)",
+    "explanation": "Plava olovka je duža od žute, a crvena je duža od plave, pa je i crvena duža od žute. Duže od žute su $2$ olovke."
+  },
+  {
+    "id": "mat-geometrijska-tela-q1",
+    "topic": "mat-geometrijska-tela",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Kako se zove telo oblika limenke soka?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kupa"
+      },
+      {
+        "id": "b",
+        "text": "kvadar"
+      },
+      {
+        "id": "c",
+        "text": "piramida"
+      },
+      {
+        "id": "d",
+        "text": "valjak"
+      }
+    ],
+    "answer": "d",
+    "check": "valjak",
+    "explanation": "Telo oblika limenke soka zove se valjak."
+  },
+  {
+    "id": "mat-geometrijska-tela-q2",
+    "topic": "mat-geometrijska-tela",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koji predmet ima oblik kvadra?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kutija za cipele"
+      },
+      {
+        "id": "b",
+        "text": "kockica za igru"
+      },
+      {
+        "id": "c",
+        "text": "limenka soka"
+      },
+      {
+        "id": "d",
+        "text": "lopta"
+      }
+    ],
+    "answer": "a",
+    "check": "kutija za cipele",
+    "explanation": "Kutija za cipele ima oblik kvadra. Kockica za igru je kocka, a limenka je valjak."
+  },
+  {
+    "id": "mat-geometrijska-tela-q3",
+    "topic": "mat-geometrijska-tela",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Valjak je telo oblika limenke soka. U kutiji su baterija, čep za flašu, kornet za sladoled i lopta. Koliko predmeta u kutiji ima takav oblik? Upiši broj.",
+    "answer": "2",
+    "check": "(+ 1 1)",
+    "explanation": "Takav oblik imaju baterija i čep za flašu, a kornet ima oblik kupe. To su $2$ predmeta."
+  },
+  {
+    "id": "mat-geometrijska-tela-q4",
+    "topic": "mat-geometrijska-tela",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Luka je naslagao dve iste kockice jednu na drugu. Kakvog je oblika telo koje je dobio?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kocke"
+      },
+      {
+        "id": "b",
+        "text": "piramide"
+      },
+      {
+        "id": "c",
+        "text": "lopte"
+      },
+      {
+        "id": "d",
+        "text": "kvadra"
+      }
+    ],
+    "answer": "d",
+    "check": "kvadra",
+    "explanation": "Dve kockice jedna na drugoj daju duže telo u kome više nisu sve strane kvadrati. Zato je to kvadar, a ne kocka."
+  },
+  {
+    "id": "mat-geometrijske-figure-q1",
+    "topic": "mat-geometrijske-figure",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koja figura je nacrtana na slici?",
+    "figure": {
+      "kind": "polygon",
+      "alt": "Nacrtana je figura sa tri prave strane i tri ugla. Dve strane se sastaju gore u jednom temenu, a treća je dole, vodoravna.",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          2,
+          3.464
+        ]
+      ]
+    },
+    "choices": [
+      {
+        "id": "a",
+        "text": "krug"
+      },
+      {
+        "id": "b",
+        "text": "kvadrat"
+      },
+      {
+        "id": "c",
+        "text": "pravougaonik"
+      },
+      {
+        "id": "d",
+        "text": "trougao"
+      }
+    ],
+    "answer": "d",
+    "check": "trougao",
+    "explanation": "Nacrtana figura ima tri strane i tri ugla. To je trougao."
+  },
+  {
+    "id": "mat-geometrijske-figure-q2",
+    "topic": "mat-geometrijske-figure",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko uglova ima krug? Upiši broj.",
+    "answer": "0",
+    "check": "0",
+    "explanation": "Krug je obao i nema ni jedan ugao. Zato je odgovor $0$."
+  },
+  {
+    "id": "mat-geometrijske-figure-q3",
+    "topic": "mat-geometrijske-figure",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na stolu su novčić, dugme, točak od autića, kutija šibica i kockica za igru. Mila traži predmete koji imaju oblik kruga. Koliko ih ima? Upiši broj.",
+    "answer": "3",
+    "check": "(+ 1 1 1)",
+    "explanation": "Novčić, dugme i točak su obli, pa imaju oblik kruga. Mila će naći $3$ predmeta."
+  },
+  {
+    "id": "mat-geometrijske-figure-q4",
+    "topic": "mat-geometrijske-figure",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Luka je nacrtao lik sa $4$ strane. Dve strane su duže, a dve kraće. Koji lik je Luka nacrtao?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kvadrat"
+      },
+      {
+        "id": "b",
+        "text": "trougao"
+      },
+      {
+        "id": "c",
+        "text": "pravougaonik"
+      },
+      {
+        "id": "d",
+        "text": "krug"
+      }
+    ],
+    "answer": "c",
+    "check": "pravougaonik",
+    "explanation": "Lik ima četiri strane, ali nisu sve jednake: dve su duže, a dve kraće. To je pravougaonik, a ne kvadrat."
+  },
+  {
+    "id": "mat-grupisanje-q1",
+    "topic": "mat-grupisanje",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "U grupi su crvena lopta, crveni autić i plava kocka. Koja igračka ne pripada grupi?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "crvena lopta"
+      },
+      {
+        "id": "b",
+        "text": "crveni autić"
+      },
+      {
+        "id": "c",
+        "text": "plava kocka"
+      }
+    ],
+    "answer": "c",
+    "check": "plava kocka",
+    "explanation": "Lopta i autić su crveni, a kocka je plava. Zato plava kocka ne pripada grupi."
+  },
+  {
+    "id": "mat-grupisanje-q2",
+    "topic": "mat-grupisanje",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "U prvoj grupi su velika crvena lopta i mali crveni autić. U drugoj grupi su mali plavi meda i velika plava kocka. Po kojoj je osobini Mila podelila igračke?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "po obliku"
+      },
+      {
+        "id": "b",
+        "text": "po boji"
+      },
+      {
+        "id": "c",
+        "text": "po veličini"
+      }
+    ],
+    "answer": "b",
+    "check": "po boji",
+    "explanation": "U prvoj grupi sve igračke su crvene, a u drugoj su sve plave. Mila je podelila igračke po boji."
+  },
+  {
+    "id": "mat-grupisanje-q3",
+    "topic": "mat-grupisanje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U korpi su crvena lopta, plava lopta, crveni autić, plava kocka i crveni meda. Mila pravi grupu crvenih igračaka. Koliko igračaka će biti u toj grupi? Upiši broj.",
+    "answer": "3",
+    "check": "(+ 1 1 1)",
+    "explanation": "Crvene su lopta, autić i meda. U grupi crvenih igračaka biće $3$ igračke."
+  },
+  {
+    "id": "mat-grupisanje-q4",
+    "topic": "mat-grupisanje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na polici su mala crvena lopta, mali crveni autić, velika crvena kocka i mali plavi meda. Pera pravi grupu malih crvenih igračaka. Koliko igračaka ne pripada toj grupi?",
+    "answer": "2",
+    "check": "(+ 1 1)",
+    "explanation": "U grupi su mala crvena lopta i mali crveni autić. Velika kocka nije mala, a plavi meda nije crven, pa toj grupi ne pripadaju $2$ igračke."
+  },
+  {
+    "id": "mat-slaganje-figura-q1",
+    "topic": "mat-slaganje-figura",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Dva jednaka kvadrata stavljena su jedan pored drugog. Koji lik su zajedno čine?",
+    "answer": "b",
+    "check": "pravougaonik",
+    "explanation": "Kvadrati se dotiču jednom stranicom. Zajedno čine lik sa četiri ugla čija je gornja i donja stranica duža: pravougaonik.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "trougao"
+      },
+      {
+        "id": "b",
+        "text": "pravougaonik"
+      },
+      {
+        "id": "c",
+        "text": "krug"
+      }
+    ]
+  },
+  {
+    "id": "mat-slaganje-figura-q2",
+    "topic": "mat-slaganje-figura",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Veliki kvadrat složen je od malih kvadrata. Ima dva reda s po dva kvadrata. Od koliko malih kvadrata je sastavljen?",
+    "answer": "4",
+    "check": "(+ 2 2)",
+    "explanation": "U prvom redu su $2$ kvadrata i u drugom $2$ kvadrata: zajedno $4$ kvadrata."
+  },
+  {
+    "id": "mat-slaganje-figura-q3",
+    "topic": "mat-slaganje-figura",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Nacrtana je figura od kvadrata. Od koliko kvadrata je sastavljena?",
+    "answer": "8",
+    "check": "(+ 4 4)",
+    "explanation": "Figura ima dva reda s po četiri kvadrata: $4$ i $4$ zajedno je $8$ kvadrata.",
+    "figure": {
+      "kind": "grid",
+      "cols": 4,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "alt": "Figura je u obliku pravougaonika. Sastavljena je od 8 kvadrata: dva reda s po četiri kvadrata."
+    }
+  },
+  {
+    "id": "mat-slaganje-figura-q4",
+    "topic": "mat-slaganje-figura",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Kvadrat je presečen ravnom linijom od sredine gornje ivice do sredine donje ivice. Na koja dva lika je presečen?",
+    "answer": "c",
+    "check": "na dva pravougaonika",
+    "explanation": "Linija preseca kvadrat od gore do dolje kroz sredinu. Svaki deo ima četiri ugla, a duži je nego što je širi: to je pravougaonik.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "na dva trougla"
+      },
+      {
+        "id": "b",
+        "text": "na dva kruga"
+      },
+      {
+        "id": "c",
+        "text": "na dva pravougaonika"
+      }
+    ]
+  },
+  {
+    "id": "mat-prava-kriva-izlomljena-q1",
+    "topic": "mat-prava-kriva-izlomljena",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Ivica školske table od početka do kraja je ravna. Koja je to linija?",
+    "answer": "b",
+    "check": "prava",
+    "explanation": "Ivica table ne savija se i ne skreće. To je prava linija.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kriva"
+      },
+      {
+        "id": "b",
+        "text": "prava"
+      },
+      {
+        "id": "c",
+        "text": "izlomljena"
+      }
+    ]
+  },
+  {
+    "id": "mat-prava-kriva-izlomljena-q2",
+    "topic": "mat-prava-kriva-izlomljena",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Obod tanjira je svuda zaobljen i nijedan deo nije ravan. Koja je to linija?",
+    "answer": "c",
+    "check": "kriva",
+    "explanation": "Obod tanjira se savija. To je kriva linija.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "prava"
+      },
+      {
+        "id": "b",
+        "text": "izlomljena"
+      },
+      {
+        "id": "c",
+        "text": "kriva"
+      }
+    ]
+  },
+  {
+    "id": "mat-prava-kriva-izlomljena-q3",
+    "topic": "mat-prava-kriva-izlomljena",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Staza od kuće do prodavnice ide ravno, pa skreće, pa opet ide ravno. Kojem obliku linije liči ta staza?",
+    "answer": "a",
+    "check": "izlomljenoj liniji",
+    "explanation": "Staza ide ravnim delovima koji skreću jedan u drugi. Linija koja skreće zove se izlomljena.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "izlomljenoj liniji"
+      },
+      {
+        "id": "b",
+        "text": "pravoj liniji"
+      },
+      {
+        "id": "c",
+        "text": "krivoj liniji"
+      }
+    ]
+  },
+  {
+    "id": "mat-prava-kriva-izlomljena-q4",
+    "topic": "mat-prava-kriva-izlomljena",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na papiru su četiri linije: dve su prave, jedna je kriva i jedna je izlomljena. Koliko linija nije pravo?",
+    "answer": "2",
+    "check": "(+ 1 1)",
+    "explanation": "Prave su samo dve linije. Kriva i izlomljena nisu prave: to su $2$ linije."
+  },
+  {
+    "id": "mat-zatvorena-otvorena-linija-q1",
+    "topic": "mat-zatvorena-otvorena-linija",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Linija koja kreće od jedne tačke i vraća se u nju zove se…",
+    "answer": "c",
+    "check": "zatvorena",
+    "explanation": "Linija koja se vraća u svoj početak zatvara se. Zato se zove zatvorena.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "otvorena"
+      },
+      {
+        "id": "b",
+        "text": "prava"
+      },
+      {
+        "id": "c",
+        "text": "zatvorena"
+      }
+    ]
+  },
+  {
+    "id": "mat-zatvorena-otvorena-linija-q2",
+    "topic": "mat-zatvorena-otvorena-linija",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koja linija oivičava nacrtani trougao?",
+    "answer": "a",
+    "check": "zatvorena",
+    "explanation": "Strane trougla spajaju se bez prekida i vraćaju se u početak. To je zatvorena linija.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "zatvorena"
+      },
+      {
+        "id": "b",
+        "text": "otvorena"
+      },
+      {
+        "id": "c",
+        "text": "prava"
+      }
+    ],
+    "figure": {
+      "kind": "polygon",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          2,
+          3.464
+        ]
+      ],
+      "alt": "Nacrtan je trougao sa tri ravne strane. Strane se spajaju u tri temena i nijedna nije prekinuta, pa je trougao čitav."
+    }
+  },
+  {
+    "id": "mat-zatvorena-otvorena-linija-q3",
+    "topic": "mat-zatvorena-otvorena-linija",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Luka je nacrtao kružić koji se zatvara, pa je izbrisao jedan mali deo kružića. Kakva je linija sada?",
+    "answer": "b",
+    "check": "otvorena, jer sada ima početak i kraj",
+    "explanation": "Posle brisanja kružić ima početak i kraj i ne zatvara se. Linija koja se ne zatvara zove se otvorena.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "zatvorena, jer je i dalje okrugla"
+      },
+      {
+        "id": "b",
+        "text": "otvorena, jer sada ima početak i kraj"
+      },
+      {
+        "id": "c",
+        "text": "prava, jer ima prekid"
+      }
+    ]
+  },
+  {
+    "id": "mat-zatvorena-otvorena-linija-q4",
+    "topic": "mat-zatvorena-otvorena-linija",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Nacrtani su kvadrat, trougao i jedna linija koja ima početak i kraj, a ništa ne zatvara. Koliko likova je oivičeno zatvorenom linijom?",
+    "answer": "2",
+    "check": "2",
+    "explanation": "Kvadrat i trougao oivičeni su zatvorenom linijom. Treća linija ništa ne zatvara, pa je otvorena. Zatvorenom linijom oivičena su $2$ lika."
+  },
+  {
+    "id": "mat-tacka-linija-duz-q1",
+    "topic": "mat-tacka-linija-duz",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Deo prave linije koji ima početak i kraj zove se…",
+    "answer": "b",
+    "check": "duž",
+    "explanation": "Duž je deo prave linije. Ima početak i kraj.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "tačka"
+      },
+      {
+        "id": "b",
+        "text": "duž"
+      },
+      {
+        "id": "c",
+        "text": "prava linija"
+      }
+    ]
+  },
+  {
+    "id": "mat-tacka-linija-duz-q2",
+    "topic": "mat-tacka-linija-duz",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko krajeva ima duž?",
+    "answer": "2",
+    "check": "2",
+    "explanation": "Duž počinje u jednoj tački i završava se u drugoj. Zato ima $2$ kraja."
+  },
+  {
+    "id": "mat-tacka-linija-duz-q3",
+    "topic": "mat-tacka-linija-duz",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Mila je nacrtala liniju od jedne tačke do druge tačke i tu stala. Koju liniju je nacrtala?",
+    "answer": "c",
+    "check": "duž",
+    "explanation": "Linija je pošla od jedne tačke i stala na drugoj. Ima početak i kraj: to je duž.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "pravu liniju"
+      },
+      {
+        "id": "b",
+        "text": "krivu liniju"
+      },
+      {
+        "id": "c",
+        "text": "duž"
+      }
+    ]
+  },
+  {
+    "id": "mat-tacka-linija-duz-q4",
+    "topic": "mat-tacka-linija-duz",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Pera je nacrtao liniju kroz dve tačke i nastavio je na obe strane dalje od njih. Koju liniju je nacrtao?",
+    "answer": "a",
+    "check": "pravu liniju",
+    "explanation": "Linija ide kroz obe tačke i nastavlja se dalje na obe strane. Nema početak ni kraj: to je prava linija.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "pravu liniju"
+      },
+      {
+        "id": "b",
+        "text": "duž"
+      },
+      {
+        "id": "c",
+        "text": "tačku"
+      }
+    ]
+  },
+  {
+    "id": "mat-crtanje-lenjirom-q1",
+    "topic": "mat-crtanje-lenjirom",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Čime se crta prava linija na papiru?",
+    "answer": "a",
+    "check": "lenjirom",
+    "explanation": "Prava linija crta se lenjirom: lenjir vodi olovku pravo.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "lenjirom"
+      },
+      {
+        "id": "b",
+        "text": "rukom, bez pomagala"
+      },
+      {
+        "id": "c",
+        "text": "gumicom"
+      }
+    ]
+  },
+  {
+    "id": "mat-crtanje-lenjirom-q2",
+    "topic": "mat-crtanje-lenjirom",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Luka želi da nacrta pravu liniju kroz dve tačke. Koliko tačaka je obeležio pre crtanja?",
+    "answer": "2",
+    "check": "2",
+    "explanation": "Kroz dve tačke crta se jedna prava linija, pa Luka obeležava $2$ tačke."
+  },
+  {
+    "id": "mat-crtanje-lenjirom-q3",
+    "topic": "mat-crtanje-lenjirom",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Ana je postavila lenjir kroz obe tačke i povukla olovku od jedne ivice papira do druge. Šta je nacrtala?",
+    "answer": "b",
+    "check": "pravu liniju",
+    "explanation": "Olovka je uz lenjir išla od ivice do ivice papira, bez stajanja: nacrtana je prava linija.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "duž"
+      },
+      {
+        "id": "b",
+        "text": "pravu liniju"
+      },
+      {
+        "id": "c",
+        "text": "krivu liniju"
+      }
+    ]
+  },
+  {
+    "id": "mat-crtanje-lenjirom-q4",
+    "topic": "mat-crtanje-lenjirom",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Pera je postavio lenjir kroz obe tačke i povukao olovku od prve tačke do druge, pa stao. Šta je nacrtao?",
+    "answer": "a",
+    "check": "duž",
+    "explanation": "Olovka je uz lenjir pošla od prve tačke i stala na drugoj. Nacrtana linija ima početak i kraj: to je duž.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "duž"
+      },
+      {
+        "id": "b",
+        "text": "pravu liniju"
+      },
+      {
+        "id": "c",
+        "text": "tačku"
+      }
+    ]
+  },
+  {
+    "id": "mat-brojevi-do-10-q1",
+    "topic": "mat-brojevi-do-10",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko tačaka ima na slici? Prebroj ih i upiši broj.",
+    "figure": {
+      "kind": "dots",
+      "alt": "Dva reda tačaka: u prvom redu je 5 tačaka, a u drugom 3.",
+      "rows": 2,
+      "cols": 5,
+      "count": 8
+    },
+    "answer": "8",
+    "check": "8",
+    "explanation": "Brojimo tačke redom: $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$. Zato ih je $8$."
+  },
+  {
+    "id": "mat-brojevi-do-10-q2",
+    "topic": "mat-brojevi-do-10",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Kutija je prazna i nema nijednu olovku. Koliko olovaka ima u kutiji? Upiši broj.",
+    "answer": "0",
+    "check": "0",
+    "explanation": "Kad nema ničega, broj je nula. Nula se piše kao $0$."
+  },
+  {
+    "id": "mat-brojevi-do-10-q3",
+    "topic": "mat-brojevi-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Brojimo unazad: $10$, $9$, $8$, $6$, $5$. Koji broj je preskočen? Upiši ga.",
+    "answer": "7",
+    "check": "7",
+    "explanation": "Kad brojimo unazad, svaki sledeći broj je za $1$ manji: posle $8$ dolazi $7$, a zatim $6$."
+  },
+  {
+    "id": "mat-brojevi-do-10-q4",
+    "topic": "mat-brojevi-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Ana broji sličice u kutiji. Poslednji broj koji je rekla je $9$. Koliko sličica ima u kutiji?",
+    "answer": "9",
+    "check": "9",
+    "explanation": "Kad brojimo, poslednji broj koji kažemo pokazuje koliko predmeta ima. Ana je stala na broju $9$, pa u kutiji ima $9$ sličica."
+  },
+  {
+    "id": "mat-brojevna-prava-q1",
+    "topic": "mat-brojevna-prava",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj je označen tačkom na brojevnoj pravoj? Upiši ga.",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Na brojevnoj pravoj od 0 do 10 jedna tačka je iznad broja 6.",
+      "min": 0,
+      "max": 10,
+      "marks": [
+        6
+      ]
+    },
+    "answer": "6",
+    "check": "6",
+    "explanation": "Tačka stoji tačno iznad broja $6$ na pravoj, pa je označen broj $6$."
+  },
+  {
+    "id": "mat-brojevna-prava-q2",
+    "topic": "mat-brojevna-prava",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Tačka na brojevnoj pravoj označava broj $2$. Koji broj je odmah levo od te tačke? Upiši ga.",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Brojevna prava od 0 do 10 sa tačkom iznad broja 2.",
+      "min": 0,
+      "max": 10,
+      "marks": [
+        2
+      ]
+    },
+    "answer": "1",
+    "check": "1",
+    "explanation": "Na brojevnoj pravoj brojevi idu s leva na desno, od najmanjeg ka najvećem. Odmah levo od $2$ je broj $1$."
+  },
+  {
+    "id": "mat-brojevna-prava-q3",
+    "topic": "mat-brojevna-prava",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj upisani su samo neki brojevi. Koji broj je označen tačkom? Upiši ga.",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Brojevna prava od 0 do 10 na kojoj su upisani samo brojevi 0, 2, 4, 6, 8 i 10. Tačka je na sredini između brojeva 8 i 10.",
+      "min": 0,
+      "max": 10,
+      "step": 2,
+      "marks": [
+        9
+      ]
+    },
+    "answer": "9",
+    "check": "9",
+    "explanation": "Tačka je između $8$ i $10$. Broj koji se nalazi između ta dva broja je $9$, pa je on označen."
+  },
+  {
+    "id": "mat-brojevna-prava-q4",
+    "topic": "mat-brojevna-prava",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Luka je na brojevnoj pravoj označio tačkom broj $3$. Ana je svoju tačku stavila dva mesta udesno od Lukine. Koji je broj Ana označila? Upiši ga.",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Brojevna prava od 0 do 10 sa tačkom iznad broja 3.",
+      "min": 0,
+      "max": 10,
+      "marks": [
+        3
+      ]
+    },
+    "answer": "5",
+    "check": "(+ 3 2)",
+    "explanation": "Od broja $3$ krećemo dva mesta udesno: prvo do $4$, pa do $5$. Ana je označila broj $5$."
+  },
+  {
+    "id": "mat-poredjenje-do-10-q1",
+    "topic": "mat-poredjenje-do-10",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koji znak treba upisati u kvadratić: $7 \\square 4$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$>$"
+      },
+      {
+        "id": "b",
+        "text": "$<$"
+      },
+      {
+        "id": "c",
+        "text": "$=$"
+      }
+    ],
+    "answer": "a",
+    "check": ">",
+    "explanation": "Broj $7$ je veći od $4$, pa između njih stoji znak $>$, koji znači „veće od“."
+  },
+  {
+    "id": "mat-poredjenje-do-10-q2",
+    "topic": "mat-poredjenje-do-10",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Uporedi brojeve $6$ i $9$. Koji je veći? Upiši taj broj.",
+    "answer": "9",
+    "check": "9",
+    "explanation": "U nizu brojeva $9$ dolazi posle $6$, pa je $9$ veći od $6$."
+  },
+  {
+    "id": "mat-poredjenje-do-10-q3",
+    "topic": "mat-poredjenje-do-10",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Mila ima $8$ sličica, Ana ima $6$ sličica, a Pera ima $3$ sličice. Ko ima najmanje sličica?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Mila"
+      },
+      {
+        "id": "b",
+        "text": "Ana"
+      },
+      {
+        "id": "c",
+        "text": "Pera"
+      }
+    ],
+    "answer": "c",
+    "check": "Pera",
+    "explanation": "Najmanji od brojeva $8$, $6$ i $3$ je $3$. Pera ima $3$ sličice, pa on ima najmanje."
+  },
+  {
+    "id": "mat-poredjenje-do-10-q4",
+    "topic": "mat-poredjenje-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Složi brojeve $7$, $2$ i $5$ od najmanjeg do najvećeg. Koji broj je u sredini? Upiši ga.",
+    "answer": "5",
+    "check": "5",
+    "explanation": "Od najmanjeg do najvećeg redosled je $2$, $5$, $7$. U sredini je broj $5$."
+  },
+  {
+    "id": "mat-redni-brojevi-q1",
+    "topic": "mat-redni-brojevi",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "U redu stoje Luka, Mila, Pera i Ana. Luka je prvi. Koji je po redu Pera?",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabela koja pokazuje red: ispod 1 stoji Luka, ispod 2 Mila, ispod 3 Pera i ispod 4 Ana.",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "rows": [
+        [
+          "Luka",
+          "Mila",
+          "Pera",
+          "Ana"
+        ]
+      ]
+    },
+    "choices": [
+      {
+        "id": "a",
+        "text": "drugi"
+      },
+      {
+        "id": "b",
+        "text": "treći"
+      },
+      {
+        "id": "c",
+        "text": "četvrti"
+      }
+    ],
+    "answer": "b",
+    "check": "treći",
+    "explanation": "Brojimo od početka reda: Luka je prvi, Mila je druga, a Pera je treći."
+  },
+  {
+    "id": "mat-redni-brojevi-q2",
+    "topic": "mat-redni-brojevi",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U redu stoje Luka, Mila, Pera, Ana i Jovan. Luka je prvi, a Jovan je poslednji. Koliko dece stoji posle Pere? Upiši broj.",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabela koja pokazuje red: ispod 1 stoji Luka, ispod 2 Mila, ispod 3 Pera, ispod 4 Ana i ispod 5 Jovan.",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "rows": [
+        [
+          "Luka",
+          "Mila",
+          "Pera",
+          "Ana",
+          "Jovan"
+        ]
+      ]
+    },
+    "answer": "2",
+    "check": "2",
+    "explanation": "Pera je treći u redu. Posle njega stoje Ana i Jovan, to su $2$ deteta."
+  },
+  {
+    "id": "mat-redni-brojevi-q3",
+    "topic": "mat-redni-brojevi",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "U redu ispred škole stoje Ana, Pera, Luka i Mila. Pera je drugi. Koja je po redu Mila?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "druga"
+      },
+      {
+        "id": "b",
+        "text": "treća"
+      },
+      {
+        "id": "c",
+        "text": "četvrta"
+      }
+    ],
+    "answer": "c",
+    "check": "četvrta",
+    "explanation": "Brojimo od početka reda: Ana je prva, Pera je drugi, Luka je treći, a Mila je četvrta."
+  },
+  {
+    "id": "mat-redni-brojevi-q4",
+    "topic": "mat-redni-brojevi",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U redu stoji $6$ automobila: crveni, plavi, zeleni, žuti, crni i beli. Crveni je prvi. Koliko automobila stoji posle zelenog? Upiši broj.",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabela koja pokazuje red automobila: ispod 1 crveni, ispod 2 plavi, ispod 3 zeleni, ispod 4 žuti, ispod 5 crni i ispod 6 beli.",
+      "columns": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "rows": [
+        [
+          "crveni",
+          "plavi",
+          "zeleni",
+          "žuti",
+          "crni",
+          "beli"
+        ]
+      ]
+    },
+    "answer": "3",
+    "check": "3",
+    "explanation": "Zeleni je treći u redu. Posle njega su žuti, crni i beli, to su $3$ automobila."
+  },
+  {
+    "id": "mat-rastavljanje-na-sabirke-q1",
+    "topic": "mat-rastavljanje-na-sabirke",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Rastavi broj $8$ na dva sabirka. Jedan sabirak je $5$. Koji je drugi sabirak? Upiši ga.",
+    "answer": "3",
+    "check": "(- 8 5)",
+    "explanation": "$5$ i $3$ zajedno daju $8$, pa je drugi sabirak $3$."
+  },
+  {
+    "id": "mat-rastavljanje-na-sabirke-q2",
+    "topic": "mat-rastavljanje-na-sabirke",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Jedan sabirak broja $10$ je $6$. Koji je drugi sabirak? Upiši ga.",
+    "answer": "4",
+    "check": "(- 10 6)",
+    "explanation": "Od $6$ do $10$ nedostaju još $4$, pa je drugi sabirak $4$."
+  },
+  {
+    "id": "mat-rastavljanje-na-sabirke-q3",
+    "topic": "mat-rastavljanje-na-sabirke",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila ima $9$ sličica. Od toga su $2$ male, a ostale su velike. Koliko velikih sličica ima Mila?",
+    "answer": "7",
+    "check": "(- 9 2)",
+    "explanation": "Broj $9$ je $2$ i $7$: $2$ sličice su male, a $7$ je velikih."
+  },
+  {
+    "id": "mat-rastavljanje-na-sabirke-q4",
+    "topic": "mat-rastavljanje-na-sabirke",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera je rastavio broj $10$ na sabirke $3$ i $7$. Ana je isti broj rastavila na dva sabirka koja su jednaka. Koji je svaki od ta dva sabirka? Upiši taj broj.",
+    "answer": "5",
+    "check": "(/ 10 2)",
+    "explanation": "Isti broj može da se rastavi na više načina. Dva jednaka sabirka broja $10$ su $5$ i $5$."
+  },
+  {
+    "id": "mat-sabiranje-do-10-q1",
+    "topic": "mat-sabiranje-do-10",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko je $5 + 3$? Upiši broj.",
+    "answer": "8",
+    "check": "(+ 5 3)",
+    "explanation": "Kreni od $5$ i broji još tri koraka: $6$, $7$, $8$. Zbir je $8$."
+  },
+  {
+    "id": "mat-sabiranje-do-10-q2",
+    "topic": "mat-sabiranje-do-10",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Kako se zove broj $7$ u zapisu $5 + 2 = 7$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "sabirak"
+      },
+      {
+        "id": "b",
+        "text": "zbir"
+      },
+      {
+        "id": "c",
+        "text": "razlika"
+      }
+    ],
+    "answer": "b",
+    "check": "zbir",
+    "explanation": "Brojevi $5$ i $2$ su sabirci. Njihov zbir je $7$, jer je $7$ rezultat sabiranja."
+  },
+  {
+    "id": "mat-sabiranje-do-10-q3",
+    "topic": "mat-sabiranje-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera je imao $6$ sličica. Za rođendan je dobio još $4$ sličice. Koliko sličica sada ima Pera?",
+    "answer": "10",
+    "check": "(+ 6 4)",
+    "explanation": "$6 + 4 = 10$. Pera sada ima $10$ sličica."
+  },
+  {
+    "id": "mat-sabiranje-do-10-q4",
+    "topic": "mat-sabiranje-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U kutiji su $3$ crvene, $2$ plave i $4$ zelene kocke. Koliko kocki ima u kutiji?",
+    "answer": "9",
+    "check": "(+ 3 2 4)",
+    "explanation": "Prvo $3 + 2 = 5$, pa $5 + 4 = 9$. U kutiji je $9$ kocki."
+  },
+  {
+    "id": "mat-oduzimanje-do-10-q1",
+    "topic": "mat-oduzimanje-do-10",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko je $9 - 4$? Upiši broj.",
+    "answer": "5",
+    "check": "(- 9 4)",
+    "explanation": "Kreni od $9$ i broji unazad četiri koraka: $8$, $7$, $6$, $5$. Ostaje $5$."
+  },
+  {
+    "id": "mat-oduzimanje-do-10-q2",
+    "topic": "mat-oduzimanje-do-10",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Kako se zove broj $3$ u zapisu $8 - 3 = 5$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "umanjenik"
+      },
+      {
+        "id": "b",
+        "text": "sabirak"
+      },
+      {
+        "id": "c",
+        "text": "razlika"
+      },
+      {
+        "id": "d",
+        "text": "umanjilac"
+      }
+    ],
+    "answer": "d",
+    "check": "umanjilac",
+    "explanation": "Broj $8$ je umanjenik, broj $3$ je umanjilac, a broj $5$ je razlika."
+  },
+  {
+    "id": "mat-oduzimanje-do-10-q3",
+    "topic": "mat-oduzimanje-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U korpi je bilo $10$ lopti. Deca su uzela $3$ lopte. Koliko lopti je ostalo u korpi?",
+    "answer": "7",
+    "check": "(- 10 3)",
+    "explanation": "$10 - 3 = 7$. U korpi je ostalo $7$ lopti."
+  },
+  {
+    "id": "mat-oduzimanje-do-10-q4",
+    "topic": "mat-oduzimanje-do-10",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U kutiji je bilo $8$ olovaka. Pera je uzeo $2$ olovke, a Ana $3$. Koliko olovaka je ostalo u kutiji?",
+    "answer": "3",
+    "check": "(- 8 2 3)",
+    "explanation": "Prvo $8 - 2 = 6$, pa $6 - 3 = 3$. U kutiji je ostalo $3$ olovke."
+  },
+  {
+    "id": "mat-nepoznati-broj-u-jednakosti-q1",
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj treba upisati u kvadratić: $3 + \\square = 10$?",
+    "answer": "7",
+    "check": "(- 10 3)",
+    "explanation": "Broj $10$ je $3$ i $7$, jer je $3 + 7 = 10$. U kvadratić treba upisati $7$."
+  },
+  {
+    "id": "mat-nepoznati-broj-u-jednakosti-q2",
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj treba upisati u kvadratić: $9 - \\square = 4$?",
+    "answer": "5",
+    "check": "(- 9 4)",
+    "explanation": "Od $9$ treba oduzeti $5$, jer je $9 - 5 = 4$. U kvadratić treba upisati $5$."
+  },
+  {
+    "id": "mat-nepoznati-broj-u-jednakosti-q3",
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Ana je imala nekoliko sličica. Kad je $3$ sličice poklonila, ostalo joj je $6$. Koliko sličica je Ana imala na početku?",
+    "answer": "9",
+    "check": "(+ 6 3)",
+    "explanation": "To je jednakost $\\square - 3 = 6$. Ako je ostalo $6$, a $3$ je poklonila, onda je Ana imala $6 + 3 = 9$ sličica."
+  },
+  {
+    "id": "mat-nepoznati-broj-u-jednakosti-q4",
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Jednakost $5 + 3 = 7$ nije tačna. Koji broj treba da stoji umesto $7$ da bi jednakost bila tačna? Upiši taj broj.",
+    "answer": "8",
+    "check": "(+ 5 3)",
+    "explanation": "Leva strana je $5 + 3 = 8$. Da bi jednakost bila tačna, desna strana mora biti jednaka levoj, pa umesto $7$ treba da stoji $8$."
+  },
+  {
+    "id": "mat-brojevi-do-20-q1",
+    "topic": "mat-brojevi-do-20",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj se čita „sedamnaest“? Upiši ga.",
+    "answer": "17",
+    "check": "17",
+    "explanation": "Reč „sedamnaest“ piše se ciframa kao $17$: to je jedna desetica i $7$ jedinica."
+  },
+  {
+    "id": "mat-brojevi-do-20-q2",
+    "topic": "mat-brojevi-do-20",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Rastavi broj $16$ na deseticu i jedinice. Koliko je jedinica? Upiši taj broj.",
+    "answer": "6",
+    "check": "(- 16 10)",
+    "explanation": "Broj $16$ je $10$ i $6$. Cifra $6$ na mestu jedinica kaže da broj $16$ ima $6$ jedinica."
+  },
+  {
+    "id": "mat-brojevi-do-20-q3",
+    "topic": "mat-brojevi-do-20",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U jednoj kutiji je $10$ olovaka, a u drugoj kutiji su $4$ olovke. Koliko je sve olovaka?",
+    "answer": "14",
+    "check": "(+ 10 4)",
+    "explanation": "$10$ olovaka je jedna desetica. Uz to još $4$: zajedno je $14$ olovaka."
+  },
+  {
+    "id": "mat-brojevi-do-20-q4",
+    "topic": "mat-brojevi-do-20",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Koliko polja je obojeno na slici? Prebroj ih i upiši broj.",
+    "figure": {
+      "kind": "grid",
+      "alt": "Mreža od dva reda po deset polja. Prvi red je ceo obojen, a u drugom redu su obojena prva tri polja.",
+      "cols": 10,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "answer": "13",
+    "check": "(+ 10 3)",
+    "explanation": "U prvom redu je $10$ obojenih polja, to je jedna desetica. U drugom redu su još $3$ polja. Zajedno je $13$ polja."
+  },
+  {
+    "id": "mat-sabiranje-preko-desetice-q1",
+    "topic": "mat-sabiranje-preko-desetice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $7 + 5$.",
+    "answer": "12",
+    "check": "(+ 7 5)",
+    "explanation": "$7 + 3 = 10$, pa još $2$: $12$."
+  },
+  {
+    "id": "mat-sabiranje-preko-desetice-q2",
+    "topic": "mat-sabiranje-preko-desetice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Luka sabira $8 + 7$ i prvo dopunjuje broj $8$ do desetice. Koliko dodaje broju $8$ da dobije $10$? Upiši taj broj.",
+    "answer": "2",
+    "check": "(- 10 8)",
+    "explanation": "$8 + 2 = 10$. Luka dodaje $2$, a zatim doda još $5$: $10 + 5 = 15$."
+  },
+  {
+    "id": "mat-sabiranje-preko-desetice-q3",
+    "topic": "mat-sabiranje-preko-desetice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U korpi su $9$ jabuka. Ana doda još $6$ jabuka. Koliko jabuka ima u korpi?",
+    "answer": "15",
+    "check": "(+ 9 6)",
+    "explanation": "$9 + 1 = 10$, pa još $5$: $15$ jabuka."
+  },
+  {
+    "id": "mat-sabiranje-preko-desetice-q4",
+    "topic": "mat-sabiranje-preko-desetice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj označen je broj $8$. Od njega idi $6$ koraka udesno. Na kom broju staješ?",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Brojevna prava na kojoj su upisani brojevi od 0 do 20, a tačka stoji iznad broja 8.",
+      "min": 0,
+      "max": 20,
+      "marks": [
+        8
+      ]
+    },
+    "answer": "14",
+    "check": "(+ 8 6)",
+    "explanation": "Od $8$ idi $6$ koraka: $8 + 2 = 10$, pa još $4$ koraka. Staješ na $14$."
+  },
+  {
+    "id": "mat-oduzimanje-preko-desetice-q1",
+    "topic": "mat-oduzimanje-preko-desetice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $11 - 4$.",
+    "answer": "7",
+    "check": "(- 11 4)",
+    "explanation": "$11 - 1 = 10$, pa još $3$: $10 - 3 = 7$."
+  },
+  {
+    "id": "mat-oduzimanje-preko-desetice-q2",
+    "topic": "mat-oduzimanje-preko-desetice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Luka oduzima $13 - 6$. Prvo oduzme $3$ i dobije $10$. Koliko još treba da oduzme? Upiši taj broj.",
+    "answer": "3",
+    "check": "(- 6 3)",
+    "explanation": "Umanjilac $6$ rastavlja se na $3$ i $3$. Prvo je $13 - 3 = 10$, pa je $10 - 3 = 7$."
+  },
+  {
+    "id": "mat-oduzimanje-preko-desetice-q3",
+    "topic": "mat-oduzimanje-preko-desetice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U kutiji je $16$ loptica. Nikola iz kutije uzme $7$ loptica. Koliko loptica ostane u kutiji?",
+    "answer": "9",
+    "check": "(- 16 7)",
+    "explanation": "$16 - 6 = 10$, pa još $1$: $10 - 1 = 9$ loptica."
+  },
+  {
+    "id": "mat-oduzimanje-preko-desetice-q4",
+    "topic": "mat-oduzimanje-preko-desetice",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Ana je izračunala $14 - 6$ i dobila $8$. Kojim sabiranjem Ana proverava rezultat?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$14 + 6 = 20$"
+      },
+      {
+        "id": "b",
+        "text": "$8 + 6 = 14$"
+      },
+      {
+        "id": "c",
+        "text": "$8 + 14 = 22$"
+      }
+    ],
+    "answer": "b",
+    "check": "8 + 6 = 14",
+    "explanation": "Rezultat oduzimanja proverava se sabiranjem: $8 + 6 = 14$. Kad se dobije broj od kog se krenulo, rezultat je tačan."
+  },
+  {
+    "id": "mat-osobine-sabiranja-q1",
+    "topic": "mat-osobine-sabiranja",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Mila zna da je $3 + 6 = 9$. Ona je zamenila mesta sabircima i napisala $6 + 3$. Koliko je $6 + 3$?",
+    "answer": "9",
+    "check": "(+ 6 3)",
+    "explanation": "Kad sabirci zamene mesta, zbir se ne menja: $6 + 3 = 3 + 6 = 9$."
+  },
+  {
+    "id": "mat-osobine-sabiranja-q2",
+    "topic": "mat-osobine-sabiranja",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U zbiru $3 + 9 + 7$ Luka združuje dva broja koja zajedno daju $10$. Koji broj združuje sa brojem $7$? Upiši taj broj.",
+    "answer": "3",
+    "check": "(- 10 7)",
+    "explanation": "$7 + 3 = 10$, pa se $7$ i $3$ združuju. Zatim se doda $9$: $10 + 9 = 19$."
+  },
+  {
+    "id": "mat-osobine-sabiranja-q3",
+    "topic": "mat-osobine-sabiranja",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Koliko je $3 + 8 + 2$?",
+    "answer": "13",
+    "check": "(+ 3 8 2)",
+    "explanation": "Združi $8 + 2 = 10$, pa dodaj $3$: $10 + 3 = 13$."
+  },
+  {
+    "id": "mat-osobine-sabiranja-q4",
+    "topic": "mat-osobine-sabiranja",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na stolu su $4$ crvene, $6$ plavih i $7$ zelenih olovaka. Koliko olovaka ima na stolu?",
+    "answer": "17",
+    "check": "(+ 4 6 7)",
+    "explanation": "Združi $4 + 6 = 10$, pa dodaj $7$: $10 + 7 = 17$ olovaka."
+  },
+  {
+    "id": "mat-brojevi-do-100-q1",
+    "topic": "mat-brojevi-do-100",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Kako se čita broj $80$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "osamnaest"
+      },
+      {
+        "id": "b",
+        "text": "osam"
+      },
+      {
+        "id": "c",
+        "text": "osam nula"
+      },
+      {
+        "id": "d",
+        "text": "osamdeset"
+      }
+    ],
+    "answer": "d",
+    "check": "osamdeset",
+    "explanation": "Broj $80$ čita se osamdeset. To je osam desetica: $10$, $20$, $30$, $40$, $50$, $60$, $70$, $80$."
+  },
+  {
+    "id": "mat-brojevi-do-100-q2",
+    "topic": "mat-brojevi-do-100",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Nastavi da brojiš deseticama: $80$, $90$, ____.",
+    "answer": "100",
+    "check": "100",
+    "explanation": "Kad brojimo deseticama, posle $90$ ide $100$."
+  },
+  {
+    "id": "mat-brojevi-do-100-q3",
+    "topic": "mat-brojevi-do-100",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Prebroji tačke na slici deseticama. Koliko ih ima? Upiši broj.",
+    "figure": {
+      "kind": "dots",
+      "alt": "Tačke složene u redove po deset: 4 cela reda i još 6 tačaka u petom redu.",
+      "rows": 5,
+      "cols": 10,
+      "count": 46
+    },
+    "answer": "46",
+    "check": "(+ 40 6)",
+    "explanation": "Četiri reda po deset su $40$ tačaka. Uz još $6$ tačaka to je $46$."
+  },
+  {
+    "id": "mat-brojevi-do-100-q4",
+    "topic": "mat-brojevi-do-100",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Jovan je hteo da napiše devedeset tri, a napisao je $39$. Koji broj je trebao da napiše? Upiši ga.",
+    "answer": "93",
+    "check": "93",
+    "explanation": "Devedeset tri ima $9$ desetica i $3$ jedinice, pa se piše $93$. Jovan je zamenio mesta ciframa."
+  },
+  {
+    "id": "mat-brojanje-unapred-unazad-q1",
+    "topic": "mat-brojanje-unapred-unazad",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Nastavi da brojiš unapred: $45$, $46$, $47$, ____.",
+    "answer": "48",
+    "check": "(+ 47 1)",
+    "explanation": "Posle $47$ dolazi $48$."
+  },
+  {
+    "id": "mat-brojanje-unapred-unazad-q2",
+    "topic": "mat-brojanje-unapred-unazad",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Nastavi da brojiš unazad: $72$, $71$, $70$, ____.",
+    "answer": "69",
+    "check": "(- 70 1)",
+    "explanation": "Pre $70$ dolazi $69$."
+  },
+  {
+    "id": "mat-brojanje-unapred-unazad-q3",
+    "topic": "mat-brojanje-unapred-unazad",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Nastavi da brojiš za po pet: $40$, $45$, $50$, ____.",
+    "answer": "55",
+    "check": "(+ 50 5)",
+    "explanation": "Brojevi rastu za po $5$: $40$, $45$, $50$, pa $55$."
+  },
+  {
+    "id": "mat-brojanje-unapred-unazad-q4",
+    "topic": "mat-brojanje-unapred-unazad",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj označen je broj $60$. Od njega idi unazad $4$ koraka. Na kom broju staješ?",
+    "figure": {
+      "kind": "numberline",
+      "alt": "Brojevna prava na kojoj su upisani brojevi od 55 do 65, a tačka stoji iznad broja 60.",
+      "min": 55,
+      "max": 65,
+      "marks": [
+        60
+      ]
+    },
+    "answer": "56",
+    "check": "(- 60 4)",
+    "explanation": "Broji unazad: $60$, $59$, $58$, $57$, $56$. Posle $4$ koraka staješ na $56$."
+  },
+  {
+    "id": "mat-desetice-i-jedinice-q1",
+    "topic": "mat-desetice-i-jedinice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Rastavi broj $36$ na desetice i jedinice: $36 = \\square + 6$. Upiši broj koji nedostaje.",
+    "answer": "30",
+    "check": "(- 36 6)",
+    "explanation": "Broj $36$ ima $3$ desetice i $6$ jedinica: $36 = 30 + 6$."
+  },
+  {
+    "id": "mat-desetice-i-jedinice-q2",
+    "topic": "mat-desetice-i-jedinice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj ima $7$ desetica i $4$ jedinice? Upiši taj broj.",
+    "answer": "74",
+    "check": "(+ 70 4)",
+    "explanation": "$7$ desetica je $70$, a uz $4$ jedinice to je $74$."
+  },
+  {
+    "id": "mat-desetice-i-jedinice-q3",
+    "topic": "mat-desetice-i-jedinice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U punoj kutiji je $10$ kockica, to je jedna desetica. Pera ima $6$ desetica i još $4$ kockice. Koliko kockica ima Pera?",
+    "answer": "64",
+    "check": "(+ 60 4)",
+    "explanation": "$6$ desetica je $60$ kockica. Uz još $4$ kockice to je $64$."
+  },
+  {
+    "id": "mat-desetice-i-jedinice-q4",
+    "topic": "mat-desetice-i-jedinice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Elena je u broju $82$ zamenila mesta ciframa desetica i jedinica. Koji broj je dobila? Upiši ga.",
+    "answer": "28",
+    "check": "28",
+    "explanation": "U broju $82$ cifra $8$ je na mestu desetica, a $2$ na mestu jedinica. Kad se cifre zamene, dobija se $28$."
+  },
+  {
+    "id": "mat-prethodnik-sledbenik-q1",
+    "topic": "mat-prethodnik-sledbenik",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je prethodnik broja $45$? Upiši taj broj.",
+    "answer": "44",
+    "check": "(- 45 1)",
+    "explanation": "Prethodnik je broj koji dolazi odmah pre datog broja. Pre $45$ dolazi $44$."
+  },
+  {
+    "id": "mat-prethodnik-sledbenik-q2",
+    "topic": "mat-prethodnik-sledbenik",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je sledbenik broja $67$? Upiši taj broj.",
+    "answer": "68",
+    "check": "(+ 67 1)",
+    "explanation": "Sledbenik je broj koji dolazi odmah posle datog broja. Posle $67$ dolazi $68$."
+  },
+  {
+    "id": "mat-prethodnik-sledbenik-q3",
+    "topic": "mat-prethodnik-sledbenik",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Luka je zamislio neki broj. Sledbenik tog broja je $50$. Koji broj je zamislio Luka? Upiši ga.",
+    "answer": "49",
+    "check": "(- 50 1)",
+    "explanation": "Posle $49$ dolazi $50$, pa je sledbenik broja $49$ broj $50$. Zato je Luka zamislio $49$."
+  },
+  {
+    "id": "mat-prethodnik-sledbenik-q4",
+    "topic": "mat-prethodnik-sledbenik",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Sofija je zamislila neki broj. Prethodnik tog broja je $60$. Koji broj je zamislila Sofija? Upiši ga.",
+    "answer": "61",
+    "check": "(+ 60 1)",
+    "explanation": "Pre $61$ dolazi $60$, pa je prethodnik broja $61$ broj $60$. Zato je Sofija zamislila $61$."
+  },
+  {
+    "id": "mat-parni-neparni-q1",
+    "topic": "mat-parni-neparni",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je od brojeva $7$, $4$ i $2$ neparan? Upiši taj broj.",
+    "answer": "7",
+    "check": "7",
+    "explanation": "Broj $7$ je neparan: kad ga ređaš u parove, ostane jedan višak. Brojevi $4$ i $2$ su parni."
+  },
+  {
+    "id": "mat-parni-neparni-q2",
+    "topic": "mat-parni-neparni",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je od brojeva $23$, $36$ i $45$ paran? Upiši taj broj.",
+    "answer": "36",
+    "check": "36",
+    "explanation": "Paran je broj kome je cifra jedinica $0$, $2$, $4$, $6$ ili $8$. U broju $36$ cifra jedinica je $6$."
+  },
+  {
+    "id": "mat-parni-neparni-q3",
+    "topic": "mat-parni-neparni",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Nastavi niz parnih brojeva: $12$, $14$, $16$, ____.",
+    "answer": "18",
+    "check": "(+ 16 2)",
+    "explanation": "Parni brojevi rastu za po $2$: posle $16$ sledeći je $18$."
+  },
+  {
+    "id": "mat-parni-neparni-q4",
+    "topic": "mat-parni-neparni",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Nikola je ređao svoje sličice u parove. Svaka sličica dobila je par i nijedna nije ostala sama. Koji je broj sličica: $15$, $16$ ili $17$? Upiši taj broj.",
+    "answer": "16",
+    "check": "16",
+    "explanation": "Ako se sve sličice ređaju u parove i nijedna ne ostane, broj sličica je paran. Od $15$, $16$ i $17$ samo je $16$ paran."
+  },
+  {
+    "id": "mat-poredjenje-do-100-q1",
+    "topic": "mat-poredjenje-do-100",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je od brojeva $58$ i $52$ veći? Upiši taj broj.",
+    "answer": "58",
+    "check": "58",
+    "explanation": "Oba broja imaju $5$ desetica. $58$ ima $8$ jedinica, a $52$ ima $2$ jedinice, pa je $58$ veći."
+  },
+  {
+    "id": "mat-poredjenje-do-100-q2",
+    "topic": "mat-poredjenje-do-100",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je najmanji od brojeva $67$, $76$ i $59$? Upiši taj broj.",
+    "answer": "59",
+    "check": "59",
+    "explanation": "Broj $59$ ima $5$ desetica, $67$ ima $6$, a $76$ ima $7$ desetica. Zato je $59$ najmanji."
+  },
+  {
+    "id": "mat-poredjenje-do-100-q3",
+    "topic": "mat-poredjenje-do-100",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Koji znak ide na prazno mesto: $49$ ____ $54$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$>$"
+      },
+      {
+        "id": "b",
+        "text": "$=$"
+      },
+      {
+        "id": "c",
+        "text": "$<$"
+      }
+    ],
+    "answer": "c",
+    "check": "<",
+    "explanation": "$49$ ima $4$ desetice, a $54$ ima $5$ desetica. Zato je $49$ manje od $54$: $49 < 54$."
+  },
+  {
+    "id": "mat-poredjenje-do-100-q4",
+    "topic": "mat-poredjenje-do-100",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Poredaj brojeve $38$, $83$ i $36$ od najmanjeg do najvećeg. Koji broj je u sredini? Upiši ga.",
+    "answer": "38",
+    "check": "38",
+    "explanation": "Redom od najmanjeg: $36$, $38$, $83$. U sredini je broj $38$."
+  },
+  {
+    "id": "mat-sabiranje-do-100-bez-prelaska-q1",
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $23 + 4$.",
+    "answer": "27",
+    "check": "(+ 23 4)",
+    "explanation": "Sabiraju se jedinice: $3 + 4 = 7$. Desetice se ne menjaju: $20$ i $7$ je $27$."
+  },
+  {
+    "id": "mat-sabiranje-do-100-bez-prelaska-q2",
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $42 + 35$.",
+    "answer": "77",
+    "check": "(+ 42 35)",
+    "explanation": "Prvo desetice: $40 + 30 = 70$. Zatim jedinice: $2 + 5 = 7$. Zajedno je $77$."
+  },
+  {
+    "id": "mat-sabiranje-do-100-bez-prelaska-q3",
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U školskoj biblioteci je $52$ knjige o životinjama i $36$ knjige o biljkama. Koliko je tih knjiga?",
+    "answer": "88",
+    "check": "(+ 52 36)",
+    "explanation": "Desetice: $50 + 30 = 80$. Jedinice: $2 + 6 = 8$. Zajedno je $88$ knjiga."
+  },
+  {
+    "id": "mat-sabiranje-do-100-bez-prelaska-q4",
+    "topic": "mat-sabiranje-do-100-bez-prelaska",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj označen je broj $30$. Treba dodati $15$. Na kom broju se staje?",
+    "answer": "45",
+    "check": "(+ 30 15)",
+    "explanation": "Od $30$ idi deset polja udesno do $40$, pa još pet do $45$.",
+    "figure": {
+      "kind": "numberline",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "marks": [
+        30
+      ],
+      "alt": "Brojevna prava od 0 do 100 na kojoj su upisani samo brojevi 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 i 100. Tačka stoji iznad broja 30."
+    }
+  },
+  {
+    "id": "mat-oduzimanje-do-100-bez-prelaska-q1",
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $48 - 5$.",
+    "answer": "43",
+    "check": "(- 48 5)",
+    "explanation": "Oduzimaju se jedinice: $8 - 5 = 3$. Desetice se ne menjaju: $40$ i $3$ je $43$."
+  },
+  {
+    "id": "mat-oduzimanje-do-100-bez-prelaska-q2",
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $76 - 24$.",
+    "answer": "52",
+    "check": "(- 76 24)",
+    "explanation": "Prvo desetice: $70 - 20 = 50$. Zatim jedinice: $6 - 4 = 2$. Zajedno je $52$."
+  },
+  {
+    "id": "mat-oduzimanje-do-100-bez-prelaska-q3",
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U autobusu je bilo $68$ putnika. Na stanici je izašlo $35$ putnika. Koliko ih je ostalo u autobusu?",
+    "answer": "33",
+    "check": "(- 68 35)",
+    "explanation": "Desetice: $60 - 30 = 30$. Jedinice: $8 - 5 = 3$. U autobusu je ostalo $33$ putnika."
+  },
+  {
+    "id": "mat-oduzimanje-do-100-bez-prelaska-q4",
+    "topic": "mat-oduzimanje-do-100-bez-prelaska",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj označen je broj $60$. Treba oduzeti $15$. Na kom broju se staje?",
+    "answer": "45",
+    "check": "(- 60 15)",
+    "explanation": "Od $60$ idi deset polja ulevo do $50$, pa još pet do $45$.",
+    "figure": {
+      "kind": "numberline",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "marks": [
+        60
+      ],
+      "alt": "Brojevna prava od 0 do 100 na kojoj su upisani samo brojevi 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 i 100. Tačka stoji iznad broja 60."
+    }
+  },
+  {
+    "id": "mat-pravilo-u-nizu-q1",
+    "topic": "mat-pravilo-u-nizu",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Nastavi niz: $2$, $4$, $6$, $8$, ____.",
+    "answer": "10",
+    "check": "(+ 8 2)",
+    "explanation": "Svaki sledeći broj je veći za $2$: posle $8$ dolazi $10$."
+  },
+  {
+    "id": "mat-pravilo-u-nizu-q2",
+    "topic": "mat-pravilo-u-nizu",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Nastavi niz: $40$, $38$, $36$, ____.",
+    "answer": "34",
+    "check": "(- 36 2)",
+    "explanation": "Svaki sledeći broj je manji za $2$: posle $36$ dolazi $34$."
+  },
+  {
+    "id": "mat-pravilo-u-nizu-q3",
+    "topic": "mat-pravilo-u-nizu",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Koji broj sledi u nizu $7$, $12$, $17$, $22$, ____?",
+    "answer": "27",
+    "check": "(+ 22 5)",
+    "explanation": "Od $7$ do $12$ je $5$, i od $12$ do $17$ je $5$. Pravilo je: dodaj $5$. Posle $22$ dolazi $27$."
+  },
+  {
+    "id": "mat-pravilo-u-nizu-q4",
+    "topic": "mat-pravilo-u-nizu",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Niz je $10$, $20$, $30$, i tako dalje. Koji broj u tom nizu stoji na petom mestu?",
+    "answer": "50",
+    "check": "(+ 10 10 10 10 10)",
+    "explanation": "Svaki sledeći broj je veći za $10$: $10$, $20$, $30$, $40$, $50$. Na petom mestu je $50$."
+  },
+  {
+    "id": "mat-novac-q1",
+    "topic": "mat-novac",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Luka ima kovanicu od $10$ dinara i novčanicu od $50$ dinara. Šta vredi više?",
+    "answer": "b",
+    "check": "novčanica od $50$ dinara",
+    "explanation": "$50$ dinara je više od $10$ dinara, pa novčanica vredi više.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kovanica od $10$ dinara"
+      },
+      {
+        "id": "b",
+        "text": "novčanica od $50$ dinara"
+      },
+      {
+        "id": "c",
+        "text": "obe vrede jednako"
+      }
+    ]
+  },
+  {
+    "id": "mat-novac-q2",
+    "topic": "mat-novac",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U kasi su kovanice od $1$, $2$, $5$ i $10$ dinara. Koja kovanica vredi najviše? Upiši njenu vrednost u dinarima.",
+    "answer": "10",
+    "check": "10",
+    "explanation": "Od $1$, $2$, $5$ i $10$ najveći je $10$. Kovanica od $10$ dinara vredi najviše."
+  },
+  {
+    "id": "mat-novac-q3",
+    "topic": "mat-novac",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "U kasi su kovanice od $1$, $2$, $5$, $10$ i $20$ dinara, i novčanice od $10$, $20$ i $50$ dinara. Šta od toga vredi najviše?",
+    "answer": "c",
+    "check": "novčanica od $50$ dinara",
+    "explanation": "Najveća vrednost u kasi je $50$ dinara. To je novčanica od $50$ dinara.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "kovanica od $20$ dinara"
+      },
+      {
+        "id": "b",
+        "text": "novčanica od $20$ dinara"
+      },
+      {
+        "id": "c",
+        "text": "novčanica od $50$ dinara"
+      }
+    ]
+  },
+  {
+    "id": "mat-novac-q4",
+    "topic": "mat-novac",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na stolu su kovanica od $20$ dinara i novčanica od $100$ dinara. Upiši vrednost u dinarima one koja vredi više.",
+    "answer": "100",
+    "check": "100",
+    "explanation": "$100$ dinara je više od $20$ dinara. Više vredi novčanica, i to $100$ dinara."
+  },
+  {
+    "id": "mat-citanje-dijagrama-tabela-q1",
+    "topic": "mat-citanje-dijagrama-tabela",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Slikovni dijagram pokazuje koliko je ko rešio zadataka. Svaki kružić je jedan zadatak. Koliko je zadataka rešila Mila?",
+    "answer": "6",
+    "check": "6",
+    "explanation": "U redu Mile su $6$ kružića, a svaki kružić je jedan zadatak. Mila je rešila $6$ zadataka.",
+    "figure": {
+      "kind": "pictogram",
+      "symbol": "●",
+      "items": [
+        {
+          "label": "Ana",
+          "count": 4
+        },
+        {
+          "label": "Mila",
+          "count": 6
+        }
+      ],
+      "alt": "Slikovni dijagram sa dva reda. U redu Ana stoje 4 kružića, a u redu Mila stoje 6 kružića. Svaki kružić je jedan zadatak."
+    }
+  },
+  {
+    "id": "mat-citanje-dijagrama-tabela-q2",
+    "topic": "mat-citanje-dijagrama-tabela",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Tabela pokazuje koliko ko ima knjiga. Koliko knjiga ima Pera?",
+    "answer": "9",
+    "check": "9",
+    "explanation": "U redu Pere piše $9$. Pera ima $9$ knjiga.",
+    "figure": {
+      "kind": "table",
+      "columns": [
+        "Ko",
+        "Knjige"
+      ],
+      "rows": [
+        [
+          "Ana",
+          "7"
+        ],
+        [
+          "Mila",
+          "5"
+        ],
+        [
+          "Pera",
+          "9"
+        ]
+      ],
+      "alt": "Tabela sa dve kolone: Ko i Knjige. U njoj piše: Ana 7, Mila 5 i Pera 9."
+    }
+  },
+  {
+    "id": "mat-citanje-dijagrama-tabela-q3",
+    "topic": "mat-citanje-dijagrama-tabela",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Stubičasti dijagram pokazuje koliko je bicikla prošlo ulicom svakog dana. Koji dan je prošlo najviše bicikala?",
+    "answer": "a",
+    "check": "u ponedeljak",
+    "explanation": "Najviši stub je onaj za ponedeljak: $9$ bicikala. Tada je prošlo najviše bicikala.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "u ponedeljak"
+      },
+      {
+        "id": "b",
+        "text": "u utorak"
+      },
+      {
+        "id": "c",
+        "text": "u sredu"
+      }
+    ],
+    "figure": {
+      "kind": "bars",
+      "title": "Bicikli ulicom",
+      "categories": [
+        "ponedeljak",
+        "utorak",
+        "sreda"
+      ],
+      "values": [
+        9,
+        6,
+        8
+      ],
+      "alt": "Stubičasti dijagram Bicikli ulicom sa tri stuba. Ponedeljak: 9, utorak: 6 i sreda: 8."
+    }
+  },
+  {
+    "id": "mat-citanje-dijagrama-tabela-q4",
+    "topic": "mat-citanje-dijagrama-tabela",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na istom dijagramu pogledaj ponedeljak i utorak. Koliko je više bicikala prošlo u ponedeljak nego u utorak?",
+    "answer": "3",
+    "check": "(- 9 6)",
+    "explanation": "U ponedeljak je prošlo $9$ bicikala, a u utorak $6$. Razlika je $3$ bicikla.",
+    "figure": {
+      "kind": "bars",
+      "title": "Bicikli ulicom",
+      "categories": [
+        "ponedeljak",
+        "utorak",
+        "sreda"
+      ],
+      "values": [
+        9,
+        6,
+        8
+      ],
+      "alt": "Stubičasti dijagram Bicikli ulicom sa tri stuba. Ponedeljak: 9, utorak: 6 i sreda: 8."
+    }
+  },
+  {
+    "id": "mat-zadaci-sa-sabiranjem-q1",
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U korpi je $7$ jabuka, a na tanjiru $5$ jabuka. Koliko je jabuka svuda?",
+    "answer": "12",
+    "check": "(+ 7 5)",
+    "explanation": "Jabuke se slažu zajedno: $7 + 5 = 12$. Svuda je $12$ jabuka."
+  },
+  {
+    "id": "mat-zadaci-sa-sabiranjem-q2",
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Mila je pročitala $6$ stranica ujutru i $4$ posle podne. Koliko je stranica pročitala tog dana?",
+    "answer": "10",
+    "check": "(+ 6 4)",
+    "explanation": "Stranice se sabiraju: $6 + 4 = 10$. Mila je pročitala $10$ stranica."
+  },
+  {
+    "id": "mat-zadaci-sa-sabiranjem-q3",
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U zoo-vrtu je $15$ majmuna i $13$ zečeva. Koliko je tih životinja?",
+    "answer": "28",
+    "check": "(+ 15 13)",
+    "explanation": "Životinje se sabiraju: $15 + 13 = 28$. Tih životinja je $28$."
+  },
+  {
+    "id": "mat-zadaci-sa-sabiranjem-q4",
+    "topic": "mat-zadaci-sa-sabiranjem",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Mila ima $8$ sličica. Pera joj je poklonio još $5$. Koje izračunavanje daje koliko sličica Mila sada ima?",
+    "answer": "b",
+    "check": "sabiranje $8 + 5$",
+    "explanation": "Sličice su joj dodate, pa se brojevi sabiraju: $8 + 5$.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "oduzimanje $8 - 5$"
+      },
+      {
+        "id": "b",
+        "text": "sabiranje $8 + 5$"
+      },
+      {
+        "id": "c",
+        "text": "sabiranje $5 + 5$"
+      }
+    ]
+  },
+  {
+    "id": "mat-zadaci-sa-oduzimanjem-q1",
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U tanjiru je bilo $9$ kolačića. Deca su pojela $4$. Koliko je kolačića ostalo?",
+    "answer": "5",
+    "check": "(- 9 4)",
+    "explanation": "Kolačići su uzeti iz tanjira: $9 - 4 = 5$. Ostalo je $5$ kolačića."
+  },
+  {
+    "id": "mat-zadaci-sa-oduzimanjem-q2",
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Mila je imala $10$ sličica i $3$ je poklonila. Koliko joj je sličica ostalo?",
+    "answer": "7",
+    "check": "(- 10 3)",
+    "explanation": "Sličice su umanjene: $10 - 3 = 7$. Mili je ostalo $7$ sličica."
+  },
+  {
+    "id": "mat-zadaci-sa-oduzimanjem-q3",
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U biblioteci je bilo $47$ knjiga o dinosaurima. Učenici su pozajmili $25$. Koliko je tih knjiga ostalo?",
+    "answer": "22",
+    "check": "(- 47 25)",
+    "explanation": "Knjige su odnete: $47 - 25 = 22$. U biblioteci je ostalo $22$ knjige."
+  },
+  {
+    "id": "mat-zadaci-sa-oduzimanjem-q4",
+    "topic": "mat-zadaci-sa-oduzimanjem",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Pera je imao $14$ dinara i kupio je sladoled za $6$ dinara. Koje izračunavanje daje koliko mu je novca ostalo?",
+    "answer": "a",
+    "check": "oduzimanje $14 - 6$",
+    "explanation": "Novac je potrošen, pa se oduzima: $14 - 6$.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "oduzimanje $14 - 6$"
+      },
+      {
+        "id": "b",
+        "text": "sabiranje $14 + 6$"
+      },
+      {
+        "id": "c",
+        "text": "oduzimanje $6 - 6$"
+      }
+    ]
+  },
+  {
+    "id": "mat-merenje-nestandardnom-jedinicom-q1",
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Gornja traka je jedinica mere. Koliko takvih traka stane na donjoj traci?",
+    "answer": "2",
+    "check": "2",
+    "explanation": "Donja traka duga je $4$ kvadrata, a gornja traka $2$ kvadrata. Na donju traku staju $2$ takve trake.",
+    "figure": {
+      "kind": "grid",
+      "cols": 4,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "alt": "Sveukupno dve trake. Gornja traka, jedinica mere, duga je 2 kvadrata. Donja traka duga je 4 kvadrata."
+    }
+  },
+  {
+    "id": "mat-merenje-nestandardnom-jedinicom-q2",
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Gornja traka je jedinica mere. Koliko takvih traka stane na donjoj traci?",
+    "answer": "3",
+    "check": "3",
+    "explanation": "Donja traka duga je $9$ kvadrata, a gornja traka $3$ kvadrata. Na donju traku staju $3$ takve trake.",
+    "figure": {
+      "kind": "grid",
+      "cols": 9,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ]
+      ],
+      "alt": "Sveukupno dve trake. Gornja traka, jedinica mere, duga je 3 kvadrata. Donja traka duga je 9 kvadrata."
+    }
+  },
+  {
+    "id": "mat-merenje-nestandardnom-jedinicom-q3",
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Mila meri duž stola svojim dlanovima: stane $10$ dlanova. Pera meri isti sto svojim dlanovima: stane $8$ dlanova. Zašto su dobili različite brojeve?",
+    "answer": "b",
+    "check": "zato što su dlanovi različito veliki",
+    "explanation": "Mada su merili isti sto, njihovi dlanovi nisu iste veličine. Perin dlan je veći, pa ga stane manje.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "zato što je sto drugi put bio kraći"
+      },
+      {
+        "id": "b",
+        "text": "zato što su dlanovi različito veliki"
+      },
+      {
+        "id": "c",
+        "text": "zato što je $8$ manje od $10$"
+      }
+    ]
+  },
+  {
+    "id": "mat-merenje-nestandardnom-jedinicom-q4",
+    "topic": "mat-merenje-nestandardnom-jedinicom",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Gornja traka je jedinica mere. Koliko celih traka stane na donjoj traci?",
+    "answer": "4",
+    "check": "4",
+    "explanation": "Donja traka duga je $9$ kvadrata, a gornja traka $2$ kvadrata. Ceo broj traka pokrije $2$, $4$, $6$ i $8$ kvadrata: to su $4$ trake, a ostane još $1$ kvadrat.",
+    "figure": {
+      "kind": "grid",
+      "cols": 9,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ]
+      ],
+      "alt": "Sveukupno dve trake. Gornja traka, jedinica mere, duga je 2 kvadrata. Donja traka duga je 9 kvadrata."
+    }
+  },
+  {
+    "id": "mat-kvadratna-mreza-q1",
+    "topic": "mat-kvadratna-mreza",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U kom redu je obojeno polje? Broji redove od gore.",
+    "answer": "3",
+    "check": "3",
+    "explanation": "Redovi se broje od gore. Obojeno polje je u $3$ redu.",
+    "figure": {
+      "kind": "grid",
+      "cols": 5,
+      "rows": 5,
+      "cells": [
+        [
+          2,
+          4
+        ]
+      ],
+      "alt": "Mreža ima 5 redova i 5 kolona. Obojeno je jedno polje: treći red od gore i peta kolona s leva."
+    }
+  },
+  {
+    "id": "mat-kvadratna-mreza-q2",
+    "topic": "mat-kvadratna-mreza",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "U kojoj je koloni obojeno polje? Broji kolone s leva.",
+    "answer": "4",
+    "check": "4",
+    "explanation": "Kolone se broje s leva. Obojeno polje je u $4$ koloni.",
+    "figure": {
+      "kind": "grid",
+      "cols": 5,
+      "rows": 5,
+      "cells": [
+        [
+          1,
+          3
+        ]
+      ],
+      "alt": "Mreža ima 5 redova i 5 kolona. Obojeno je jedno polje: drugi red od gore i četvrta kolona s leva."
+    }
+  },
+  {
+    "id": "mat-kvadratna-mreza-q3",
+    "topic": "mat-kvadratna-mreza",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U mreži su dve crtice od po dva polja, obe u trećem redu. Za koliko polja udesno je desna crtica pomerena u odnosu na levu?",
+    "answer": "4",
+    "check": "(- 6 2)",
+    "explanation": "Leva crtica počinje u $2$ koloni, a desna u $6$ koloni. Broji korake: $3$, $4$, $5$, $6$. To su $4$ polja.",
+    "figure": {
+      "kind": "grid",
+      "cols": 10,
+      "rows": 5,
+      "cells": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "alt": "Mreža ima 10 kolona i 5 redova. U trećem redu su dve crtice od po dva susedna polja: leva je u drugoj i trećoj koloni, a desna u šestoj i sedmoj koloni."
+    }
+  },
+  {
+    "id": "mat-kvadratna-mreza-q4",
+    "topic": "mat-kvadratna-mreza",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Tačka je u drugom redu i trećoj koloni. Pomeri je dva polja nadole. U kom je redu sada?",
+    "answer": "4",
+    "check": "(+ 2 2)",
+    "explanation": "Od $2$ reda idi dva polja nadole: prvo $3$ red, pa $4$ red. Tačka je sada u $4$ redu."
+  }
+]

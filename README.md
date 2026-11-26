@@ -29,7 +29,7 @@ Ovu tabelu ispisuje alat (`python3 -m zg report --write`); brojevi u njoj su ono
 <!-- zg:stats -->
 | Razred | Ishodi programa | Teme | Grane | Zadaci |
 |---|---|---|---|---|
-| 1. razred | 22 | 0 | 0 | 0 |
+| 1. razred | 22 | 37 | 72 | 148 |
 | 2. razred | 24 | 0 | 0 | 0 |
 | 3. razred | 27 | 0 | 0 | 0 |
 | 4. razred | 23 | 0 | 0 | 0 |
@@ -37,7 +37,7 @@ Ovu tabelu ispisuje alat (`python3 -m zg report --write`); brojevi u njoj su ono
 | 6. razred | 17 | 0 | 0 | 0 |
 | 7. razred | 0 | 0 | 0 | 0 |
 | 8. razred | 0 | 0 | 0 | 0 |
-| Ukupno | 144 | 0 | 0 | 0 |
+| Ukupno | 144 | 37 | 72 | 148 |
 <!-- /zg:stats -->
 
 „Ishodi programa“ su ishodi nastavnog programa upisani u repozitorijum. Tema sme da stoji samo s bar dva osnovna i dva standardna zadatka, a odgovor svakog zadatka alat posebno izračuna i poredi s upisanim; ako se ne poklapa, provera pada.

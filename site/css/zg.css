@@ -455,6 +455,17 @@ svg {
   border-color: var(--zg-bad);
 }
 
+.zg-error {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--zg-bad);
+}
+
+[hidden] {
+  display: none !important;
+}
+
 .zg-hint {
   margin: 0;
   font-size: 0.9375rem;
@@ -681,19 +692,81 @@ svg {
   background: var(--zg-accent-soft);
 }
 
-.zg-graph {
-  margin: 1rem 0;
+/* The graph around the selected topic. graph-view.js draws the svg (class zg-graph) with
+   currentColor and the classes below; the colours and the rest live here. */
+.zg-detail-graph {
+  margin: 1.25rem 0;
+}
+
+.zg-graph-box {
+  overflow-x: auto;
   padding: 0.5rem;
   border: 1px solid var(--zg-line);
   border-radius: var(--zg-radius-sm);
   background: var(--zg-bg);
-  overflow-x: auto;
 }
 
-.zg-graph svg {
+.zg-graph-box svg.zg-graph {
   display: block;
-  min-width: 28rem;
   max-width: none;
+  font-family: var(--zg-font);
+}
+
+.zg-edge {
+  fill: none;
+  stroke: var(--zg-muted);
+  stroke-width: 1.5;
+}
+
+.zg-node {
+  cursor: pointer;
+}
+
+.zg-node rect {
+  fill: var(--zg-surface);
+  stroke: var(--zg-line);
+  stroke-width: 1.5;
+}
+
+.zg-node text {
+  fill: var(--zg-ink);
+  user-select: none;
+}
+
+.zg-node:hover rect {
+  stroke: var(--zg-accent);
+}
+
+.zg-node:focus {
+  outline: none;
+}
+
+.zg-node:focus-visible rect {
+  stroke: var(--zg-focus);
+  stroke-width: 3;
+}
+
+.zg-node--focus rect {
+  fill: var(--zg-accent-soft);
+  stroke: var(--zg-accent);
+  stroke-width: 3;
+}
+
+.zg-node--mastered rect {
+  stroke: var(--zg-ok);
+}
+
+.zg-node--shaky rect {
+  stroke: var(--zg-warn);
+}
+
+.zg-node--weak rect {
+  fill: var(--zg-bad-soft);
+  stroke: var(--zg-bad);
+}
+
+.zg-node--inferred rect {
+  stroke-dasharray: 4 3;
 }
 
 .zg-props {
@@ -747,6 +820,39 @@ svg {
   font-weight: 600;
 }
 
+.zg-sample > div {
+  margin-bottom: 0.5rem;
+}
+
+.zg-scope {
+  margin-top: 1rem;
+}
+
+.zg-scope > summary {
+  min-height: var(--zg-target);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.zg-scope[open] > summary {
+  margin-bottom: 1rem;
+}
+
+.zg-hero {
+  padding-block: 0.5rem;
+}
+
+.zg-section > .zg-actions:last-child,
+.zg-card > .zg-actions:last-child {
+  margin-bottom: 0;
+}
+
+a.zg-btn {
+  border: 1px solid transparent;
+}
+
 /* ----- diagnosis: progress and question ---------------------------------------------- */
 
 .zg-progress-track {
@@ -785,19 +891,19 @@ svg {
   line-height: 1.5;
 }
 
-.zg-figure {
+/* The figure figure.js draws carries the class zg-figure on the svg itself. Its strokes
+   are currentColor and its fills use the accent, so it follows the theme as it is. */
+.zg-fig {
   margin: 0 0 1rem;
 }
 
-.zg-figure svg {
+.zg-fig svg.zg-figure {
   display: block;
-  padding: 0.5rem;
-  border-radius: var(--zg-radius-sm);
-  background: #ffffff;
+  height: auto;
 }
 
-.zg-figure figcaption {
-  margin-top: 0.4rem;
+.zg-fig-cap {
+  margin: 0.4rem 0 0;
   font-size: 0.9375rem;
   color: var(--zg-muted);
 }
@@ -982,6 +1088,31 @@ svg {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
+}
+
+.zg-path-list {
+  counter-reset: none;
+}
+
+.zg-missed .zg-prompt-text {
+  font-size: 1rem;
+}
+
+.zg-missed-wrap {
+  margin-top: 0.75rem;
+}
+
+.zg-missed-wrap > .zg-label {
+  margin-bottom: 0.35rem;
+}
+
+.zg-root-meta + .zg-hint,
+.zg-root h3 {
+  margin-top: 0;
+}
+
+.zg-outcomes .zg-hint {
+  margin-top: 0.1rem;
 }
 
 .zg-counts {

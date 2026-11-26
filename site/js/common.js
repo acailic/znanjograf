@@ -163,6 +163,11 @@ export function hrefTo(path, params = {}) {
   return pageHref(path) + formatHash(withScript(params));
 }
 
+/** A link to the page that is open now, with other parameters in the fragment. */
+export function selfHref(params = {}) {
+  return (hasLocation() ? location.pathname + location.search : "") + formatHash(withScript(params));
+}
+
 /** Shows the parameters in the fragment as a history entry; the page then hears "hashchange". */
 export function go(params) {
   if (!hasDom()) return;
@@ -280,6 +285,11 @@ function buildChrome(script, pageId) {
   }
   skip.className = "zg-skip";
   skip.textContent = t("common.skip");
+  // The fragment belongs to the parameters of the page, so the link must not write into it.
+  skip.addEventListener("click", (event) => {
+    event.preventDefault();
+    main.focus();
+  });
   let header = document.getElementById("zg-header");
   if (!header) {
     header = document.createElement("header");
@@ -292,6 +302,19 @@ function buildChrome(script, pageId) {
   header.querySelector("[data-zg-clear]").addEventListener("click", onClear);
 }
 
+/** The sentence a search engine shows under the title. The page sets it, so that it follows the script. */
+function setDescription(text) {
+  const head = document.head;
+  if (!head) return;
+  let meta = head.querySelector('meta[name="description"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "description";
+    head.append(meta);
+  }
+  meta.content = text;
+}
+
 /**
  * Prepares a page: the script (moving once to the other tree when the fragment or the stored
  * choice asks for it), then the header. Returns { script, page } once the page is ready, or
@@ -301,6 +324,7 @@ export function initCommon() {
   if (!hasDom()) return null;
   const page = currentScript();
   document.documentElement.lang = page === "cyr" ? "sr-Cyrl" : "sr-Latn";
+  setDescription(t("site.description"));
   const plan = resolveScript(page, hasLocation() ? location.hash : "", getPrefs());
   if (plan.redirect && hasLocation()) {
     const path = twinPath(location.pathname, treeRoot(), plan.script);

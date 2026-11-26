@@ -23,8 +23,8 @@ const CYRILLIC = /[\u0400-\u04FF]/;
 const NON_ASCII = /[^\u0000-\u007F]/g;
 const LETTER = /[A-Za-z\u00C0-\u024F\u0400-\u04FF]/;
 const ALLOWED = new Set(Array.from("čćšžđČĆŠŽĐ„“”–—…·"));
-const KEY = /^[a-z0-9]+(?:\.[a-z0-9]+)+$/;
-const KEY_LINE = /^  ("[a-z0-9.]+"): "([^"\\\n]*)",?$/;
+const KEY = /^[a-z0-9]+(?:\.[a-z0-9][A-Za-z0-9]*)+$/;
+const KEY_LINE = /^  ("[A-Za-z0-9.]+"): "([^"\\\n]*)",?$/;
 // The very pattern zg/build.py runs over strings.js to find the literals it transliterates.
 const BUILD_LITERAL = /("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'|`(?:[^`\\]|\\.)*`)(\s*:)?/gs;
 const TAG = /(<[^>]+>)/;
@@ -54,10 +54,13 @@ test("every value is a non-empty sentence in Serbian Latin", () => {
 
 test("the file is one flat object, one quoted key and one plain value per line", () => {
   const lines = read(STRINGS).split("\n");
-  assert.equal(lines[0], "export const strings = {");
-  assert.equal(lines.at(-2), "};", "the object closes on its own line");
+  const first = lines.indexOf("export const strings = {");
+  const last = lines.lastIndexOf("};");
+  assert.ok(first > 0, "a comment header, then the object");
+  assert.equal(lines.slice(last + 1).join("").trim(), "", "nothing follows the object");
   const inSource = [];
-  for (const line of lines.slice(1, -2)) {
+  for (const line of lines.slice(first + 1, last)) {
+    if (line === "") continue; // a blank line between two groups of sentences
     const match = KEY_LINE.exec(line);
     assert.ok(match, `not a plain key and value: ${line}`);
     inSource.push(match[1].slice(1, -1));

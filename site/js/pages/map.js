@@ -3,7 +3,7 @@
 // is about, what it asks of the pupil, what comes before it and what is built on it.
 
 import { esc, formatHash, go, hrefTo, initCommon, parseHash, renderError, renderLoading, replaceHash, searchKey, t, withScript } from "../common.js";
-import { loadGrade, loadIndex, loadOutcomes, resolveAlias, topicOfQuestion } from "../data.js";
+import { findOutcome, loadGrade, loadIndex, loadOutcomes, resolveAlias, topicOfQuestion } from "../data.js";
 import { buildIndex } from "../engine/graph.js";
 import { mount as mountGraph } from "../graph-view.js";
 import { layout } from "../layout.js";
@@ -49,7 +49,7 @@ async function boot() {
   render(false);
 }
 
-// ----- the page -------------------------------------------------------------------------------
+// ----- reading the data -----------------------------------------------------------------------
 
 function gradesOf() {
   return [...new Set((index.topics || []).map((topic) => topic.grade))].filter(Number.isInteger).sort((a, b) => a - b);
@@ -60,20 +60,21 @@ function areasOf() {
   return declared.length > 0 ? declared : [...new Set((index.topics || []).map((topic) => topic.area))].filter(Boolean);
 }
 
-function searching() {
-  return query.trim() !== "";
-}
+const searching = () => query.trim() !== "";
+const filtering = () => searching() || params.grade !== undefined || !!params.area;
 
 function filtered() {
   const tokens = searchKey(query).split(" ").filter(Boolean);
   return (index.topics || []).filter((topic) => {
     if (params.grade !== undefined && topic.grade !== params.grade) return false;
-    if (params.area && areasOf().includes(params.area) && topic.area !== params.area) return false;
+    if (filteringByArea() && topic.area !== params.area) return false;
     if (tokens.length === 0) return true;
     const key = `${searchKey(topic.name)} ${searchKey(topic.id)}`;
     return tokens.every((token) => key.includes(token));
   });
 }
+
+const filteringByArea = () => !!params.area && areasOf().includes(params.area);
 
 /** The topic the fragment names, through an alias if it is one; null when there is none. */
 function selectedId() {
@@ -84,6 +85,8 @@ function selectedId() {
 function topicHref(id) {
   return formatHash(withScript({ topic: id, grade: params.grade, area: params.area }));
 }
+
+// ----- the page -------------------------------------------------------------------------------
 
 function toolbarMarkup() {
   const option = (value, label, current) => `<option value="${esc(value)}"${value === current ? " selected" : ""}>${esc(label)}</option>`;
@@ -103,9 +106,11 @@ function toolbarMarkup() {
 </div>`;
 }
 
-function render(moveFocus) {
-  const previous = selectedId();
+function render() {
+  const before = selectedId();
   params = parseHash(location.hash);
+  // The panel takes the focus when the fragment newly names a topic.
+  const moveFocus = selectedId() !== null && selectedId() !== before;
   main.innerHTML = `<div class="zg-wrap">
   <h1 class="zg-title" data-zg-focus>${esc(t("map.title"))}</h1>
   <p class="zg-lead">${esc(t("map.lead"))}</p>
@@ -127,8 +132,8 @@ function render(moveFocus) {
   });
   for (const select of main.querySelectorAll("[data-zg-filter]")) {
     select.addEventListener("change", () => {
-      const next = { ...params };
       const name = select.dataset.zgFilter === "grade" ? "grade" : "area";
+      const next = { ...params };
       next[name] = select.value === "" ? undefined : name === "grade" ? Number(select.value) : select.value;
       replaceHash(next); // a filter is not a place one goes back to
       params = parseHash(location.hash);
@@ -137,7 +142,7 @@ function render(moveFocus) {
   }
 
   renderList();
-  renderDetail(previous !== selectedId() || moveFocus);
+  renderDetail(moveFocus);
 }
 
 // ----- the list --------------------------------------------------------------------------------
@@ -152,6 +157,7 @@ function groupBy(items, keyOf) {
   return groups;
 }
 
+/** A group is open while searching, or when it holds the selected topic, unless the reader closed or opened it by hand. */
 function isShown(key, holdsSelection) {
   return opened.has(key) ? opened.get(key) : searching() || holdsSelection;
 }
@@ -165,11 +171,11 @@ function listMarkup(topics) {
     const units = [];
     for (const [unit, inUnit] of groupBy(ofGrade, (topic) => topic.unit)) {
       const key = `${gradeKey}|${unit}`;
-      const holds = inUnit.some((topic) => topic.id === current);
       const links = inUnit.map((topic) => `<li><a href="${esc(topicHref(topic.id))}"${topic.id === current ? ' aria-current="true"' : ""}>${esc(topic.name)}</a></li>`);
-      units.push(`<details class="zg-group zg-group-inner" data-zg-key="${esc(key)}"${isShown(key, holds) ? " open" : ""}><summary>${esc(unit)}</summary><ul>${links.join("")}</ul></details>`);
+      units.push(`<details class="zg-group zg-group-inner" data-zg-key="${esc(key)}"${isShown(key, inUnit.some((topic) => topic.id === current)) ? " open" : ""}><summary>${esc(unit)}</summary><ul>${links.join("")}</ul></details>`);
     }
-    blocks.push(`<details class="zg-group" data-zg-key="${esc(gradeKey)}"${isShown(gradeKey, ofGrade.some((topic) => topic.id === current)) ? " open" : ""}><summary>${esc(t("common.grade.n", { n: grade }))}</summary>${units.join("")}</details>`);
+    const holds = ofGrade.some((topic) => topic.id === current);
+    blocks.push(`<details class="zg-group" data-zg-key="${esc(gradeKey)}"${isShown(gradeKey, holds) ? " open" : ""}><summary>${esc(t("common.grade.n", { n: grade }))}</summary>${units.join("")}</details>`);
   }
   return blocks.join("");
 }
@@ -182,8 +188,9 @@ function renderList() {
   for (const details of box.querySelectorAll("details[data-zg-key]")) {
     details.addEventListener("toggle", () => opened.set(details.dataset.zgKey, details.open));
   }
-  const count = main.querySelector("#zg-map-count");
-  count.textContent = searching() || params.grade !== undefined || params.area ? t(topics.length === 0 ? "map.list.empty" : "map.list.found", { n: topics.length }) : "";
+  main.querySelector("#zg-map-count").textContent = filtering()
+    ? t(topics.length === 0 ? "map.list.empty" : "map.list.found", { n: topics.length })
+    : "";
 }
 
 // ----- the panel -------------------------------------------------------------------------------
@@ -194,18 +201,21 @@ function edgeList(edges, emptyKey) {
   return `<ul class="zg-linklist">${items.join("")}</ul>`;
 }
 
-function detailMarkup(topic, aliasFrom, aliasTargets) {
+function aliasMarkup(aliasFrom, targets) {
+  // The names are links built here; the old id comes from the fragment, so it is escaped first.
+  const names = targets.map((id) => `<a href="${esc(topicHref(id))}">${esc(byId.get(id)?.name ?? id)}</a>`).join(", ");
+  return `<p class="zg-note" role="status">${t("map.detail.aliasHtml", { old: esc(aliasFrom), names })}</p>`;
+}
+
+function detailMarkup(topic, aliasFrom, targets) {
   const place = [Number.isInteger(topic.grade) ? t("common.grade.n", { n: topic.grade }) : "", topic.unit].filter(Boolean).join(DOT);
-  const alias = aliasFrom
-    ? `<p class="zg-note" role="status">${t("map.detail.aliasHtml", { old: aliasFrom, names: aliasTargets.map((id) => `<a href="${esc(topicHref(id))}">${esc(byId.get(id)?.name ?? id)}</a>`).join(", ") })}</p>`
-    : "";
   return `<p class="zg-eyebrow">${esc(place)}</p>
-  <h2 class="zg-subtitle" id="zg-detail-title" data-zg-focus>${esc(topic.name)}</h2>
+  <h2 class="zg-subtitle" id="zg-detail-title" data-zg-focus tabindex="-1">${esc(topic.name)}</h2>
   <div class="zg-actions">
     <a class="zg-btn zg-btn-primary" href="${esc(hrefTo("dijagnostika/", { topic: topic.id }))}">${esc(t("map.detail.diagnose"))}</a>
     <a class="zg-btn zg-btn-quiet" href="${esc(ISSUES_URL + encodeURIComponent(`[${topic.id}] `))}" target="_blank" rel="noopener">${esc(t("map.detail.report"))}</a>
   </div>
-  ${alias}
+  ${aliasFrom ? aliasMarkup(aliasFrom, targets) : ""}
   <section class="zg-detail-graph" aria-labelledby="zg-graph-title">
     <h3 class="zg-label" id="zg-graph-title">${esc(t("map.detail.graph.title"))}</h3>
     <p class="zg-hint">${esc(t("map.detail.graph.hint"))}</p>
@@ -230,21 +240,16 @@ async function renderDetail(moveFocus) {
   const targets = requested ? resolveAlias(index, requested) : [];
   const id = targets.find((candidate) => byId.has(candidate));
   if (!id) {
-    const key = requested ? "map.detail.missing" : "map.detail.empty";
-    panel.innerHTML = `<h2 class="zg-subtitle" id="zg-detail-title" data-zg-focus>${esc(t(`${key}.title`))}</h2><p class="${requested ? "zg-note zg-note-warn" : ""}">${esc(t(`${key}.text`, { id: requested }))}</p>`;
-    if (requested) focusHeading(panel);
+    const title = requested ? t("map.detail.missing.title") : t("map.detail.empty.title");
+    const text = requested ? t("map.detail.missing.text", { id: requested }) : t("map.detail.empty.text");
+    panel.innerHTML = `<h2 class="zg-subtitle" id="zg-detail-title" data-zg-focus tabindex="-1">${esc(title)}</h2><p class="${requested ? "zg-note zg-note-warn" : "zg-hint"}">${esc(text)}</p>`;
+    if (requested) panel.querySelector("[data-zg-focus]").focus();
     return;
   }
   panel.innerHTML = detailMarkup(byId.get(id), requested !== id ? requested : null, targets);
   drawGraph(panel, byId.get(id));
-  if (moveFocus) focusHeading(panel);
+  if (moveFocus) panel.querySelector("[data-zg-focus]").focus();
   await fillDetail(panel, byId.get(id), my);
-}
-
-function focusHeading(panel) {
-  const heading = panel.querySelector("[data-zg-focus]");
-  if (!heading) return;
-  heading.focus();
 }
 
 function pickSample(questions) {
@@ -260,20 +265,28 @@ function outcomesMarkup(entries, editions) {
   if (entries.length === 0) return `<p class="zg-hint">${esc(t("map.detail.outcomes.none"))}</p>`;
   const items = entries.map((entry) => {
     const edition = editions[entry.edition];
+    // An outcome the edition file does not hold is said so; a file that could not be read says nothing.
+    const missing = edition && !findOutcome(edition, entry.outcome) ? `<p class="zg-hint">${esc(t("map.detail.outcomes.missing", { id: entry.outcome }))}</p>` : "";
     const meta = [
       `<span class="zg-badge">${esc(t(MATCH_KEYS[entry.match] ?? "match.partial"))}</span>`,
-      edition?.applies_from ? esc(t("map.detail.outcomes.edition", { year: edition.applies_from })) : "",
+      typeof edition?.applies_from === "string" ? esc(t("map.detail.outcomes.edition", { year: edition.applies_from })) : "",
     ].filter(Boolean).join(DOT);
-    return `<li>${outcomeItemMarkup(entry, edition)}<p class="zg-hint">${meta}</p></li>`;
+    return `<li>${outcomeItemMarkup(entry, edition)}${missing}<p class="zg-hint">${meta}</p></li>`;
   });
   return `<ul class="zg-outcomes">${items.join("")}</ul>`;
 }
 
-/** Fills what needs the grade bundle: summary, mastery, a sample question, the teacher's review, the outcomes. */
+function reviewMarkup(review) {
+  if (typeof review?.name !== "string" || review.name === "") return "";
+  // The key ends in Html: the label is marked up in strings.js; everything filled in is escaped.
+  return `<p class="zg-note zg-note-ok">${t("map.detail.reviewHtml", { name: esc(review.name), role: esc(review.role ?? ""), date: esc(review.date ?? "") })}${review.note ? ` ${esc(review.note)}` : ""}</p>`;
+}
+
+/** Fills what needs the grade bundle: summary, mastery, a sample question, the review, the outcomes. */
 async function fillDetail(panel, topic, my) {
   const put = (slot, html) => {
-    const slot = panel.querySelector(`[data-zg-slot="${name}"]`);
-    if (slot) slot.innerHTML = html;
+    const element = panel.querySelector(`[data-zg-slot="${slot}"]`);
+    if (element) element.innerHTML = html;
   };
   try {
     const bundle = await loadGrade(topic.grade, script);
@@ -284,8 +297,7 @@ async function fillDetail(panel, topic, my) {
     put("mastery", mastery.length === 0 ? "" : `<span class="zg-hint">${esc(t("map.detail.mastery.lead"))}</span><ul>${mastery.map((item) => `<li>${renderMath(item)}</li>`).join("")}</ul>`);
     const questions = Object.entries(bundle?.questions ?? {}).filter(([id]) => topicOfQuestion(id) === topic.id).map(([id, question]) => ({ ...question, id }));
     put("sample", sampleMarkup(pickSample(questions)));
-    const review = record.review;
-    put("review", review?.name ? `<p class="zg-note zg-note-ok">${t("map.detail.reviewHtml", { name: review.name, role: review.role ?? "", date: review.date ?? "" })}${review.note ? ` ${esc(review.note)}` : ""}</p>` : "");
+    put("review", reviewMarkup(record.review));
 
     const entries = (Array.isArray(record.curriculum) ? record.curriculum : []).filter((entry) => entry && entry.edition && entry.outcome);
     const editions = {};
@@ -319,9 +331,8 @@ function neighbourhood(id) {
     frontier = next;
   }
   for (const edge of graph.dependentsOf(id)) nodes.add(edge.id);
-  const members = graph.learningOrder([...nodes]).filter((topicId) => Number.isInteger(byId.get(topicId)?.grade));
   return {
-    nodes: members.map((topicId) => byId.get(topicId)),
+    nodes: graph.learningOrder([...nodes]).map((topicId) => byId.get(topicId)).filter((topic) => Number.isInteger(topic?.grade)),
     edges: (index.edges || []).filter(([topic, requires]) => nodes.has(topic) && nodes.has(requires)),
   };
 }
@@ -330,29 +341,28 @@ function select(id) {
   go({ topic: id, grade: params.grade, area: params.area });
 }
 
+/** Above the limit the graph gives way to a plain list of the same topics. */
+function listInsteadOfGraph(box, nodes) {
+  const note = document.createElement("div");
+  note.className = "zg-hint";
+  note.innerHTML = `<p>${esc(t("map.detail.graph.tooBig", { n: GRAPH_LIMIT }))}</p><ul class="zg-linklist">${nodes.map((node) => `<li><a class="zg-topiclink" href="${esc(topicHref(node.id))}">${esc(node.name)}</a></li>`).join("")}</ul>`;
+  box.replaceWith(note);
+}
+
 function drawGraph(panel, topic) {
   const box = panel.querySelector("[data-zg-graph]");
   if (!box) return;
   const around = neighbourhood(topic.id);
-  if (around.nodes.length > GRAPH_LIMIT) {
-    box.replaceChildren();
-    box.hidden = true;
-    const note = document.createElement("p");
-    note.className = "zg-hint";
-    note.innerHTML = `${esc(t("map.detail.graph.tooBig", { n: GRAPH_LIMIT }))}</p><ul class="zg-linklist">${around.nodes.map((node) => `<li><a class="zg-topiclink" href="${esc(topicHref(node.id))}">${esc(node.name)}</a></li>`).join("")}</ul>`;
-    box.after(note);
-    return;
-  }
+  if (around.nodes.length === 0 || around.nodes.length > GRAPH_LIMIT) return listInsteadOfGraph(box, around.nodes);
   try {
     mountGraph(box, layout({ nodes: around.nodes, edges: around.edges, focus: topic.id }), {}, select);
   } catch (error) {
     console.error(error);
-    box.replaceChildren();
     box.hidden = true;
     return;
   }
   for (const node of box.querySelectorAll(".zg-node")) {
-    if (!byId.has(node.dataset.id)) continue; // a "+N" box that stands for hidden topics
+    if (!byId.has(node.dataset.id)) continue; // a "+N" box that stands for topics left out
     node.setAttribute("tabindex", "0");
     node.setAttribute("role", "link");
     node.setAttribute("aria-label", byId.get(node.dataset.id).name);
@@ -366,10 +376,7 @@ function drawGraph(panel, topic) {
   });
   // Bring the selected topic into view without moving the page itself.
   const focus = box.querySelector(".zg-node--focus");
-  if (focus) {
-    const box_ = box.getBoundingClientRect();
-    box.scrollLeft += focus.getBoundingClientRect().left - box_.left - box.clientWidth / 2;
-  }
+  if (focus) box.scrollLeft += focus.getBoundingClientRect().left - box.getBoundingClientRect().left - box.clientWidth / 2;
 }
 
 boot();

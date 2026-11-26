@@ -33,10 +33,11 @@ _JS_INTERP = re.compile(r"(\$\{[^}]*\})")  # the capturing group keeps each ${â€
 # The static text of a page: its title, its <noscript> sentence and the fallback inside <main>
 # that the page script replaces (it must be readable before, or without, the script).
 _HTML_TEXT = re.compile(r"(<(?:title|noscript|main)\b[^>]*>)(.*?)(</(?:title|noscript|main)>)", re.S | re.I)
-# A page carries this line where the notice about unfinished content belongs (after the header).
-# The build replaces the whole line with the notice, or with nothing once every grade has content.
+# A page carries this mark where the notice about unfinished content belongs (right after the
+# header). The build replaces it with the notice, or with nothing once every grade has questions.
 DRAFT_MARK = "<!--zg:draft-->"
-_DRAFT_LINE = re.compile(r"^[ \t]*<!--zg:draft-->[ \t]*\r?\n?", re.M)
+# The notice as the build writes it: a note, read once, in reading order (it is no landmark).
+DRAFT_BLOCK = '<div class="zg-wrap zg-draft" role="note"><p class="zg-note zg-note-warn">{notice}</p></div>\n'
 
 
 # ----- public ----------------------------------------------------------------------
@@ -111,8 +112,8 @@ def draft_notice(corpus: corpus_module.Corpus) -> str | None:
     """What a reader must know before relying on the site while the content is still being written.
 
     Says which grades have their program and which have topics with questions, so that nobody is
-    sent to a diagnosis that has nothing to ask. ``None`` once every grade has both: the notice
-    must not outlast the state it describes.
+    sent to a diagnosis that has nothing to ask. ``None`` once every grade has questions, whatever
+    the programs: the notice must not outlast the state it describes.
     """
     every = sorted(corpus.grades)
     asked = sorted({
@@ -163,16 +164,16 @@ def _run_parts(run: list[int]) -> list[str]:
 
 
 def _fill_draft(target: Path, notice: str | None) -> None:
-    """Put ``notice`` where each page carries ``DRAFT_MARK``, and take the mark away when there is none."""
+    """Put ``notice`` where each page carries ``DRAFT_MARK``, and take the mark away when there is none.
+
+    The mark itself is replaced wherever it stands, so one that is not on a line of its own is not
+    left behind unnoticed.
+    """
+    block = "" if notice is None else DRAFT_BLOCK.format(notice=html.escape(notice))
     for file in target.rglob("*.html"):
         content = file.read_text(encoding="utf-8")
-        if DRAFT_MARK not in content:
-            continue
-        block = "" if notice is None else (
-            f'<aside class="zg-wrap zg-draft"><p class="zg-note zg-note-warn">{html.escape(notice)}</p></aside>\n'
-        )
-        content = _DRAFT_LINE.sub(lambda _: block, content)  # a function: the text is not a template
-        file.write_text(content, encoding="utf-8")
+        if DRAFT_MARK in content:
+            file.write_text(content.replace(DRAFT_MARK, block), encoding="utf-8")
 
 
 def _adapt_tree(target: Path, lexicon: dict[str, str]) -> None:

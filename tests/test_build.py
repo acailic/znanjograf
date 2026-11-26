@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from zg import build, jsonio
+from zg import build, jsonio, paths
 from tests import helpers
 
 PAGE = """<!doctype html>
@@ -177,7 +177,7 @@ DRAFT_PAGE = """<!doctype html>
 <main id="zg-main" class="zg-main" tabindex="-1"><p>Izaberite temu.</p></main>
 </body></html>
 """
-NOTICE = re.compile(r'<aside class="zg-wrap zg-draft"><p class="zg-note zg-note-warn">(.*?)</p></aside>')
+NOTICE = re.compile(r'<div class="zg-wrap zg-draft" role="note"><p class="zg-note zg-note-warn">(.*?)</p></div>')
 
 
 class DraftNoticeTest(unittest.TestCase):
@@ -247,3 +247,22 @@ class DraftNoticeTest(unittest.TestCase):
         self.assertEqual(text([1, 2, 4], every), "za 1., 2. i 4. razred")
         self.assertEqual(text(every, every), "za sve razrede")
         self.assertEqual(text([], every), "ni za jedan razred")
+        self.assertEqual(text([1, 2], every), "za 1. i 2. razred")
+        self.assertEqual(text([1, 2, 3, 5, 6, 7], every), "za 1–3. i 5–7. razred")
+
+    def test_a_mark_that_is_not_on_a_line_of_its_own_is_replaced_too(self):
+        (self.site / "o-projektu").mkdir()
+        (self.site / "o-projektu" / "index.html").write_text(DRAFT_PAGE.replace("\n<!--zg:draft-->\n", "<!--zg:draft-->"), encoding="utf-8")
+        self.raw.topics[2], self.raw.edges[2], self.raw.questions[2] = [], [], []
+        self.pages()
+        page = (self.out / "o-projektu" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("<!--zg:draft-->", page)
+        self.assertIn('</header><div class="zg-wrap zg-draft" role="note"><p class="zg-note zg-note-warn">Sadržaj se još upisuje', page)
+        self.assertIn("</p></div>\n<main", page)
+
+    def test_every_page_of_the_site_carries_the_mark_between_the_header_and_the_main(self):
+        pages = sorted(paths.SITE_SRC.rglob("*.html"))
+        names = sorted("." if page.parent == paths.SITE_SRC else page.parent.name for page in pages)
+        self.assertEqual(names, [".", "dijagnostika", "mapa", "o-projektu"])
+        for page in pages:
+            self.assertRegex(page.read_text(encoding="utf-8"), r"</header>\n" + re.escape(build.DRAFT_MARK) + r"\n<main", page.name)

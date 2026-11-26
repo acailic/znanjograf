@@ -145,6 +145,12 @@ class MirrorCheckDetailsTest(unittest.TestCase):
         found = self.check("mapa/index.html", "<title>Znanjograf — mapa znanja</title>")
         self.assertEqual(len(found), 3)  # "Znanjograf", "mapa", "znanja"
 
+    def test_the_notice_about_unfinished_content_is_checked_too(self):
+        clean = '<div class="zg-wrap zg-draft" role="note"><p class="zg-note zg-note-warn">Садржај се још уписује.</p></div>'
+        self.assertEqual(self.check("index.html", f"<header></header>{clean}<main>Почетна</main>"), [])
+        found = self.check("index.html", '<div class="zg-wrap zg-draft" role="note"><p class="zg-note zg-note-warn">Sadrzaj se upisuje.</p></div>')
+        self.assertEqual(len(found), 3)  # "Sadrzaj", "se" and "upisuje"
+
     def test_a_broken_mirror_file_is_reported(self):
         with tempfile.TemporaryDirectory() as tmp:
             (Path(tmp) / "cir" / "podaci").mkdir(parents=True)

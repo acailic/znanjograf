@@ -39,6 +39,9 @@ node --test              # engine, figures, layout, formulas
 - **UI strings**: every sentence a user reads lives in `site/js/strings.js` (Serbian Latin);
   write placeholders in the `${name}` form — the build protects `${…}` while transliterating
   and would turn a bare `{n}` into `{н}` in the Cyrillic mirror.
+  The one exception is the notice about unfinished content that the build writes on every page
+  (`draft_notice` in `zg/build.py`): its sentences are computed from the data, the build
+  transliterates them itself, and the mirror check reads them.
 - **Node tests**: `node --test "tests/node/**/*.test.js"` with the quotes; a bare directory
   argument reports one false failure.
 

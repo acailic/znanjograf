@@ -228,14 +228,20 @@ def run_built(issues: Issues, site_out: Path | None = None) -> int:
                 _check_cyrillic(next(part for part in groups[:3] if part), f"{rel}:literal[{index}]", issues)
         elif file.suffix == ".html":
             html = file.read_text(encoding="utf-8")
-            for index, text in enumerate(_HTML_TEXT.findall(html)):
+            for index, match in enumerate(_HTML_TEXT.finditer(html)):
                 checked += 1
-                _check_cyrillic(text, f"{rel}:text[{index}]", issues)
+                _check_cyrillic(next(part for part in match.groups() if part is not None), f"{rel}:text[{index}]", issues)
     return checked
 
 
-_JS_LITERAL = re.compile(r"""(?:"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`((?:[^`\\]|\\.)*)`)(\s*:)?""")
-_HTML_TEXT = re.compile(r"<(?:title|noscript|main)\b[^>]*>(.*?)</(?:title|noscript|main)>", re.S | re.I)
+_JS_LITERAL = re.compile(r"""(?:"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`((?:[^`\\\n]|\\.)*)`)(\s*:)?""")
+# The static text of a page — its title, its <noscript> sentence and what stands inside <main> —
+# and the notice the build writes about unfinished content (DRAFT_BLOCK of zg/build.py).
+_HTML_TEXT = re.compile(
+    r"<(?:title|noscript|main)\b[^>]*>(.*?)</(?:title|noscript|main)>"
+    r'|<div class="zg-wrap zg-draft"[^>]*>(.*?)</div>',
+    re.S | re.I,
+)
 # Values a machine reads: ids, enums, option ids. ``edges`` and ``points_to`` are lists of ids.
 _MACHINE_KEYS = frozenset({"id", "outcome", "edition", "area", "areas", "level", "kind", "type", "match", "answer", "strength", "subject", "edges", "symbol", "hours", "page", "applies_from"})
 _SKIP_SUBTREES = frozenset({"points_to", "aliases", "curriculum"})

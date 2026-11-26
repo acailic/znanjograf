@@ -8,7 +8,7 @@
 import { parseRat, rat } from "./rational.js";
 
 /** The expected value of a numeric question (from `answerRational`, else from `answer`). */
-export function expectedValue(question) {
+function expectedValue(question) {
   const [numerator, denominator] = question.answerRational ?? [];
   return numerator === undefined || denominator === undefined ? parseRat(question.answer) : rat(BigInt(numerator), BigInt(denominator));
 }

@@ -159,6 +159,18 @@ test("answers and verdicts follow the rules for one topic", async (t) => {
     assert.equal(isStrongAnswer(question("mat-sabiranje-do-20-q3"), false), false);
   });
 
+  await t.test("the strong-answer boundary is the whole numbers from -10 to 10", () => {
+    const numeric = (answer) => ({ type: "numeric", answer, answerRational: [answer, "1"] });
+    for (const answer of ["0", "7", "-3", "10", "-10"]) {
+      assert.equal(isStrongAnswer(numeric(answer), true), false, answer);
+    }
+    for (const answer of ["11", "-11", "150", "1000"]) {
+      assert.equal(isStrongAnswer(numeric(answer), true), true, answer);
+    }
+    assert.equal(isStrongAnswer({ type: "numeric", answer: "2,5", answerRational: ["5", "2"] }, true), true);
+    assert.equal(isStrongAnswer({ type: "numeric", answer: "0,5", answerRational: ["1", "2"] }, true), true);
+  });
+
   await t.test("isCorrect compares exact values in every accepted spelling", () => {
     const half = { type: "numeric", answer: "0.5", answerRational: ["1", "2"] };
     for (const value of ["0,5", "0.5", "1/2", "2/4", " 1/2 "]) {
@@ -375,10 +387,13 @@ test("a pupil who knows everything finishes every scope topic in at most two que
   await t.test("a single topic is mastered outright, in at most two questions", () => {
     for (const id of index.topicIds) {
       const run = runSession(fixtureContext(fixture, topicScope(id)), pupil);
+      const first = question(`${id}-q3`);
+      const questions = [`${id}-q3`, ...(isStrongAnswer(first, true) ? [] : [`${id}-q4`])];
 
       assert.equal(run.statuses.get(id), STATUS.MASTERED, id);
-      assert.ok(run.log.length >= 1 && run.log.length <= 2, `${id} took ${run.log.length} questions`);
-      assert.ok(run.log.every((event) => question(event.questionId).topic === id), id);
+      // A strong answer is enough; a guessable one is confirmed by the second standard question.
+      assert.deepEqual(run.log.map((event) => event.questionId), questions, id);
+      assert.deepEqual(run.summary.counts, { mastered: 1, shaky: 0, weak: 0, inferred: index.hardAncestorsOf(id).size, untested: 0 }, id);
     }
   });
 

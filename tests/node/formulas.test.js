@@ -4,11 +4,14 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { texToHtml } from "../../site/js/katex.js";
 
 const require = createRequire(import.meta.url);
 const katex = require("../../site/vendor/katex/katex.min.js");
+// The wrapper calls the global, exactly as a page's <script> tag defines it.
+globalThis.katex = katex;
+const OPTIONS = { throwOnError: true, output: "htmlAndMathml" };
 const ROOT = new URL("../../", import.meta.url).pathname;
-const UNITS = new Set(["mm", "cm", "dm", "km", "m", "kg", "g", "mg", "t", "l", "ml", "dl", "h", "min", "s"]);
 const MATH = /\$([^$]+)\$/g;
 const TEXT = new RegExp(`\\$((?:(?!\\$).)+)\\$`, "g");
 
@@ -42,20 +45,19 @@ function* formulas() {
   }
 }
 
-const UNIT_IN_TEXT = /\\text\{([^{}]*)\}/g;
-
 test("every formula of the data parses with the vendored KaTeX", () => {
   const problems = [];
   let count = 0;
   for (const [file, key, tex] of formulas()) {
     count += 1;
-    for (const unit of tex.matchAll(UNIT_IN_TEXT)) {
-      if (!UNITS.has(unit[1].trim())) problems.push(`${file} ${key}: \\text{${unit[1]}} is not a unit symbol`);
-    }
     try {
-      katex.renderToString(tex, { throwOnError: true, output: "htmlAndMathml" });
+      katex.renderToString(tex, OPTIONS);
     } catch (error) {
       problems.push(`${file} ${key}: $${tex}$: ${error.message.split("\n")[0]}`);
+    }
+    // What the page shows: the wrapper refuses a formula whose \text{…} holds anything but a unit.
+    if (texToHtml(tex).includes('class="zg-tex-raw"')) {
+      problems.push(`${file} ${key}: $${tex}$ does not render on the site (\\text{…} holds what the wrapper does not take for a unit)`);
     }
   }
   assert.deepEqual(problems, []);

@@ -8,7 +8,8 @@
 const OPTIONS = Object.freeze({ throwOnError: true, output: "htmlAndMathml", strict: "warn" });
 
 // Unit symbols allowed inside \text{...} (spec section 6.2), alone or as `km/h`.
-const UNIT = "mm|cm|dm|km|m|kg|g|mg|t|l|ml|dl|h|min|s";
+// Every plain-letter unit of the curriculum (the list of zg/translit/protect.py); a Python test holds the two together.
+const UNIT = "mm|cm|dm|km|m|kg|g|mg|t|l|ml|cl|dl|hl|h|min|s|ha|din|a";
 const UNIT_RE = new RegExp(`^(?:${UNIT})(?:/(?:${UNIT}))*$`);
 
 export function texToHtml(tex) {

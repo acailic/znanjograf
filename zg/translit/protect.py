@@ -24,7 +24,7 @@ import re
 # Unit symbols of the primary-school curriculum, longest first, so that ``km/h`` is
 # preferred to ``km`` and ``m²`` to ``m``.
 UNIT_SYMBOLS: tuple[str, ...] = (
-    "km/h", "m/s", "°C", "m²", "m³", "mm", "cm", "dm", "km", "kg", "mg", "ml", "dl", "min", "ha", "din",
+    "km/h", "m/s", "°C", "m²", "m³", "mm", "cm", "dm", "km", "kg", "mg", "ml", "cl", "dl", "hl", "min", "ha", "din",
     "m", "g", "t", "l", "h", "s", "a",
 )
 

@@ -1,6 +1,7 @@
 """Transliteration between the two Serbian scripts: protected spans, letters, digraphs, fold, collation, golden corpus."""
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -8,7 +9,8 @@ from zg.translit import protect, rules
 
 GOLDEN = Path(__file__).resolve().parent / "fixtures" / "translit-golden.json"
 ALPHABET = "абвгдђежзијклљмнњопрстћуфхцчџш"
-PLAN_UNITS = {"mm", "cm", "dm", "km", "m", "kg", "g", "mg", "t", "l", "ml", "dl", "h", "min", "s", "°C", "km/h", "m/s", "m²", "m³", "a", "ha", "din"}
+# The units of the plan, and the two the grade-3 program adds (PG 5/2019): centilitar and hektolitar.
+PLAN_UNITS = {"mm", "cm", "dm", "km", "m", "kg", "g", "mg", "t", "l", "ml", "cl", "dl", "hl", "h", "min", "s", "°C", "km/h", "m/s", "m²", "m³", "a", "ha", "din"}
 
 
 def protected_spans(text):
@@ -120,6 +122,22 @@ class SplitProtectedTest(unittest.TestCase):
 
     def test_unit_symbols_are_exactly_the_ones_planned(self):
         self.assertEqual(set(protect.UNIT_SYMBOLS), PLAN_UNITS)
+
+    def test_the_site_wrapper_knows_every_lettered_unit(self):
+        """The site renders ``\\text{…}`` only for its own list of units (site/js/katex.js).
+
+        A unit missing there would come back as raw TeX on the page while every other check passes,
+        as ``cl`` and ``hl`` of the grade-3 program did.
+        """
+        source = (GOLDEN.parent.parent.parent / "site" / "js" / "katex.js").read_text(encoding="utf-8")
+        listed = re.search(r'const UNIT = "([^"]+)";', source)
+        self.assertIsNotNone(listed)
+        lettered = {unit for unit in protect.UNIT_SYMBOLS if unit.isascii() and unit.isalpha()}
+        self.assertEqual(set(listed.group(1).split("|")), lettered)
+
+    def test_the_two_units_of_grade_three_stay_latin_in_the_mirror(self):
+        self.assertEqual(protected_spans("Boca ima 25 cl, a bure 3 hl."), ["cl", "hl"])
+        self.assertEqual(rules.to_cyrillic("Boca ima 25 cl, a bure 3 hl."), "Боца има 25 cl, а бур\u0435 3 hl.")
 
     def test_unit_pattern_matches_a_whole_token(self):
         self.assertEqual([m.group() for m in protect.UNIT_PATTERN.finditer("cm kg m² dinara minimalno sam")], ["cm", "kg", "m²"])

@@ -26,6 +26,11 @@ test("\\text{…} is accepted only for unit symbols", () => {
     "\\text{kg}",
     "\\text {ml}",
     "3\\text{h}",
+    "25\\,\\text{cl}",
+    "3\\text{ hl}",
+    "\\text{ha}",
+    "150\\text{ din}",
+    "6\\text{a}",
   ]) {
     assert.match(texToHtml(tex), /class="katex"/, tex);
   }

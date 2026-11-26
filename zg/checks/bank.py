@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import decimal
 import importlib
+import re
 from collections import Counter
 
 from ..corpus import Corpus, CorpusError
@@ -25,6 +26,7 @@ def run(corpus: Corpus, issues: Issues) -> None:
     parser = _parser(mathcheck)
     ancestors = _HardAncestors(corpus)
     _check_sizes(corpus, issues)
+    _check_numbering(corpus, issues)
     for question in corpus.question_list:
         if not isinstance(question, dict):
             continue  # not a record; schema reports it
@@ -59,6 +61,24 @@ def _check_sizes(corpus: Corpus, issues: Issues) -> None:
             )
 
 
+_QUESTION_NUMBER = re.compile(r"^(.*)-q(\d+)$")
+
+
+def _check_numbering(corpus: Corpus, issues: Issues) -> None:
+    """Question ids of a topic are ``<topic>-q<n>``, numbered 1..k with no gap (spec §5.4)."""
+    numbers: dict[str, list[int]] = {topic_id: [] for topic_id in corpus.topics}
+    for question in corpus.question_list:
+        match = _QUESTION_NUMBER.match(question.get("id")) if isinstance(question, dict) and isinstance(question.get("id"), str) else None
+        if match and match.group(1) in numbers:
+            numbers[match.group(1)].append(int(match.group(2)))
+    for topic_id, found in numbers.items():
+        if found and sorted(found) != list(range(1, len(found) + 1)):
+            issues.add(
+                corpus.topic_file[topic_id], topic_id, "V3-qid-format",
+                f"zadaci teme moraju biti označeni q1 do q{len(found)} bez preskakanja, a označeni su: {_listing(sorted(found))}",
+            )
+
+
 def _check_choices(question: dict, where: str, path: str, issues: Issues) -> None:
     choices = question.get("choices")
     if not isinstance(choices, list):
@@ -87,9 +107,23 @@ def _check_choices(question: dict, where: str, path: str, issues: Issues) -> Non
 
 def _check_numeric_answer(question: dict, where: str, path: str, issues: Issues, mathcheck) -> None:
     answer = question.get("answer")
-    if _reads_as_number(mathcheck.parse_answer, answer):
+    if _reads_as_number(_data_file_reader(mathcheck.parse_answer), answer):
         return
     issues.add(path, where, "V8-numeric-answer", f"odgovor {_show(answer)} nije broj u upisu koji alat prihvata, npr. „15“, „3,5“, „3/4“ ili „-7“")
+
+
+def _data_file_reader(parse_answer):
+    """``parse_answer`` in its data-file mode, where a dot is always the decimal point.
+
+    A parser that does not know the mode (one that takes only the text) is called as it is.
+    """
+    def read(text):
+        try:
+            return parse_answer(text, canonical=True)
+        except TypeError:
+            return parse_answer(text)
+
+    return read
 
 
 def _reads_as_number(parse_answer, text) -> bool:

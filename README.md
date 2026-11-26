@@ -9,3 +9,9 @@ Dijagnostički graf znanja iz matematike za osnovnu školu u Srbiji (1–8. razr
 - Zasnovano na zvaničnim nastavnim programima koji važe u školskoj 2026/27. godini
 
 Zamišljeno po uzoru na [`xiaoyang111222/cn-math-taxonomy`](https://github.com/xiaoyang111222/cn-math-taxonomy), kao nezavisna implementacija za srpski nastavni program.
+
+<!-- zg:stats -->
+| Razred | Teme | Grane | Zadaci |
+|---|---|---|---|
+| Ukupno | 0 | 0 | 0 |
+<!-- /zg:stats -->

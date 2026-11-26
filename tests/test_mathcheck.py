@@ -469,3 +469,17 @@ class VerifyCommandTest(unittest.TestCase):
                 code = cli.main(["--root", str(root), "verify"])
         self.assertEqual(code, 0, output.getvalue())
         self.assertIn("OK", output.getvalue())
+
+
+class CanonicalAnswerTest(unittest.TestCase):
+    def test_in_a_data_file_a_dot_is_always_the_decimal_point(self):
+        self.assertEqual(mathcheck.parse_answer("0.125", canonical=True), Fraction(1, 8))
+        self.assertEqual(mathcheck.parse_answer("2.500", canonical=True), Fraction(5, 2))
+        self.assertEqual(mathcheck.parse_answer("3/4", canonical=True), Fraction(3, 4))
+        self.assertEqual(mathcheck.parse_answer("2 3/4", canonical=True), Fraction(11, 4))
+        self.assertEqual(mathcheck.parse_answer("-0.5", canonical=True), Fraction(-1, 2))
+
+    def test_as_a_pupil_types_it_three_digits_after_a_dot_are_thousands(self):
+        self.assertEqual(mathcheck.parse_answer("0.125"), Fraction(125))
+        self.assertEqual(mathcheck.parse_answer("2.500"), Fraction(2500))
+        self.assertEqual(mathcheck.parse_answer("2.5"), Fraction(5, 2))

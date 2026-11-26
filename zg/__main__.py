@@ -8,7 +8,7 @@ from pathlib import Path
 
 from zg import corpus as corpus_module
 from zg import issues as issues_module
-from zg import paths
+from zg import build, paths
 
 # A gate is a module with ``run(corpus, issues)`` (mathcheck names it ``verify``).
 GATES: dict[str, list[str]] = {
@@ -75,21 +75,45 @@ def run_serve(args: argparse.Namespace) -> int:
     return 0
 
 
+README_BEGIN, README_END = "<!-- zg:stats -->", "<!-- /zg:stats -->"
+
+
+def _with_stats_block(text: str, block: str) -> str:
+    """Put ``block`` between the markers, adding them at the end when they are missing."""
+    if README_BEGIN in text and README_END in text:
+        head, rest = text.split(README_BEGIN, 1)
+        _, tail = rest.split(README_END, 1)
+        return f"{head}{README_BEGIN}\n{block.rstrip()}\n{README_END}{tail}"
+    return f"{text.rstrip()}\n\n{README_BEGIN}\n{block.rstrip()}\n{README_END}\n"
+
+
 def run_report(args: argparse.Namespace) -> int:
     report = _load("zg.report")
     if report is None:
         print("nije implementirano: zg.report")
         return NOT_IMPLEMENTED
     corpus = corpus_module.Corpus.load(args.subject, root=args.root)
-    if not args.check:
+    if not (args.check or args.write):
         print(report.dumps_stats(corpus))
         return 0
-    readme = (paths.ROOT if args.root is None else Path(args.root)) / "README.md"
-    if report.check_readme(readme.read_text(encoding="utf-8"), report.readme_block(corpus)):
-        print("OK")
+    root = paths.ROOT if args.root is None else Path(args.root)
+    readme, twin = root / "README.md", root / "README.cir.md"
+    block = report.readme_block(corpus)
+    if args.write:
+        text = _with_stats_block(readme.read_text(encoding="utf-8"), block)
+        readme.write_text(text, encoding="utf-8")
+        twin.write_text(build.cyrillic_readme(text, corpus.lexicon), encoding="utf-8")
+        print(f"upisano: {readme.name}, {twin.name}")
         return 0
-    print("README.md: brojevi u tabeli nisu tekući")
-    return 1
+    text = readme.read_text(encoding="utf-8")
+    if not report.check_readme(text, block):
+        print("README.md: brojevi u tabeli nisu tekući; pokreni: python3 -m zg report --write")
+        return 1
+    if not twin.exists() or twin.read_text(encoding="utf-8") != build.cyrillic_readme(text, corpus.lexicon):
+        print("README.cir.md nije u skladu sa README.md; pokreni: python3 -m zg report --write")
+        return 1
+    print("OK")
+    return 0
 
 
 def run_status(args: argparse.Namespace) -> int:
@@ -133,6 +157,7 @@ def build_parser() -> argparse.ArgumentParser:
     serve.add_argument("--port", type=int, default=8765)
     report = sub.add_parser("report", help="statistika i blok za README")
     report.add_argument("--check", action="store_true", help="proveri da li README ima tekuće brojeve")
+    report.add_argument("--write", action="store_true", help="upiši tabelu u README.md i generiši README.cir.md")
     everything = sub.add_parser("all", help="sve kapije; jedina komanda koju pokreće CI")
     everything.add_argument("--skip-site", action="store_true", help="preskoči izveštaj i izgradnju (testovi)")
     return parser

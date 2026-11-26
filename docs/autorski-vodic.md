@@ -71,7 +71,7 @@ Svaka tema ima **najmanje dva osnovna i dva standardna** zadatka.
 
 **Jezik.** Kratke rečenice. Naredbe u drugom licu jednine: „Izračunaj.“, „Zaokruži.“, „Upiši broj.“. Konteksti su iz života dece: kuvanice, sličice, dinari, autobus, igralište, školsko dvorište. Bez termina iz viših razreda. Dužina teksta: najviše 200 znakova u 1–2. razredu, 300 u 3–4. i 400 u 5–8.
 
-**Odgovor (`answer`).** Za `numeric`: kanonski broj — ceo broj (`15`), decimala s tačkom u podatku (`3.5`), razlomak (`3/4`), mešovit (`2 3/4`), predznak (`-7`). Ako je tačan odgovor iracionalan, obavezno je `"round_to": 2` (ili koliko zadatak traži). Za `choice`: id tačne ponude. Tačan odgovor nije uvek `a`.
+**Odgovor (`answer`).** Za `numeric`: kanonski broj — ceo broj (`15`), decimala s tačkom u podatku (`3.5`), razlomak (`3/4`), mešovit (`2 3/4`), predznak (`-7`). U podatku decimala uvek ide s tačkom i bez separatora hiljada: `0.125` je jedna osmina, a ne sto dvadeset pet. (Za ono što učenik ukuca važi drugo pravilo: tačka i tačno tri cifre na kraju znače hiljade.) Ako je tačan odgovor iracionalan, obavezno je `"round_to": 2` (ili koliko zadatak traži). Za `choice`: id tačne ponude. Tačan odgovor nije uvek `a`.
 
 **Ponude.** Tri do četiri. Svaka pogrešna ponuda je uobičajen pogrešan odgovor (zabluda), ne slučajan broj: prebrojana desetica, pogrešna računska operacija, sabran cifru umesto da se pomnoži. Opciono `points_to` za svaku pogrešnu ponudu navodi čvrstog pretka kog učenik verovatno nema.
 

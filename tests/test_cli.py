@@ -46,3 +46,36 @@ class CliTest(unittest.TestCase):
         for gate, modules in cli.GATES.items():
             for module in modules:
                 self.assertIsNotNone(cli._load(module), f"{module} nije uvezen")
+
+    def test_report_write_fills_the_block_and_the_cyrillic_twin(self):
+        root = self.fixture_root()
+        (root / "README.md").write_text("# Proba\n\nTekst na latinici.\n", encoding="utf-8")
+        code, out = self.run_cli("--root", str(root), "report", "--check")
+        self.assertEqual(code, 1)
+        code, out = self.run_cli("--root", str(root), "report", "--write")
+        self.assertEqual(code, 0, out)
+        readme = (root / "README.md").read_text(encoding="utf-8")
+        self.assertIn(cli.README_BEGIN, readme)
+        self.assertIn("Ukupno", readme)
+        twin = (root / "README.cir.md").read_text(encoding="utf-8")
+        self.assertIn("Текст на латиници.", twin)
+        self.assertEqual(self.run_cli("--root", str(root), "report", "--check")[0], 0)
+        (root / "README.cir.md").write_text(twin + "izmena", encoding="utf-8")
+        self.assertEqual(self.run_cli("--root", str(root), "report", "--check")[0], 1)
+
+    def test_verify_and_build_read_a_stored_decimal_as_a_decimal(self):
+        import json
+        from zg import build
+
+        root = self.fixture_root()
+        file = root / "data" / "math" / "g2" / "questions.json"
+        questions = jsonio.load(file)
+        for question in questions:
+            if question["id"] == "mat-oduzimanje-do-100-q2":
+                question["answer"], question["check"] = "0.125", "(/ 1 8)"
+        jsonio.dump(questions, file)
+        code, out = self.run_cli("--root", str(root), "verify")
+        self.assertEqual(code, 0, out)
+        build.build_site(root, root / "_site")
+        stored = jsonio.load(root / "_site" / "podaci" / "g2.lat.json")["questions"]["mat-oduzimanje-do-100-q2"]
+        self.assertEqual(stored["answerRational"], ["1", "8"])

@@ -298,3 +298,28 @@ class BankWithRealParserTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class QuestionNumberingTest(unittest.TestCase):
+    def codes(self, mutate):
+        raw = helpers.fixture_raw()
+        mutate(raw)
+        issues = Issues()
+        bank.run(Corpus.from_raw("math", raw), issues)
+        return issues.codes()
+
+    def test_the_fixture_is_numbered_without_gaps(self):
+        self.assertNotIn("V3-qid-format", self.codes(lambda raw: None))
+
+    def test_a_gap_is_reported(self):
+        def renumber(raw):
+            helpers.question(raw, "mat-oduzimanje-do-100-q3")["id"] = "mat-oduzimanje-do-100-q5"
+
+        self.assertIn("V3-qid-format", self.codes(renumber))
+
+    def test_numbering_not_starting_at_one_is_reported(self):
+        def shift(raw):
+            for n in (1, 2, 3, 4):
+                helpers.question(raw, f"mat-oduzimanje-do-100-q{n}")["id"] = f"mat-oduzimanje-do-100-q{n + 1}"
+
+        self.assertIn("V3-qid-format", self.codes(shift))

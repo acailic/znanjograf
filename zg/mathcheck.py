@@ -240,14 +240,21 @@ _OPERATORS = {
 
 # ----- reading an answer --------------------------------------------------------------
 
-def parse_answer(text: str) -> Fraction | None:
-    """Read an answer as it is written in the data file or typed by a pupil; None when it is not a number."""
+def parse_answer(text: str, canonical: bool = False) -> Fraction | None:
+    """Read a number; None when the text is not one.
+
+    As a pupil types it (the default) a dot followed by exactly three digits is a thousands
+    separator. In a data file (``canonical``) a dot is always the decimal point, so that
+    ``0.125`` is one eighth and not a hundred and twenty-five.
+    """
     if not isinstance(text, str):
         return None
     body = text.strip()
     negative = body.startswith("-")
     if body[:1] in ("+", "-"):
         body = body[1:]
+    if canonical:
+        body = body.replace(".", ",")  # the comma is always a decimal separator below
     value = _unsigned(body) if 0 < len(body) <= MAX_LENGTH else None
     if value is None:
         return None
@@ -367,7 +374,7 @@ def verify(corpus, issues) -> None:
 def _verify_numeric(question: dict, path: str, where: str, issues) -> None:
     check, answer, round_to = question.get("check"), question.get("answer"), question.get("round_to")
     value = _expected(check, round_to)
-    given = parse_answer(answer)
+    given = parse_answer(answer, canonical=True)
     if given is None:
         issues.add(path, where, "S-answer-mismatch", _not_a_number(answer))
     elif not answers_equal(value, given, round_to):
@@ -415,7 +422,7 @@ def _option_value(text) -> Fraction | Decimal | None:
     plain = _plain_text(text)
     if plain is None:
         return None
-    value = parse_answer(plain)
+    value = parse_answer(plain, canonical=True)
     if value is None:
         try:
             value = evaluate(dsl.parse(plain))

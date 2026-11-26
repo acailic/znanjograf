@@ -177,6 +177,20 @@ def _without_built(path: Path) -> dict:
     return data
 
 
+# ----- README in Cyrillic ---------------------------------------------------------------
+
+# Fenced code, inline code and link targets stay as they are; only prose is transliterated.
+_MD_PROTECTED = re.compile(r"(```.*?```|`[^`\n]*`|\]\([^)\n]*\))", re.S)
+
+
+def cyrillic_readme(text: str, lexicon: dict[str, str]) -> str:
+    """The Cyrillic twin of a Markdown file: prose transliterated, code and link targets kept."""
+    parts = _MD_PROTECTED.split(text)
+    for index in range(0, len(parts), 2):
+        parts[index] = translit.to_cyrillic(parts[index], lexicon)
+    return "".join(parts)
+
+
 # ----- data bundles -------------------------------------------------------------------
 
 def _keep(text):  # the Latin "transliteration"
@@ -260,7 +274,7 @@ def _grade(corpus: corpus_module.Corpus, grade: int, text) -> dict:
         if "choices" in record:
             item["choices"] = [{"id": choice.get("id"), "text": text(choice.get("text"))} for choice in record["choices"]]
         if record.get("type") == "numeric" and isinstance(record.get("answer"), str):
-            value = parse_answer(record["answer"])
+            value = parse_answer(record["answer"], canonical=True)
             if value is not None:
                 item["answerRational"] = rational(value, record.get("round_to"))
         questions[question_id] = item

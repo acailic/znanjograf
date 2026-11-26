@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import argparse
 import importlib
+import json
 from pathlib import Path
 
 from zg import corpus as corpus_module
 from zg import issues as issues_module
-from zg import build, paths
+from zg import build, jsonio, paths
 
 # A gate is a module with ``run(corpus, issues)`` (mathcheck names it ``verify``).
 GATES: dict[str, list[str]] = {
@@ -99,6 +100,9 @@ def run_report(args: argparse.Namespace) -> int:
     root = paths.ROOT if args.root is None else Path(args.root)
     readme, twin = root / "README.md", root / "README.cir.md"
     block = report.readme_block(corpus)
+    if not readme.exists():
+        print(f"{readme}: ne postoji; pokreni: python3 -m zg report --write")
+        return 1
     if args.write:
         text = _with_stats_block(readme.read_text(encoding="utf-8"), block)
         readme.write_text(text, encoding="utf-8")
@@ -113,6 +117,65 @@ def run_report(args: argparse.Namespace) -> int:
         print("README.cir.md nije u skladu sa README.md; pokreni: python3 -m zg report --write")
         return 1
     print("OK")
+    return 0
+
+
+def run_blind(args: argparse.Namespace) -> int:
+    """``blind sheet`` writes what an independent solver may see; ``blind diff`` reads what it answered."""
+    blind = _load("zg.blind")
+    if blind is None:
+        print("nije implementirano: zg.blind")
+        return NOT_IMPLEMENTED
+    corpus = corpus_module.Corpus.load(args.subject, root=args.root)
+    if args.action == "sheet":
+        text = json.dumps(blind.make_sheet(corpus, args.grade, script=args.script, seed=args.seed), ensure_ascii=False, indent=2) + "\n"
+        if args.out is None:
+            print(text, end="")
+        else:
+            args.out.write_text(text, encoding="utf-8")
+            print(f"list upisan: {args.out}")
+        return 0
+    try:
+        answers = jsonio.load(args.answers)
+    except jsonio.JsonError as exc:
+        print(str(exc))
+        return 1
+    failures = blind.diff(corpus, args.grade, answers)
+    for failure in failures:
+        print(f"{failure['id']}: {', '.join(failure['reasons'])}")
+    print(issues_module._summary(len(failures)))
+    return 1 if failures else 0
+
+
+def run_ledger(args: argparse.Namespace) -> int:
+    """Record that a gate passed for one grade. ``verify`` is re-run first and must be clean."""
+    ledger = _load("zg.ledger")
+    if ledger is None:
+        print("nije implementirano: zg.ledger")
+        return NOT_IMPLEMENTED
+    corpus = corpus_module.Corpus.load(args.subject, root=args.root)
+    path = None if args.root is None else Path(args.root) / "data" / "ledger.json"
+
+    def grade_of(topic_id) -> object:
+        return corpus.topics.get(topic_id, {}).get("grade") if isinstance(topic_id, str) else None
+
+    if args.gate == "edges":
+        ids = [ledger.edge_id(edge) for edge in corpus.edge_list if grade_of(edge.get("topic")) == args.grade]
+    else:
+        ids = [qid for qid, question in corpus.questions.items() if grade_of(question.get("topic")) == args.grade]
+    if args.gate == "verify":
+        issues = issues_module.Issues()
+        _load("zg.mathcheck").verify(corpus, issues)
+        mine = [issue for issue in issues if issue.where in set(ids)]
+        if mine:
+            for issue in mine:
+                print(issue.line())
+            print(f"kapija „verify“ nije čista za {args.grade}. razred; ništa nije zabeleženo")
+            return 1
+    else:
+        print(f"beležim da je kapija „{args.gate}“ prošla za {args.grade}. razred (odgovornost onoga ko je sproveo prolaz)")
+    ledger.mark(args.gate, ids, ledger.gate_records(corpus, args.gate), path)
+    print(f"zabeleženo: {len(ids)} zapisa")
     return 0
 
 
@@ -158,6 +221,21 @@ def build_parser() -> argparse.ArgumentParser:
     report = sub.add_parser("report", help="statistika i blok za README")
     report.add_argument("--check", action="store_true", help="proveri da li README ima tekuće brojeve")
     report.add_argument("--write", action="store_true", help="upiši tabelu u README.md i generiši README.cir.md")
+    blind = sub.add_parser("blind", help="slepi prolaz: list nezavisnom rešavaču i poređenje njegovih odgovora")
+    blind_action = blind.add_subparsers(dest="action", required=True)
+    sheet = blind_action.add_parser("sheet", help="samo tekstovi, bez odgovora i objašnjenja")
+    sheet.add_argument("--grade", type=int, required=True)
+    sheet.add_argument("--script", choices=("cyr", "lat"), default="cyr")
+    sheet.add_argument("--seed", type=int, default=None)
+    sheet.add_argument("--out", type=Path, default=None, help="upiši list u fajl umesto na standardni izlaz")
+    difference = blind_action.add_parser("diff", help="poredi odgovore rešavača s bankom")
+    difference.add_argument("--grade", type=int, required=True)
+    difference.add_argument("--answers", type=Path, required=True)
+    ledger = sub.add_parser("ledger", help="evidencija: zabeleži da je kapija prošla za jedan razred")
+    ledger_action = ledger.add_subparsers(dest="action", required=True)
+    mark = ledger_action.add_parser("mark")
+    mark.add_argument("--gate", choices=("verify", "blind-solve", "classify", "cueing", "edges"), required=True)
+    mark.add_argument("--grade", type=int, required=True)
     everything = sub.add_parser("all", help="sve kapije; jedina komanda koju pokreće CI")
     everything.add_argument("--skip-site", action="store_true", help="preskoči izveštaj i izgradnju (testovi)")
     return parser
@@ -167,6 +245,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     runners = {
         "build": run_build, "serve": run_serve, "report": run_report, "status": run_status, "all": run_all,
+        "blind": run_blind, "ledger": run_ledger,
     }
     if args.command in GATES:
         return run_gate(args.command, args)

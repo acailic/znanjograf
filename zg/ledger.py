@@ -89,7 +89,7 @@ def stale(gate: str, corpus: Corpus, path: Path | str | None = None) -> list[str
 
 
 def _check_gate(gate: str) -> None:
-    """A misspelt gate must not pass as ``[]`` („nothing is stale“) or land in the file."""
+    """A misspelt gate must not pass as an empty list, nor land in the file as a section of its own."""
     if gate not in GATES:
         raise ValueError(f"nepoznata kapija: {gate!r}")
 

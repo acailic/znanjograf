@@ -1,5 +1,6 @@
 import contextlib
 import io
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -79,3 +80,55 @@ class CliTest(unittest.TestCase):
         build.build_site(root, root / "_site")
         stored = jsonio.load(root / "_site" / "podaci" / "g2.lat.json")["questions"]["mat-oduzimanje-do-100-q2"]
         self.assertEqual(stored["answerRational"], ["1", "8"])
+
+    def test_report_check_without_a_readme_says_so(self):
+        root = self.fixture_root()  # a fresh fixture tree has no README at all
+        code, out = self.run_cli("--root", str(root), "report", "--check")
+        self.assertEqual(code, 1)
+        self.assertIn("ne postoji", out)
+
+    def test_blind_sheet_then_diff_round_trip(self):
+        root = self.fixture_root()
+        sheet = root / "sheet.json"
+        code, out = self.run_cli("--root", str(root), "blind", "sheet", "--grade", "2", "--out", str(sheet))
+        self.assertEqual(code, 0, out)
+        items = jsonio.load(sheet)["items"]
+        self.assertEqual(len(items), 16)
+        for item in items:
+            self.assertNotIn("answer", item)
+            self.assertNotIn("explanation", item)
+        answers = {}
+        for item in items:
+            question = helpers.fixture_corpus().questions[item["id"]]
+            answers[item["id"]] = {
+                "answer": question["answer"], "check": question["check"], "unique": True, "assumptions": [],
+                "distractors": {choice["id"]: 0 for choice in question.get("choices", []) if choice["id"] != question["answer"]},
+            }
+        file = root / "answers.json"
+        jsonio.dump(answers, file)
+        code, out = self.run_cli("--root", str(root), "blind", "diff", "--grade", "2", "--answers", str(file))
+        self.assertEqual(code, 0, out)
+        answers["mat-oduzimanje-do-100-q1"]["unique"] = False
+        del answers["mat-poredjenje-do-100-q3"]["distractors"]["c"]
+        jsonio.dump(answers, file)
+        code, out = self.run_cli("--root", str(root), "blind", "diff", "--grade", "2", "--answers", str(file))
+        self.assertEqual(code, 1)
+        self.assertIn("mat-oduzimanje-do-100-q1: unique", out)
+        self.assertIn("mat-poredjenje-do-100-q3: distractor", out)
+
+    def test_ledger_marks_a_grade_only_when_the_gate_is_clean(self):
+        root = self.fixture_root()
+        code, out = self.run_cli("--root", str(root), "ledger", "mark", "--gate", "verify", "--grade", "1")
+        self.assertEqual(code, 0, out)
+        self.assertIn("zabeleženo: 16 zapisa", out)
+        self.assertEqual(self.run_cli("--root", str(root), "ledger", "mark", "--gate", "classify", "--grade", "1")[0], 0)
+        file = root / "data" / "math" / "g1" / "questions.json"
+        questions = jsonio.load(file)
+        next(q for q in questions if q["id"] == "mat-brojevi-do-10-q1")["answer"] = "8"
+        jsonio.dump(questions, file)
+        code, out = self.run_cli("--root", str(root), "ledger", "mark", "--gate", "verify", "--grade", "1")
+        self.assertEqual(code, 1)
+        self.assertIn("ništa nije zabeleženo", out)
+        status = json.loads(self.run_cli("--root", str(root), "status")[1])
+        self.assertEqual(status["grades"]["1"]["gates"]["verify"]["verified"], 15)
+        self.assertEqual(status["grades"]["1"]["gates"]["verify"]["stale"], ["mat-brojevi-do-10-q1"])

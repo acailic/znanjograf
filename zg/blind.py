@@ -46,8 +46,8 @@ def diff(corpus: Corpus, grade: int, answers: dict) -> list[dict]:
     ``[{"id", "reasons"}]`` in file order. A reason is ``missing`` (no entry, or one
     that is not an object), ``answer`` (another text), ``check`` (another expression,
     whitespace aside), ``unique`` (anything but exactly ``True``), ``assumptions``
-    (not empty) or ``distractor`` (a wrong option rated 2 or 3, or a rating of
-    something that is not a wrong option).
+    (not empty) or ``distractor`` (a wrong option rated 2 or 3, a wrong option with
+    no rating at all, or a rating of something that is not a wrong option).
     """
     failures = []
     for question in questions_of_grade(corpus, grade):
@@ -85,7 +85,9 @@ def _cued_option(question: dict, entry: dict) -> bool:
     ratings = entry.get("distractors") or {}
     if not isinstance(ratings, dict):
         return True  # not ratings by option id at all
-    return any(option_id not in wrong or _defensible(rating) for option_id, rating in ratings.items())
+    return any(option_id not in wrong or _defensible(rating) for option_id, rating in ratings.items()) or any(
+        option_id not in ratings for option_id in wrong
+    )
 
 
 # What makes a question fail, in the order the reasons are reported.

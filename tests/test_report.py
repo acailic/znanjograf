@@ -136,7 +136,8 @@ class StatusTest(unittest.TestCase):
             ledger.mark("verify", grade_questions(loaded, 1), loaded.questions, root / "data" / "ledger.json")
             self.assertEqual(report.status(loaded)["grades"]["1"]["gates"]["verify"], {"verified": 16, "stale": []})
             # the gate ran, but nothing of grade 2 was marked
-            self.assertEqual(json.loads(report.dumps_status(loaded))["grades"]["2"]["gates"]["verify"], {"verified": 0, "stale": grade_questions(loaded, 2)})
+            second = json.loads(report.dumps_status(loaded))["grades"]["2"]["gates"]["verify"]
+            self.assertEqual(second, {"verified": 0, "stale": grade_questions(loaded, 2)})
 
 
 class ReadmeTest(unittest.TestCase):

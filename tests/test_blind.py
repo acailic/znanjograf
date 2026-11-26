@@ -253,3 +253,32 @@ class DiffTest(unittest.TestCase):
         before = copy.deepcopy((self.corpus.question_list, self.answers))
         self.assertEqual([failure["id"] for failure in self.diff()], [NUMERIC])
         self.assertEqual((self.corpus.question_list, self.answers), before)
+
+
+class EveryDistractorRatedTest(unittest.TestCase):
+    def setUp(self):
+        self.corpus = helpers.fixture_corpus()
+        self.question = helpers.question(helpers.fixture_raw(), "mat-poredjenje-do-100-q3")
+        self.choices = self.corpus.questions["mat-poredjenje-do-100-q3"]["choices"]
+
+    def codes(self, mutate):
+        answers = clean_answers(self.corpus, 2)
+        mutate(answers["mat-poredjenje-do-100-q3"])
+        return blind.diff(self.corpus, 2, answers)
+
+    def test_a_clean_sheet_passes(self):
+        self.assertEqual(self.codes(lambda entry: None), [])
+
+    def test_a_wrong_option_without_a_rating_fails(self):
+        wrong = [choice["id"] for choice in self.choices if choice["id"] != "b"]
+        failures = self.codes(lambda entry: entry["distractors"].pop(wrong[0]))
+        self.assertEqual([failure["reasons"] for failure in failures], [["distractor"]])
+
+    def test_no_ratings_at_all_fails(self):
+        failures = self.codes(lambda entry: entry.update({"distractors": {}}))
+        self.assertEqual([failure["reasons"] for failure in failures], [["distractor"]])
+
+    def test_a_numeric_question_needs_no_ratings(self):
+        answers = clean_answers(self.corpus, 2)
+        answers["mat-poredjenje-do-100-q1"]["distractors"] = {}
+        self.assertEqual(blind.diff(self.corpus, 2, answers), [])

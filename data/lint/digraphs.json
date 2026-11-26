@@ -1,0 +1,7 @@
+{
+  "manji": "digraph",
+  "najmanjeg": "digraph",
+  "njihov": "digraph",
+  "injekcija": "split:n|j",
+  "odjek": "split:d|j"
+}

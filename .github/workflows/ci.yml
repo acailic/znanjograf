@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Python testovi
+        run: python3 -m unittest discover -s tests -q
+
+      - name: Node testovi
+        run: node --test tests/node/
+
+      - name: Sve kapije
+        run: python3 -m zg all --skip-site
+
+      - name: Izgradnja sajta
+        run: python3 -m zg build
+
+      - name: Izgradnja je ažurna
+        run: python3 -m zg build --check
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site

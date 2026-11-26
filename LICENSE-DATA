@@ -38,5 +38,5 @@ broju u `data/curriculum/sources.json`. Znanjograf nije zvaničan i nije povezan
 sa Ministarstvom prosvete niti Zavodom za unapređivanje obrazovanja i vaspitanja.
 
 Kod (`zg/`, `site/`, `tests/`) licenciran je pod MIT licencom (vidi `LICENSE`).
-KaTeX u `site/vendor/katex/` zadržava svoju MIT licencu; fontovi su pod
-SIL Open Font License 1.1.
+KaTeX u `site/vendor/katex/` zadržava svoju MIT licencu
+(`site/vendor/katex/LICENSE`); fontovi su deo te distribucije.

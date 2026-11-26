@@ -1,0 +1,42 @@
+name: "Greška u temi ili grani"
+description: "Tema je pogrešno određena, mapirana na program ili povezana s drugom temom."
+title: "[tema] "
+labels: ["tema"]
+body:
+  - type: input
+    id: tid
+    attributes:
+      label: "Oznaka teme"
+      description: "Npr. mat-sabiranje-do-20. Stoji u adresi stranice karte."
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: "Šta nije u redu?"
+      options:
+        - "Tema je u pogrešnom razredu"
+        - "Tema ne odgovara ishodu programa"
+        - "Nedostaje joj prethodna tema"
+        - "Prethodna tema nije stvarno potrebna"
+        - "Tema je prevelika ili premala"
+        - "Opis ili kriterijumi su loši"
+        - "Nešto drugo"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: "Šta bi trebalo da stoji?"
+    validations:
+      required: true
+  - type: input
+    id: grade
+    attributes:
+      label: "Prethodna tema, ako se radi o grani"
+      description: "Oznaka teme koja bi trebalo da bude prethodna, ili koja nije potrebna."
+  - type: textarea
+    id: role
+    attributes:
+      label: "Odakle vam znanje o ovome? (po želji)"
+      description: "Npr. nastavnik matematike, roditelj, učenik."

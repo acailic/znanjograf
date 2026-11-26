@@ -1,0 +1,16 @@
+name: "Predlog"
+description: "Predlog za novu funkciju, novi predmet ili poboljšanje sajta."
+title: "[predlog] "
+labels: ["predlog"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: "Šta predlažete?"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Koji problem time rešavate?"
+      description: "Npr. „Ne vidim na telefonu koliko je pitanja preostalo.“"

@@ -1,0 +1,21 @@
+name: "Pitanje o upotrebi"
+description: "Kako preuzeti podatke, ugraditi dijagnostiku ili citirati projekat."
+title: "[pitanje] "
+labels: ["pitanje"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: "Pitanje"
+    validations:
+      required: true
+  - type: dropdown
+    id: audience
+    attributes:
+      label: "Šta nameravate?"
+      options:
+        - "Preuzeti podatke (JSON)"
+        - "Ugraditi dijagnostiku u svoj sajt ili aplikaciju"
+        - "Citirati projekat"
+        - "Pomoći kao nastavnik"
+        - "Nešto drugo"

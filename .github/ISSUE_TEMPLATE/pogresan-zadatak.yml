@@ -1,0 +1,37 @@
+name: "Greška u zadatku"
+description: "Zadatak ima pogrešan odgovor, dvosmislen tekst ili loše objašnjenje."
+title: "[zadatak] "
+labels: ["zadatak"]
+body:
+  - type: input
+    id: qid
+    attributes:
+      label: "Oznaka zadatka"
+      description: "Npr. mat-sabiranje-do-20-q3. Stoji u adresi zadatka ili u deljenom linku rezultata."
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: "Šta nije u redu?"
+      options:
+        - "Odgovor je pogrešan"
+        - "Tekst je dvosmislen"
+        - "Objašnjenje je pogrešno ili nerazumljivo"
+        - "Zadatak ne pripada ovoj temi"
+        - "Notacija ne odgovara razredu"
+        - "Nešto drugo"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: "Šta bi trebalo da stoji?"
+      description: "Napišite tačan odgovor i u jednoj rečenici zašto."
+    validations:
+      required: true
+  - type: textarea
+    id: role
+    attributes:
+      label: "Odakle vam znanje o ovome? (po želji)"
+      description: "Npr. nastavnik matematike, roditelj, učenik, student."

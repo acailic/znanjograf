@@ -75,9 +75,17 @@ function countsMarkup(counts) {
   return section("counts", esc(t("result.counts.title")), body);
 }
 
+const ANSWER_SLOT = "\u0000";
+
+function answerLine(question) {
+  // The label is plain text; the answer may be a formula, so it goes through the math renderer.
+  const [before = "", after = ""] = t("result.answer", { answer: ANSWER_SLOT }).split(ANSWER_SLOT);
+  return `<p class="zg-hint">${esc(before)}${renderMath(displayAnswer(question))}${esc(after)}</p>`;
+}
+
 function missedItem(question, id) {
   if (!question) return `<li><p class="zg-muted">${esc(id)}</p></li>`;
-  const lines = [renderPrompt(question), `<p class="zg-hint">${esc(t("result.answer", { answer: displayAnswer(question) }))}</p>`];
+  const lines = [renderPrompt(question), answerLine(question)];
   if (question.explanation) lines.push(`<p class="zg-hint">${renderMath(question.explanation)}</p>`);
   return `<li>${lines.join("")}</li>`;
 }

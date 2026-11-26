@@ -84,6 +84,7 @@ class Corpus:
         self.unmapped: dict[str, str] = {}
         self.sources: dict = {}
         self.review: dict = {}
+        self.meta: dict = {}
         self.lexicon: dict[str, str] = {}
         self.notation: list[dict] = []
         # Where each record came from, for messages.
@@ -101,6 +102,7 @@ class Corpus:
     def from_raw(cls, subject: str, raw: RawCorpus) -> Corpus:
         corpus = cls(subject, Path("."))
         corpus.grades = list(raw.grades)
+        corpus.meta = {"subject": subject, "name": "Matematika", "areas": ["numbers", "geometry", "data"]}
         for grade in sorted(raw.grades):
             base = f"data/{subject}/g{grade}"
             corpus.edge_file[grade] = f"{base}/edges.json"
@@ -140,6 +142,7 @@ class Corpus:
         meta = jsonio.load_or_none(data_dir / "meta.json", corpus.load_errors, corpus._rel)
         grades: list[int] = []
         if isinstance(meta, dict):
+            corpus.meta = meta
             grades = [g for g in meta.get("grades", []) if isinstance(g, int)]
         if not grades:
             grades = sorted(int(p.name[1:]) for p in data_dir.glob("g[0-9]") if p.is_dir())

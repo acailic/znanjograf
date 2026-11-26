@@ -25,8 +25,8 @@ def _load(module_name: str):
         return importlib.import_module(module_name)
     except ModuleNotFoundError as exc:
         missing = exc.name or ""
-        if missing == module_name or missing.startswith(module_name + "."):
-            return None
+        if missing == module_name or missing.startswith(module_name + ".") or missing.startswith("zg."):
+            return None  # the module, or a zg module it needs, does not exist yet
         raise
 
 

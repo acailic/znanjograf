@@ -147,15 +147,17 @@ class ReadmeTest(unittest.TestCase):
 
     def test_block_is_a_table_with_a_row_per_grade_and_a_total_row(self):
         lines = self.block.split("\n")
-        self.assertEqual(lines[0], "| Razred | Teme | Grane | Zadaci |")
-        self.assertEqual(lines[1], "|---|---|---|---|")
-        self.assertEqual(lines[2:], ["| 1. razred | 4 | 2 | 16 |", "| 2. razred | 4 | 6 | 16 |", "| Ukupno | 8 | 8 | 32 |"])
+        self.assertEqual(lines[0], "| Razred | Ishodi programa | Teme | Grane | Zadaci |")
+        self.assertEqual(lines[1], "|---|---|---|---|---|")
+        self.assertEqual(lines[2:], ["| 1. razred | 5 | 4 | 2 | 16 |", "| 2. razred | 6 | 4 | 6 | 16 |", "| Ukupno | 11 | 8 | 8 | 32 |"])
 
     def test_block_follows_the_records(self):
         raw = helpers.fixture_raw()
         raw.questions[1].pop(0)
-        self.assertIn("| 1. razred | 4 | 2 | 15 |", report.readme_block(Corpus.from_raw("math", raw)))
-        self.assertIn("| Ukupno | 8 | 8 | 31 |", report.readme_block(Corpus.from_raw("math", raw)))
+        self.assertIn("| 1. razred | 5 | 4 | 2 | 15 |", report.readme_block(Corpus.from_raw("math", raw)))
+        self.assertIn("| Ukupno | 11 | 8 | 8 | 31 |", report.readme_block(Corpus.from_raw("math", raw)))
+        del raw.editions["g2-2026"]
+        self.assertIn("| 2. razred | 0 | 4 | 6 | 16 |", report.readme_block(Corpus.from_raw("math", raw)))
 
     def test_block_round_trips_through_check_readme(self):
         start, end = report.START, report.END
@@ -171,11 +173,11 @@ class ReadmeTest(unittest.TestCase):
 
     def test_edited_number_fails(self):
         start, end = report.START, report.END
-        edited = self.block.replace("| Ukupno | 8 | 8 | 32 |", "| Ukupno | 8 | 8 | 33 |")
+        edited = self.block.replace("| Ukupno | 11 | 8 | 8 | 32 |", "| Ukupno | 11 | 8 | 8 | 33 |")
         self.assertNotEqual(edited, self.block)
         self.assertFalse(report.check_readme(f"{start}\n{edited}\n{end}", self.block))
         self.assertFalse(report.check_readme(f"{start}\n{self.block}\n{end}", edited))
-        one_row = self.block.replace("| 2. razred | 4 | 6 | 16 |", "| 2. razred | 4 | 5 | 16 |")
+        one_row = self.block.replace("| 2. razred | 6 | 4 | 6 | 16 |", "| 2. razred | 6 | 4 | 5 | 16 |")
         self.assertFalse(report.check_readme(f"{start}\n{one_row}\n{end}", self.block))
 
     def test_missing_markers_fail(self):

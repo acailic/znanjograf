@@ -11,7 +11,7 @@ from .corpus import Corpus
 
 START = "<!-- zg:stats -->"
 END = "<!-- /zg:stats -->"
-HEADER = "| Razred | Teme | Grane | Zadaci |"
+HEADER = "| Razred | Ishodi programa | Teme | Grane | Zadaci |"
 
 
 def questions_of_grade(corpus: Corpus, grade: int) -> list[dict]:
@@ -80,10 +80,10 @@ def status(corpus: Corpus, path: Path | str | None = None) -> dict:
 def readme_block(corpus: Corpus) -> str:
     """The Markdown table that goes between the two markers of the README."""
     counts = stats(corpus)
-    lines = [HEADER, "|---|---|---|---|"]
+    lines = [HEADER, "|---|---|---|---|---|"]
     for grade, row in counts["by_grade"].items():
-        lines.append(f"| {grade}. razred | {row['topics']} | {row['edges']} | {row['questions']} |")
-    lines.append(f"| Ukupno | {counts['topics']} | {counts['edges']} | {counts['questions']} |")
+        lines.append(f"| {grade}. razred | {row['outcomes']} | {row['topics']} | {row['edges']} | {row['questions']} |")
+    lines.append(f"| Ukupno | {counts['outcomes']} | {counts['topics']} | {counts['edges']} | {counts['questions']} |")
     return "\n".join(lines)
 
 

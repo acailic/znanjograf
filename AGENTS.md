@@ -36,6 +36,11 @@ node --test              # engine, figures, layout, formulas
 - **A gate that fails means the content is not done.** Do not weaken a check to
   make content pass; fix the content.
 - Numbers in the README come from `python3 -m zg report`; never type them.
+- **UI strings**: every sentence a user reads lives in `site/js/strings.js` (Serbian Latin);
+  write placeholders in the `${name}` form — the build protects `${…}` while transliterating
+  and would turn a bare `{n}` into `{н}` in the Cyrillic mirror.
+- **Node tests**: `node --test "tests/node/**/*.test.js"` with the quotes; a bare directory
+  argument reports one false failure.
 
 ## Commits
 

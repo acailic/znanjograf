@@ -1,0 +1,717 @@
+{
+  "topics": [
+    {
+      "id": "mat-brojevi-do-10",
+      "grade": 1,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "concept",
+      "name": "Brojevi do 10"
+    },
+    {
+      "id": "mat-sabiranje-do-10",
+      "grade": 1,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "procedure",
+      "name": "Sabiranje do 10"
+    },
+    {
+      "id": "mat-sabiranje-do-20",
+      "grade": 1,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "procedure",
+      "name": "Sabiranje do 20"
+    },
+    {
+      "id": "mat-geometrijski-oblici",
+      "grade": 1,
+      "area": "geometry",
+      "unit": "Geometrija",
+      "kind": "concept",
+      "name": "Geometrijski oblici"
+    },
+    {
+      "id": "mat-sabiranje-do-100",
+      "grade": 2,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "procedure",
+      "name": "Sabiranje do 100"
+    },
+    {
+      "id": "mat-poredjenje-do-100",
+      "grade": 2,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "concept",
+      "name": "Poređenje brojeva do 100"
+    },
+    {
+      "id": "mat-oduzimanje-do-100",
+      "grade": 2,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "procedure",
+      "name": "Oduzimanje do 100"
+    },
+    {
+      "id": "mat-zadaci-sa-sabiranjem",
+      "grade": 2,
+      "area": "numbers",
+      "unit": "Brojevi",
+      "kind": "problem",
+      "name": "Zadaci sa sabiranjem"
+    }
+  ],
+  "edges": [
+    [
+      "mat-sabiranje-do-10",
+      "mat-brojevi-do-10",
+      "hard"
+    ],
+    [
+      "mat-sabiranje-do-20",
+      "mat-sabiranje-do-10",
+      "hard"
+    ],
+    [
+      "mat-sabiranje-do-100",
+      "mat-sabiranje-do-20",
+      "hard"
+    ],
+    [
+      "mat-poredjenje-do-100",
+      "mat-brojevi-do-10",
+      "hard"
+    ],
+    [
+      "mat-poredjenje-do-100",
+      "mat-sabiranje-do-10",
+      "soft"
+    ],
+    [
+      "mat-oduzimanje-do-100",
+      "mat-sabiranje-do-100",
+      "hard"
+    ],
+    [
+      "mat-zadaci-sa-sabiranjem",
+      "mat-sabiranje-do-100",
+      "hard"
+    ],
+    [
+      "mat-zadaci-sa-sabiranjem",
+      "mat-poredjenje-do-100",
+      "soft"
+    ]
+  ],
+  "aliases": {
+    "mat-brojevi": [
+      "mat-brojevi-do-10"
+    ]
+  },
+  "questions": {
+    "mat-brojevi-do-10": [
+      {
+        "id": "mat-brojevi-do-10-q1",
+        "topic": "mat-brojevi-do-10",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koji broj dolazi posle broja $6$?",
+        "answer": "7",
+        "check": "7",
+        "explanation": "Posle broja 6 dolazi broj 7.",
+        "answerRational": [
+          "7",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-brojevi-do-10-q2",
+        "topic": "mat-brojevi-do-10",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koji broj dolazi pre broja $5$?",
+        "answer": "4",
+        "check": "4",
+        "explanation": "Pre broja 5 dolazi broj 4.",
+        "answerRational": [
+          "4",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-brojevi-do-10-q3",
+        "topic": "mat-brojevi-do-10",
+        "level": "standard",
+        "type": "choice",
+        "prompt": "Koji je najveći broj: $6$, $9$, $3$ ili $8$?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "$6$"
+          },
+          {
+            "id": "b",
+            "text": "$9$"
+          },
+          {
+            "id": "c",
+            "text": "$3$"
+          },
+          {
+            "id": "d",
+            "text": "$8$"
+          }
+        ],
+        "answer": "b",
+        "check": "9",
+        "explanation": "Od brojeva 6, 9, 3 i 8 najveći je 9."
+      },
+      {
+        "id": "mat-brojevi-do-10-q4",
+        "topic": "mat-brojevi-do-10",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "U nizu $4$, $5$, ____, $7$ koji broj nedostaje?",
+        "answer": "6",
+        "check": "6",
+        "explanation": "Između 5 i 7 dolazi 6.",
+        "answerRational": [
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "mat-sabiranje-do-10": [
+      {
+        "id": "mat-sabiranje-do-10-q1",
+        "topic": "mat-sabiranje-do-10",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $3 + 4$?",
+        "answer": "7",
+        "check": "(+ 3 4)",
+        "explanation": "3 i 4 zajedno daju 7.",
+        "answerRational": [
+          "7",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-10-q2",
+        "topic": "mat-sabiranje-do-10",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $2 + 6$?",
+        "answer": "8",
+        "check": "(+ 2 6)",
+        "explanation": "2 i 6 zajedno daju 8.",
+        "answerRational": [
+          "8",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-10-q3",
+        "topic": "mat-sabiranje-do-10",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Mila ima $5$ kuvanica, a Pera $2$. Koliko kuvanica imaju zajedno?",
+        "answer": "7",
+        "check": "(+ 5 2)",
+        "explanation": "5 + 2 = 7 kuvanica.",
+        "answerRational": [
+          "7",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-10-q4",
+        "topic": "mat-sabiranje-do-10",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Koliko je $2 + 3 + 4$?",
+        "answer": "9",
+        "check": "(+ 2 3 4)",
+        "explanation": "2 + 3 = 5, pa 5 + 4 = 9.",
+        "answerRational": [
+          "9",
+          "1"
+        ]
+      }
+    ],
+    "mat-sabiranje-do-20": [
+      {
+        "id": "mat-sabiranje-do-20-q1",
+        "topic": "mat-sabiranje-do-20",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $9 + 5$?",
+        "answer": "14",
+        "check": "(+ 9 5)",
+        "explanation": "9 + 1 = 10, pa još 4: 14.",
+        "answerRational": [
+          "14",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-20-q2",
+        "topic": "mat-sabiranje-do-20",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $7 + 6$?",
+        "answer": "13",
+        "check": "(+ 7 6)",
+        "explanation": "7 + 3 = 10, pa još 3: 13.",
+        "answerRational": [
+          "13",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-20-q3",
+        "topic": "mat-sabiranje-do-20",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Mila ima $8$ kuvanica i kupi još $7$. Koliko kuvanica sada ima?",
+        "answer": "15",
+        "check": "(+ 8 7)",
+        "explanation": "8 + 2 = 10, pa još 5: 15.",
+        "answerRational": [
+          "15",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-20-q4",
+        "topic": "mat-sabiranje-do-20",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Koliko je $6 + 5 + 4$?",
+        "answer": "15",
+        "check": "(+ 6 5 4)",
+        "explanation": "6 + 5 = 11, pa 11 + 4 = 15.",
+        "answerRational": [
+          "15",
+          "1"
+        ]
+      }
+    ],
+    "mat-geometrijski-oblici": [
+      {
+        "id": "mat-geometrijski-oblici-q1",
+        "topic": "mat-geometrijski-oblici",
+        "level": "basic",
+        "type": "choice",
+        "prompt": "Koja figura ima tri strane?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "kvadrat"
+          },
+          {
+            "id": "b",
+            "text": "trougao"
+          },
+          {
+            "id": "c",
+            "text": "krug"
+          },
+          {
+            "id": "d",
+            "text": "pravougaonik"
+          }
+        ],
+        "answer": "b",
+        "check": "trougao",
+        "explanation": "Trougao ima tri strane."
+      },
+      {
+        "id": "mat-geometrijski-oblici-q2",
+        "topic": "mat-geometrijski-oblici",
+        "level": "basic",
+        "type": "choice",
+        "prompt": "Koja figura nema uglove?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "krug"
+          },
+          {
+            "id": "b",
+            "text": "kvadrat"
+          },
+          {
+            "id": "c",
+            "text": "trougao"
+          },
+          {
+            "id": "d",
+            "text": "pravougaonik"
+          }
+        ],
+        "answer": "a",
+        "check": "krug",
+        "explanation": "Krug nema ni jedan ugao."
+      },
+      {
+        "id": "mat-geometrijski-oblici-q3",
+        "topic": "mat-geometrijski-oblici",
+        "level": "standard",
+        "type": "choice",
+        "prompt": "Koliko strana ima kvadrat?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "$3$"
+          },
+          {
+            "id": "b",
+            "text": "$5$"
+          },
+          {
+            "id": "c",
+            "text": "$4$"
+          },
+          {
+            "id": "d",
+            "text": "$6$"
+          }
+        ],
+        "answer": "c",
+        "check": "4",
+        "explanation": "Kvadrat ima četiri jednake strane."
+      },
+      {
+        "id": "mat-geometrijski-oblici-q4",
+        "topic": "mat-geometrijski-oblici",
+        "level": "standard",
+        "type": "choice",
+        "prompt": "Koja figura ima četiri jednake strane?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "trougao"
+          },
+          {
+            "id": "b",
+            "text": "pravougaonik"
+          },
+          {
+            "id": "c",
+            "text": "krug"
+          },
+          {
+            "id": "d",
+            "text": "kvadrat"
+          }
+        ],
+        "answer": "d",
+        "check": "kvadrat",
+        "explanation": "Kvadrat ima četiri jednake strane; pravougaonik ima samo naspramne strane jednake."
+      }
+    ],
+    "mat-sabiranje-do-100": [
+      {
+        "id": "mat-sabiranje-do-100-q1",
+        "topic": "mat-sabiranje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $23 + 45$?",
+        "answer": "68",
+        "check": "(+ 23 45)",
+        "explanation": "20 + 40 = 60, 3 + 5 = 8, ukupno 68.",
+        "answerRational": [
+          "68",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-100-q2",
+        "topic": "mat-sabiranje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $40 + 37$?",
+        "answer": "77",
+        "check": "(+ 40 37)",
+        "explanation": "40 + 37 = 77.",
+        "answerRational": [
+          "77",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-100-q3",
+        "topic": "mat-sabiranje-do-100",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Koliko je $36 + 28$?",
+        "answer": "64",
+        "check": "(+ 36 28)",
+        "explanation": "36 + 20 = 56, pa 56 + 8 = 64.",
+        "answerRational": [
+          "64",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-sabiranje-do-100-q4",
+        "topic": "mat-sabiranje-do-100",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "U autobusu su $26$ putnika. Na sledećoj stanici ušlo je još $19$. Koliko putnika sada ima u autobusu?",
+        "answer": "45",
+        "check": "(+ 26 19)",
+        "explanation": "26 + 19 = 45 putnika.",
+        "answerRational": [
+          "45",
+          "1"
+        ]
+      }
+    ],
+    "mat-poredjenje-do-100": [
+      {
+        "id": "mat-poredjenje-do-100-q1",
+        "topic": "mat-poredjenje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koji je broj veći: $34$ ili $43$? Upiši taj broj.",
+        "answer": "43",
+        "check": "43",
+        "explanation": "43 ima više desetica od 34.",
+        "answerRational": [
+          "43",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-poredjenje-do-100-q2",
+        "topic": "mat-poredjenje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koji je broj manji: $89$ ili $98$? Upiši taj broj.",
+        "answer": "89",
+        "check": "89",
+        "explanation": "89 ima manje desetica od 98.",
+        "answerRational": [
+          "89",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-poredjenje-do-100-q3",
+        "topic": "mat-poredjenje-do-100",
+        "level": "standard",
+        "type": "choice",
+        "prompt": "Koji znak treba upisati: $56$ ____ $65$?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "$>$"
+          },
+          {
+            "id": "b",
+            "text": "$<$"
+          },
+          {
+            "id": "c",
+            "text": "$=$"
+          }
+        ],
+        "answer": "b",
+        "check": "<",
+        "explanation": "56 je manje od 65.",
+        "points_to": {
+          "a": "mat-brojevi-do-10"
+        }
+      },
+      {
+        "id": "mat-poredjenje-do-100-q4",
+        "topic": "mat-poredjenje-do-100",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Poredaj od najmanjeg: $71$, $17$, $70$. Koji broj je u sredini?",
+        "answer": "70",
+        "check": "70",
+        "explanation": "Redom: 17, 70, 71.",
+        "answerRational": [
+          "70",
+          "1"
+        ]
+      }
+    ],
+    "mat-oduzimanje-do-100": [
+      {
+        "id": "mat-oduzimanje-do-100-q1",
+        "topic": "mat-oduzimanje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $58 - 23$?",
+        "answer": "35",
+        "check": "(- 58 23)",
+        "explanation": "50 - 20 = 30, 8 - 3 = 5, ukupno 35.",
+        "answerRational": [
+          "35",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-oduzimanje-do-100-q2",
+        "topic": "mat-oduzimanje-do-100",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Koliko je $90 - 40$?",
+        "answer": "50",
+        "check": "(- 90 40)",
+        "explanation": "90 - 40 = 50.",
+        "answerRational": [
+          "50",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-oduzimanje-do-100-q3",
+        "topic": "mat-oduzimanje-do-100",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Koliko je $72 - 45$?",
+        "answer": "27",
+        "check": "(- 72 45)",
+        "explanation": "72 - 40 = 32, pa 32 - 5 = 27.",
+        "answerRational": [
+          "27",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-oduzimanje-do-100-q4",
+        "topic": "mat-oduzimanje-do-100",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Mila je imala $62$ dinara i potrošila $27$. Koliko dinara joj je ostalo?",
+        "answer": "35",
+        "check": "(- 62 27)",
+        "explanation": "62 - 27 = 35 dinara.",
+        "answerRational": [
+          "35",
+          "1"
+        ]
+      }
+    ],
+    "mat-zadaci-sa-sabiranjem": [
+      {
+        "id": "mat-zadaci-sa-sabiranjem-q1",
+        "topic": "mat-zadaci-sa-sabiranjem",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "Mila ima $24$ sličice, a Pera $15$. Koliko sličica imaju zajedno?",
+        "answer": "39",
+        "check": "(+ 24 15)",
+        "explanation": "24 + 15 = 39 sličica.",
+        "answerRational": [
+          "39",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-zadaci-sa-sabiranjem-q2",
+        "topic": "mat-zadaci-sa-sabiranjem",
+        "level": "basic",
+        "type": "numeric",
+        "prompt": "U kutiji su $33$ crvene i $26$ plavih kuglica. Koliko kuglica ima u kutiji?",
+        "answer": "59",
+        "check": "(+ 33 26)",
+        "explanation": "33 + 26 = 59 kuglica.",
+        "answerRational": [
+          "59",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-zadaci-sa-sabiranjem-q3",
+        "topic": "mat-zadaci-sa-sabiranjem",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Mila je pročitala $18$ stranica ujutru, $22$ posle podne i $10$ uveče. Koliko stranica je pročitala tog dana?",
+        "answer": "50",
+        "check": "(+ 18 22 10)",
+        "explanation": "18 + 22 = 40, pa 40 + 10 = 50 stranica.",
+        "answerRational": [
+          "50",
+          "1"
+        ]
+      },
+      {
+        "id": "mat-zadaci-sa-sabiranjem-q4",
+        "topic": "mat-zadaci-sa-sabiranjem",
+        "level": "standard",
+        "type": "numeric",
+        "prompt": "Pera je imao $35$ dinara. Dobio je $20$ dinara od bake i $15$ od dede. Koliko dinara sada ima?",
+        "answer": "70",
+        "check": "(+ 35 20 15)",
+        "explanation": "35 + 20 = 55, pa 55 + 15 = 70 dinara.",
+        "answerRational": [
+          "70",
+          "1"
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "learningOrder": [
+      "mat-brojevi-do-10",
+      "mat-sabiranje-do-10",
+      "mat-sabiranje-do-20",
+      "mat-geometrijski-oblici",
+      "mat-sabiranje-do-100",
+      "mat-poredjenje-do-100",
+      "mat-oduzimanje-do-100",
+      "mat-zadaci-sa-sabiranjem"
+    ],
+    "gradeExits": {
+      "1": [
+        "mat-sabiranje-do-20",
+        "mat-geometrijski-oblici"
+      ],
+      "2": [
+        "mat-oduzimanje-do-100",
+        "mat-zadaci-sa-sabiranjem"
+      ]
+    },
+    "hardAncestors": {
+      "mat-brojevi-do-10": [],
+      "mat-sabiranje-do-10": [
+        "mat-brojevi-do-10"
+      ],
+      "mat-sabiranje-do-20": [
+        "mat-brojevi-do-10",
+        "mat-sabiranje-do-10"
+      ],
+      "mat-geometrijski-oblici": [],
+      "mat-sabiranje-do-100": [
+        "mat-brojevi-do-10",
+        "mat-sabiranje-do-10",
+        "mat-sabiranje-do-20"
+      ],
+      "mat-poredjenje-do-100": [
+        "mat-brojevi-do-10"
+      ],
+      "mat-oduzimanje-do-100": [
+        "mat-brojevi-do-10",
+        "mat-sabiranje-do-10",
+        "mat-sabiranje-do-100",
+        "mat-sabiranje-do-20"
+      ],
+      "mat-zadaci-sa-sabiranjem": [
+        "mat-brojevi-do-10",
+        "mat-sabiranje-do-10",
+        "mat-sabiranje-do-100",
+        "mat-sabiranje-do-20"
+      ]
+    }
+  }
+}

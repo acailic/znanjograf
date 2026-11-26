@@ -75,3 +75,42 @@ def write_corpus(root: Path, raw_corpus: RawCorpus) -> Path:
     if raw_corpus.notation is not None:
         jsonio.dump(raw_corpus.notation, root / "data" / "lint" / "notation.json")
     return root
+
+
+def rational_text(value: str) -> list[str]:
+    """A fixture-only parser (integer or ``a/b``) that yields numerator and denominator as strings."""
+    from fractions import Fraction
+
+    fraction = Fraction(value)
+    return [str(fraction.numerator), str(fraction.denominator)]
+
+
+def engine_fixture() -> dict:
+    """The fixture in the shape the JS engine consumes, plus what Python expects of it."""
+    raw_corpus = fixture_raw()
+    corpus = Corpus.from_raw("math", raw_corpus)
+    topics = [{key: record[key] for key in ("id", "grade", "area", "unit", "kind", "name")} for record in corpus.topic_list]
+    edges = [[e["topic"], e["requires"], e["strength"]] for e in corpus.edge_list]
+    questions: dict[str, list[dict]] = {}
+    for record in corpus.question_list:
+        question = dict(record)
+        if question["type"] == "numeric":
+            question["answerRational"] = rational_text(question["answer"])
+        questions.setdefault(question["topic"], []).append(question)
+    return {
+        "topics": topics,
+        "edges": edges,
+        "aliases": raw_corpus.aliases,
+        "questions": questions,
+        "expected": {
+            "learningOrder": corpus.learning_order(),
+            "gradeExits": {str(grade): corpus.grade_exits(grade) for grade in raw_corpus.grades},
+            "hardAncestors": {tid: sorted(corpus.hard_ancestors(tid)) for tid in corpus.topics},
+        },
+    }
+
+
+def dump_engine_fixture(path: Path | None = None) -> Path:
+    path = Path(path) if path is not None else Path(__file__).resolve().parent / "fixtures" / "engine-fixture.json"
+    jsonio.dump(engine_fixture(), path)
+    return path

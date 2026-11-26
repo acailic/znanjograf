@@ -278,9 +278,14 @@ if __name__ == "__main__":
 
 
 class RuleApplicabilityTest(NotationCase):
-    def test_a_rule_for_an_edition_that_is_not_loaded_yet_is_skipped_silently(self):
+    def test_a_citation_into_an_edition_that_is_not_loaded_is_not_an_error(self):
         issues = self.lint([{"pattern": r"\\sqrt", "min_grade": 8, "outcome": "g8-2026-001", "note": "koren"}])
         self.assertEqual(issues.codes(), set())
+
+    def test_a_rule_still_applies_while_its_edition_is_not_loaded(self):
+        rule = {"pattern": r"\\times", "min_grade": 2, "outcome": "g8-2026-001", "note": "množenje"}
+        issues = self.lint([rule], GRADE_ONE, prompt="Koliko je $3 \\times 4$?")
+        self.assertEqual(issues.codes(), {"L1-notation"})
 
     def test_a_rule_for_a_missing_outcome_of_a_loaded_edition_is_reported(self):
         issues = self.lint([{"pattern": r"\\sqrt", "min_grade": 8, "outcome": "g2-2026-999", "note": "koren"}])

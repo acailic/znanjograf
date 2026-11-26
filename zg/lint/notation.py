@@ -72,10 +72,10 @@ def _rules(corpus: Corpus, issues: Issues) -> list[tuple[re.Pattern, int, str, s
         if problem is not None:
             issues.add(RULE_FILE, where, "L1-rule-invalid", f"{problem}; pravilo je preskočeno")
             continue
+        # The rule holds whatever is loaded. Its citation is checked only once that edition is in the
+        # corpus: until then the program that introduces the notation is simply not at hand.
         edition_id = rule["outcome"].rsplit("-", 1)[0]
-        if edition_id not in corpus.editions:
-            continue  # the program that introduces this notation is not in the corpus yet
-        if rule["outcome"] not in corpus.editions[edition_id].outcomes:
+        if edition_id in corpus.editions and rule["outcome"] not in corpus.editions[edition_id].outcomes:
             issues.add(RULE_FILE, where, "L1-rule-outcome", _uncited(rule))
             continue
         usable.append((re.compile(rule["pattern"]), rule["min_grade"], rule["outcome"], rule["note"]))

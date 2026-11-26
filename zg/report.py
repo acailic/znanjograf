@@ -29,7 +29,7 @@ def stats(corpus: Corpus) -> dict:
             "questions": len(questions_of_grade(corpus, grade)),
             "outcomes": sum(len(edition.outcomes) for edition in corpus.editions.values() if edition.grade == grade),
         }
-    strength = Counter(edge.get("strength") for edge in corpus.edge_list)
+    strength = Counter(edge.get("strength") if isinstance(edge, dict) else None for edge in corpus.edge_list)
     return {
         "topics": len(corpus.topics),
         "edges": len(corpus.edge_list),
@@ -122,4 +122,4 @@ def _topics(corpus: Corpus, grade: int) -> list[dict]:
 
 def _edges(corpus: Corpus, grade: int) -> list[dict]:
     """An edge belongs to the grade of its dependent topic: that is the file it lives in."""
-    return [edge for edge in corpus.edge_list if _grade(corpus, edge.get("topic")) == grade]
+    return [edge for edge in corpus.edge_list if isinstance(edge, dict) and _grade(corpus, edge.get("topic")) == grade]

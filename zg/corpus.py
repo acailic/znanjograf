@@ -156,7 +156,14 @@ class Corpus:
             corpus.meta = meta
             grades = [g for g in meta.get("grades", []) if isinstance(g, int)]
         if not grades:
-            grades = sorted(int(p.name[1:]) for p in data_dir.glob("g[0-9]") if p.is_dir())
+            grades = sorted(int(p.name[1:]) for p in data_dir.glob("g[0-9]*") if p.is_dir() and p.name[1:].isdigit())
+        else:
+            # A grade folder that meta.json does not name must not skip the gates unnoticed.
+            for folder in sorted(data_dir.glob("g[0-9]*")):
+                if folder.is_dir() and folder.name[1:].isdigit() and int(folder.name[1:]) not in grades:
+                    corpus.load_errors.append((corpus._rel(folder), f"razred {folder.name[1:]} ima fasciklu, a nije naveden u meta.json"))
+                    grades.append(int(folder.name[1:]))  # loaded all the same, so no gate skips it
+            grades = sorted(grades)
         corpus.grades = grades
         for grade in grades:
             grade_path = data_dir / f"g{grade}"
@@ -203,6 +210,8 @@ class Corpus:
         notation = jsonio.load_or_none(base / "notation.json", self.load_errors, self._rel)
         if isinstance(lexicon, dict):
             self.lexicon = {k: v for k, v in lexicon.items() if isinstance(v, str)}
+        if notation is not None and not isinstance(notation, list):
+            self.load_errors.append((self._rel(base / "notation.json"), "pravila notacije moraju biti niz"))
         if isinstance(notation, list):
             self.notation = list(notation)  # entries that are not objects stay, so the lint can report them
 
@@ -220,7 +229,10 @@ class Corpus:
             prerequisites: dict[str, list[tuple[str, object]]] = {tid: [] for tid in self.topics}
             dependents: dict[str, list[str]] = {tid: [] for tid in self.topics}
             for index, edge in enumerate(self.edge_list):
-                topic, requires = edge.get("topic"), edge.get("requires")
+                topic = edge.get("topic") if isinstance(edge, dict) else None
+                requires = edge.get("requires") if isinstance(edge, dict) else None
+                if not (isinstance(topic, str) and isinstance(requires, str)):
+                    raise CorpusError(f"grana {index}: nije zapis s poljima „topic“ i „requires“")
                 if topic not in prerequisites or requires not in prerequisites:
                     raise CorpusError(f"grana {index}: pokazuje na nepostojeću temu")
                 prerequisites[topic].append((requires, edge.get("strength")))

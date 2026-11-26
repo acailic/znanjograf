@@ -33,7 +33,11 @@ def _load(module_name: str):
 
 def run_gate(name: str, args: argparse.Namespace) -> int:
     corpus = corpus_module.Corpus.load(args.subject, root=args.root)
-    issues = issues_module.Issues()  # load errors are reported once, by zg.checks.schema
+    issues = issues_module.Issues()
+    # A file that could not be load must fail every gate: schema reports it for validate itself.
+    if name != "validate":
+        for path, message in corpus.load_errors:
+            issues.add(path, "-", "V1-duplicate-key" if "dupliran ključ" in message else "V1-json", message)
     missing = []
     for module_name in GATES[name]:
         module = _load(module_name)
@@ -104,12 +108,20 @@ def run_report(args: argparse.Namespace) -> int:
         print(f"{readme}: ne postoji; pokreni: python3 -m zg report --write")
         return 1
     if args.write:
-        text = _with_stats_block(readme.read_text(encoding="utf-8"), block)
+        try:
+            text = _with_stats_block(_read_text(readme), block)
+        except ValueError as exc:
+            print(f"{readme}: {exc}")
+            return 1
         readme.write_text(text, encoding="utf-8")
         twin.write_text(build.cyrillic_readme(text, corpus.lexicon), encoding="utf-8")
         print(f"upisano: {readme.name}, {twin.name}")
         return 0
-    text = readme.read_text(encoding="utf-8")
+    try:
+        text = _read_text(readme)
+    except ValueError as exc:
+        print(f"{readme}: {exc}")
+        return 1
     if not report.check_readme(text, block):
         print("README.md: brojevi u tabeli nisu tekući; pokreni: python3 -m zg report --write")
         return 1
@@ -139,6 +151,9 @@ def run_blind(args: argparse.Namespace) -> int:
         answers = jsonio.load(args.answers)
     except jsonio.JsonError as exc:
         print(str(exc))
+        return 1
+    if not isinstance(answers, dict):
+        print(f"{args.answers}: sadržaj mora biti objekat „id zadatka“ → odgovor rešavača")
         return 1
     failures = blind.diff(corpus, args.grade, answers)
     for failure in failures:
@@ -174,7 +189,11 @@ def run_ledger(args: argparse.Namespace) -> int:
             return 1
     else:
         print(f"beležim da je kapija „{args.gate}“ prošla za {args.grade}. razred (odgovornost onoga ko je sproveo prolaz)")
-    ledger.mark(args.gate, ids, ledger.gate_records(corpus, args.gate), path)
+    try:
+        ledger.mark(args.gate, ids, ledger.gate_records(corpus, args.gate), path)
+    except jsonio.JsonError as exc:
+        print(str(exc))
+        return 1
     print(f"zabeleženo: {len(ids)} zapisa")
     return 0
 
@@ -184,8 +203,19 @@ def run_status(args: argparse.Namespace) -> int:
     if report is None:
         print("nije implementirano: zg.report")
         return NOT_IMPLEMENTED
-    print(report.dumps_status(corpus_module.Corpus.load(args.subject, root=args.root)))
+    try:
+        print(report.dumps_status(corpus_module.Corpus.load(args.subject, root=args.root)))
+    except jsonio.JsonError as exc:
+        print(str(exc))
+        return 1
     return 0
+
+
+def _read_text(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"fajl nije UTF-8 ({exc.reason} na bajtu {exc.start}); sačuvaj ga kao UTF-8") from None
 
 
 def _with(args: argparse.Namespace, **changes) -> argparse.Namespace:

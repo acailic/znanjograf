@@ -177,7 +177,7 @@ def _describe(value) -> str:
 
 
 def _listing(values) -> str:
-    return ", ".join(f"„{value}“" for value in sorted(values))
+    return ", ".join(f"„{value}“" for value in sorted(values, key=str))
 
 
 def iter_strings(record: object) -> Iterator[str]:
@@ -382,6 +382,9 @@ def _editions(corpus: Corpus, issues: Issues) -> None:
         header = edition.raw if isinstance(edition.raw, dict) else {}
         for key in sorted(set(header) - EDITION_FIELDS):
             issues.add(path, key, "V2-unknown-field", f"nepoznato polje „{key}“ u zaglavlju izdanja „{edition_id}“")
+        for field in ("applies_from", "outcomes"):
+            if field not in header:
+                issues.add(path, edition_id, "V2-missing-field", f"izdanju „{edition_id}“ nedostaje polje „{field}“")
         if "applies_from" in header and not isinstance(header["applies_from"], str):
             issues.add(path, "applies_from", "V2-type", "„applies_from“ mora biti niska, npr. „2026/27“")
         lists = _file_lists(header, edition_id, path, issues)
@@ -435,13 +438,45 @@ def _registry(corpus: Corpus, issues: Issues) -> None:
             issues.add(REGISTRY_PATH, topic_id, "V3-id-format", f"upis u registru „{topic_id}“ ne odgovara pravilu za id teme")
 
 
+REVIEW_PATH = "data/review/teachers.json"
+REVIEW_FIELDS = {"name", "role", "date", "note"}
+_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def _reviews(corpus: Corpus, issues: Issues) -> None:
+    """The teacher review file: every mark belongs to a topic and says who reviewed and when."""
+    if not isinstance(corpus.review, dict):
+        issues.add(REVIEW_PATH, "-", "V2-type", "sadržaj mora biti objekat „id teme“ → zapis pregleda")
+        return
+    for topic_id, record in corpus.review.items():
+        if not (_text(topic_id) and topic_id in corpus.topics):
+            issues.add(REVIEW_PATH, str(topic_id), "V3-id-unknown", f"pregled je upisan za temu koja ne postoji: „{topic_id}“")
+        if not isinstance(record, dict):
+            issues.add(REVIEW_PATH, str(topic_id), "V2-type", "zapis pregleda mora biti objekat s poljima „name“, „role“, „date“")
+            continue
+        for field in sorted(set(record) - REVIEW_FIELDS):
+            issues.add(REVIEW_PATH, f"{topic_id}.{field}", "V2-unknown-field", f"nepoznato polje „{field}“ u zapisu pregleda")
+        for field in ("name", "role", "date"):
+            if field not in record:
+                issues.add(REVIEW_PATH, f"{topic_id}.{field}", "V2-missing-field", f"zapisu pregleda nedostaje polje „{field}“")
+        for field in ("name", "role"):
+            if field in record and not (_text(record[field]) and record[field].strip()):
+                issues.add(REVIEW_PATH, f"{topic_id}.{field}", "V2-type", f"„{field}“ mora biti neprazna niska")
+        if "date" in record and not (_text(record["date"]) and _DATE.match(record["date"])):
+            issues.add(REVIEW_PATH, f"{topic_id}.date", "V2-type", "„date“ mora biti datum u obliku YYYY-MM-DD")
+        if "note" in record and not isinstance(record["note"], str):
+            issues.add(REVIEW_PATH, f"{topic_id}.note", "V2-type", "„note“ mora biti niska")
+
+
 def run(corpus: Corpus, issues: Issues) -> None:
     """V1–V4, V10 and V11 over the whole corpus. Mutates nothing; appends to ``issues``."""
     for path, message in corpus.load_errors:
-        issues.add(path, "-", "V1-json", message)
+        code = "V1-duplicate-key" if "dupliran ključ" in message else "V1-json"
+        issues.add(path, "-", code, message)
     _topics(corpus, issues)
     _questions(corpus, issues)
     _edges(corpus, issues)
     _editions(corpus, issues)
     _aliases(corpus, issues)
     _registry(corpus, issues)
+    _reviews(corpus, issues)

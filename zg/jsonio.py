@@ -35,6 +35,8 @@ def load(path: Path | str) -> object:
     path = Path(path)
     try:
         text = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise JsonError(f"{path}: fajl nije UTF-8 ({exc.reason} na bajtu {exc.start}); sačuvaj ga kao UTF-8") from None
     except OSError as exc:
         raise JsonError(f"{path}: ne mogu da pročitam: {exc}") from None
     return loads(text, str(path))

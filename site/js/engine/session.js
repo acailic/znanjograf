@@ -16,7 +16,8 @@ export { summarise } from "./result.js";
 
 const SCOPE_KINDS = ["topic", "unit", "grade", "grade-full"];
 
-/** What `next` asks for when a question is not a scope topic itself. */
+// Why a question is asked: about a topic of the scope itself, or about a
+// prerequisite the session walked back to. Reported as `role`.
 const ROLE_SCOPE = "scope";
 const ROLE_PREREQUISITE = "prerequisite";
 
@@ -39,7 +40,7 @@ export function createSession({ scope, index, bank, budget = 25, history = {}, c
  * What the session wants now:
  *   {kind: "question", topicId, question, role}  role is "scope" or "prerequisite"
  *   {kind: "paused", asked}                       the block budget is used up
- *   {kind: "done"}                                every topic has a status
+ *   {kind: "done"}                                nothing is left to ask
  */
 export function next(state) {
   return replay(state).pending;
@@ -68,8 +69,14 @@ export function extend(state) {
 export function reduce(log, ctx) {
   const events = Array.isArray(log) ? log : [];
   let state = createSession(ctx);
+
   for (const event of events) {
-    const pending = next(state);
+    let pending = next(state);
+    if (pending.kind === "paused") {
+      // The log goes on past the pause, so the session was continued.
+      state = extend(state);
+      pending = next(state);
+    }
     if (pending.kind !== "question" || !isEvent(event) || event.questionId !== pending.question.id) break;
     state = apply(state, event);
   }
@@ -78,12 +85,9 @@ export function reduce(log, ctx) {
 
 // ----- replaying the log --------------------------------------------------------------
 
-/** How many questions the session may ask before it pauses. */
+/** How many questions the session may ask before it pauses: `budget` for every block so far. */
 function questionLimit(state) {
-  // A log longer than one block shows that the block was extended, so a
-  // restored session continues in the right block without being told.
-  const proven = 1 + Math.floor((state.log.length - 1) / state.budget);
-  return Math.max(1 + state.extensions, proven) * state.budget;
+  return state.budget * (1 + state.extensions);
 }
 
 /**
@@ -207,7 +211,8 @@ function pickQuestion(world, topicId, level) {
   let best = null;
   for (const question of world.bank[topicId] ?? []) {
     if (question.level !== level || world.used.has(question.id)) continue;
-    const uses = Object.hasOwn(world.history, question.id) ? world.history[question.id] : 0;
+    // A counter that is not a number (hand-edited storage) counts as never used.
+    const uses = Number(world.history[question.id]) || 0;
     // Ties keep the question that comes first in the file.
     if (best === null || uses < best.uses) best = { question, uses };
   }

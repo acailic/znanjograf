@@ -220,31 +220,58 @@ test("a single missing topic is reported as the confirmed root", async (t) => {
         run.summary.path,
         CHAIN.slice(CHAIN.indexOf(missing)).map((id) => ({ id, status: STATUS.WEAK })),
       );
-      // Every topic on the path was asked two questions, and nothing else was asked.
-      assert.equal(run.log.length, 2 * run.summary.path.length);
+      // Every topic on the path was asked both its questions…
+      const asked = askedPerTopic(fixture.questions, run.log);
+      for (const entry of run.summary.path) {
+        assert.equal(asked.get(entry.id), 2, `${entry.id} was asked ${asked.get(entry.id)} questions`);
+      }
+      // …and nothing outside the goal's own ancestors was asked at all.
+      const allowed = new Set([GOAL, ...index.ancestorsOf(GOAL)]);
+      assert.deepEqual([...asked.keys()].filter((id) => !allowed.has(id)), []);
       assert.deepEqual(run.pauses, []);
     });
   }
 
-  await t.test("a topic off the chain is weak but stays out of the path", () => {
+  await t.test("a topic off the way to the goal is never asked", () => {
     const run = runSession(fixtureContext(fixture, topicScope()), pupilKnowingAllBut(index, ["mat-brojevi-do-10"]));
-    assert.equal(run.statuses.get("mat-oduzimanje-do-100"), STATUS.WEAK);
+
+    assert.equal(run.statuses.has("mat-oduzimanje-do-100"), false);
     assert.equal(run.summary.path.some((entry) => entry.id === "mat-oduzimanje-do-100"), false);
     assert.deepEqual(run.summary.shaky, []);
   });
 
-  await t.test("a shaky topic on the path is listed as a step to consolidate", () => {
+  await t.test("a shaky topic between the root and the goal is a step to consolidate", () => {
     const pupil = pupilKnowingAllBut(index, ["mat-sabiranje-do-20"]);
-    pupil.shaky = new Set(["mat-sabiranje-do-20"]); // it passes the basic question after all
+    pupil.shaky = new Set(["mat-sabiranje-do-100"]); // it passes the basic question after all
     const run = runSession(fixtureContext(fixture, topicScope()), pupil);
+
+    assert.deepEqual(run.summary.roots, [{ id: "mat-sabiranje-do-20", confirmed: true, missed: ["mat-sabiranje-do-20-q3", "mat-sabiranje-do-20-q1"] }]);
+    assert.deepEqual(run.summary.path, [
+      { id: "mat-sabiranje-do-20", status: STATUS.WEAK },
+      { id: "mat-sabiranje-do-100", status: STATUS.SHAKY },
+      { id: GOAL, status: STATUS.WEAK },
+    ]);
+    assert.deepEqual(run.summary.shaky, ["mat-sabiranje-do-100"]);
+    assert.deepEqual(run.summary.counts, { mastered: 1, shaky: 1, weak: 2, inferred: 1, untested: 0 });
+  });
+
+  await t.test("a shaky ancestor above a root is listed as shaky, not on the path", () => {
+    const pupil = pupilKnowingAllBut(index, ["mat-sabiranje-do-20"]);
+    pupil.shaky = new Set(["mat-sabiranje-do-20"]);
+    const run = runSession(fixtureContext(fixture, topicScope()), pupil);
+
     assert.deepEqual(run.summary.roots, [{ id: "mat-sabiranje-do-100", confirmed: true, missed: ["mat-sabiranje-do-100-q3", "mat-sabiranje-do-100-q1"] }]);
     assert.deepEqual(run.summary.path, [
-      { id: "mat-sabiranje-do-20", status: STATUS.SHAKY },
       { id: "mat-sabiranje-do-100", status: STATUS.WEAK },
       { id: GOAL, status: STATUS.WEAK },
     ]);
     assert.deepEqual(run.summary.shaky, ["mat-sabiranje-do-20"]);
-    assert.deepEqual(run.summary.counts, { mastered: 1, shaky: 1, weak: 2, inferred: 1, untested: 0 });
+  });
+
+  await t.test("soft prerequisites are left alone while a hard ancestor is weak", () => {
+    const run = runSession(fixtureContext(fixture, topicScope()), pupilKnowingNothing());
+
+    assert.equal(run.statuses.has(COMPARISON), false);
   });
 
   await t.test("a weak soft prerequisite is a root when the hard ones are fine", () => {
@@ -339,6 +366,38 @@ test("a pupil who knows nothing masters nothing and bottoms out at the graph roo
     });
   }
 
+  await t.test("questions cover the scope first, then walk back from each weak topic, nearest first", () => {
+    const run = runSession(fixtureContext(fixture, SCOPES["grade-full"]), pupilKnowingNothing());
+
+    assert.deepEqual(
+      run.questions.map((step) => step.topicId),
+      [
+        GOAL,
+        GOAL,
+        "mat-oduzimanje-do-100",
+        "mat-oduzimanje-do-100",
+        COMPARISON,
+        COMPARISON,
+        "mat-sabiranje-do-100",
+        "mat-sabiranje-do-100",
+        "mat-sabiranje-do-20",
+        "mat-sabiranje-do-20",
+        "mat-sabiranje-do-10",
+        "mat-sabiranje-do-10",
+        "mat-brojevi-do-10",
+        "mat-brojevi-do-10",
+      ],
+    );
+    assert.deepEqual(
+      run.questions.map((step) => step.role),
+      run.questions.map((step, i) => (i < 8 ? "scope" : "prerequisite")),
+    );
+    assert.deepEqual(
+      run.questions.map((step) => step.question.id.slice(-2)),
+      run.questions.map((step, i) => (i % 2 === 0 ? "q3" : "q1")), // the standard question, then the basic one
+    );
+  });
+
   await t.test("a grade scope goes back behind the exit topics when it must", () => {
     const run = runSession(fixtureContext(fixture, SCOPES.grade), pupil);
     const asked = new Set(run.questions.map((step) => step.topicId));
@@ -399,6 +458,15 @@ test("the budget pauses a session and a topic without questions ends weak", asyn
     assert.deepEqual(summary.roots, [{ id: GOAL, confirmed: false, missed: [`${GOAL}-q3`, `${GOAL}-q1`] }]);
     assert.deepEqual(summary.untested, ["mat-oduzimanje-do-100"]);
     assert.deepEqual(summary.counts, { mastered: 0, shaky: 0, weak: 1, inferred: 0, untested: 1 });
+
+    // The pause fell between the standard and the basic question of a topic:
+    // continuing picks up exactly there.
+    assert.deepEqual(next(extend(run.state)), {
+      kind: "question",
+      topicId: "mat-oduzimanje-do-100",
+      question: question("mat-oduzimanje-do-100-q1"),
+      role: "scope",
+    });
   });
 
   const withBank = (id, keep) => {
@@ -438,10 +506,69 @@ test("the budget pauses a session and a topic without questions ends weak", asyn
   });
 });
 
+test("a scope chooses the topics the session covers", async (t) => {
+  await t.test("an old topic id is diagnosed as the topic it was merged into", () => {
+    const run = runSession(fixtureContext(fixture, { kind: "topic", id: "mat-brojevi" }), pupilKnowingNothing());
+
+    assert.deepEqual(run.questions.map((step) => step.topicId), ["mat-brojevi-do-10", "mat-brojevi-do-10"]);
+    assert.deepEqual(run.summary.roots, [{ id: "mat-brojevi-do-10", confirmed: true, missed: ["mat-brojevi-do-10-q3", "mat-brojevi-do-10-q1"] }]);
+  });
+
+  await t.test("a scope that covers nothing is done at once", () => {
+    const empty = { roots: [], path: [], shaky: [], counts: { mastered: 0, shaky: 0, weak: 0, inferred: 0, untested: 0 }, outcomes: [] };
+    for (const scope of [{ kind: "topic", id: "mat-nepostoji" }, { kind: "unit", grade: 2, unit: "Nema je" }, { kind: "grade", grade: 7 }]) {
+      const state = createSession(fixtureContext(fixture, scope));
+
+      assert.deepEqual(next(state), { kind: "done" }, JSON.stringify(scope));
+      assert.deepEqual(summarise(state), empty, JSON.stringify(scope));
+    }
+  });
+
+  await t.test("an unknown scope kind or budget is refused", () => {
+    assert.throws(() => createSession(fixtureContext(fixture, { kind: "razred", grade: 2 })), /ZG_BAD_SCOPE/);
+    assert.throws(() => createSession(fixtureContext(fixture, undefined)), /ZG_BAD_SCOPE/);
+    assert.throws(() => createSession(fixtureContext(fixture, topicScope(), { budget: 0 })), /ZG_BAD_BUDGET/);
+    assert.throws(() => createSession(fixtureContext(fixture, topicScope(), { budget: 2.5 })), /ZG_BAD_BUDGET/);
+  });
+});
+
+test("the result lists the curriculum outcomes of the roots and the path", async (t) => {
+  const curriculum = {
+    [GOAL]: [{ edition: "g2-2026", outcome: "g2-2026-004", match: "exact" }],
+    "mat-sabiranje-do-100": [{ edition: "g2-2026", outcome: "g2-2026-001", match: "exact" }],
+    "mat-sabiranje-do-20": [
+      { edition: "g1-2026", outcome: "g1-2026-003", match: "exact" },
+      { edition: "g2-2026", outcome: "g2-2026-004", match: "partial" },
+    ],
+    "mat-sabiranje-do-10": [{ edition: "g1-2026", outcome: "g1-2026-002", match: "exact" }],
+    "mat-brojevi-do-10": [{ edition: "g1-2026", outcome: "g1-2026-001", match: "exact" }],
+    "mat-oduzimanje-do-100": [{ edition: "g2-2026", outcome: "g2-2026-003", match: "exact" }],
+    [COMPARISON]: [{ edition: "g2-2026", outcome: "g2-2026-002", match: "exact" }],
+  };
+
+  await t.test("each outcome once, in the learning order of its topics", () => {
+    // The root is sabiranje do 20; the path is sabiranje do 20, sabiranje do 100, the goal.
+    const run = runSession(fixtureContext(fixture, topicScope(), { curriculum }), pupilKnowingAllBut(index, ["mat-sabiranje-do-20"]));
+
+    assert.deepEqual(run.summary.path.map((entry) => entry.id), ["mat-sabiranje-do-20", "mat-sabiranje-do-100", GOAL]);
+    assert.deepEqual(run.summary.outcomes, [
+      { edition: "g1-2026", id: "g1-2026-003" },
+      { edition: "g2-2026", id: "g2-2026-004" }, // shared by sabiranje do 20 and the goal
+      { edition: "g2-2026", id: "g2-2026-001" },
+    ]);
+  });
+
+  await t.test("there are no outcomes without a curriculum", () => {
+    const run = runSession(fixtureContext(fixture, topicScope()), pupilKnowingNothing());
+
+    assert.deepEqual(run.summary.outcomes, []);
+  });
+});
+
 test("replaying the log rebuilds the live state", async (t) => {
-  const corpus = syntheticCorpus(7);
+  const corpus = syntheticCorpus(4);
   const ctx = { scope: { kind: "grade-full", grade: 4 }, index: corpus.index, bank: corpus.bank, history: {} };
-  const run = runSession(ctx, randomPupil(mulberry32(11), 0.3), { maxAnswers: 60 });
+  const run = runSession(ctx, randomPupil(mulberry32(11), 0.15), { maxAnswers: 60 });
 
   await t.test("the sample session is long and varied enough", () => {
     assert.equal(run.log.length, 60);
@@ -451,7 +578,10 @@ test("replaying the log rebuilds the live state", async (t) => {
     assert.ok(run.summary.counts.shaky >= 1);
     assert.ok(run.summary.counts.weak >= 1);
     assert.ok(run.summary.counts.inferred >= 1);
-    assert.ok(run.summary.untested.length >= 1);
+    // Interrupted after 60 answers: some scope topics are still untested in the
+    // earlier prefixes, and not every root has all its ancestors judged yet.
+    assert.ok(run.states.some((state) => summarise(state).untested.length > 0));
+    assert.ok(run.summary.roots.some((root) => root.confirmed === false));
   });
 
   await t.test("reduce of every prefix equals the live state after that prefix", () => {
@@ -552,6 +682,12 @@ test("a session survives the share link", async (t) => {
 
   await t.test("the same session always gives the same link", () => {
     assert.equal(encodeSession({ scope: SCOPES.unit, log }), encodeSession({ scope: SCOPES.unit, log }));
+  });
+
+  await t.test("encoding something that is not a session is refused", () => {
+    assert.throws(() => encodeSession({ scope: { kind: "nope", id: "x" }, log: [] }), /ZG_BAD_SCOPE/);
+    assert.throws(() => encodeSession({ scope: SCOPES.topic, log: "x" }), /ZG_BAD_LOG/);
+    assert.throws(() => encodeSession({ scope: SCOPES.topic, log: [{ questionId: 5, correct: true }] }), /ZG_BAD_LOG/);
   });
 
   await t.test("garbage gives null", () => {

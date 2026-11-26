@@ -9,7 +9,7 @@
 /** Grade used for a topic whose grade is not an integer (same as Python). */
 const FALLBACK_GRADE = 99;
 
-/** An edge that names a topic the index does not know, or a cycle. */
+/** The error for a graph the engine cannot walk: an unknown edge endpoint, or a cycle. */
 function badGraph(detail) {
   return new Error(`ZG_BAD_GRAPH: ${detail}`);
 }

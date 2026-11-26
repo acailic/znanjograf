@@ -56,10 +56,13 @@ function topicsWith(status, wanted) {
   return ids;
 }
 
-/** A root is confirmed once every hard ancestor of it was judged or inferred. */
+/**
+ * A root is confirmed once every hard ancestor of it was judged or inferred.
+ * (A topic without a status is untested.)
+ */
 function isConfirmed(index, status, root) {
   for (const ancestor of index.hardAncestorsOf(root)) {
-    if (status.get(ancestor) === undefined || status.get(ancestor) === STATUS.UNTESTED) return false;
+    if (!status.has(ancestor)) return false;
   }
   return true;
 }

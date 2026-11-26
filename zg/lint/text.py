@@ -231,7 +231,7 @@ def run_built(issues: Issues, site_out: Path | None = None) -> int:
 
 
 _JS_LITERAL = re.compile(r"""(?:"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`((?:[^`\\]|\\.)*)`)(\s*:)?""")
-_HTML_TEXT = re.compile(r"<(?:title|noscript)\b[^>]*>(.*?)</(?:title|noscript)>", re.S | re.I)
+_HTML_TEXT = re.compile(r"<(?:title|noscript|main)\b[^>]*>(.*?)</(?:title|noscript|main)>", re.S | re.I)
 # Values a machine reads: ids, enums, option ids. ``edges`` and ``points_to`` are lists of ids.
 _MACHINE_KEYS = frozenset({"id", "outcome", "edition", "area", "areas", "level", "kind", "type", "match", "answer", "strength", "subject", "edges", "symbol", "hours", "page", "applies_from"})
 _SKIP_SUBTREES = frozenset({"points_to", "aliases", "curriculum"})

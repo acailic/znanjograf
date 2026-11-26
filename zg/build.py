@@ -29,7 +29,9 @@ MANIFEST = "manifest.json"
 
 _JS_STRING = re.compile(r"""("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'|`(?:[^`\\]|\\.)*`)(\s*:)?""", re.S)
 _JS_INTERP = re.compile(r"(\$\{[^}]*\})")  # the capturing group keeps each ${…} in the split
-_HTML_TEXT = re.compile(r"(<(?:title|noscript)\b[^>]*>)(.*?)(</(?:title|noscript)>)", re.S | re.I)
+# The static text of a page: its title, its <noscript> sentence and the fallback inside <main>
+# that the page script replaces (it must be readable before, or without, the script).
+_HTML_TEXT = re.compile(r"(<(?:title|noscript|main)\b[^>]*>)(.*?)(</(?:title|noscript|main)>)", re.S | re.I)
 
 
 # ----- public ----------------------------------------------------------------------

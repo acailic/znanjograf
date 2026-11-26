@@ -47,7 +47,7 @@ def _problem(rule: object) -> str | None:
     pattern, min_grade, outcome, note = (rule[name] for name in RULE_FIELDS)
     if not isinstance(pattern, str) or not pattern.strip():
         return "„pattern“ mora biti neprazan tekst"
-    control = _control_escape(pattern) if isinstance(pattern, str) else None
+    control = _control_escape(pattern)
     if control is not None:
         return f"„pattern“ sadrži „{control}“, što je kontrolni znak, a ne LaTeX komanda; piše se „\\\\times“"
     if isinstance(min_grade, bool) or not isinstance(min_grade, int) or min_grade not in GRADES:

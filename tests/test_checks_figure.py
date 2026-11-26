@@ -94,7 +94,7 @@ SOUND = [
     fig("bars", title="Omiljeni sport", categories=["a", "b"], values=[0.5, 2.5]),
     fig("bars", categories=list("abcdefgh"), values=[1] * 8),
     fig("pictogram", symbol="●", items=[{"label": "Mila", "count": 0}]),
-    fig("pictogram", symbol="x", items=[{"label": "M", "count": 15}], perSymbol=0.5),
+    fig("pictogram", symbol="kg", items=[{"label": "brašno", "count": 2.5}], perSymbol=0.5),  # a number, not only an integer
     fig("grid", cols=15, rows=15, cells=[[14, 14], [0, 0]]),
     fig("grid", cols=3, rows=3),
     triangle(),
@@ -184,7 +184,7 @@ class FigureKindAndAltTest(FigureCase):
             ["polygon: natpis strane 0 („5 cm“) ne odgovara dužini te strane (4); dozvoljeno je odstupanje do 1 %"],
         )
 
-    def test_lengths_in_messages_agree_in_number(self):
+    def test_the_plural_in_a_message_follows_the_count(self):
         self.assertEqual(figure.validate(numberline(alt="a")), ["„alt“ ima 1 znak, a treba najmanje 20"])
         self.assertEqual(figure.validate(numberline(alt="aa")), ["„alt“ ima 2 znaka, a treba najmanje 20"])
         self.assertEqual(figure.validate(numberline(alt="aaaaa")), ["„alt“ ima 5 znakova, a treba najmanje 20"])

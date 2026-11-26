@@ -35,9 +35,12 @@ jobs:
       - name: Sve kapije (uključuje tabelu u README-u i ažurnost izgradnje)
         run: python3 -m zg all
 
-      - uses: actions/upload-artifact@v4
+      # The page package is made here, at the end of this job; the deploy job only deploys it.
+      # Made in the deploy job itself, it was asked for a second after the upload started (not
+      # found), and a rerun then made a second package with the same name (found twice).
+      - name: Paket sajta za objavu
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: site
           path: _site
 
   deploy:
@@ -51,19 +54,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: _site
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
       - id: deployment
         uses: actions/deploy-pages@v4
 

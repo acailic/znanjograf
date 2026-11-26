@@ -28,7 +28,7 @@ KEEP_KEYS = frozenset({"id", "outcome", "area", "level", "kind", "symbol", "edit
 MANIFEST = "manifest.json"
 
 _JS_STRING = re.compile(r"""("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'|`(?:[^`\\]|\\.)*`)(\s*:)?""", re.S)
-_JS_INTERP = re.compile(r"\$\{[^}]*\}")
+_JS_INTERP = re.compile(r"(\$\{[^}]*\})")  # the capturing group keeps each ${…} in the split
 _HTML_TEXT = re.compile(r"(<(?:title|noscript)\b[^>]*>)(.*?)(</(?:title|noscript)>)", re.S | re.I)
 
 
@@ -117,11 +117,10 @@ def _translit_js_strings(text: str, lexicon: dict[str, str]) -> str:
         if colon:  # an object key written in quotes
             return match.group(0)
         quote, body = literal[0], literal[1:-1]
-        parts = _JS_INTERP.split(body)
-        body = parts[0] if parts else ""
-        for index, piece in enumerate(parts[1:]):
-            body += piece if index % 2 == 0 else translit.to_cyrillic(piece, lexicon)
-        return quote + body + quote
+        pieces = _JS_INTERP.split(body)  # alternates: static text, ${…}, static text, …
+        for index in range(0, len(pieces), 2):
+            pieces[index] = translit.to_cyrillic(pieces[index], lexicon)
+        return quote + "".join(pieces) + quote
 
     return _JS_STRING.sub(replace, text)
 

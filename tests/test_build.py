@@ -3,13 +3,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from zg import jsonio
+from zg import build, jsonio
 from tests import helpers
-
-try:
-    from zg import build
-except ModuleNotFoundError as exc:  # until zg.mathcheck and zg.translit.rules land (Task 14 removes this)
-    raise unittest.SkipTest(f"zg.build još nema zavisnosti: {exc.name}") from None
 
 PAGE = """<!doctype html>
 <html lang="sr-Latn">
@@ -100,7 +95,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(set(latin), set(cyrillic))
         for question_id, question in latin.items():
             self.assertEqual(MATH.findall(question["prompt"]), MATH.findall(cyrillic[question_id]["prompt"]), question_id)
-        self.assertEqual(cyrillic["mat-poredjenje-do-100-q3"]["prompt"], "Који знак треба уписати: $56$ ____ $65$")
+        self.assertEqual(cyrillic["mat-poredjenje-do-100-q3"]["prompt"], "Који знак треба уписати: $56$ ____ $65$?")
         self.assertEqual(cyrillic["mat-poredjenje-do-100-q3"]["answer"], "b")
         self.assertEqual(cyrillic["mat-poredjenje-do-100-q3"]["points_to"], {"a": "mat-brojevi-do-10"})
 

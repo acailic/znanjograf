@@ -23,13 +23,13 @@ EXPECTED_RULES = [
     (r"\\times|\\cdot", 2, "množenje"),
     (r"(?<!\\):", 2, "deljenje"),
     (r"\\frac", 2, "razlomci"),
-    (r"\d+\{,\}\d+", 5, "decimalni brojevi"),
-    (r"\^", 7, "stepen"),
-    (r"\\sqrt", 8, "kvadratni koren"),
-    (r"\\pi", 8, "broj pi"),
-    (r"\\le|\\ge", 5, "znaci „manje ili jednako“ i „veće ili jednako“"),
+    (r"\d+\{,\}\d+", 3, "decimalni brojevi"),
+    (r"(?<![})\\\s])\^(?!\\circ)", 7, "stepen"),
+    (r"\\sqrt", 7, "kvadratni koren"),
+    (r"\\pi", 7, "broj pi"),
+    (r"\\le|\\ge", 3, "znaci „manje ili jednako“ i „veće ili jednako“"),
     (r"\\neq", 5, "znak „nije jednako“"),
-    (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 5, "slovo kao promenljiva"),
+    (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 2, "slovo kao promenljiva"),
 ]
 
 VARIABLE = {"pattern": r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", "min_grade": 5, "outcome": "g2-2026-004", "note": "slovo kao promenljiva"}
@@ -263,8 +263,9 @@ class RuleFileTest(NotationCase):
         self.assertEqual(issues, [])
 
     def test_what_grade_two_meets_is_clean_in_grade_two(self):
-        # the grade-2 program itself brings division with ``:`` and the notion of a fraction
-        for prompt in ("$58 - 23$", "$6 : 2$", r"$\frac{1}{2}$"):
+        # the grade-2 program itself brings division with ``:``, the notion of a fraction and a
+        # letter for the unknown number (PG 16/2018, p. 73–74: ``7 = x + 5``)
+        for prompt in ("$58 - 23$", "$6 : 2$", r"$\frac{1}{2}$", "$7 = x + 5$"):
             with self.subTest(prompt):
                 issues = self.lint(self.rules, "mat-oduzimanje-do-100-q1", prompt=f"Koliko je {prompt}?")
                 self.assertEqual(issues, [])
@@ -278,7 +279,6 @@ class RuleFileTest(NotationCase):
             (r"$2 \le 3$", "manje ili jednako"),
             (r"$3 \ge 2$", "veće ili jednako"),
             (r"$2 \neq 3$", "nije jednako"),
-            (r"$x + 2$", "slovo kao promenljiva"),
         ]:
             with self.subTest(prompt):
                 issues = self.lint(self.rules, GRADE_TWO, prompt=f"Koliko je {prompt}?")
@@ -292,11 +292,22 @@ class RuleFileTest(NotationCase):
             ("$3 \\cdot 4$", "množenje"),
             ("$12 : 4$", "deljenje"),
             (r"$\frac{1}{2}$", "razlomci"),
+            (r"$3{,}5$", "decimalni brojevi"),
+            ("$x + 2$", "slovo kao promenljiva"),
         ]:
             with self.subTest(prompt):
                 issues = self.lint(self.rules, GRADE_ONE, prompt=f"Koliko je {prompt}?")
                 self.assertEqual(len(issues), 1, [issue.message for issue in issues])
                 self.assertIn(note, issues[0].message)
+
+    def test_degree_signs_and_unit_exponents_are_not_powers(self):
+        # grades 4 and 6 write m², m³ and 90° long before powers (grade 7)
+        for prompt in (r"Ugao je $90^\circ$.", r"Površina je $5\text{ m}^2$.", r"Zapremina je $2\mathrm{dm}^3$."):
+            with self.subTest(prompt):
+                self.assertEqual(self.lint(self.rules, GRADE_TWO, prompt=prompt), [])
+        issues = self.lint(self.rules, GRADE_TWO, prompt="Koliko je $2^3$")
+        self.assertEqual([issue.code for issue in issues], ["L1-notation"])
+        self.assertIn("stepen", issues[0].message)
 
     def test_minus_and_comparison_are_fine_in_grade_one(self):
         # the program itself asks for +, -, =, < and > from the block of numbers to 10

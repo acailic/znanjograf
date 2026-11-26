@@ -159,6 +159,18 @@ class FigureKindAndAltTest(FigureCase):
         self.assertEqual(self.codes(numberline(alt=None)), {ALT_CODE})
         self.assertEqual(self.codes(numberline(alt=42)), {ALT_CODE})
 
+    def test_alt_with_a_formula_is_reported(self):
+        # The page shows alt as it stands and reads it whole: a formula would appear with its dollar signs.
+        issues = self.check(numberline(alt="Brojevna prava od $0$ do $10$ sa tačkom iznad broja $7$."))
+        self.assertEqual(issues.codes(), {ALT_CODE})
+        self.assertIn("bez iscrtavanja formula", issues[0].message)
+        self.assertEqual(self.codes(numberline(alt="Brojevna prava od 0 do 10 sa tačkom iznad broja 7.")), set())
+
+    def test_a_short_alt_with_a_formula_is_reported_twice(self):
+        issues = self.check(numberline(alt="od $0$ do $1$"))
+        self.assertEqual(len(issues), 2)
+        self.assertEqual(issues.codes(), {ALT_CODE})
+
     def test_kind_and_alt_are_reported_together(self):
         self.assertEqual(self.codes(numberline(kind="cube", alt="x", foo=1)), {KIND_CODE, ALT_CODE})
 

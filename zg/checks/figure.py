@@ -345,6 +345,9 @@ def _problems(spec: object) -> list[tuple[str, str]]:
         found.append((ALT_CODE, f"polje „alt“ mora biti tekst, a jeste {_show(alt)}"))
     elif len(alt.strip()) < MIN_ALT:
         found.append((ALT_CODE, f"„alt“ ima {_count(len(alt.strip()), 'znak', 'znaka', 'znakova')}, a treba najmanje {MIN_ALT}"))
+    if isinstance(alt, str) and "$" in alt:
+        # The page shows alt as it stands, without rendering formulas, and reads it whole to a screen reader.
+        found.append((ALT_CODE, "„alt“ je običan tekst i prikazuje se bez iscrtavanja formula: brojevi se u njemu pišu ciframa, a ne u $…$"))
     if spec.get("kind") in KINDS:
         kind = spec["kind"]
         parameters = _parameters(kind, spec)

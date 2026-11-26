@@ -93,7 +93,7 @@ Operatori: `+ - * /` (više argumenata), `pow`, `sqrt`, `abs`, `min`, `max`, `fl
 
 ## 5. Slike
 
-Slika je deklarativna (`figure`) i ima `alt` od najmanje 20 znakova koji opisuje sliku dovoljno da se zadatak reši i bez nje. Vrste: `numberline` (brojevna prava), `fractionbar` (razlomačka traka), `pie` (kolač), `dots` (tačke), `bars` (stubičasti dijagram), `pictogram` (slikovni dijagram), `grid` (mreža), `polygon` (mnogougao), `angle` (ugao), `axes` (koordinate), `clock` (sat), `table` (tabela).
+Slika je deklarativna (`figure`) i ima `alt` od najmanje 20 znakova koji opisuje sliku dovoljno da se zadatak reši i bez nje. `alt` je običan tekst: sajt ga prikazuje bez iscrtavanja formula, pa se brojevi u njemu pišu ciframa, a ne u `$…$`. Vrste: `numberline` (brojevna prava), `fractionbar` (razlomačka traka), `pie` (kolač), `dots` (tačke), `bars` (stubičasti dijagram), `pictogram` (slikovni dijagram), `grid` (mreža), `polygon` (mnogougao), `angle` (ugao), `axes` (koordinate), `clock` (sat), `table` (tabela).
 
 ## 6. Kako posao teče
 

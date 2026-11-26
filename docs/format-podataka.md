@@ -263,7 +263,7 @@ Kad u `check` uđe `pi` ili koren broja koji nije kvadrat, vrednost nije tačan 
   "prompt": "Koji broj je označen na brojevnoj pravoj?",
   "figure": {
     "kind": "numberline",
-    "alt": "Brojevna prava od $0$ do $10$ sa tačkom iznad broja $7$.",
+    "alt": "Brojevna prava od 0 do 10 sa tačkom iznad broja 7.",
     "min": 0,
     "max": 10,
     "marks": [7]
@@ -275,7 +275,7 @@ Kad u `check` uđe `pi` ili koren broja koji nije kvadrat, vrednost nije tačan 
 ```
 
 - `kind` je jedna od dvanaest vrsta (`V9-figure-kind`).
-- `alt` je tekst od najmanje 20 znakova (`V9-figure-alt`) koji opisuje sliku dovoljno da se zadatak reši i bez nje. Sajt ga ispisuje i kad sliku ne može da nacrta.
+- `alt` je običan tekst od najmanje 20 znakova (`V9-figure-alt`) koji opisuje sliku dovoljno da se zadatak reši i bez nje. Sajt ga ispisuje i kad sliku ne može da nacrta, i čita ga čitaču ekrana. Prikaže se onakav kakav je, bez iscrtavanja formula: brojevi se u njemu pišu ciframa, a ne u `$…$`.
 - Parametri koje vrsta nema, obavezni parametar koji nedostaje i vrednosti koje se ne slažu prijavljuju `V9-figure-param`.
 
 Obavezni parametri su podebljani; ostali mogu da izostanu.
@@ -549,18 +549,18 @@ Objekat „kapija“ → objekat „id zapisa“ → heš sadržaja zapisa. Kapi
 
 ```json
 [
-  {
-    "pattern": "\\\\times|\\\\cdot",
-    "min_grade": 2,
-    "outcome": "g2-2026-004",
-    "note": "množenje"
-  },
-  {
-    "pattern": "\\\\frac",
-    "min_grade": 3,
-    "outcome": "g2-2026-004",
-    "note": "razlomci"
-  }
+{
+  "pattern": "\\\\times|\\\\cdot",
+  "min_grade": 2,
+  "outcome": "g2-2026-005",
+  "note": "množenje"
+},
+{
+  "pattern": "(?<!\\\\):",
+  "min_grade": 2,
+  "outcome": "g2-2026-005",
+  "note": "deljenje"
+}
 ]
 ```
 
@@ -577,6 +577,7 @@ Niz pravila. Svako pravilo ima ta četiri polja i nijedno drugo; loše oblikovan
 - LaTeX komanda u `pattern` piše se s dvokratnom obrnutom crtom (u JSON-u `\\\\times`), jer je uzorak regularni izraz. Napisana s jednom, postaje kontrolni znak koji ništa ne nalazi, pa je `lint` odbija.
 - Poziv na ishod proverava se tek kad to izdanje bude u repozitorijumu: ako ga izdanje nema, prijavljuje se `L1-rule-outcome` i pravilo se preskače. Do tada pravilo važi i bez provere poziva.
 - Segmenti `\text{…}` se pre traženja uklanjaju, da oznaka jedinice ne bi prošla kao promenljiva.
+- Pragovi prate program: deljenje i razlomak ulaze u 2. razredu, decimalni zapis i znakovi „manje ili jednako“ i „veće ili jednako“ u 3., a stepen, kvadratni koren i broj pi u 7. Pravilo za stepen ne gleda `^` iza vitičaste zagrade ili razmaka (jedinice poput `\text{m}^2`) ni `^\circ` (stepen ugla), jer se to piše mnogo pre stepenovanja.
 
 ## 16. `lint/digraphs.json`
 

@@ -1,0 +1,15 @@
+# Build output of `python3 -m zg build`
+_site/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Scratch and staging areas for agent batches
+_work/
+
+# OS
+.DS_Store

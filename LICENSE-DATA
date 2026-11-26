@@ -1,0 +1,42 @@
+Licenca podataka — Creative Commons Attribution 4.0 International (CC BY 4.0)
+================================================================================
+
+Sve datoteke u direktorijumu `data/` (teme, grane, zadaci, ishodi nastavnog
+programa, rečnici i evidencije) licencirane su pod Creative Commons
+Attribution 4.0 International (CC BY 4.0).
+
+Pun tekst licence: https://creativecommons.org/licenses/by/4.0/legalcode
+Sažetak:              https://creativecommons.org/licenses/by/4.0/deed.sr-Latn
+
+Šta je dozvoljeno
+-----------------
+- deljenje: umnožavanje i distribucija podataka u bilo kom mediju ili formatu
+- prilagođavanje: remiksovanje, menjanje i nadgradnja podataka u bilo koju svrhu,
+  uključujući komercijalnu
+
+Pod kojim uslovima
+------------------
+- navođenje izvora (Attribution): morate navesti ime autora, dodati vezu na
+  licencu i ukazati na eventualne izmene. To možete učiniti na bilo koji razuman
+  način, ali ne tako da se sugeriše da autor odobrava vas ili vašu upotrebu.
+
+Kako navesti izvor
+------------------
+  Podaci: „Znanjograf“ (https://github.com/acailic/znanjograf),
+  licenca CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+
+Bez dodatnih ograničenja
+------------------------
+Ne smete primenjivati pravne odredbe ili tehnološke mere koje zakonski
+ograničavaju druge u onome što licenca dozvoljava.
+
+Napomena o izvoru podataka
+--------------------------
+Ishodi nastavnog programa izvedeni su iz zvaničnih akata Republike Srbije
+(objavljenih u „Službenom glasniku RS – Prosvetni glasniku“), navedenih po
+broju u `data/curriculum/sources.json`. Znanjograf nije zvaničan i nije povezan
+sa Ministarstvom prosvete niti Zavodom za unapređivanje obrazovanja i vaspitanja.
+
+Kod (`zg/`, `site/`, `tests/`) licenciran je pod MIT licencom (vidi `LICENSE`).
+KaTeX u `site/vendor/katex/` zadržava svoju MIT licencu; fontovi su pod
+SIL Open Font License 1.1.

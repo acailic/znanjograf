@@ -115,3 +115,14 @@ class JsonioTest(unittest.TestCase):
 
     def test_hash_sees_a_change(self):
         self.assertNotEqual(jsonio.sha256_obj({"a": 1}), jsonio.sha256_obj({"a": 2}))
+
+
+class StrayCurriculumFileTest(unittest.TestCase):
+    def test_a_stray_file_in_the_curriculum_folder_does_not_crash(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = helpers.write_corpus(Path(tmp), helpers.fixture_raw())
+            jsonio.dump({"note": "nije izdanje"}, root / "data" / "curriculum" / "math" / "notes.json")
+            loaded = Corpus.load("math", root=root)
+        self.assertIn("notes", loaded.editions)
+        self.assertEqual(loaded.editions["notes"].grade, 0)
+        self.assertEqual(loaded.editions["notes"].outcomes, {})

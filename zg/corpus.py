@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import copy
 import heapq
+import re
 from pathlib import Path
 
 from . import jsonio, paths
@@ -25,13 +26,22 @@ class Edition:
     def __init__(self, edition_id: str, raw: dict, file: str = "") -> None:
         self.id = edition_id
         grade = raw.get("grade")
-        self.grade = grade if isinstance(grade, int) else int(edition_id[1:edition_id.index("-")])
+        self.grade = grade if isinstance(grade, int) else _grade_from_id(edition_id)
         self.raw = raw
         self.outcomes: dict[str, dict] = {}
         for record in raw.get("outcomes") or []:
             if isinstance(record, dict) and isinstance(record.get("id"), str):
                 self.outcomes.setdefault(record["id"], record)
         self.file = file
+
+
+_GRADE_IN_ID = re.compile(r"^g(\d+)-")
+
+
+def _grade_from_id(edition_id: str) -> int:
+    """The grade an edition id carries, or 0 when the id is not an edition id at all (a stray file)."""
+    match = _GRADE_IN_ID.match(edition_id)
+    return int(match.group(1)) if match else 0
 
 
 class RawCorpus:
@@ -194,7 +204,7 @@ class Corpus:
         if isinstance(lexicon, dict):
             self.lexicon = {k: v for k, v in lexicon.items() if isinstance(v, str)}
         if isinstance(notation, list):
-            self.notation = [rule for rule in notation if isinstance(rule, dict)]
+            self.notation = list(notation)  # entries that are not objects stay, so the lint can report them
 
     def _rel(self, path: Path | str) -> str:
         path = Path(path)

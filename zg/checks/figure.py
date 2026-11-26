@@ -63,8 +63,8 @@ PARAMS = {
     },
     "pictogram": {
         "symbol": (TEXT, True),
-        "items": (("records", {"label": TEXT, "count": _number(0)}), True),
-        "perSymbol": (POSITIVE_NUMBER, False),
+        "items": (("records", {"label": TEXT, "count": _int(0)}), True),
+        "perSymbol": (_int(1), False),
     },
     "grid": {
         "cols": (_int(1, 15), True), "rows": (_int(1, 15), True),

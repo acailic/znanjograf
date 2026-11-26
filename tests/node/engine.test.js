@@ -290,6 +290,58 @@ test("a single missing topic is reported as the confirmed root", async (t) => {
   });
 });
 
+test("a status is never replaced once the topic is judged", async (t) => {
+  // Two weak scope topics lead back to the same far topic by different routes,
+  // so it is judged weak first and is the ancestor of a topic mastered later:
+  //   t-a → t-n1 → t-w1        t-a → t-m → t-w2
+  // The fixture cannot reach this, so the graph is built here.
+  const topics = [
+    { id: "t-a", grade: 1, area: "numbers", unit: "U2", kind: "concept", name: "a" },
+    { id: "t-m", grade: 1, area: "numbers", unit: "U2", kind: "procedure", name: "m" },
+    { id: "t-w2", grade: 1, area: "numbers", unit: "U1", kind: "procedure", name: "w2" },
+    { id: "t-n1", grade: 1, area: "numbers", unit: "U1", kind: "procedure", name: "n1" },
+    { id: "t-w1", grade: 1, area: "numbers", unit: "U1", kind: "problem", name: "w1" },
+  ];
+  const edges = [
+    ["t-n1", "t-a", "hard"],
+    ["t-w1", "t-n1", "hard"],
+    ["t-m", "t-a", "hard"],
+    ["t-w2", "t-m", "hard"],
+  ];
+  const bank = Object.fromEntries(
+    topics.map(({ id }) => [
+      id,
+      [
+        { id: `${id}-q1`, topic: id, level: "standard", type: "numeric", prompt: "", answer: "20", answerRational: ["20", "1"] },
+        { id: `${id}-q2`, topic: id, level: "basic", type: "numeric", prompt: "", answer: "5", answerRational: ["5", "1"] },
+      ],
+    ]),
+  );
+  const ctx = {
+    scope: { kind: "unit", grade: 1, unit: "U1" },
+    index: buildIndex(topics, edges, {}),
+    bank,
+    history: {},
+  };
+
+  await t.test("mastering t-m afterwards does not turn the weak t-a into inferred", () => {
+    const run = runSession(ctx, { known: new Set(["t-m"]) });
+
+    // The scope, hardest first: t-w1, t-n1, t-w2. Then back from t-w1 (t-a is
+    // judged weak there), and only then back from t-w2, where t-m is mastered.
+    assert.deepEqual(run.questions.map((step) => step.topicId), ["t-w1", "t-w1", "t-n1", "t-n1", "t-w2", "t-w2", "t-a", "t-a", "t-m"]);
+    assert.deepEqual(Object.fromEntries([...run.statuses].sort()), {
+      "t-a": STATUS.WEAK,
+      "t-m": STATUS.MASTERED,
+      "t-n1": STATUS.WEAK,
+      "t-w1": STATUS.WEAK,
+      "t-w2": STATUS.WEAK,
+    });
+    assert.deepEqual(run.summary.roots, [{ id: "t-a", confirmed: true, missed: ["t-a-q1", "t-a-q2"] }]);
+    assert.deepEqual(run.summary.path, ["t-a", "t-w2", "t-n1", "t-w1"].map((id) => ({ id, status: STATUS.WEAK })));
+  });
+});
+
 test("a pupil who knows everything finishes every scope topic in at most two questions", async (t) => {
   const pupil = pupilKnowingAll(index);
 
@@ -515,7 +567,7 @@ test("a scope chooses the topics the session covers", async (t) => {
   });
 
   await t.test("a scope that covers nothing is done at once", () => {
-    const empty = { roots: [], path: [], shaky: [], counts: { mastered: 0, shaky: 0, weak: 0, inferred: 0, untested: 0 }, outcomes: [] };
+    const empty = { roots: [], path: [], shaky: [], counts: { mastered: 0, shaky: 0, weak: 0, inferred: 0, untested: 0 }, untested: [], outcomes: [] };
     for (const scope of [{ kind: "topic", id: "mat-nepostoji" }, { kind: "unit", grade: 2, unit: "Nema je" }, { kind: "grade", grade: 7 }]) {
       const state = createSession(fixtureContext(fixture, scope));
 

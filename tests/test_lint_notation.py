@@ -30,7 +30,11 @@ EXPECTED_RULES = [
     (r"\\le|\\ge", 5, "g2-2026-005"),
     (r"\\neq", 5, "g2-2026-005"),
     (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 5, "g2-2026-004"),
+    (r"[<>]", 2, "g2-2026-005"),
 ]
+
+VARIABLE = {"pattern": r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", "min_grade": 5, "outcome": "g2-2026-004", "note": "slovo kao promenljiva"}
+LESS = {"pattern": "[<>]", "min_grade": 2, "outcome": "g2-2026-005", "note": "znaci „manje“ i „veće“"}
 
 
 class NotationCase(unittest.TestCase):
@@ -271,3 +275,40 @@ class RuleFileTest(NotationCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RuleApplicabilityTest(NotationCase):
+    def test_a_rule_for_an_edition_that_is_not_loaded_yet_is_skipped_silently(self):
+        issues = self.lint([{"pattern": r"\\sqrt", "min_grade": 8, "outcome": "g8-2026-001", "note": "koren"}])
+        self.assertEqual(issues.codes(), set())
+
+    def test_a_rule_for_a_missing_outcome_of_a_loaded_edition_is_reported(self):
+        issues = self.lint([{"pattern": r"\\sqrt", "min_grade": 8, "outcome": "g2-2026-999", "note": "koren"}])
+        self.assertEqual(issues.codes(), {"L1-rule-outcome"})
+
+    def test_a_rule_that_is_not_an_object_is_reported_not_dropped(self):
+        raw = helpers.fixture_raw()
+        raw.notation = ["nije objekat"]
+        issues = Issues()
+        notation.run(Corpus.from_raw("math", raw), issues)
+        self.assertEqual(issues.codes(), {"L1-rule-invalid"})
+
+
+class UnitsAreNotVariablesTest(NotationCase):
+    def test_a_unit_letter_inside_text_is_not_a_variable(self):
+        issues = self.lint([VARIABLE], GRADE_ONE, prompt="Koliko je $5\\ \\text{m}$?")
+        self.assertEqual(issues.codes(), set())
+
+    def test_a_bare_letter_still_is_a_variable(self):
+        issues = self.lint([VARIABLE], GRADE_ONE, prompt="Koliko je $x + 2$?")
+        self.assertIn("L1-notation", issues.codes())
+
+
+class ComparisonSignsTest(NotationCase):
+    def test_less_or_greater_below_grade_two_is_reported(self):
+        issues = self.lint([LESS], GRADE_ONE, prompt="Koji je broj veći: $6 > 9$?")
+        self.assertIn("L1-notation", issues.codes())
+
+    def test_less_or_greater_from_grade_two_is_fine(self):
+        issues = self.lint([LESS], GRADE_TWO, prompt="Upiši znak: $56 < 65$")
+        self.assertEqual(issues.codes(), set())

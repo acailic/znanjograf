@@ -288,18 +288,24 @@ function wireForm(preset) {
 
   const grade = () => Number(gradeSelect.value);
   const kind = () => form.querySelector("input[name=zg-kind]:checked")?.value ?? "grade";
+  /** The scope the picker names, or null while it is incomplete or covers no topic. */
   const picked = () => {
     if (!grades().includes(grade())) return null;
+    let scope;
     switch (kind()) {
       case "topic":
-        return byId.has(topicSelect.value) ? { kind: "topic", id: topicSelect.value } : null;
+        scope = byId.has(topicSelect.value) ? { kind: "topic", id: topicSelect.value } : null;
+        break;
       case "unit":
-        return unitSelect.value ? { kind: "unit", grade: grade(), unit: unitSelect.value } : null;
+        scope = unitSelect.value ? { kind: "unit", grade: grade(), unit: unitSelect.value } : null;
+        break;
       case "grade-full":
-        return { kind: "grade-full", grade: grade() };
+        scope = { kind: "grade-full", grade: grade() };
+        break;
       default:
-        return { kind: "grade", grade: grade() };
+        scope = { kind: "grade", grade: grade() };
     }
+    return scope && scopeTopics(scope).length > 0 ? scope : null;
   };
   const sync = () => {
     for (const field of form.querySelectorAll("[data-zg-for]")) field.hidden = field.dataset.zgFor !== kind();

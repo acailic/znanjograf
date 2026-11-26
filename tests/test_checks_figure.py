@@ -94,7 +94,7 @@ SOUND = [
     fig("bars", title="Omiljeni sport", categories=["a", "b"], values=[0.5, 2.5]),
     fig("bars", categories=list("abcdefgh"), values=[1] * 8),
     fig("pictogram", symbol="●", items=[{"label": "Mila", "count": 0}]),
-    fig("pictogram", symbol="kg", items=[{"label": "brašno", "count": 2.5}], perSymbol=0.5),  # a number, not only an integer
+    fig("pictogram", symbol="kg", items=[{"label": "brašno", "count": 5}], perSymbol=2),  # whole numbers: the renderer draws whole symbols
     fig("grid", cols=15, rows=15, cells=[[14, 14], [0, 0]]),
     fig("grid", cols=3, rows=3),
     triangle(),
@@ -321,3 +321,13 @@ class FigureFixtureTest(FigureCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WholeCountsTest(unittest.TestCase):
+    def test_pictogram_counts_must_be_whole(self):
+        good = {"kind": "pictogram", "alt": "Slikovni dijagram sa dva reda.", "symbol": "●",
+                "items": [{"label": "Mila", "count": 3}], "perSymbol": 1}
+        self.assertEqual(figure.validate(good), [])
+        for field, value in (("perSymbol", 0.5),):
+            self.assertTrue(figure.validate(dict(good, **{field: value})))
+        self.assertTrue(figure.validate({**good, "items": [{"label": "Mila", "count": 2.5}]}))

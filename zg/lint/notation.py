@@ -72,7 +72,10 @@ def _rules(corpus: Corpus, issues: Issues) -> list[tuple[re.Pattern, int, str, s
         if problem is not None:
             issues.add(RULE_FILE, where, "L1-rule-invalid", f"{problem}; pravilo je preskočeno")
             continue
-        if not any(rule["outcome"] in edition.outcomes for edition in corpus.editions.values()):
+        edition_id = rule["outcome"].rsplit("-", 1)[0]
+        if edition_id not in corpus.editions:
+            continue  # the program that introduces this notation is not in the corpus yet
+        if rule["outcome"] not in corpus.editions[edition_id].outcomes:
             issues.add(RULE_FILE, where, "L1-rule-outcome", _uncited(rule))
             continue
         usable.append((re.compile(rule["pattern"]), rule["min_grade"], rule["outcome"], rule["note"]))
@@ -93,7 +96,15 @@ def _formulas(question: dict) -> list[str]:
     if isinstance(choices, list):
         texts.extend(choice.get("text") for choice in choices if isinstance(choice, dict))
     texts.append(question.get("explanation"))
-    return [span for text in texts if isinstance(text, str) for span in math_spans(text)]
+    return [_without_units(span) for text in texts if isinstance(text, str) for span in math_spans(text)]
+
+
+_TEXT = re.compile(r"\\text\{[^{}]*\}")
+
+
+def _without_units(span: str) -> str:
+    """The formula without its ``\\text{…}`` unit symbols, so that ``m`` in ``$5\\ \\text{m}$`` is not a variable."""
+    return _TEXT.sub(" ", span)
 
 
 def run(corpus: Corpus, issues: Issues) -> None:

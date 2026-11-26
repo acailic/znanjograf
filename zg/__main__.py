@@ -198,7 +198,7 @@ def _with(args: argparse.Namespace, **changes) -> argparse.Namespace:
 def run_all(args: argparse.Namespace) -> int:
     results = [("validate", run_gate("validate", args)), ("verify", run_gate("verify", args)), ("lint", run_gate("lint", args))]
     if not args.skip_site:
-        results.append(("report --check", run_report(_with(args, check=True))))
+        results.append(("report --check", run_report(_with(args, check=True, write=False))))
         results.append(("build --check", run_build(_with(args, check=True))))
     failed = [name for name, code in results if code != 0]
     print("SVE PROŠLO" if not failed else "PALO: " + ", ".join(failed))

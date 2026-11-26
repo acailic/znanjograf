@@ -64,5 +64,11 @@
     "min_grade": 5,
     "outcome": "g2-2026-004",
     "note": "slovo kao promenljiva"
+  },
+  {
+    "pattern": "[<>]",
+    "min_grade": 2,
+    "outcome": "g2-2026-005",
+    "note": "znaci „manje“ i „veće“"
   }
 ]

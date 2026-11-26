@@ -141,6 +141,20 @@ test("an edge that skips columns runs between two rows and crosses no node", () 
   assertEdgesClear(edges, nodes);
 });
 
+test("the lane of an edge that skips columns sits in the middle of the space above its target", () => {
+  const laneOf = (spec) => {
+    const { nodes, edges } = layout(spec);
+    const target = nodes.find((n) => n.id === "t");
+    const lane = edges.find((e) => e.to === "t").points[2][1];
+    assertEdgesClear(edges, nodes);
+    return target.y - lane; // how far above the target the horizontal part runs
+  };
+  // above the first row of a band there is only the band's padding (10 px)
+  assert.equal(laneOf({ nodes: [node("s", 1, "S"), node("m", 1, "M"), node("t", 1, "T")], edges: [edge("m", "s"), edge("t", "s"), edge("t", "m")] }), 5);
+  // above a lower row there is the gap between two rows (6 px)
+  assert.equal(laneOf({ nodes: [node("s", 1, "S"), node("m", 1, "M"), node("o", 1, "O"), node("t", 1, "T")], edges: [edge("m", "s"), edge("o", "s"), edge("o", "m"), edge("t", "s"), edge("t", "m")] }), 3);
+});
+
 test("random layered graphs keep every invariant", () => {
   let seed = 7; // fixed, so a failure can be replayed
   const random = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;

@@ -49,13 +49,15 @@ export function layout({ nodes = [], edges = [], focus } = {}) {
     });
   }
 
+  const rowOf = new Map(shown.map((entry) => [entry.id, entry.row]));
   const routed = [];
   for (const { from, to, strength } of links) {
     const source = placed.get(from);
     const target = placed.get(to);
     // Edges of hidden nodes, and the ones a cycle would send backwards, are not drawn.
     if (source && target && layer.get(from) < layer.get(to)) {
-      routed.push({ from, to, strength, points: route(source, target, columns.spans.get(layer.get(from))[1], columns.spans.get(layer.get(to))[0]) });
+      const points = route(source, target, columns.spans.get(layer.get(from))[1], columns.spans.get(layer.get(to))[0], rowOf.get(to));
+      routed.push({ from, to, strength, points });
     }
   }
 
@@ -177,9 +179,9 @@ const bandHeight = (rows) => 2 * BAND_PAD + rows * NODE_H + (rows - 1) * ROW_GAP
  * Orthogonal route from the right border of `source` into the left border of
  * `target`. It turns only in the gaps between columns and, when it skips
  * columns, runs along the space just above the target's row, so it never
- * crosses a node.
+ * crosses a node. `row` is the target's row in its band.
  */
-function route(source, target, columnEnd, columnStart) {
+function route(source, target, columnEnd, columnStart, row) {
   const x0 = source.x + source.w;
   const y0 = source.y + source.h / 2;
   const x1 = target.x;
@@ -189,7 +191,8 @@ function route(source, target, columnEnd, columnStart) {
     const turn = columnEnd + COL_GAP / 2; // neighbouring columns share one gap
     points.push([turn, y0], [turn, y1]);
   } else {
-    const lane = target.y - ROW_GAP / 2;
+    // Above the first row of a band there is only its padding; otherwise the gap between two rows.
+    const lane = target.y - (row === 0 ? BAND_PAD : ROW_GAP) / 2;
     points.push([columnEnd + COL_GAP / 2, y0], [columnEnd + COL_GAP / 2, lane], [columnStart - COL_GAP / 2, lane], [columnStart - COL_GAP / 2, y1]);
   }
   points.push([x1, y1]);

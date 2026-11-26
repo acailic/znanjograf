@@ -67,7 +67,7 @@ Ako ih dete reši, sve što im prethodi označava se kao izvedeno i preskače. P
 
 Jedan blok ima najviše 25 pitanja. Kad se blok napuni, dijagnostika staje i nudi „Nastavi“ ili „Vidi rezultat“.
 
-Rezultat se može pogledati u svakom trenutku. Ako ga zaustavite na pauzi, dobijate rezultat do tada, s napomenom da se može dopuniti kad se nastavi. Započeta dijagnostika čuva se u pregledaču, pa se može nastaviti i posle zatvaranja lista.
+Rezultat se može pogledati na pauzi, posle svakog bloka pitanja: tada se dobija rezultat do tada, s napomenom da se može dopuniti kad se nastavi. Usred bloka nema dugmeta za rezultat; blok se može samo završiti. Započeta dijagnostika čuva se u pregledaču, pa se može nastaviti i posle zatvaranja lista.
 
 ### Rezultat je trag, ne ocena
 
@@ -252,7 +252,7 @@ Svaki pristup skladištu je obavijen u `try/catch`, pa sajt radi i kad je skladi
 
 Ovaj primer drži test `tests/node/documented-example.test.js`: ako se motor promeni, test pada i primer se mora prepraviti; primer se ne sme menjati bez puštanja kroz motor.
 
-Pet tema u jednom nizu i jedna sa strane. A, B i C su u 1. razredu, D, P i E u 2. razredu; A je koren. Svaka tema niza čvrsto zahteva prethodnu. E ima još jednu prethodnu temu, P, do koje dolazi mekom granom, a P čvrsto zahteva A. Meki predci dolaze na red tek kad se čvrsti ne pokažu kao rupa, pa se P u glavnom slučaju uopšte ne pita. Tekstovi zadataka i id-jevi ishoda su iz oglednog korpusa (`tests/fixtures/raw.py`) i ne odgovaraju ishodima pravog izdanja `g1-2026`; zadatak A-q3 je ovde numerički.
+Pet tema u jednom nizu i jedna sa strane. A, B i C su u 1. razredu, D, P i E u 2. razredu; A je koren. Svaka tema niza čvrsto zahteva prethodnu. E ima još jednu prethodnu temu, P, do koje dolazi mekom granom, a P čvrsto zahteva A. Meki predci dolaze na red tek kad se čvrsti ne pokažu kao rupa, pa se P u glavnom slučaju uopšte ne pita. Tekstovi zadataka i id-jevi ishoda su iz oglednog korpusa (`tests/fixtures/raw.py`) i ne odgovaraju ishodima pravog izdanja `g1-2026`; u oglednom korpusu je A-q3 zadatak s ponudama, a ovde je prikazan kao numerički; primeru to ništa ne menja, jer njegov odgovor u oba oblika nije jak.
 
 | Oznaka | `id` | Naziv | Razred |
 |---|---|---|---|

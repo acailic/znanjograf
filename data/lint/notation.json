@@ -2,61 +2,61 @@
   {
     "pattern": "\\\\times|\\\\cdot",
     "min_grade": 2,
-    "outcome": "g2-2026-004",
+    "outcome": "g2-2026-005",
     "note": "množenje"
   },
   {
     "pattern": "(?<!\\\\):",
-    "min_grade": 3,
-    "outcome": "g2-2026-004",
+    "min_grade": 2,
+    "outcome": "g2-2026-005",
     "note": "deljenje"
   },
   {
     "pattern": "\\\\frac",
-    "min_grade": 3,
-    "outcome": "g2-2026-004",
+    "min_grade": 2,
+    "outcome": "g2-2026-009",
     "note": "razlomci"
   },
   {
     "pattern": "\\d+\\{,\\}\\d+",
     "min_grade": 5,
-    "outcome": "g2-2026-006",
+    "outcome": "g3-2026-013",
     "note": "decimalni brojevi"
   },
   {
     "pattern": "\\^",
     "min_grade": 7,
-    "outcome": "g2-2026-004",
+    "outcome": "g7-2026-000",
     "note": "stepen"
   },
   {
     "pattern": "\\\\sqrt",
     "min_grade": 8,
-    "outcome": "g2-2026-004",
+    "outcome": "g7-2026-000",
     "note": "kvadratni koren"
   },
   {
     "pattern": "\\\\pi",
     "min_grade": 8,
-    "outcome": "g2-2026-004",
+    "outcome": "g7-2026-000",
     "note": "broj pi"
   },
   {
     "pattern": "\\\\le|\\\\ge",
     "min_grade": 5,
-    "outcome": "g2-2026-005",
+    "outcome": "g3-2026-011",
     "note": "znaci „manje ili jednako“ i „veće ili jednako“"
   },
   {
     "pattern": "\\\\neq",
     "min_grade": 5,
-    "outcome": "g2-2026-005",
+    "outcome": "g5-2026-019",
     "note": "znak „nije jednako“"
   },
   {
     "pattern": "(?<![A-Za-z\\\\])[a-z](?![A-Za-z])",
     "min_grade": 5,
-    "outcome": "g2-2026-004",
+    "outcome": "g3-2026-008",
     "note": "slovo kao promenljiva"
   }
 ]

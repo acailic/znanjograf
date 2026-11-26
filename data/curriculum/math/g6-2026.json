@@ -1,0 +1,209 @@
+{
+  "edition": "g6-2026",
+  "grade": 6,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Celi brojevi",
+      "area": "numbers",
+      "hours": 24,
+      "page": 319,
+      "content": [
+        "Skup celih brojeva $\\mathbb{Z}$, te suprotan broj i apsolutna vrednost celog broja",
+        "Prikazivanje celih brojeva na brojevnoj pravoj i međusobno upoređivanje celih brojeva",
+        "Osnovne računske operacije i njihova svojstva u skupu $\\mathbb{Z}$, kao i izrazi s celim brojevima"
+      ]
+    },
+    {
+      "name": "Racionalni brojevi",
+      "area": "numbers",
+      "hours": 50,
+      "page": 319,
+      "content": [
+        "Prvi deo teme",
+        "Skup racionalnih brojeva, te suprotan broj i apsolutna vrednost racionalnog broja",
+        "Prikazivanje racionalnih brojeva na brojevnoj pravoj i međusobno upoređivanje racionalnih brojeva",
+        "Osnovne računske operacije i njihova svojstva u skupu $\\mathbb{Q}$, kao i izrazi s racionalnim brojevima",
+        "Jednačine i nejednačine:",
+        "Jednačina $ax + b = c$ i nejednačine $ax + b \\le c$ i $ax + b < c$, kao i $ax + b \\ge c$",
+        "Nejednačina $ax + b > c$, gde važi $a, b, c \\in \\mathbb{Q}$ i $a \\neq 0$",
+        "Drugi deo teme",
+        "Koordinatni sistem i prikazivanje podataka u njemu",
+        "Prikazivanje zavisnosti između veličina",
+        "Razmere i proporcije, kao i procenti",
+        "Pojam direktne proporcionalnosti",
+        "Pojam obrnute proporcionalnosti"
+      ]
+    },
+    {
+      "name": "Trougao",
+      "area": "geometry",
+      "hours": 24,
+      "page": 319,
+      "content": [
+        "Prvi deo teme",
+        "Pojam trougla i njegov obim",
+        "Jednakokraki i jednakostranični trouglovi, kao i visina trougla",
+        "Uglovi trougla, zbir uglova trougla i vrste trouglova prema uglovima",
+        "Odnos koji postoji između stranica i uglova trougla, te nejednakost trougla",
+        "Konstruisanje nekih uglova, i to od $60^\\circ$, $120^\\circ$, $30^\\circ$, $45^\\circ$, $75^\\circ$ i $135^\\circ$",
+        "Drugi deo teme",
+        "Osnovni načini konstrukcije trouglova",
+        "Pojam podudarnosti i stavovi o podudarnosti",
+        "Centralna simetrija u vezi s podudarnošću",
+        "Osna simetrija u vezi s podudarnošću",
+        "Centar opisane kružnice trougla i centar kružnice upisane u taj trougao"
+      ]
+    },
+    {
+      "name": "Četvorougao",
+      "area": "geometry",
+      "hours": 22,
+      "page": 319,
+      "content": [
+        "Četvorougao, njegovi uglovi i zbir tih uglova",
+        "Paralelogram, njegove osobine i uslovi pod kojima je četvorougao paralelogram",
+        "Romb, pravougaonik i kvadrat",
+        "Konstruisanje paralelograma",
+        "Sabiranje i oduzimanje vektora, kao i množenje vektora brojem",
+        "Trapez i njegove osobine",
+        "Srednja linija trougla i srednja linija trapeza",
+        "Konstruisanje trapeza",
+        "Deltoid"
+      ]
+    },
+    {
+      "name": "Površina četvorougla i trougla",
+      "area": "geometry",
+      "hours": 16,
+      "page": 320,
+      "content": [
+        "Pojam površine figure te površine pravougaonika i kvadrata",
+        "Podudarne figure imaju jednake površine",
+        "Površine paralelograma, trougla i trapeza",
+        "Površina četvorougla koji ima normalne dijagonale"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g6-2026-001",
+      "text": "čita i zapisuje cele i racionalne brojeve (u obliku razlomka ili decimalnog zapisa), upoređuje ih i prikazuje na brojevnoj pravoj",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-002",
+      "text": "određuje broj suprotan racionalnom broju, njegovu apsolutnu vrednost i njegovu recipročnu vrednost",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-003",
+      "text": "izračunava vrednost jednostavnijeg brojevnog izraza, a rešava jednostavnu linearnu jednačinu i jednostavnu linearnu nejednačinu u skupu racionalnih brojeva",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-004",
+      "text": "rešava jednostavan problem iz svakodnevnog života uz pomoć brojevnog izraza, linearne jednačine ili nejednačine",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-005",
+      "text": "primenjuje proporciju i procenat u situacijama iz stvarnog života",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-006",
+      "text": "prikazuje podatke i zavisnost između dveju veličina u koordinatnom sistemu pomoću dijagrama koji su stubičasti, tačkasti i linijski",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-007",
+      "text": "tumači podatke koji su prikazani tabelom i grafikonom",
+      "page": 319,
+      "area": "numbers",
+      "unit": "Racionalni brojevi"
+    },
+    {
+      "id": "g6-2026-008",
+      "text": "klasifikuje trouglove, odnosno četvorouglove, prema njihovim svojstvima",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Četvorougao"
+    },
+    {
+      "id": "g6-2026-009",
+      "text": "konstruiše uglove od $90^\\circ$ i $60^\\circ$, a njihove delove koristi za konstruisanje drugih uglova",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Trougao"
+    },
+    {
+      "id": "g6-2026-010",
+      "text": "uočava elemente podudarnih trouglova koji jedni drugima odgovaraju",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Trougao"
+    },
+    {
+      "id": "g6-2026-011",
+      "text": "utvrđuje, na osnovu stavova podudarnosti, da li su podudarna dva trougla",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Trougao"
+    },
+    {
+      "id": "g6-2026-012",
+      "text": "konstruiše trougao, paralelogram, kao i trapez kada su zadati elementi (stranice i uglovi trouglova, odnosno četvorouglova, i dijagonala četvorougla)",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Četvorougao"
+    },
+    {
+      "id": "g6-2026-013",
+      "text": "primenjuje svojstva trouglova i četvorouglova kada rešava jednostavnije problemske zadatke",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Četvorougao"
+    },
+    {
+      "id": "g6-2026-014",
+      "text": "sabira i oduzima vektore, a koristi ih u situacijama iz stvarnog života",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Četvorougao"
+    },
+    {
+      "id": "g6-2026-015",
+      "text": "određuje centar opisane kružnice trougla i centar kružnice upisane u taj trougao",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Trougao"
+    },
+    {
+      "id": "g6-2026-016",
+      "text": "primenjuje u zadacima koji su jednostavniji osobine centralne simetrije, osne simetrije i translacije",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Trougao"
+    },
+    {
+      "id": "g6-2026-017",
+      "text": "izračunava kolika je površina trougla i četvorougla, i pritom koristi obrasce ili razloživu jednakost",
+      "page": 319,
+      "area": "geometry",
+      "unit": "Površina četvorougla i trougla"
+    }
+  ]
+}

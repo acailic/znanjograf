@@ -2,7 +2,7 @@
 
 Ovo je spisak onoga što Znanjograf jeste, a šta nije, bez uljepšavanja. Namenjen je pre svega nastavnicima. Kraći oblik ovih ograničenja stoji i na sajtu, na stranici „O projektu“.
 
-U trenutku pisanja, 26. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoji izdanje nastavnog programa za 1. razred (parafraze ishoda), a nema nijedne prave teme, grane ni zadatka: oni postoje samo u oglednom korpusu za testove. Zato nijedna od provera opisanih ovde nije još sprovedena na pravom materijalu.
+U trenutku pisanja, 27. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoje izdanja nastavnog programa za 1–6. razred (parafraze ishoda), a nema nijedne prave teme, grane ni zadatka: oni postoje samo u oglednom korpusu za testove. Zato nijedna od provera opisanih ovde nije još sprovedena na pravom materijalu.
 
 Zato na svakoj stranici sajta, odmah ispod zaglavlja, stoji napomena o tome šta je upisano. Gradnja je ispisuje iz podataka i sama je sklanja kad svaki razred dobije teme s zadacima, pa ne može da ostane da stoji kad više ne važi.
 
@@ -77,7 +77,7 @@ Svaku izmenu u `data/` propuštaju tri programske kapije. One vide oblik i raču
 
 `python3 -m zg all` pokreće sve tri. Pad bilo koje znači da sadržaj nije gotov; provera se ne sme slabiti da bi sadržaj prošao.
 
-Pravila notacije u `data/lint/notation.json` još navode ishode oglednog korpusa i tek treba da se dopune za prave razrede. A i kad budu dopunjena, `lint` vidi samo ono što pravila navedu: ne vidi da li je tekst razumljiv, pa ni tačan zadatak ne mora biti razumljiv detetu.
+Pravila notacije u `data/lint/notation.json` navode ishode pravih izdanja, osim za stepen, kvadratni koren i broj pi: za njih još upućuju na mesto koje čeka izdanje 7. razreda (privremena oznaka `g7-2026-000`), pa se ta pravila ne mogu proveriti protiv programa. I uopšte, `lint` vidi samo ono što pravila navedu: ne vidi da li je tekst razumljiv, pa ni tačan zadatak ne mora biti razumljiv detetu.
 
 ### Ono što nijedna kapija ne vidi
 

@@ -1,0 +1,215 @@
+{
+  "edition": "g4-2026",
+  "grade": 4,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Brojevi",
+      "area": "numbers",
+      "hours": 132,
+      "page": 39,
+      "content": [
+        "Skup koji čine prirodni brojevi i nula",
+        "Dekadni sistem kao način zapisivanja brojeva",
+        "Mesna vrednost cifre, to jest koliko ona vredi na svom mestu u broju",
+        "Svojstva koja ima skup prirodnih brojeva",
+        "Sabiranje i oduzimanje pisanim postupkom",
+        "Množenje i deljenje pisanim postupkom",
+        "Svojstva računskih operacija zapisana u obliku formula",
+        "Izrazi sa više operacija, i to brojevni izrazi i izrazi u kojima ima promenljive",
+        "Jednačine i nejednačine čija se rešenja traže u skupu $N_0$",
+        "Razlomci oblika $\\frac{m}{n}$, gde su $m$ i $n$ najviše $10$",
+        "Upoređivanje razlomaka čiji su brojioci jednaki",
+        "Kada su razlomci jednaki",
+        "Sabiranje i oduzimanje razlomaka čiji su imenioci jednaki",
+        "Zapis broja u decimalnom obliku sa dve decimale",
+        "Sabiranje i oduzimanje brojeva u decimalnom zapisu"
+      ]
+    },
+    {
+      "name": "Geometrija",
+      "area": "geometry",
+      "hours": 12,
+      "page": 39,
+      "content": [
+        "Kvadar i kocka"
+      ]
+    },
+    {
+      "name": "Merenje i mere",
+      "area": "geometry",
+      "hours": 28,
+      "page": 39,
+      "content": [
+        "Merenje površine jedinicama $\\text{m}^2$, $\\text{dm}^2$, $\\text{cm}^2$, $\\text{mm}^2$, $\\text{km}^2$, $\\text{ha}$ i $\\text{a}$",
+        "Površina koju imaju kvadrat i pravougaonik",
+        "Površina koju imaju kvadar i kocka",
+        "Merenje zapremine jedinicama $\\text{m}^3$, $\\text{dm}^3$, $\\text{cm}^3$ i $\\text{mm}^3$",
+        "Zapremina koju imaju kvadar i kocka"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g4-2026-001",
+      "text": "čita i zapisuje prirodne brojeve, upoređuje ih i prikazuje ih na brojevnoj pravoj",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-002",
+      "text": "određuje mesnu vrednost cifre",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-003",
+      "text": "izvršava četiri osnovne računske operacije, i to u skupu $N_0$",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-004",
+      "text": "sastavlja izraz i izračunava kolika je vrednost brojevnog izraza, uz primenu svojstava računskih operacija",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-005",
+      "text": "nalazi rešenja jednačina i nejednačina i proverava da li su tačna",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-006",
+      "text": "rešava problemski zadatak uz pomoć brojevnog izraza, jednačine ili nejednačine",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-007",
+      "text": "procenjuje vrednost izraza koji sadrži jednu računsku operaciju",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-008",
+      "text": "određuje višestruke dekadne jedinice koje su najbliže datom broju",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-009",
+      "text": "čita i zapisuje razlomke oblika $\\frac{m}{n}$, gde su $m$ i $n$ najviše $10$",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-010",
+      "text": "poredi razlomke oblika $\\frac{m}{n}$ kojima su jednaki brojioci ili imenioci",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-011",
+      "text": "sabira i oduzima razlomke čiji su imenioci jednaki",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-012",
+      "text": "zapisuje rezultat merenja dužine u obliku decimalnog broja koji ima najviše dve decimale",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-013",
+      "text": "sabira i oduzima decimalne brojeve koji imaju najviše dve decimale",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-014",
+      "text": "čita i upotrebljava podatke iz tabela ili grafičkih dijagrama i sam ih predstavlja na takav način",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-015",
+      "text": "formira niz prema uputstvu koje mu je dato",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-016",
+      "text": "rešava zadatak primenjujući različite načine na koje predstavlja problem",
+      "page": 39,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g4-2026-017",
+      "text": "imenuje elemente kvadra i kocke i opisuje osobine ova dva tela",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g4-2026-018",
+      "text": "crta mreže kvadra i kocke i pravi modele ova dva tela",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g4-2026-019",
+      "text": "prepoznaje sliku koja pokazuje kako telo izgleda kad se posmatra sa različitih strana",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g4-2026-020",
+      "text": "čita jedinice kojima se meri površina i zapremina, poredi ih i pretvara jedne u druge",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g4-2026-021",
+      "text": "izračunava koliku površinu ima kvadrat, a koliku pravougaonik",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g4-2026-022",
+      "text": "izračunava kolika je površina, a kolika zapremina kvadra i kocke",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g4-2026-023",
+      "text": "rešava problemske zadatke koji su vezani za merenje",
+      "page": 39,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    }
+  ]
+}

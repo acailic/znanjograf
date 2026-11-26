@@ -1,0 +1,246 @@
+{
+  "edition": "g3-2026",
+  "grade": 3,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Brojevi",
+      "area": "numbers",
+      "hours": 136,
+      "page": 34,
+      "content": [
+        "Brojevi prve hiljade",
+        "Usmeni postupak i pisani postupak sabiranja i oduzimanja",
+        "Množenje brojem $10$ i jednocifrenim brojevima, i deljenje brojem iz prve desetice sa ostatkom ili bez njega, i to usmenim i pismenim postupkom",
+        "Kako rezultat zavisi od promena komponenata",
+        "Jednačine ovih oblika: $a + x = b$ i $a - x = b$, zatim $x - a = b$, te $a \\cdot x = b$",
+        "Nejednačine ovih oblika: $a \\pm x < b$ i $a \\pm x > b$, zatim $x - a < b$ i $x - a > b$",
+        "Rimske cifre $D$ i $M$",
+        "Razlomci čiji je oblik $\\frac{m}{n}$, pri čemu važi $m \\le n \\le 10$",
+        "Upoređivanje razlomaka kojima su imenioci jednaki",
+        "Decimalni zapis broja koji ima jednu decimalu"
+      ]
+    },
+    {
+      "name": "Geometrija",
+      "area": "geometry",
+      "hours": 32,
+      "page": 34,
+      "content": [
+        "Međusobni položaj pravih, i to prave koje su paralelne te prave koje se seku",
+        "Ugao i njegove vrste",
+        "Trougao i njegove vrste",
+        "Kružnica i krug",
+        "Pravougaonik i kvadrat",
+        "Obim pravougaonika, kvadrata i trougla",
+        "Prave koje su paralelne i prave koje su normalne crtaju se lenjirom",
+        "Konstrukcija trougla i kružnice",
+        "Geometrijske figure se preslikavaju na kvadratnoj mreži"
+      ]
+    },
+    {
+      "name": "Merenje i mere",
+      "area": "geometry",
+      "hours": 12,
+      "page": 34,
+      "content": [
+        "Masa se meri jedinicama $\\text{kg}$, $\\text{g}$ i $\\text{t}$",
+        "Vreme se meri jedinicama vek, decenija i sekund",
+        "Dužina se meri jedinicama $\\text{mm}$ i $\\text{km}$",
+        "Zapremina tečnosti se meri jedinicama $\\text{l}$, $\\text{dl}$, $\\text{cl}$, $\\text{ml}$ i $\\text{hl}$",
+        "Površina geometrijskih figura meri se merom koja je zadata"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g3-2026-001",
+      "text": "čita i zapisuje brojeve prve hiljade, upoređuje ih i prikazuje na brojevnoj pravoj",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-002",
+      "text": "čita broj koji je zapisan rimskim ciframa i dati broj zapisuje rimskim ciframa, i to do $1\\,000$",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-003",
+      "text": "izvršava četiri osnovne računske operacije usmeno i pismeno, i to do $1\\,000$",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-004",
+      "text": "deli broj brojem iz prve desetice, i to sa ostatkom i bez ostatka, i proverava rezultat",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-005",
+      "text": "procenjuje vrednost izraza koji sadrži jednu računsku operaciju",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-006",
+      "text": "izračunava koliku vrednost ima brojevni izraz u kome nema više od tri računske operacije",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-007",
+      "text": "nalazi najbližu deseticu i najbližu stoticu datog broja",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-008",
+      "text": "rešava jednačinu u kojoj se vrši jedna računska operacija",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-009",
+      "text": "nalazi skup svih rešenja nejednačine u kojoj se sabira ili oduzima i zapisuje ga",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-010",
+      "text": "rešava problemski zadatak tako što se služi brojevnim izrazom ili jednačinom",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-011",
+      "text": "prepoznaje delove od kojih se sastoji celina i zapisuje razlomke oblika $\\frac{m}{n}$, uz uslov $m \\le n \\le 10$",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-012",
+      "text": "upoređuje razlomke $\\frac{m}{n}$ čiji su imenioci jednaki",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-013",
+      "text": "zapisuje rezultat koji daje merenje dužine decimalnim brojem koji ima jednu decimalu",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-014",
+      "text": "otkriva po kom se pravilu formira brojevni niz i to pravilo opisuje rečima",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-015",
+      "text": "čita podatke koji su prikazani u tabeli ili grafički, kao stubičast ili slikovni dijagram, i koristi ih",
+      "page": 34,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g3-2026-016",
+      "text": "crta prave koje su paralelne i prave koje su normalne, kao i pravougaonik i kvadrat",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-017",
+      "text": "izvodi konstrukciju trougla i kruga",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-018",
+      "text": "imenuje elemente trougla, kvadrata i pravougaonika, kao i elemente kruga i ugla",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-019",
+      "text": "razlikuje međusobno uglove prema vrsti i trouglove prema vrsti",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-020",
+      "text": "izračunava obim trougla, kvadrata i pravougaonika primenom obrasca",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-021",
+      "text": "opisuje kakve su osobine pravougaonika, a kakve kvadrata",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-022",
+      "text": "preslikava geometrijsku figuru, i to u kvadratnoj mreži ili tačkastoj mreži, prema uputstvu koje mu je zadato",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-023",
+      "text": "služi se geometrijskim priborom i softverskim alatima kad crta",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g3-2026-024",
+      "text": "čita jedinice za merenje vremena, mase, dužine i zapremine tečnosti, upoređuje ih i pretvara",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g3-2026-025",
+      "text": "upoređuje međusobno veličine, i to masu, dužinu, vreme i zapreminu tečnosti",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g3-2026-026",
+      "text": "meri površinu geometrijske figure merom koja je zadana, i to pravougaonikom, kvadratom i trouglom",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g3-2026-027",
+      "text": "primenjuje pojam merenja u jednostavnim situacijama iz stvarnog života",
+      "page": 34,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    }
+  ]
+}

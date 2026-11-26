@@ -20,7 +20,7 @@ U školskoj 2026/27. godini svih osam razreda radi po programima donetim 2017–
 | 7. | plan za 7. i 8. razred, i „…o programu nastave i učenja za sedmi razred…“ | plan: 18/2018 i 13/2023; program: 5/2019 … 6/2025 |
 | 8. | isti plan za 7. i 8. razred, i „…za osmi razred…“ | plan: 18/2018 i 13/2023; program: 11/2019 … 4/2024 |
 
-Znak „…“ u tabeli znači da je naziv ili spisak brojeva glasnika ovde skraćen. Puni naziv svakog akta, s brojevima glasnika, adresom teksta i danom preuzimanja, čuva se u `data/curriculum/sources.json`; unos za akt 1. razreda je upisan.
+Znak „…“ u tabeli znači da je naziv ili spisak brojeva glasnika ovde skraćen. Puni naziv svakog akta, s brojevima glasnika, adresom teksta i danom preuzimanja, čuva se u `data/curriculum/sources.json`; unosi za akte razreda 1–6 su upisani.
 
 ## 2. Novi programi od 2027/28.
 
@@ -97,6 +97,8 @@ Koliko temu pokriva ishod kaže polje `match`: `exact` znači da tema pokriva ce
 
 ## Šta još nije upisano
 
-U trenutku pisanja, 26. novembra 2026, upisano je izdanje za 1. razred: `data/curriculum/math/g1-2026.json` nosi teme programa i ishode 1. razreda, upisane po pravilu parafraze, s uputom na akt i stranu. U `data/curriculum/sources.json` stoji unos za akt 1. razreda.
+U trenutku pisanja, 27. novembra 2026, upisana su izdanja za 1–6. razred: u `data/curriculum/math/` stoji po jedan fajl za svaki od tih razreda, s temama programa i ishodima upisanim po pravilu parafraze, uz uputu na akt i stranu. U `data/curriculum/sources.json` stoje unosi za svih pet akata (5. i 6. razred dele isti pravilnik).
 
-Teme za 1. razred još nisu upisane, pa svi ishodi izdanja `g1-2026` privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Prava izdanja se upisuju razred po razred: izdanja za 2–8. razred, i izdanja za 2027/28. za 1. i 5. razred, planirana su, a nisu upisana. Puni nazivi skraćenih akata u tabeli, adrese tekstova i štampane strane za ostale razrede biće upisani uz samo izdanje.
+Teme još nisu upisane ni za jedan razred, pa svi ishodi svih izdanja privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Izdanja za 7. i 8. razred, i izdanja za 2027/28. za 1. i 5. razred, planirana su, a nisu upisana.
+
+Svaku parafrazu je alat uporedio s izvornikom i nije našao preuzete nizove reči, a čitalac koji nije pisao izdanje čita značenje naspram izvornika. To nije nastavnik.

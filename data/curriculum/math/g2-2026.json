@@ -1,0 +1,220 @@
+{
+  "edition": "g2-2026",
+  "grade": 2,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Brojevi",
+      "area": "numbers",
+      "hours": 145,
+      "page": 72,
+      "content": [
+        "Brojevi se sabiraju i oduzimaju sa prelaskom, uz zamenu mesta sabiraka i njihovo združivanje",
+        "Veza između sabiranja i oduzimanja",
+        "Jednačine u kojima je jedna operacija, sabiranje ili oduzimanje",
+        "Rimske cifre, i to $\\mathrm{I}$, $\\mathrm{V}$, $\\mathrm{X}$, $\\mathrm{L}$ i $\\mathrm{C}$",
+        "Tablično množenje i deljenje",
+        "Nula i jedinica kada su činioci, i nula kada je deljenik",
+        "Zamena mesta činilaca i njihovo združivanje",
+        "Redosled po kome se izvode računske operacije",
+        "Zbir i razlika se množe i dele brojem",
+        "Veza između množenja i deljenja, i jednačine u kojima je jedna operacija, množenje ili deljenje",
+        "Brojevni izrazi, i to kako se izraz sastavlja na osnovu realistične situacije",
+        "Razlomci oblika $\\frac{1}{n}$, gde je $n$ od $1$ do $10$, prikazani vizuelno i simbolički"
+      ]
+    },
+    {
+      "name": "Geometrija",
+      "area": "geometry",
+      "hours": 22,
+      "page": 72,
+      "content": [
+        "Poluprava, prava i duž, pa tačka i prava, i izlomljena linija koja je otvorena ili zatvorena",
+        "Duži se grafički nadovezuju, pa se određuje dužina izlomljene linije i obim geometrijskih figura, i to bez upotrebe formula",
+        "Pravougaonik, kvadrat i trougao se crtaju na kvadratnoj mreži i na tačkastoj mreži",
+        "Figure koje su simetrične",
+        "Podudarnost figura, na intuitivan način"
+      ]
+    },
+    {
+      "name": "Merenje i mere",
+      "area": "geometry",
+      "hours": 13,
+      "page": 72,
+      "content": [
+        "Dužina se meri jedinicama mere koje su standardne ($\\text{m}$, $\\text{dm}$, $\\text{cm}$)",
+        "Merenje vremena pomoću dana, meseca, godine, časa i minuta"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g2-2026-001",
+      "text": "određuje desetice koje su datom broju najbliže",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-002",
+      "text": "sabira i oduzima, bez zapisivanja postupka, brojeve do $100$",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-003",
+      "text": "služi se nazivima činilac i proizvod, deljenik, delilac i količnik, i sadržalac",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-004",
+      "text": "primenjuje zamenu mesta sabiraka i činilaca, i njihovo združivanje, da bi mu računanje bilo lakše",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-005",
+      "text": "množi i deli, bez zapisivanja postupka, u granicama prve stotine",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-006",
+      "text": "izračunava vrednost brojevnog izraza u kome ima najviše dve operacije",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-007",
+      "text": "rešava tekstualni zadatak tako što postavi izraz u kome su najviše dve računske operacije, pa proverava da li je rešenje tačno",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-008",
+      "text": "određuje broj koji nije poznat u jednačini koja ima jednu aritmetičku operaciju",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-009",
+      "text": "određuje delove date veličine koji su oblika $\\frac{1}{n}$",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-010",
+      "text": "izražava datu sumu novca pomoću različitih apoena",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-011",
+      "text": "čita broj koji je rimskim ciframa zapisan, a dati broj zapisuje rimskim ciframa",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-012",
+      "text": "prikazuje manji broj podataka tablicom i stubičastim dijagramom",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-013",
+      "text": "prepoznaje pravilo u započetom nizu i određuje koji je sledeći član",
+      "page": 72,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g2-2026-014",
+      "text": "razlikuje međusobno pravu, polupravu i duž",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-015",
+      "text": "određuje kolika je dužina izlomljene linije, i to grafički i računski",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-016",
+      "text": "određuje koliki je obim geometrijske figure",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-017",
+      "text": "crta na kvadratnoj mreži i na tačkastoj mreži pravougaonik, kvadrat i trougao",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-018",
+      "text": "prepoznaje podudarne figure na crtežu koji mu je dat",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-019",
+      "text": "prepoznaje simetrične figure",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-020",
+      "text": "dopunjuje dati crtež tako da figura koja se dobije bude simetrična s obzirom na datu pravu",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g2-2026-021",
+      "text": "izražava dužinu različitim jedinicama kojima se dužina meri",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g2-2026-022",
+      "text": "meri dužinu duži i crta duž date dužine",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g2-2026-023",
+      "text": "čita vreme sa časovnika i zapisuje ga",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g2-2026-024",
+      "text": "služi se jedinicama za vreme kada je situacija jednostavna",
+      "page": 72,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    }
+  ]
+}

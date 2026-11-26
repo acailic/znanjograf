@@ -1,4 +1,4 @@
-"""L1 on deliberately broken notation: each rule code on one broken example, and the real rule file against the fixture."""
+"""L1 on deliberately broken notation: each rule code on one broken example, and the real rule file against the repository and the fixture."""
 
 import copy
 import tempfile
@@ -17,18 +17,19 @@ GRADE_TWO = "mat-sabiranje-do-100-q1"
 TIMES = {"pattern": r"\\times|\\cdot", "min_grade": 2, "outcome": "g2-2026-004", "note": "množenje"}
 MINUS = {"pattern": r"\d\s*-\s*\d", "min_grade": 2, "outcome": "g2-2026-003", "note": "oduzimanje"}
 
-# (pattern, min_grade, outcome) of every rule data/lint/notation.json must hold.
+# (pattern, min_grade, note) of every rule data/lint/notation.json must hold. Which outcome a rule
+# cites is checked against the repository's own editions below, so re-citing is not a test change.
 EXPECTED_RULES = [
-    (r"\\times|\\cdot", 2, "g2-2026-004"),
-    (r"(?<!\\):", 3, "g2-2026-004"),
-    (r"\\frac", 3, "g2-2026-004"),
-    (r"\d+\{,\}\d+", 5, "g2-2026-006"),
-    (r"\^", 7, "g2-2026-004"),
-    (r"\\sqrt", 8, "g2-2026-004"),
-    (r"\\pi", 8, "g2-2026-004"),
-    (r"\\le|\\ge", 5, "g2-2026-005"),
-    (r"\\neq", 5, "g2-2026-005"),
-    (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 5, "g2-2026-004"),
+    (r"\\times|\\cdot", 2, "množenje"),
+    (r"(?<!\\):", 2, "deljenje"),
+    (r"\\frac", 2, "razlomci"),
+    (r"\d+\{,\}\d+", 5, "decimalni brojevi"),
+    (r"\^", 7, "stepen"),
+    (r"\\sqrt", 8, "kvadratni koren"),
+    (r"\\pi", 8, "broj pi"),
+    (r"\\le|\\ge", 5, "znaci „manje ili jednako“ i „veće ili jednako“"),
+    (r"\\neq", 5, "znak „nije jednako“"),
+    (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 5, "slovo kao promenljiva"),
 ]
 
 VARIABLE = {"pattern": r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", "min_grade": 5, "outcome": "g2-2026-004", "note": "slovo kao promenljiva"}
@@ -204,17 +205,45 @@ class BrokenRuleTest(NotationCase):
 
 
 class RuleFileTest(NotationCase):
-    """``data/lint/notation.json`` itself: usable, cited against the fixture, and silent on the unmutated fixture."""
+    """``data/lint/notation.json`` itself: cited against the repository, and doing what its rules say."""
 
     def setUp(self):
         self.rules = jsonio.load(paths.NOTATION_FILE)
-        self.fixture = Corpus.from_raw("math", helpers.fixture_raw())
 
-    def test_every_cited_outcome_is_in_the_fixture(self):
-        outcomes = {outcome for edition in self.fixture.editions.values() for outcome in edition.outcomes}
-        self.assertIsInstance(self.rules, list)
+    def _raw(self):
+        """The fixture carrying the real rules, with every citation made to resolve against its editions.
+
+        The fixture's editions are not the real ones, so an outcome a rule cites may be missing
+        there; the rule would be dropped as uncited and never reach the questions.
+        """
+        raw = helpers.fixture_raw()
+        helpers.notation_rules(raw, copy.deepcopy(self.rules))
         for rule in self.rules:
-            self.assertIn(rule["outcome"], outcomes, rule["pattern"])
+            edition = raw.editions.get(rule["outcome"].rsplit("-", 1)[0])
+            if edition is not None and rule["outcome"] not in {outcome["id"] for outcome in edition["outcomes"]}:
+                edition["outcomes"].append({"id": rule["outcome"], "text": "ogledni ishod", "page": 1, "area": "numbers", "unit": "Brojevi"})
+        return raw
+
+    def lint(self, rules: list | None = None, question_id: str | None = None, **fields) -> Issues:
+        raw = self._raw()
+        if question_id is not None:
+            helpers.question(raw, question_id).update(fields)
+        issues = Issues()
+        notation.run(Corpus.from_raw("math", raw), issues)
+        return issues
+
+    def test_every_cited_outcome_exists_or_waits_for_its_edition(self):
+        """A rule cites an outcome of a real edition; ``gN-2026-000`` only while that edition is not written."""
+        self.assertIsInstance(self.rules, list)
+        corpus = Corpus.load("math")
+        real = {outcome for edition in corpus.editions.values() for outcome in edition.outcomes}
+        for rule in self.rules:
+            with self.subTest(rule["pattern"]):
+                edition_id, outcome_id = rule["outcome"].rsplit("-", 1)
+                if outcome_id == "000":
+                    self.assertNotIn(edition_id, corpus.editions, "the edition is written: cite one of its outcomes")
+                else:
+                    self.assertIn(rule["outcome"], real)
 
     def test_rules_carry_a_short_serbian_note(self):
         for rule in self.rules:
@@ -224,9 +253,8 @@ class RuleFileTest(NotationCase):
                 self.assertNotRegex(rule["note"], "[\u0400-\u04ff]")
 
     def test_file_holds_the_rules_the_plan_asks_for(self):
-        present = {(rule["pattern"], rule["min_grade"], rule["outcome"]) for rule in self.rules}
-        for rule in EXPECTED_RULES:
-            self.assertIn(rule, present)
+        present = {(rule["pattern"], rule["min_grade"], rule["note"]) for rule in self.rules}
+        self.assertEqual(present, set(EXPECTED_RULES))
         self.assertEqual(len(self.rules), len(EXPECTED_RULES))
 
     def test_unmutated_fixture_produces_no_notation_issue(self):
@@ -234,14 +262,15 @@ class RuleFileTest(NotationCase):
         notation.run(self._corpus(), issues)
         self.assertEqual(issues, [])
 
-    def test_minus_in_grade_two_is_what_the_fixture_already_writes(self):
-        issues = self.lint(self.rules, "mat-oduzimanje-do-100-q1", prompt="Koliko je $58 - 23$?")
-        self.assertEqual(issues, [])
+    def test_what_grade_two_meets_is_clean_in_grade_two(self):
+        # the grade-2 program itself brings division with ``:`` and the notion of a fraction
+        for prompt in ("$58 - 23$", "$6 : 2$", r"$\frac{1}{2}$"):
+            with self.subTest(prompt):
+                issues = self.lint(self.rules, "mat-oduzimanje-do-100-q1", prompt=f"Koliko je {prompt}?")
+                self.assertEqual(issues, [])
 
     def test_notation_that_comes_later_is_reported_with_its_note(self):
         for prompt, note in [
-            ("$6 : 2$", "deljenje"),
-            (r"$\frac{1}{2}$", "razlomci"),
             (r"$3{,}5$", "decimalni brojevi"),
             (r"$2^3$", "stepen"),
             (r"$\sqrt{9}$", "kvadratni koren"),
@@ -258,7 +287,12 @@ class RuleFileTest(NotationCase):
                 self.assertIn(note, issues[0].message)
 
     def test_multiplication_is_notation_beyond_grade_one(self):
-        for prompt, note in [("$3 \\times 4$", "množenje"), ("$3 \\cdot 4$", "množenje"), ("$12 : 4$", "deljenje")]:
+        for prompt, note in [
+            ("$3 \\times 4$", "množenje"),
+            ("$3 \\cdot 4$", "množenje"),
+            ("$12 : 4$", "deljenje"),
+            (r"$\frac{1}{2}$", "razlomci"),
+        ]:
             with self.subTest(prompt):
                 issues = self.lint(self.rules, GRADE_ONE, prompt=f"Koliko je {prompt}?")
                 self.assertEqual(len(issues), 1, [issue.message for issue in issues])
@@ -272,9 +306,7 @@ class RuleFileTest(NotationCase):
                 self.assertEqual(issues.codes(), set())
 
     def _corpus(self) -> Corpus:
-        raw = helpers.fixture_raw()
-        helpers.notation_rules(raw, copy.deepcopy(self.rules))
-        return Corpus.from_raw("math", raw)
+        return Corpus.from_raw("math", self._raw())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,309 @@
+{
+  "edition": "g5-2026",
+  "grade": 5,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Prirodni brojevi i deljivost",
+      "area": "numbers",
+      "hours": 34,
+      "page": 169,
+      "content": [
+        "Prvi deo teme",
+        "Svojstva koja u skupu $\\mathbb{N}_0$ imaju sabiranje, množenje, oduzimanje i deljenje",
+        "Deljenje u skupu $\\mathbb{N}_0$ kada ima ostatak, uz jednakost $a = bq + r$ u kojoj je $0 \\le r < b$",
+        "Koje su osobine deljivosti, i koji su činioci, a koji sadržaoci prirodnog broja",
+        "Deljivost brojeva sa $2$, $5$ i dekadnim jedinicama",
+        "Deljivost brojeva sa $4$ i $25$",
+        "Deljivost brojeva sa $3$ i $9$",
+        "Skupovi i operacije nad skupovima: unija, presek i razlika",
+        "Drugi deo teme",
+        "Koji su brojevi prosti, a koji složeni",
+        "Eratostenovo sito",
+        "Kako se prirodan broj rastavlja na proste činioce",
+        "Zajednički delioci i najveći među njima; Euklidov algoritam kojim se najveći zajednički delilac nalazi",
+        "Zajednički sadržaoci i najmanji među njima; veza između najvećeg zajedničkog delioca i najmanjeg zajedničkog sadržaoca"
+      ]
+    },
+    {
+      "name": "Osnovni pojmovi geometrije",
+      "area": "geometry",
+      "hours": 17,
+      "page": 169,
+      "content": [
+        "Tačke i prave; odnos pripadanja među njima i njihov međusobni raspored",
+        "Kako se prave odnose jedna prema drugoj u ravni; paralelnost",
+        "Kako se duž meri i kada su duži jednaki",
+        "Kružnica i krug, zatim kako stoje kružnica i prava jedna prema drugoj",
+        "Kako se duž prenosi i kako se duži nadovezuju jedna na drugu",
+        "Centralna simetrija",
+        "Vektor i translacija"
+      ]
+    },
+    {
+      "name": "Ugao",
+      "area": "geometry",
+      "hours": 17,
+      "page": 169,
+      "content": [
+        "Ugao i centralni ugao; kada su uglovi jednaki",
+        "Nadovezivanje uglova, i to: susedni uglovi, upoređivanje uglova pomoću konstrukcije, te sabiranje uglova i oduzimanje uglova",
+        "Koje su vrste uglova i šta su uporedni uglovi",
+        "Kako se ugao meri, te kako se mere uglova sabiraju i oduzimaju",
+        "Ugao koji zaklapaju dve prave, prave koje su normalne, te unakrsni uglovi",
+        "Uglovi na transverzali",
+        "Translacija i uglovi"
+      ]
+    },
+    {
+      "name": "Razlomci",
+      "area": "numbers",
+      "hours": 55,
+      "page": 170,
+      "content": [
+        "Prvi deo teme",
+        "Šta je razlomak oblika $\\frac{a}{b}$, gde su $a$ i $b$ prirodni brojevi",
+        "Razlomci i tačke brojevne poluprave koje im odgovaraju",
+        "Razlomci se proširuju, skraćuju i međusobno upoređuju",
+        "Kako se razlomak zapisuje decimalno i kako se decimalni zapis prevodi u oblik $\\frac{a}{b}$, gde je $b \\ne 0$; upoređivanje brojeva koji su zapisani decimalno",
+        "Brojevi se zaokružuju",
+        "Drugi deo teme",
+        "Osnovne računske operacije koje se u oba zapisa izvode s razlomcima, i svojstva tih operacija. Izrazi",
+        "Rešavanje nejednačina i jednačina u skupu razlomaka",
+        "Treći deo teme",
+        "Gde se razlomci primenjuju: procenti, aritmetička sredina i razmera; osnovna nejednakost $p < \\frac{p+q}{2} < q$"
+      ]
+    },
+    {
+      "name": "Osna simetrija",
+      "area": "geometry",
+      "hours": 13,
+      "page": 170,
+      "content": [
+        "Kakve osobine ima osna simetrija u ravni",
+        "Osa simetrije figure",
+        "Simetrala duži; konstruisanje normale",
+        "Simetrala ugla"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g5-2026-001",
+      "text": "izračunava vrednost brojevnog izraza koji je jednostavniji i nalazi rešenje jednostavne linearne jednačine ili nejednačine (u skupu prirodnih brojeva)",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-002",
+      "text": "rešava jednostavan svakodnevan problem tako što se služi brojevnim izrazom, linearnom jednačinom ili nejednačinom (u skupu prirodnih brojeva)",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-003",
+      "text": "služi se pravilima za deljivost sa $2$, $3$, $4$, $5$, $9$, $25$ i dekadnim jedinicama",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-004",
+      "text": "razlikuje proste od složenih brojeva i broj rastavlja na proste činioce",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-005",
+      "text": "nalazi najmanji zajednički sadržalac i najveći zajednički delilac, i primenjuje ih",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-006",
+      "text": "izvodi uniju, presek i razliku skupova i pravilno se služi odgovarajućim oznakama za skupove",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-007",
+      "text": "pravilno upotrebljava reči „i“, „ili“, „ne“ i „svaki“ u matematičko-logičkom značenju",
+      "page": 169,
+      "area": "numbers",
+      "unit": "Prirodni brojevi i deljivost"
+    },
+    {
+      "id": "g5-2026-008",
+      "text": "analizira odnose među datim geometrijskim objektima i te odnose zapisuje matematičkim pismom",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-009",
+      "text": "opisuje osnovne pojmove koji se odnose na krug (centar, poluprečnik, tangenta, tetiva) i određuje gde se tačka i prava nalaze u odnosu na krug",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-010",
+      "text": "crta pravu koja je paralelna sa datom pravom, uz pomoć geometrijskog pribora",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-011",
+      "text": "upoređuje duži, sabira ih i oduzima, i to konstrukcijom i računski",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-012",
+      "text": "preslikava dati geometrijski objekat pomoću centralne simetrije i translacije",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-013",
+      "text": "pravilno se služi geometrijskim priborom",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Osnovni pojmovi geometrije"
+    },
+    {
+      "id": "g5-2026-014",
+      "text": "prepoznaje vrste uglova i opisuje njihova svojstva (susedni, uporedni i unakrsni uglovi, uglovi na transverzali i uglovi čiji su krakovi paralelni), i primenjuje kako se ti uglovi međusobno odnose",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Ugao"
+    },
+    {
+      "id": "g5-2026-015",
+      "text": "crta pomoću geometrijskog pribora pravu koja je na datu pravu normalna",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Ugao"
+    },
+    {
+      "id": "g5-2026-016",
+      "text": "meri dati ugao i crta ugao čija je mera zadata",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Ugao"
+    },
+    {
+      "id": "g5-2026-017",
+      "text": "upoređuje uglove, sabira ih i oduzima, i to računski i konstruktivno",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Ugao"
+    },
+    {
+      "id": "g5-2026-018",
+      "text": "rešava jednostavan zadatak tako što primenjuje osnovna svojstva paralelograma (naspramne stranice su jednake i naspramni uglovi su jednaki)",
+      "page": 169,
+      "area": "geometry",
+      "unit": "Ugao"
+    },
+    {
+      "id": "g5-2026-019",
+      "text": "čita, zapisuje i upoređuje razlomke zapisane na oba načina, prikazuje ih na brojevnoj polupravoj i pretvara ih tako da iz jednog zapisa pređu u drugi",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-020",
+      "text": "određuje koliku mesnu vrednost ima cifra u decimalnom zapisu broja",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-021",
+      "text": "zaokružuje broj i procenjuje kolika je greška zaokruživanja",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-022",
+      "text": "izračunava vrednost brojevnog izraza koji je jednostavniji i nalazi rešenje jednostavne linearne jednačine i nejednačine",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-023",
+      "text": "rešava jednostavan svakodnevan problem tako što se služi brojevnim izrazom, linearnom jednačinom ili nejednačinom",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-024",
+      "text": "računa procenat date veličine",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-025",
+      "text": "primenjuje razmeru u situacijama iz stvarnog života koje su jednostavne",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-026",
+      "text": "služi se aritmetičkom sredinom datih brojeva",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-027",
+      "text": "prikuplja podatke, pa ih tabelom i kružnim dijagramom prikazuje, a po potrebi se služi kalkulatorom ili softverom koji je na raspolaganju",
+      "page": 170,
+      "area": "numbers",
+      "unit": "Razlomci"
+    },
+    {
+      "id": "g5-2026-028",
+      "text": "prepoznaje figuru koja je osnosimetrična i određuje njenu osu simetrije",
+      "page": 170,
+      "area": "geometry",
+      "unit": "Osna simetrija"
+    },
+    {
+      "id": "g5-2026-029",
+      "text": "preslikava simetrično tačku, duž i figuru koja je jednostavnija, pomoću geometrijskog pribora",
+      "page": 170,
+      "area": "geometry",
+      "unit": "Osna simetrija"
+    },
+    {
+      "id": "g5-2026-030",
+      "text": "konstruiše simetralu duži i simetralu ugla, te primenjuje njihova svojstva",
+      "page": 170,
+      "area": "geometry",
+      "unit": "Osna simetrija"
+    },
+    {
+      "id": "g5-2026-031",
+      "text": "konstruiše normalu na datu pravu ili pravu koja je datoj pravoj paralelna",
+      "page": 170,
+      "area": "geometry",
+      "unit": "Osna simetrija"
+    }
+  ]
+}

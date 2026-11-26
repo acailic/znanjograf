@@ -36,7 +36,7 @@ Izvor: `ZCodeProject/research/sr-math-curriculum/` (izveštaji agenata koji su �
 3. **Formati se razlikuju po generaciji programa.** Program za 1. razred (2017) ima „ISHODI — po završetku razreda učenik će biti u stanju da…“ kao nebrojanu listu, zatim oblasti, teme i sadržaje, ključne pojmove i uputstvo s predloženim fondom časova po temama. Program za 5. razred (2018) ima pet tema s fondom časova i 39 nerazvrstanih ishoda. Program za 7. razred (2019) ide tabelom „predmetni ishodi za kraj šestog razreda | oblasti i/ili teme | predmetni sadržaji“.
 4. **Novi format** (od 2027/28, za 1. i 5. razred) donosi kodirane ishode po nivoima (`МАТ.А.ОО.О.1.1.`, tj. основни / средњи / напредни) u tri oblasti: brojevi i algebra, geometrija i merenje, obrada podataka i slučajnost.
 5. **Službeni tekstovi su čitljivi:** API Pravno-informacionog sistema (`slgl.pravno-informacioni-sistem.rs/api/Prins/viewDoc?actId=…`), preuzimanja ZUOV-a (`zuov.gov.rs`) i ogledalo Paragrafa (`demo.paragraf.rs`).
-6. **Ponovna upotreba tekstova ishoda još nije presuđena.** Pravilo: tekst ishoda se čuva bukvalno samo ako fazu 1 utvrdi pravni osnov (akt državnog organa po čl. 6 Zakona o autorskom i srodnim pravima, ili izričita otvorena licenca na izvoru); u suprotnom se čuva parafraza uz pokazivač na akt i stranu. `sources.json` beleži koje je pravilo primenjeno i dokaz.
+6. **Tekstovi ishoda se čuvaju kao parafraza.** Sajt ZUOV-a, s koga se preuzimaju tekstovi pravilnika, objavljuje sadržaj pod Creative Commons Autorstvo-Nekomercijalno-Bez prerada 3.0 Srbija (CC BY-NC-ND 3.0 RS; https://zuov.gov.rs/uslovi-koriscenja-licenca/), a nije potvrđeno da Zakon o autorskom i srodnim pravima izuzima same akte. Zato `data/` sadrži parafrazu svakog ishoda (isto značenje, sopstvene reči) uz pokazivač na akt i štampanu stranu; bukvalan tekst ne ulazi u repozitorijum, a PDF-ovi se ne distribuiraju. `sources.json` beleži odluku i dokaz. Drugi agent poredi svaku parafrazu s izvornikom po značenju.
 
 **Posledice za dizajn.** Prvih osam izdanja gradi se po važećim programima. Za 1. i 5. razred beleži se i izdanje 2027/28 (ishodi i teme), a teme se mapiraju na oba, da skup ne zastari za godinu dana. Tri oblasti novog formata jesu zajednička podela za sve razrede.
 
@@ -343,7 +343,7 @@ CI na svaki push i `pull_request` za `main`: `python3 -m zg all`, `node --test`,
 | Faza | Sadržaj | Gotovo kad |
 |---|---|---|
 | 0 | Repo, licence, `zg`, CI, šablon sajta | `python3 -m zg all` i `node --test` prolaze na oglednim primerima; CI zelen; Pages otvara stranicu |
-| 1 | Ishodi za 1. razred | Svaka stranica matematičkog odeljka je citirana ili označena da nema ishod; drugi agent uporedio tekst s izvorom; `sources.json` sadrži rešenje o bukvalnom prenosu |
+| 1 | Ishodi za 1. razred | Svaka stranica matematičkog odeljka je parafrazirana ili označena da nema ishod; drugi agent uporedio parafrazu sa značenjem izvora; `sources.json` navodi dokaz za parafrazu |
 | 2 | Prvi razred od kraja do kraja | Teme, grane, zadaci i sajt rade na oba pisma; motor na simuliranom učeniku vraća tačne korene; svaka kapija iz §9 zelena za 1. razred |
 | 3 | Ishodi za razrede 2–8 | Isto što i faza 1, za svih sedam razreda |
 | 4 | Mapa tema za razrede 2–8 | Nema skoro-duplikata; svaka tema mapirana na ishod; `validate` čist |

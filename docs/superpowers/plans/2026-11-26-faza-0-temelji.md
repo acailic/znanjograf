@@ -266,7 +266,7 @@ class CorpusTest(unittest.TestCase):
 **Files:** Create `tests/fixtures/raw.py` (the only hand-written data in tests), `tests/helpers.py`.
 **Produces:** `fixture_raw() -> RawCorpus` (fresh copy each call), `fixture_corpus() -> Corpus`, `find(raw, kind, id)`, `write_corpus(root, raw)` (writes a real tree for CLI tests).
 
-Fixture = spec §5 shapes, 2 grades, 8 topics, 7 edges, 32 questions (2 basic + 2 standard each), editions `g1-2026` (5 outcomes) and `g2-2026` (6 outcomes), all outcomes mapped. It is **valid by definition**: every gate must return zero issues on it.
+Fixture = spec §5 shapes, 2 grades, 8 topics, 8 edges, 32 questions (2 basic + 2 standard each), editions `g1-2026` (5 outcomes) and `g2-2026` (6 outcomes), all outcomes mapped. It is **valid by definition**: every gate must return zero issues on it.
 
 - [ ] **Step 1: Write the fixture and helpers.**
 - [ ] **Step 2: Write `tests/test_fixture_is_wellformed.py`** asserting shapes only (counts, id patterns, 4 questions per topic).
@@ -316,7 +316,7 @@ Every task: write the failing tests first, run them, implement, run the whole su
 **Files:** Create `zg/dsl.py`, `zg/mathcheck.py`, `tests/fixtures/answer-vectors.json`, `tests/test_dsl.py`, `tests/test_mathcheck.py`.
 **Produces:** C6, plus `verify(corpus, issues)` in `mathcheck.py`.
 
-`verify`: `S-check-parse` (`DslError`), `S-check-depth`, `S-check-zero`; `S-answer-mismatch` when `not answers_equal(evaluate(parse(check)), parse_answer(answer), round_to)`; `S-choice-value` when the correct choice's text does not evaluate to the answer, or a wrong choice's text does; `S-round-to` when the value is irrational (`Decimal`) and `round_to` is missing. Choice texts are parsed with `parse_answer` first, then `dsl.parse`.
+`verify`: `S-check-parse` (`DslError`), `S-check-depth`, `S-check-zero`; `S-answer-mismatch` when `not answers_equal(evaluate(parse(check)), parse_answer(answer), round_to)`; `S-choice-value` when a numeric option is wrong yet equals the answer, or the correct option's text does not evaluate to the answer; when no option parses as a number, the correct option's `text` must equal `check` exactly (the fixture's `mat-geometrijski-oblici` questions work this way); `S-round-to` when the value is irrational (`Decimal`) and `round_to` is missing. Choice texts are parsed with `parse_answer` first, then `dsl.parse`.
 
 `tests/fixtures/answer-vectors.json` is shared with the JS engine (Task 11): `[{"text": "3,5", "num": "7", "den": "2"}, {"text": "2 3/4", "num": "11", "den": "4"}, …]` — at least 24 vectors including negatives, leading `+`, spaces as thousands separators, `1.000` (= 1000), `1.5` (= 1.5), `007`, `-0`, and invalid inputs (`""`, `"3,,5"`, `"1/0"`, `"abc"`, `"3 4"`).
 
@@ -384,7 +384,7 @@ def readme_block(corpus) -> str      # the markdown table between <!-- zg:stats 
 def check_readme(text: str, block: str) -> bool
 ```
 
-- [ ] Tests at minimum: hash is stable across key order; `stale` reports a changed record and an unmarked one; `diff` passes a clean answer set and fails on wrong answer, own-check mismatch, `unique: false`, non-empty `assumptions`, distractor rated 2; `stats` on the fixture = 8 topics / 7 edges / 32 questions / 11 outcomes; `readme_block` round-trips through `check_readme`.
+- [ ] Tests at minimum: hash is stable across key order; `stale` reports a changed record and an unmarked one; `diff` passes a clean answer set and fails on wrong answer, own-check mismatch, `unique: false`, non-empty `assumptions`, distractor rated 2; `stats` on the fixture = 8 topics / 8 edges (6 hard, 2 soft) / 32 questions / 11 outcomes; `readme_block` round-trips through `check_readme`.
 
 ### Task 10 — `build.py`
 
@@ -407,7 +407,7 @@ If `translit` is not importable yet, tests may import a local stub — but the c
 **Files:** Create `graph.js`, `rational.js`, `answer.js`, `verdict.js`, `session.js`, `result.js`, `encode.js`, `tests/node/engine.test.js`, `tests/node/helpers.js` (reads `tests/fixtures/answer-vectors.json` and the fixture built by `tests/helpers.py` via a JSON dump in `tests/fixtures/engine-fixture.json` — the coordinator generates it in Task 14; until then load it through `child_process` `python3 -c …`; keep that in a helper so it is one line to change).
 **Produces:** C7 exactly.
 
-- [ ] Tests at minimum (node:test + assert): all vectors in `answer-vectors.json` parse to the expected rational; simulated pupil who knows all ancestors-closed sets: for **every** topic `k` used as the single missing root, diagnosing `mat-zadaci-sa-sabiranjem` returns `k` among `roots` with `confirmed === true`; knows-everything pupil reaches `mastered` on all scope topics with ≤ 2 questions per topic; knows-nothing pupil: every root is `confirmed`, and no topic is `mastered`; guessing pupil on the choice-only fixture topic never gets `mastered` with 3 wrong... (assert false-mastery rate over 2000 seeded random sessions is < 8 %); budget: `next()` returns `paused` after exactly `budget` questions and `extend()` continues; replay: `reduce(log)` equals the live state for any prefix; `apply` with a wrong question id throws `ZG_OUT_OF_SYNC`; `encodeSession`/`decodeSession` round-trip and reject garbage; `gradeExits(2)` equals the Python fixture expectation.
+- [ ] Tests at minimum (node:test + assert): all vectors in `answer-vectors.json` parse to the expected rational; simulated pupil who knows all ancestors-closed sets: for **every** topic `k` used as the single missing root, diagnosing `mat-zadaci-sa-sabiranjem` returns `k` among `roots` with `confirmed === true`; knows-everything pupil reaches `mastered` on all scope topics with ≤ 2 questions per topic; knows-nothing pupil: every root is `confirmed`, and no topic is `mastered`; a pupil who guesses every answer: over 2000 seeded random sessions on the choice-only fixture topic `mat-geometrijski-oblici` (four options, so pure chance is 1/16) the `mastered` rate is below 10 %; budget: `next()` returns `paused` after exactly `budget` questions and `extend()` continues; replay: `reduce(log)` equals the live state for any prefix; `apply` with a wrong question id throws `ZG_OUT_OF_SYNC`; `encodeSession`/`decodeSession` round-trip and reject garbage; `gradeExits(2)` equals the Python fixture expectation.
 
 ### Task 12 — Figures, layout, graph view, KaTeX wrapper
 

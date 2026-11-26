@@ -152,3 +152,34 @@ class MirrorCheckDetailsTest(unittest.TestCase):
             issues = Issues()
             text.run_built(issues, Path(tmp))
             self.assertEqual([issue.code for issue in issues], ["V1-json"])
+
+
+class ThemeTextLintTest(unittest.TestCase):
+    def codes_after(self, mutate):
+        raw = helpers.fixture_raw()
+        mutate(raw)
+        issues = Issues()
+        text.run(Corpus.from_raw("math", raw), issues)
+        return issues.codes()
+
+    def test_theme_content_is_linted(self):
+        # „množenje“ exists in no edition outcome yet; put both in so that the folded twin is seen
+        def mutate(raw):
+            raw.editions["g1-2026"]["outcomes"][0]["text"] = "učenik množenje razume"
+            raw.editions["g1-2026"]["themes"][0]["content"] = ["mnozenje"]
+
+        self.assertIn("L2-folded", self.codes_after(mutate))
+
+    def test_a_clean_edition_adds_nothing(self):
+        self.assertEqual(self.codes_after(lambda raw: None), set())
+
+
+class StatusOutcomesTest(unittest.TestCase):
+    def test_status_counts_outcomes_and_those_without_a_topic(self):
+        from zg import report
+
+        raw = helpers.fixture_raw()
+        raw.unmapped = {"g1-2026-001": "još nema teme"}
+        status = report.status(Corpus.from_raw("math", raw), path="no-ledger.json")
+        self.assertEqual(status["grades"]["1"]["outcomes"], 5)
+        self.assertEqual(status["grades"]["1"]["outcomes_without_topic"], 1)

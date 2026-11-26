@@ -1,0 +1,206 @@
+{
+  "edition": "g1-2026",
+  "grade": 1,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Geometrija",
+      "area": "geometry",
+      "hours": 27,
+      "page": 25,
+      "content": [
+        "Gde se predmeti nalaze, koliki su i kakvog su oblika",
+        "Prostorni odnosi",
+        "Koliki su predmeti i bića",
+        "Geometrijska tela, i to lopta, kocka, kvadar, valjak, piramida, kupa",
+        "Geometrijske figure, i to krug, pravougaonik, kvadrat i trougao",
+        "Linije",
+        "Linije koje su prave, krive i izlomljene",
+        "Linije koje su zatvorene i linije koje su otvorene",
+        "Pojam tačke, linije i duži"
+      ]
+    },
+    {
+      "name": "Brojevi",
+      "area": "numbers",
+      "hours": 146,
+      "page": 25,
+      "content": [
+        "Brojevi se broje, zapisuju i čitaju",
+        "Brojevi se na brojevnoj pravoj pokazuju tačkama",
+        "Brojevi se porede",
+        "Redni brojevi",
+        "Brojevi u okviru $20$ sabiraju se i oduzimaju, i pokazuju na brojevnoj pravoj",
+        "Brojevi se do $100$ sabiraju i oduzimaju bez prelaska preko desetice, i pokazuju na brojevnoj pravoj",
+        "Osobine sabiranja",
+        "Nalaženje broja koji nije poznat u jednakostima koje imaju jednu operaciju",
+        "Dinar, njegove kovanice i novčanice vrednosti do $100$ dinara"
+      ]
+    },
+    {
+      "name": "Merenje i mere",
+      "area": "geometry",
+      "hours": 7,
+      "page": 25,
+      "content": [
+        "Dužina se meri jedinicama mere koje nisu standardne"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g1-2026-001",
+      "text": "određuje gde se predmeti i bića nalaze jedni u odnosu na druge i u odnosu na tlo",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-002",
+      "text": "upoređuje veličinu predmeta i bića",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-003",
+      "text": "zapaža geometrijske oblike na predmetima iz neposredne okoline i imenuje ih",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-004",
+      "text": "zna i upotrebljava imena geometrijskih tela i figura",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-005",
+      "text": "svrstava u grupe predmete i bića koja imaju zajedničku osobinu",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-006",
+      "text": "sastavlja figuru od oblika koje poznaje i rastavlja takvu figuru na oblike od kojih je sastavljena",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-007",
+      "text": "razlikuje međusobno linije tako što zna da li je linija kriva, prava ili izlomljena, i da li je zatvorena ili otvorena",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-008",
+      "text": "crta lenjirom pravu liniju i duž",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Geometrija"
+    },
+    {
+      "id": "g1-2026-009",
+      "text": "nabraja brojeve unapred i unazad, pri čemu može da preskoči neke od njih",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-010",
+      "text": "čita i zapisuje brojeve prve stotine, poredi ih i slaže po redu, i prikazuje ih na brojevnoj pravoj",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-011",
+      "text": "služi se rednim brojevima",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-012",
+      "text": "razlikuje parne od neparnih brojeva, nalazi najveći i najmanji broj i određuje prethodnika i sledbenika",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-013",
+      "text": "služi se nazivima sabirak, zbir, umanjenik, umanjilac i razlika",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-014",
+      "text": "sabira i oduzima, bez zapisivanja postupka, dva jednocifrena broja",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-015",
+      "text": "sabira i oduzima brojeve do $100$, ali bez prelaska preko desetice",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-016",
+      "text": "rastavlja broj na sabirke i, da bi mu računanje bilo lakše, primenjuje zamenu mesta sabiraka i njihovo združivanje",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-017",
+      "text": "rešava tekstualni zadatak u kome se koristi jedna operacija",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-018",
+      "text": "razlikuje novčane apoene u vrednosti do $100$ dinara i upoređuje ih po tome koliko vrede",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-019",
+      "text": "prepoznaje pravilo u započetom nizu i određuje koji je sledeći član",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-020",
+      "text": "čita i koristi podatke prikazane jednostavnijim stubičnim dijagramom, slikovnim dijagramom ili tabelom",
+      "page": 25,
+      "area": "numbers",
+      "unit": "Brojevi"
+    },
+    {
+      "id": "g1-2026-021",
+      "text": "meri dužinu pomoću jedinice mere koja je zadata, a nije standardna",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    },
+    {
+      "id": "g1-2026-022",
+      "text": "precrtava u kvadratnu mrežu tačke i figure prema uputstvu koje mu je dato",
+      "page": 25,
+      "area": "geometry",
+      "unit": "Merenje i mere"
+    }
+  ]
+}

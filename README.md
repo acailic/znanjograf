@@ -13,5 +13,13 @@ Zamišljeno po uzoru na [`xiaoyang111222/cn-math-taxonomy`](https://github.com/x
 <!-- zg:stats -->
 | Razred | Teme | Grane | Zadaci |
 |---|---|---|---|
+| 1. razred | 0 | 0 | 0 |
+| 2. razred | 0 | 0 | 0 |
+| 3. razred | 0 | 0 | 0 |
+| 4. razred | 0 | 0 | 0 |
+| 5. razred | 0 | 0 | 0 |
+| 6. razred | 0 | 0 | 0 |
+| 7. razred | 0 | 0 | 0 |
+| 8. razred | 0 | 0 | 0 |
 | Ukupno | 0 | 0 | 0 |
 <!-- /zg:stats -->

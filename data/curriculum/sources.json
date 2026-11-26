@@ -1,0 +1,24 @@
+{
+  "rule": "paraphrase",
+  "evidence": "Sajt Zavoda za unapređivanje obrazovanja i vaspitanja (zuov.gov.rs), s koga se preuzimaju tekstovi pravilnika, objavljuje sadržaj svoje internet prezentacije pod licencom Creative Commons Autorstvo-Nekomercijalno-Bez prerada 3.0 Srbija (CC BY-NC-ND 3.0 RS; https://zuov.gov.rs/uslovi-koriscenja-licenca/), koja ne dozvoljava ni komercijalnu upotrebu ni preradu. Programi nastave čine sastavni deo pravilnika ministra prosvete, a kopija člana 6 Zakona o autorskom i srodnim pravima (sa sajta Paragraf, čije zaglavlje navodi izmene samo do 66/2019) kaže da se zakoni i podzakonski akti ne smatraju autorskim delom, ali taj tekst nije upoređen s važećim. Dok vlasnik repozitorijuma ne odluči drugačije, repozitorijum čuva parafrazu svakog ishoda, napisanu sopstvenim rečima uz pokazivač na akt i štampanu stranu, i ne distribuira nijedan PDF.",
+  "acts": [
+    {
+      "title": "Pravilnik o planu nastave i učenja za prvi ciklus osnovnog obrazovanja i vaspitanja i programu nastave i učenja za prvi razred osnovnog obrazovanja i vaspitanja",
+      "gazette": [
+        "10/2017",
+        "12/2018",
+        "15/2018",
+        "18/2018",
+        "1/2019",
+        "2/2020",
+        "16/2022",
+        "1/2023",
+        "13/2023",
+        "14/2023",
+        "11/2024"
+      ],
+      "url": "https://pravno-informacioni-sistem.rs/eli/rep/pg/ministarstva/pravilnik/2017/10/1/reg",
+      "retrieved": "2026-11-26"
+    }
+  ]
+}

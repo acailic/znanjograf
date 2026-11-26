@@ -65,10 +65,13 @@ def status(corpus: Corpus, path: Path | str | None = None) -> dict:
             ids = edges if gate == ledger.EDGES else questions
             outdated = [record_id for record_id in ids if record_id in stale[gate]]
             gates[gate] = {"verified": len(ids) - len(outdated), "stale": outdated}
+        outcomes = [outcome_id for edition in corpus.editions.values() if edition.grade == grade for outcome_id in edition.outcomes]
         grades[str(grade)] = {
             "topics": len(_topics(corpus, grade)),
             "edges": len(edges),
             "questions": len(questions),
+            "outcomes": len(outcomes),
+            "outcomes_without_topic": sum(1 for outcome_id in outcomes if outcome_id in corpus.unmapped),
             "gates": gates,
         }
     return {"grades": grades}

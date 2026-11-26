@@ -101,6 +101,10 @@ def iter_text_fields(corpus: Corpus) -> Iterator[TextField]:
     yield from _question_fields(corpus)
     for edition_id, edition in corpus.editions.items():
         path = corpus.edition_file.get(edition_id, edition.file)
+        for theme_index, theme in enumerate(edition.raw.get("themes") or []):
+            if isinstance(theme, dict):
+                yield from _fields(path, f"{edition_id}.themes[{theme_index}]", theme, ("name",))
+                yield from _items(path, f"{edition_id}.themes[{theme_index}].content", theme.get("content"))
         for outcome_id, outcome in edition.outcomes.items():
             yield from _fields(path, outcome_id, outcome, ("text", "unit"))
     if isinstance(corpus.review, dict):

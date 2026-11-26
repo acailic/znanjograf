@@ -38,7 +38,7 @@ Izvor: `ZCodeProject/research/sr-math-curriculum/` (izveštaji agenata koji su �
 5. **Službeni tekstovi su čitljivi:** API Pravno-informacionog sistema (`slgl.pravno-informacioni-sistem.rs/api/Prins/viewDoc?actId=…`), preuzimanja ZUOV-a (`zuov.gov.rs`) i ogledalo Paragrafa (`demo.paragraf.rs`).
 6. **Tekstovi ishoda se čuvaju kao parafraza.** Sajt ZUOV-a, s koga se preuzimaju tekstovi pravilnika, objavljuje sadržaj pod Creative Commons Autorstvo-Nekomercijalno-Bez prerada 3.0 Srbija (CC BY-NC-ND 3.0 RS; https://zuov.gov.rs/uslovi-koriscenja-licenca/), a nije potvrđeno da Zakon o autorskom i srodnim pravima izuzima same akte. Zato `data/` sadrži parafrazu svakog ishoda (isto značenje, sopstvene reči) uz pokazivač na akt i štampanu stranu; bukvalan tekst ne ulazi u repozitorijum, a PDF-ovi se ne distribuiraju. `sources.json` beleži odluku i dokaz. Drugi agent poredi svaku parafrazu s izvornikom po značenju.
 
-**Posledice za dizajn.** Prvih osam izdanja gradi se po važećim programima. Za 1. i 5. razred beleži se i izdanje 2027/28 (ishodi i teme), a teme se mapiraju na oba, da skup ne zastari za godinu dana. Tri oblasti novog formata jesu zajednička podela za sve razrede.
+**Posledice za dizajn.** Prvih osam izdanja gradi se po važećim programima. Fond časova matematike: 1–4. razred 5 nedeljno / 180 godišnje; 5. i 6. 4 / 144; 7. 4 / 144; 8. 4 / 136 (isti i u novim planovima od 2027/28). Za 1. i 5. razred beleži se i izdanje 2027/28 (ishodi i teme), a teme se mapiraju na oba, da skup ne zastari za godinu dana. Tri oblasti novog formata jesu zajednička podela za sve razrede.
 
 ## 4. Raspored repozitorijuma
 

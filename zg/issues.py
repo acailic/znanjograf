@@ -29,5 +29,18 @@ class Issues(list):
         stream = sys.stdout if stream is None else stream
         for issue in sorted(self, key=lambda i: (i.path, i.where, i.code)):
             print(issue.line(), file=stream)
-        print(f"{len(self)} grešaka" if self else "OK", file=stream)
+        print(_summary(len(self)), file=stream)
         return len(self)
+
+
+def _summary(count: int) -> str:
+    """``OK``, or the count with the right Serbian ending (1 greška, 2 greške, 5 grešaka, 21 greška)."""
+    if count == 0:
+        return "OK"
+    if count % 10 == 1 and count % 100 != 11:
+        word = "greška"
+    elif 2 <= count % 10 <= 4 and not 12 <= count % 100 <= 14:
+        word = "greške"
+    else:
+        word = "grešaka"
+    return f"{count} {word}"

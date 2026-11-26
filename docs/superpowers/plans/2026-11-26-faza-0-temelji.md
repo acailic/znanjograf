@@ -310,6 +310,7 @@ Every task: write the failing tests first, run them, implement, run the whole su
 `V8-numeric-answer`: `mathcheck.parse_answer(answer)` must succeed; call it lazily (import inside the function) so this task does not depend on Task 6 being merged; if the import fails, emit nothing.
 
 - [ ] Tests at minimum: topic citing a missing outcome → `V7-outcome-missing`; delete an outcome's only mapping and do not list it → `V7-outcome-unmapped`; list it in `unmapped` → clean; keep it in `unmapped` after restoring its mapping → `V7-unmapped-stale`; topic with empty `curriculum` → `V7-topic-without-outcome`; edition id `g2-2026` with `"grade": 3` → `V7-edition-grade`; three questions on a topic → `V8-bank-count`; choice with 2 options → `V8-choice-count`; `answer` not among choice ids → `V8-choice-ids`; duplicate choice text → `V8-choice-text`; `points_to` to a non-ancestor → `V8-points-to`; `sqrt` question without `round_to` is Task 6's concern (not here).
+- Ownership decided 2026-11-26: record shape and id format of questions, themes and outcomes belong to `schema.run` alone (one line per problem); `coverage.run` and `bank.run` keep only their own V7 and V8 rules.
 
 ### Task 6 — `dsl.py`, `mathcheck.py`
 

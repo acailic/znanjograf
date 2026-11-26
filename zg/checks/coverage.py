@@ -41,9 +41,15 @@ def _cited_outcomes(corpus: Corpus, issues: Issues, existing: set[tuple[str, str
             if (edition_id, outcome_id) in existing:
                 cited.add((edition_id, outcome_id))
             elif edition_id in corpus.editions:
-                issues.add(corpus.topic_file[topic_id], topic_id, "V7-outcome-missing", f"tema navodi ishod „{outcome_id}“, a izdanje „{edition_id}“ ga nema")
+                issues.add(
+                    corpus.topic_file[topic_id], topic_id, "V7-outcome-missing",
+                    f"tema navodi ishod „{outcome_id}“, a izdanje „{edition_id}“ ga nema",
+                )
             else:
-                issues.add(corpus.topic_file[topic_id], topic_id, "V7-outcome-missing", f"tema navodi ishod „{outcome_id}“ izdanja „{edition_id}“, a to izdanje ne postoji")
+                issues.add(
+                    corpus.topic_file[topic_id], topic_id, "V7-outcome-missing",
+                    f"tema navodi ishod „{outcome_id}“ izdanja „{edition_id}“, a to izdanje ne postoji",
+                )
     return cited
 
 
@@ -60,9 +66,15 @@ def _check_unmapped(corpus: Corpus, issues: Issues, existing: set[tuple[str, str
         editions_of.setdefault(outcome_id, []).append(edition_id)
     for outcome_id in corpus.unmapped:
         if not editions_of.get(outcome_id):
-            issues.add(UNMAPPED_FILE, outcome_id, "V7-unmapped-stale", "ishod je upisan u unmapped.json, a ne postoji ni u jednom izdanju; ukloni unos")
+            issues.add(
+                UNMAPPED_FILE, outcome_id, "V7-unmapped-stale",
+                "ishod je upisan u unmapped.json, a ne postoji ni u jednom izdanju; ukloni unos",
+            )
         elif any((edition_id, outcome_id) in cited for edition_id in editions_of[outcome_id]):
-            issues.add(UNMAPPED_FILE, outcome_id, "V7-unmapped-stale", "ishod je upisan u unmapped.json, a teme ga pokrivaju; ukloni unos")
+            issues.add(
+                UNMAPPED_FILE, outcome_id, "V7-unmapped-stale",
+                "ishod je upisan u unmapped.json, a teme ga pokrivaju; ukloni unos",
+            )
 
 
 def _check_editions(corpus: Corpus, issues: Issues) -> None:
@@ -79,10 +91,16 @@ def _check_editions(corpus: Corpus, issues: Issues) -> None:
 def _check_header(edition: Edition, path: str, issues: Issues) -> None:
     raw = edition.raw
     if raw.get("edition") != edition.id:
-        issues.add(path, edition.id, "V7-edition-grade", f"polje „edition“ glasi {_show(raw.get('edition'))}, a fajl izdanja je „{edition.id}“")
+        issues.add(
+            path, edition.id, "V7-edition-grade",
+            f"polje „edition“ glasi {_show(raw.get('edition'))}, a fajl izdanja je „{edition.id}“",
+        )
     grade = _GRADE_IN_ID.match(edition.id)
     if grade and raw.get("grade") != int(grade.group(1)):
-        issues.add(path, edition.id, "V7-edition-grade", f"id izdanja nosi razred {grade.group(1)}, a polje „grade“ glasi {_show(raw.get('grade'))}")
+        issues.add(
+            path, edition.id, "V7-edition-grade",
+            f"id izdanja nosi razred {grade.group(1)}, a polje „grade“ glasi {_show(raw.get('grade'))}",
+        )
 
 
 def _check_page(record: dict, where: str, path: str, issues: Issues) -> None:

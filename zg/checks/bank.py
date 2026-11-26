@@ -109,7 +109,10 @@ def _check_numeric_answer(question: dict, where: str, path: str, issues: Issues,
     answer = question.get("answer")
     if _reads_as_number(_data_file_reader(mathcheck.parse_answer), answer):
         return
-    issues.add(path, where, "V8-numeric-answer", f"odgovor {_show(answer)} nije broj u upisu koji alat prihvata, npr. „15“, „3,5“, „3/4“ ili „-7“")
+    issues.add(
+        path, where, "V8-numeric-answer",
+        f"odgovor {_show(answer)} nije broj u upisu koji alat prihvata, npr. „15“, „3,5“, „3/4“ ili „-7“",
+    )
 
 
 def _data_file_reader(parse_answer):
@@ -163,7 +166,8 @@ def _check_points_to(question: dict, where: str, path: str, issues: Issues, ance
         if hard is not None and not (isinstance(target, str) and target in hard):
             issues.add(
                 path, where, "V8-points-to",
-                f"„points_to“ za ponudu {_show(option_id)} pokazuje na temu {_show(target)}, a ona nije čvrst predak teme {_show(question.get('topic'))}",
+                f"„points_to“ za ponudu {_show(option_id)} pokazuje na temu {_show(target)}, "
+                f"a ona nije čvrst predak teme {_show(question.get('topic'))}",
             )
 
 

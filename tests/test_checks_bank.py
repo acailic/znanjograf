@@ -296,10 +296,6 @@ class BankWithRealParserTest(unittest.TestCase):
         self.assertEqual(of_code(run(self.raw), "V8-round-to"), [])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class QuestionNumberingTest(unittest.TestCase):
     def codes(self, mutate):
         raw = helpers.fixture_raw()
@@ -323,3 +319,7 @@ class QuestionNumberingTest(unittest.TestCase):
                 helpers.question(raw, f"mat-oduzimanje-do-100-q{n}")["id"] = f"mat-oduzimanje-do-100-q{n + 1}"
 
         self.assertIn("V3-qid-format", self.codes(shift))
+
+
+if __name__ == "__main__":
+    unittest.main()

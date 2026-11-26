@@ -258,9 +258,32 @@ SOURCES = {
 }
 
 DIGRAPHS = {
+    # Every word of this fixture that contains "lj", "nj" or "dž": all ordinary digraphs.
     "manji": "digraph",
     "najmanjeg": "digraph",
     "njihov": "digraph",
+    "imenovanje": "digraph",
+    "manje": "digraph",
+    "nastavlja": "digraph",
+    "oduzimanja": "digraph",
+    "oduzimanje": "digraph",
+    "oduzimanjem": "digraph",
+    "pisanje": "digraph",
+    "poznavanje": "digraph",
+    "poređenja": "digraph",
+    "poređenje": "digraph",
+    "prepoznavanje": "digraph",
+    "procenjuje": "digraph",
+    "računanje": "digraph",
+    "rešavanje": "digraph",
+    "sabiranja": "digraph",
+    "sabiranje": "digraph",
+    "sabiranjem": "digraph",
+    "sabiranju": "digraph",
+    "uključujući": "digraph",
+    "uređivanje": "digraph",
+    "čitanje": "digraph",
+    # Words where the pair is a morpheme boundary, kept as examples of the "split" form.
     "injekcija": "split:n|j",
     "odjek": "split:d|j",
 }

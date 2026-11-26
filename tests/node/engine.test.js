@@ -793,3 +793,15 @@ test("a session survives the share link", async (t) => {
     assert.deepEqual(view(restored), view(run.state));
   });
 });
+
+
+test("a shared link cannot carry more than a session", () => {
+  const scope = { kind: "topic", id: "mat-sabiranje-do-100" };
+  const event = { questionId: "mat-sabiranje-do-100-q1", correct: true };
+  const long = Array.from({ length: 1001 }, () => event);
+  assert.throws(() => encodeSession({ scope, log: long }), /ZG_BAD_LOG/);
+  const forged = "v1." + Buffer.from(JSON.stringify({ scope, log: long })).toString("base64url");
+  assert.equal(decodeSession(forged), null);
+  assert.equal(decodeSession("v1." + "A".repeat(200_001)), null);
+  assert.equal(decodeSession(encodeSession({ scope, log: Array.from({ length: 1000 }, () => event) })).log.length, 1000);
+});

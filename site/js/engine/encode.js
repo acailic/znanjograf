@@ -8,6 +8,11 @@
 // runs in the browser and under Node.
 
 const PREFIX = "v1.";
+// A real session is a few dozen answers long. Larger input is not a session but an attempt to
+// keep the tab busy, so it is refused before anything is parsed or replayed.
+const MAX_LOG = 1000;
+const MAX_TEXT = 200_000;
+const MAX_NAME = 200;
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 const VALUES = new Map([...ALPHABET].map((char, value) => [char, value]));
 
@@ -30,13 +35,17 @@ function isScope(scope) {
   if (typeof scope !== "object" || scope === null || !Object.hasOwn(SCOPE_KEYS, scope.kind)) return false;
   if (scope.kind === "topic") return typeof scope.id === "string";
   if (!Number.isInteger(scope.grade)) return false;
-  return scope.kind !== "unit" || typeof scope.unit === "string";
+  return scope.kind !== "unit" || (typeof scope.unit === "string" && scope.unit.length <= MAX_NAME);
 }
 
 function isLog(log) {
   return (
     Array.isArray(log) &&
-    log.every((event) => typeof event === "object" && event !== null && typeof event.questionId === "string" && typeof event.correct === "boolean")
+    log.length <= MAX_LOG &&
+    log.every(
+      (event) =>
+        typeof event === "object" && event !== null && typeof event.questionId === "string" && event.questionId.length <= MAX_NAME && typeof event.correct === "boolean"
+    )
   );
 }
 
@@ -51,7 +60,7 @@ export function encodeSession({ scope, log }) {
 
 /** The session a shared text carries, or null when the text is not one. */
 export function decodeSession(text) {
-  if (typeof text !== "string" || !text.startsWith(PREFIX)) return null;
+  if (typeof text !== "string" || text.length > MAX_TEXT || !text.startsWith(PREFIX)) return null;
   const bytes = decodeBase64Url(text.slice(PREFIX.length));
   if (bytes === null) return null;
 

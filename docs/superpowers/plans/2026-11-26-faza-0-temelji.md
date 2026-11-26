@@ -453,5 +453,12 @@ All UI strings live in `strings.js` as one exported object of Serbian Latin; not
 
 ## Self-review notes
 
+- Reviews of 2026-11-26 (one for the Python side, one for JavaScript): no blocker. Every should-fix item
+  is addressed or recorded here. One engine behaviour was kept on purpose: in a multi-topic scope a
+  topic mastered earlier in the same session vouches for its hard ancestors (`inferred`), so a sibling
+  that fails later is reported as a confirmed root even though that ancestor was never asked about
+  (spec §10.3; a hard prerequisite of a mastered topic is assumed to be there). A shared link carries
+  at most 1000 answers.
+
 - Spec coverage in this plan: §5–§9 (data, conventions, tool, verification, gates), §10–§11 (engine, tests, CI), §12 (site). Phases 1–8 of spec §14 get their own plans; this plan is Phase 0.
 - Deliberately out of this plan: `review.py` (Task 15 of the content phase, when there is content to review), real curriculum data, the notation table beyond fixture rules, the 300-pair golden corpus (grows with content).

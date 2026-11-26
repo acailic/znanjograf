@@ -18,6 +18,9 @@ from .report import questions_of_grade
 LATIN, CYRILLIC = "lat", "cyr"
 TRANSLIT_PACKAGE = "zg.translit"
 TRANSLIT = TRANSLIT_PACKAGE + ".rules"
+# Figure values that stay as written in Cyrillic: the sort of figure and the pictogram symbol.
+# These are the keys the figure schema shares with ``zg.build.KEEP_KEYS``.
+MACHINE_KEYS = frozenset({"kind", "symbol"})
 
 
 def make_sheet(corpus: Corpus, grade: int, script: str = CYRILLIC, seed=None) -> dict:
@@ -29,7 +32,7 @@ def make_sheet(corpus: Corpus, grade: int, script: str = CYRILLIC, seed=None) ->
     """
     if script not in (LATIN, CYRILLIC):
         raise ValueError(f"nepoznato pismo: {script!r}")
-    text = _cyrillic() if script == CYRILLIC else _unchanged
+    text = _cyrillic(corpus) if script == CYRILLIC else _unchanged
     items = [_item(question, text) for question in questions_of_grade(corpus, grade)]
     random.Random(seed).shuffle(items)
     return {"grade": grade, "script": script, "items": items}
@@ -40,11 +43,11 @@ def diff(corpus: Corpus, grade: int, answers: dict) -> list[dict]:
 
     ``answers`` maps question id to ``{"answer": str, "check": str, "unique": bool,
     "assumptions": [str], "distractors": {option id: 0–3}}``. The result is
-    ``[{"id", "reasons"}]`` in file order. A reason is ``missing`` (no entry),
-    ``answer`` (another text), ``check`` (another expression, whitespace aside),
-    ``unique`` (anything but exactly ``True``), ``assumptions`` (not empty) or
-    ``distractor`` (a wrong option rated 2 or 3, or a rating of something that is
-    not a wrong option).
+    ``[{"id", "reasons"}]`` in file order. A reason is ``missing`` (no entry, or one
+    that is not an object), ``answer`` (another text), ``check`` (another expression,
+    whitespace aside), ``unique`` (anything but exactly ``True``), ``assumptions``
+    (not empty) or ``distractor`` (a wrong option rated 2 or 3, or a rating of
+    something that is not a wrong option).
     """
     failures = []
     for question in questions_of_grade(corpus, grade):
@@ -127,10 +130,11 @@ def _item(question: dict, text) -> dict:
 def _figure(figure, text):
     """A copy of the figure declaration with its strings passed through ``text``.
 
-    ``kind`` is left alone: it names the sort of figure and is read by code, not by people.
+    ``MACHINE_KEYS`` are left alone, as the built site leaves them: code reads
+    those values, people never do.
     """
     if isinstance(figure, dict):
-        return {key: item if key == "kind" else _figure(item, text) for key, item in figure.items()}
+        return {key: item if key in MACHINE_KEYS else _figure(item, text) for key, item in figure.items()}
     if isinstance(figure, list):
         return [_figure(item, text) for item in figure]
     return text(figure) if isinstance(figure, str) else figure
@@ -140,8 +144,12 @@ def _unchanged(value: str) -> str:
     return value
 
 
-def _cyrillic():
-    """``to_cyrillic``, imported only when a Cyrillic sheet is asked for: the module may not exist yet."""
+def _cyrillic(corpus: Corpus):
+    """``to_cyrillic`` bound to the corpus digraph lexicon, imported only when a Cyrillic sheet is asked for.
+
+    The lexicon decides how a word with ``lj``, ``nj`` or ``dž`` is spelled; the
+    sheet gets the same one the built site does, so the solver reads what pupils read.
+    """
     try:
         rules = importlib.import_module(TRANSLIT)
     except ModuleNotFoundError as exc:
@@ -149,4 +157,4 @@ def _cyrillic():
         if missing == TRANSLIT_PACKAGE or missing.startswith(TRANSLIT_PACKAGE + "."):
             raise RuntimeError("translit nije dostupan") from None
         raise
-    return rules.to_cyrillic
+    return lambda value: rules.to_cyrillic(value, corpus.lexicon)

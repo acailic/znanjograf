@@ -1,4 +1,4 @@
-"""``zg.checks.bank``: V8, and question records handed to the field check."""
+"""``zg.checks.bank``: V8. The shape of a question record is ``zg.checks.schema``'s, not this gate's."""
 
 import decimal
 import importlib
@@ -18,6 +18,7 @@ QUESTION_FILES = {"g1": "data/math/g1/questions.json", "g2": "data/math/g2/quest
 TOPIC_FILES = {"g1": "data/math/g1/topics.json", "g2": "data/math/g2/topics.json"}
 ACCEPTED = ("15", "3,5", "3/4", "2 3/4", "-7", "1,41")
 NUMBER = re.compile(r"[+-]?[0-9]+(,[0-9]+)?|[0-9]+/[0-9]+|[0-9]+ [0-9]+/[0-9]+")
+MATHCHECK = "zg.mathcheck"
 
 
 def run(raw, modules: dict | None = None) -> Issues:
@@ -45,7 +46,7 @@ def mathcheck_stub(raises: str = ""):
         raise ValueError(f"ne mogu da raščlanim: {text}")
 
     dsl.parse = parse
-    module = types.ModuleType("zg.mathcheck")
+    module = types.ModuleType(MATHCHECK)
     module.dsl = dsl
 
     def parse_answer(text):
@@ -73,10 +74,9 @@ def field_check_spy(calls: list):
 
 
 def importable(name: str):
-    """The module, or None while it is missing or still being written elsewhere."""
     try:
         return importlib.import_module(name)
-    except Exception:
+    except ImportError:
         return None
 
 
@@ -194,48 +194,48 @@ class BankTest(unittest.TestCase):
 
     def test_numeric_answer_must_be_a_number(self):
         for bad in ("sedam", "", "3,,5"):
-            with self.subTest(bad=bad), mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+            with self.subTest(bad=bad), mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
                 raw = helpers.fixture_raw()
                 helpers.question(raw, "mat-brojevi-do-10-q1")["answer"] = bad
                 self.assertEqual(located(of_code(run(raw), "V8-numeric-answer")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
 
     def test_missing_numeric_answer_is_reported(self):
         del helpers.question(self.raw, "mat-brojevi-do-10-q1")["answer"]
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
             self.assertEqual(located(of_code(run(self.raw), "V8-numeric-answer")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
 
     def test_numeric_answers_the_parser_reads_are_clean(self):
         for good in ACCEPTED:
-            with self.subTest(good=good), mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+            with self.subTest(good=good), mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
                 raw = helpers.fixture_raw()
                 helpers.question(raw, "mat-brojevi-do-10-q1")["answer"] = good
                 self.assertEqual(of_code(run(raw), "V8-numeric-answer"), [])
 
     def test_parser_that_raises_means_the_answer_is_not_a_number(self):
         helpers.question(self.raw, "mat-brojevi-do-10-q1")["answer"] = "baci"
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub(raises="baci")}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub(raises="baci")}):
             self.assertEqual(located(of_code(run(self.raw), "V8-numeric-answer")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
 
     def test_irrational_answer_needs_round_to(self):
         question = helpers.question(self.raw, "mat-brojevi-do-10-q1")
         question["check"], question["answer"] = "(sqrt 2)", "1,41"
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
             self.assertEqual(located(of_code(run(self.raw), "V8-round-to")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
 
     def test_irrational_answer_with_round_to_is_clean(self):
         question = helpers.question(self.raw, "mat-brojevi-do-10-q1")
         question["check"], question["answer"], question["round_to"] = "(sqrt 2)", "1,41", 2
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
             self.assertEqual(of_code(run(self.raw), "V8-round-to"), [])
 
     def test_choice_with_an_irrational_value_needs_round_to(self):
         helpers.question(self.raw, "mat-geometrijski-oblici-q3")["check"] = "(sqrt 2)"
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
             self.assertEqual(located(of_code(run(self.raw), "V8-round-to")), [(QUESTION_FILES["g1"], "mat-geometrijski-oblici-q3")])
 
     def test_check_that_does_not_compute_is_left_to_verify(self):
         helpers.question(self.raw, "mat-brojevi-do-10-q1")["check"] = "(nepoznato 2)"
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": mathcheck_stub()}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: mathcheck_stub()}):
             self.assertEqual(of_code(run(self.raw), "V8-round-to"), [])
 
     def test_parser_may_live_in_the_dsl_module(self):
@@ -243,15 +243,15 @@ class BankTest(unittest.TestCase):
         stub = mathcheck_stub()
         dsl = stub.dsl
         del stub.dsl
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": stub, "zg.dsl": dsl}):
-            self.assertEqual(len(of_code(run(self.raw), "V8-round-to")), 1)
+        with mock.patch.dict(sys.modules, {MATHCHECK: stub, "zg.dsl": dsl}):
+            self.assertEqual(located(of_code(run(self.raw), "V8-round-to")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
 
     def test_works_without_the_answer_parser(self):
         """``zg.mathcheck`` is optional: only the answer and ``round_to`` rules depend on it."""
         helpers.question(self.raw, "mat-brojevi-do-10-q1")["answer"] = "sedam"
         helpers.question(self.raw, "mat-brojevi-do-10-q2")["check"] = "(sqrt 2)"
         self.raw.questions[1] = [q for q in self.raw.questions[1] if q["id"] != "mat-sabiranje-do-20-q4"]
-        with mock.patch.dict(sys.modules, {"zg.mathcheck": None}):
+        with mock.patch.dict(sys.modules, {MATHCHECK: None}):
             issues = run(self.raw)
         self.assertEqual(located(issues), [(TOPIC_FILES["g1"], "mat-sabiranje-do-20")])
         self.assertEqual(issues.codes(), {"V8-bank-count"})
@@ -274,9 +274,9 @@ class BankTest(unittest.TestCase):
         self.assertNoCode(run(self.raw), "V8")
 
 
-@unittest.skipUnless(importable("zg.mathcheck"), "zg.mathcheck još nije u repozitorijumu")
+@unittest.skipUnless(importable(MATHCHECK), "zg.mathcheck nije dostupan")
 class BankWithRealParserTest(unittest.TestCase):
-    """The seam to the real parser, checked as soon as Task 6 lands."""
+    """The seam to the real ``zg.mathcheck``, which the tests above replace with a stand-in."""
 
     def setUp(self):
         self.raw = helpers.fixture_raw()
@@ -289,6 +289,11 @@ class BankWithRealParserTest(unittest.TestCase):
         question = helpers.question(self.raw, "mat-brojevi-do-10-q1")
         question["check"], question["answer"] = "(sqrt 2)", "1,41"
         self.assertEqual(located(of_code(run(self.raw), "V8-round-to")), [(QUESTION_FILES["g1"], "mat-brojevi-do-10-q1")])
+
+    def test_sqrt_with_round_to_is_clean(self):
+        question = helpers.question(self.raw, "mat-brojevi-do-10-q1")
+        question["check"], question["answer"], question["round_to"] = "(sqrt 2)", "1,41", 2
+        self.assertEqual(of_code(run(self.raw), "V8-round-to"), [])
 
 
 if __name__ == "__main__":

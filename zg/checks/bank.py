@@ -26,7 +26,9 @@ def run(corpus: Corpus, issues: Issues) -> None:
     ancestors = _HardAncestors(corpus)
     _check_sizes(corpus, issues)
     for question in corpus.question_list:
-        question_id = question.get("id") if isinstance(question, dict) else None
+        if not isinstance(question, dict):
+            continue  # not a record; schema reports it
+        question_id = question.get("id")
         if not isinstance(question_id, str) or not question_id:
             continue  # a record without an id is schema's to report
         where, path = question_id, corpus.question_file[question_id]
@@ -63,7 +65,7 @@ def _check_choices(question: dict, where: str, path: str, issues: Issues) -> Non
         return  # a missing or malformed list is a field problem (V2)
     options = [option for option in choices if isinstance(option, dict)]
     if len(choices) not in CHOICE_SIZES:
-        issues.add(path, where, "V8-choice-count", f"zadatak s ponudama ima {len(choices)} ponuda, a treba 3 ili 4")
+        issues.add(path, where, "V8-choice-count", f"broj ponuda u zadatku je {len(choices)}, a treba {CHOICE_SIZES[0]} ili {CHOICE_SIZES[-1]}")
     ids = [option.get("id") for option in options]
     broken = _unique(value for value in ids if not (isinstance(value, str) and value))
     repeated = _unique(value for value in ids if value not in broken and ids.count(value) > 1)

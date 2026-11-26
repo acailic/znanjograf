@@ -26,6 +26,7 @@ def tree(depth: int):
 class ParseTest(unittest.TestCase):
     def test_integer_atom(self):
         self.assertEqual(dsl.parse("7"), Fraction(7))
+        self.assertEqual(dsl.parse("+3"), Fraction(3))
 
     def test_negative_integer_atom(self):
         self.assertEqual(dsl.parse("-3"), Fraction(-3))

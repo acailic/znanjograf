@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import math
 import re
-from decimal import ROUND_HALF_UP, Decimal, localcontext
+from decimal import ROUND_HALF_UP, Decimal, DivisionByZero, localcontext
 from fractions import Fraction
 from operator import add, gt, lt, mul, sub, truediv
 
@@ -22,7 +22,7 @@ MAX_ROUND_TO = 30     # the most decimals ``round_to`` may ask for
 MAX_BITS = 40_000     # the largest power, in bits, so that no result can grow without bound
 MAX_LENGTH = 100      # the longest text that can still be one answer
 
-_IRRATIONAL = "vrednost nije racionalan broj, pa je obavezno polje round_to (ceo broj od 0 do 30)"
+_IRRATIONAL = f"vrednost nije racionalan broj, pa je obavezno polje round_to (ceo broj od 0 do {MAX_ROUND_TO})"
 
 _DIGITS = re.compile(r"[0-9]+")
 # A natural number: plain digits, or groups of three digits behind a first group of one to three
@@ -79,7 +79,7 @@ def _pair(left, right, op) -> Fraction | Decimal:
         if isinstance(left, Decimal) or isinstance(right, Decimal):
             return op(_decimal(left), _decimal(right))
         return op(left, right)
-    except ZeroDivisionError:
+    except (ZeroDivisionError, DivisionByZero):
         raise DslError("deljenje nulom", "S-check-zero") from None
     except ArithmeticError as exc:  # the decimal module refused the operation
         raise DslError(f"računanje nije uspelo: {type(exc).__name__}") from None
@@ -174,7 +174,8 @@ def _mode(values: list) -> Fraction | Decimal:
     counts: dict = {}
     for value in _alike(values):
         counts[value] = counts.get(value, 0) + 1
-    winners = [value for value, count in counts.items() if count == max(counts.values())]
+    most = max(counts.values())
+    winners = [value for value, count in counts.items() if count == most]
     if len(winners) > 1:
         raise DslError("moda nije jedinstvena, pa provera nema samo jednu vrednost")
     return winners[0]
@@ -358,9 +359,9 @@ def verify(corpus, issues) -> None:
             else:
                 _verify_numeric(question, path, where, issues)
         except DslError as exc:
-            issues.add(path, where, exc.rule, f"izraz provere {_quoted(question.get('check'))}: {exc}")
+            issues.add(path, where, exc.rule, f"{_about(question.get('check'))}: {exc}")
         except (ValueError, ArithmeticError, TypeError) as exc:  # numbers too large to convert, an operation refused
-            issues.add(path, where, "S-check-parse", f"izraz provere {_quoted(question.get('check'))}: računanje nije uspelo ({type(exc).__name__})")
+            issues.add(path, where, "S-check-parse", f"{_about(question.get('check'))}: računanje nije uspelo ({type(exc).__name__})")
 
 
 def _verify_numeric(question: dict, path: str, where: str, issues) -> None:
@@ -375,6 +376,8 @@ def _verify_numeric(question: dict, path: str, where: str, issues) -> None:
 
 def _verify_choice(question: dict, path: str, where: str, issues) -> None:
     check, round_to = question.get("check"), question.get("round_to")
+    if not isinstance(check, str) or not check.strip():
+        raise DslError("nedostaje" if not isinstance(check, str) else "je prazan")
     choices = question.get("choices")
     options = [choice for choice in choices if isinstance(choice, dict)] if isinstance(choices, list) else []
     correct = next((choice for choice in options if choice.get("id") == question.get("answer")), None)
@@ -436,6 +439,14 @@ def _quoted(text) -> str:
     if isinstance(text, str):
         return f"„{text}“"
     return "nedostaje" if text is None else repr(text)
+
+
+def _about(check) -> str:
+    """How a message names the check: quoted text (shortened when long), or the field itself when it is not text."""
+    if not isinstance(check, str):
+        return "polje check"
+    shown = check if len(check) <= 60 else check[:60] + "…"
+    return f"izraz provere „{shown}“"
 
 
 def _not_a_number(answer) -> str:

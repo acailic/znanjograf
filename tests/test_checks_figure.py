@@ -47,6 +47,7 @@ BROKEN = [
     (numberline(step=0), "„step“"),  # out of range
     (numberline(min=10, max=10, marks=[]), "„max“"),
     (numberline(marks=[3, 11]), "„marks“"),  # a mark off the line
+    (numberline(min=0, max=100, marks=[]), "„step“"),  # 101 ticks: more than a figure can draw
     (fig("fractionbar", numerator=3, denominator=25), "„denominator“"),
     (fig("fractionbar", numerator=3, denominator=4, shaded=4), "„shaded“"),
     (fig("pie", parts=1, shaded=0), "„parts“"),
@@ -57,6 +58,7 @@ BROKEN = [
     (fig("bars", categories=["a", "b", "c"], values=[1, 2]), "„values“"),
     (fig("bars", categories=["a", "b"], values=[1, 0]), "„values[1]“"),
     (fig("pictogram", symbol="●", items=[]), "„items“"),
+    (fig("pictogram", symbol=" ", items=[{"label": "Mila", "count": 8}]), "„symbol“"),
     (fig("pictogram", symbol="●", items=[{"label": "Mila"}]), "items[0]"),
     (fig("pictogram", symbol="●", items=[{"label": "Mila", "count": 8, "name": "x"}]), "items[0]"),
     (fig("pictogram", symbol="●", items=[{"label": "Mila", "count": -1}]), "items[0].count"),
@@ -81,6 +83,7 @@ BROKEN = [
 # The edges of every range, and every optional parameter left out: all sound.
 SOUND = [
     numberline(min=-5, max=5, step=2, marks=[-5, 0, 5], unit="cm"),
+    numberline(min=0, max=59, marks=[]),  # exactly as many ticks as a figure can draw
     fig("fractionbar", numerator=1, denominator=24),
     fig("fractionbar", numerator=5, denominator=6, shaded=0),
     fig("fractionbar", numerator=3, denominator=3, shaded=3),

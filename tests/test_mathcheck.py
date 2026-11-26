@@ -267,6 +267,12 @@ class FormatValueTest(unittest.TestCase):
         self.assertEqual(mathcheck.format_value(value("(sqrt 2)")), "1")
         self.assertEqual(mathcheck.format_value(Decimal("2.004"), 2), "2")
 
+    def test_decimals_have_no_trailing_zeros_or_negative_zero(self):
+        self.assertEqual(mathcheck.format_value(Decimal("1.4100"), 4), "1.41")
+        self.assertEqual(mathcheck.format_value(Decimal("0.500"), 3), "0.5")
+        self.assertEqual(mathcheck.format_value(Decimal("-0.004"), 2), "0")
+        self.assertEqual(mathcheck.format_value(Decimal("1E+3"), 2), "1000")
+
 
 class AnswersEqualTest(unittest.TestCase):
     def test_fractions_compare_exactly(self):
@@ -360,6 +366,23 @@ class VerifyTest(unittest.TestCase):
                 question["round_to"] = round_to
                 self.assertEqual(self.codes(), {"S-round-to"})
 
+    def test_rounding_inside_the_check_needs_no_round_to(self):
+        self.edit("mat-sabiranje-do-20-q3", check="(round (sqrt 2) 2)", answer="1.41")
+        self.assertEqual(self.issues(), [])
+
+    def test_round_to_does_not_relax_an_exact_check(self):
+        self.edit("mat-sabiranje-do-20-q3", check="(/ 10 3)", answer="3.33", round_to=2)
+        self.assertEqual(self.codes(), {"S-answer-mismatch"})
+        self.edit("mat-sabiranje-do-20-q3", check="(/ 10 4)", answer="2.5", round_to=0)
+        self.assertEqual(self.issues(), [])
+
+    def test_records_that_are_not_questions_are_skipped(self):
+        self.raw.questions[1].append("niz zapisa")
+        self.raw.questions[1].append({"topic": "mat-brojevi-do-10", "level": "basic", "type": "numeric", "check": None})
+        issues = self.issues()
+        self.assertEqual([issue.where for issue in issues], ["questions[17]"])
+        self.assertEqual(issues.codes(), {"S-check-parse"})
+
     # ----- choice questions ------------------------------------------------------------
 
     def test_wrong_choice_with_the_value_of_the_answer(self):
@@ -429,6 +452,12 @@ class VerifyTest(unittest.TestCase):
         self.assertEqual(self.codes(), {"S-choice-value"})
         self.edit("mat-geometrijski-oblici-q3", check=None)
         self.assertEqual(self.codes(), {"S-choice-value", "S-check-parse"})
+
+    def test_text_choice_without_a_check_is_reported_even_without_an_option_text(self):
+        question = self.edit("mat-geometrijski-oblici-q1", check=None)
+        for choice in question["choices"]:
+            del choice["text"]
+        self.assertEqual(self.codes(), {"S-check-parse"})
 
 
 class VerifyCommandTest(unittest.TestCase):

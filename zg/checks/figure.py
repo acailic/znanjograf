@@ -20,6 +20,7 @@ KINDS = (
 )
 MIN_ALT = 20  # characters, after stripping
 SIDE_TOLERANCE = 0.01  # a side label may differ from the length of its side by this share
+MAX_TICKS = 60  # a longer number line is more than site/js/figure.js draws
 
 KIND_CODE, ALT_CODE, PARAM_CODE, GEOMETRY_CODE = (
     "V9-figure-kind", "V9-figure-alt", "V9-figure-param", "V9-figure-geometry",
@@ -104,6 +105,12 @@ def _must(path: str, expected: str, value: object) -> str:
     return f"parametar „{path}“ mora biti {expected}, a jeste {_show(value)}"
 
 
+def _count(count: int, one: str, few: str, many: str) -> str:
+    """A number with its noun in the right form: ``1 znak``, ``2 znaka``, ``5 znakova``."""
+    word = one if count == 1 else few if 2 <= count <= 4 else many
+    return f"{count} {word}"
+
+
 def _fits(value: object, spec: tuple) -> bool:
     """Does the scalar ``value`` satisfy ``spec``?  A JSON boolean is never a number here."""
     tag, low, high = spec
@@ -175,9 +182,15 @@ def _at_most(spec: dict, name: str, limit_name: str, limit: int, out: list[str])
 
 
 def _numberline(spec: dict, out: list[str]) -> None:
-    low, high = spec["min"], spec["max"]
+    low, high, step = spec["min"], spec["max"], spec.get("step", 1)
     if low >= high:
         out.append(f"„max“ mora biti veći od „min“ (min je {low}, a max {high})")
+    ticks = (high - low) // step + 1
+    if ticks > MAX_TICKS:
+        out.append(
+            f"„step“ = {step} daje {_count(ticks, 'oznaku', 'oznake', 'oznaka')} na pravoj, "
+            f"a slika crta najviše {MAX_TICKS}; povećaj „step“"
+        )
     if any(not low <= mark <= high for mark in spec.get("marks", [])):
         out.append(f"svaka oznaka u „marks“ mora biti od „min“ do „max“ ({low} do {high})")
 
@@ -203,6 +216,8 @@ def _bars(spec: dict, out: list[str]) -> None:
 
 
 def _pictogram(spec: dict, out: list[str]) -> None:
+    if not spec["symbol"].strip():
+        out.append("parametar „symbol“ mora biti neprazan tekst")
     if not spec["items"]:
         out.append("„items“ mora imati bar jednu stavku")
 
@@ -313,12 +328,6 @@ def _parameters(kind: str, spec: dict) -> list[str]:
     return [f"{kind}: {message}" for message in body]
 
 
-def _characters(count: int) -> str:
-    """``1 znak``, ``2 znaka``, ``5 znakova``."""
-    word = "znak" if count == 1 else "znaka" if 2 <= count <= 4 else "znakova"
-    return f"{count} {word}"
-
-
 def _problems(spec: object) -> list[tuple[str, str]]:
     """(code, message) for everything wrong with ``spec``, most general first."""
     if not isinstance(spec, dict):
@@ -335,7 +344,7 @@ def _problems(spec: object) -> list[tuple[str, str]]:
     elif not isinstance(alt, str):
         found.append((ALT_CODE, f"polje „alt“ mora biti tekst, a jeste {_show(alt)}"))
     elif len(alt.strip()) < MIN_ALT:
-        found.append((ALT_CODE, f"„alt“ ima {_characters(len(alt.strip()))}, a treba najmanje {MIN_ALT}"))
+        found.append((ALT_CODE, f"„alt“ ima {_count(len(alt.strip()), 'znak', 'znaka', 'znakova')}, a treba najmanje {MIN_ALT}"))
     if spec.get("kind") in KINDS:
         kind = spec["kind"]
         parameters = _parameters(kind, spec)

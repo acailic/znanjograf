@@ -109,8 +109,14 @@ class SheetTest(unittest.TestCase):
 
     def test_cyrillic_sheet_transliterates_text_and_leaves_ids(self):
         fake = types.ModuleType(TRANSLIT)
-        fake.to_cyrillic = str.upper  # any text transform will do: we only check where it is applied
-        figure = {"kind": "numberline", "alt": "Prava od 0 do 10", "labels": [{"text": "polovina"}]}
+        lexicons = []
+
+        def shout(text, lexicon=None):  # any text transform will do: we only check where it is applied
+            lexicons.append(lexicon)
+            return text.upper()
+
+        fake.to_cyrillic = shout
+        figure = {"kind": "pictogram", "alt": "Prava od 0 do 10", "symbol": "ab", "items": [{"label": "polovina", "count": 1}]}
         self.bank["mat-brojevi-do-10-q1"]["figure"] = figure
         before = copy.deepcopy(self.corpus.question_list)
         with mock.patch.dict(sys.modules, {TRANSLIT: fake}):
@@ -118,7 +124,14 @@ class SheetTest(unittest.TestCase):
         items = {item["id"]: item for item in sheet["items"]}
         self.assertEqual(sheet["script"], "cyr")
         self.assertEqual(items["mat-brojevi-do-10-q1"]["prompt"], self.bank["mat-brojevi-do-10-q1"]["prompt"].upper())
-        self.assertEqual(items["mat-brojevi-do-10-q1"]["figure"], {"kind": "numberline", "alt": "PRAVA OD 0 DO 10", "labels": [{"text": "POLOVINA"}]})
+        # what the site keeps in Latin because code reads it: kind, the pictogram symbol
+        self.assertEqual(
+            items["mat-brojevi-do-10-q1"]["figure"],
+            {"kind": "pictogram", "alt": "PRAVA OD 0 DO 10", "symbol": "ab", "items": [{"label": "POLOVINA", "count": 1}]},
+        )
+        # the corpus digraph lexicon travels with every text, exactly as it does in the built site
+        self.assertTrue(lexicons)
+        self.assertTrue(all(handed is self.corpus.lexicon for handed in lexicons))
         self.assertEqual(
             items[CHOICE]["choices"],
             [{"id": "a", "text": "KVADRAT"}, {"id": "b", "text": "TROUGAO"}, {"id": "c", "text": "KRUG"}, {"id": "d", "text": "PRAVOUGAONIK"}],
@@ -137,6 +150,18 @@ class SheetTest(unittest.TestCase):
         option = items[CHOICE]["choices"][1]["text"]
         self.assertEqual(letters(option, "LATIN"), set())
         self.assertEqual(len(letters(option, "CYRILLIC")), len(letters("trougao", "LATIN")))
+
+    @unittest.skipUnless(translit_available(), "translit nije dostupan")
+    def test_cyrillic_sheet_spells_digraph_words_as_the_site_does(self):
+        from zg.translit import rules
+
+        prompt = "Šta je injekcija?"  # the fixture lexicon splits this n|j
+        self.assertEqual(self.corpus.lexicon.get("injekcija"), "split:n|j")
+        self.bank["mat-brojevi-do-10-q1"]["prompt"] = prompt
+        sheet = blind.make_sheet(self.corpus, 1, seed=0)
+        shown = next(item["prompt"] for item in sheet["items"] if item["id"] == "mat-brojevi-do-10-q1")
+        self.assertEqual(shown, rules.to_cyrillic(prompt, self.corpus.lexicon))
+        self.assertNotEqual(shown, rules.to_cyrillic(prompt))  # without the lexicon the word is spelled another way
 
 
 class DiffTest(unittest.TestCase):

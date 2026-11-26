@@ -22,17 +22,23 @@ TOPICS_FILE = "data/math/g1/topics.json"
 G1_QUESTIONS = "data/math/g1/questions.json"
 
 
-def clean_raw() -> RawCorpus:
-    """The fixture plus a lexicon entry for every digraph word it uses, so it is clean for this gate too."""
-    raw = helpers.fixture_raw()
-    raw.lexicon.update({word: "digraph" for word in text.missing_from_lexicon(Corpus.from_raw("math", raw))})
-    return raw
-
-
 def lint(raw: RawCorpus) -> Issues:
     issues = Issues()
     text.run(Corpus.from_raw("math", raw), issues)
     return issues
+
+
+# Entries the lexicon tests take out of the fixture, which classifies every word it uses.
+UNCLASSIFIED = ("sabiranje", "poređenje", "manje")
+UNCLASSIFIED_IN_ORDER = ["manje", "poređenje", "sabiranje"]
+
+
+def raw_without(*words: str) -> RawCorpus:
+    """The fixture with ``words`` removed from its digraph lexicon."""
+    raw = helpers.fixture_raw()
+    for word in words:
+        del raw.lexicon[word]
+    return raw
 
 
 def only(issues: Issues, code: str) -> list:
@@ -94,10 +100,10 @@ def set_edge(raw):
 
 class LintTextBaselineTest(unittest.TestCase):
     def test_clean_fixture_has_no_issues(self):
-        self.assertEqual(list(lint(clean_raw())), [])
+        self.assertEqual(list(lint(helpers.fixture_raw())), [])
 
     def test_gate_changes_nothing(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         before = copy.deepcopy(raw.__dict__)
         corpus = Corpus.from_raw("math", raw)
         lexicon = dict(corpus.lexicon)
@@ -133,12 +139,12 @@ class LintTextBaselineTest(unittest.TestCase):
         ]
         for name, mutate, where, path in cases:
             with self.subTest(field=name):
-                raw = clean_raw()
+                raw = helpers.fixture_raw()
                 mutate(raw)
                 self.assertEqual([(i.path, i.where) for i in only(lint(raw), "L4-orthography")], [(path, where)])
 
     def test_messages_are_serbian_latin(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         helpers.question(raw, QUESTION)["prompt"] = "Koliko je 3.5, a koliko 15%?"
         helpers.topic(raw, TOPIC)["name"] = "Brojevi  do 10"
         for issue in lint(raw):
@@ -148,7 +154,7 @@ class LintTextBaselineTest(unittest.TestCase):
 
 class FoldedWordsTest(unittest.TestCase):
     def setUp(self):
-        self.raw = clean_raw()
+        self.raw = helpers.fixture_raw()
         self.raw.lexicon["množenje"] = "digraph"
 
     def test_word_without_diacritics_beside_the_same_word_with_them(self):
@@ -160,12 +166,13 @@ class FoldedWordsTest(unittest.TestCase):
         self.assertIn("množenje", issues[0].message.lower())
 
     def test_found_whatever_the_field_case_or_order(self):
-        helpers.question(self.raw, QUESTION)["explanation"] = "RESENJE je broj 7, a resenje uvek proveri."
-        helpers.topic(self.raw, TOPIC)["name"] = "Rešenje i brojevi do 10"
+        # the word without diacritics comes first, in another record and in capitals
+        helpers.topic(self.raw, TOPIC)["summary"] = "RESENJE je broj 7."
+        helpers.question(self.raw, QUESTION)["explanation"] = "Posle broja 7 dolazi rešenje."
         issues = only(lint(self.raw), "L2-folded")
-        self.assertEqual([(i.path, i.where) for i in issues], [(G1_QUESTIONS, f"{QUESTION}.explanation")])
+        self.assertEqual([(i.path, i.where) for i in issues], [(TOPICS_FILE, f"{TOPIC}.summary")])
         self.assertIn("RESENJE", issues[0].message)
-        self.assertIn("Rešenje", issues[0].message)
+        self.assertIn("rešenje", issues[0].message)
 
     def test_words_inside_math_and_units_are_not_collected(self):
         helpers.question(self.raw, QUESTION)["prompt"] = "Koliko je $mnozenje$? Množenje je u formuli."
@@ -175,12 +182,12 @@ class FoldedWordsTest(unittest.TestCase):
         helpers.question(self.raw, QUESTION)["explanation"] = "Rešenje je rešenje, a ne resenje."
         issues = only(lint(self.raw), "L2-folded")
         self.assertEqual(len(issues), 1)
-        self.assertNotIn("„Rešenje“ je", issues[0].message)
+        self.assertTrue(issues[0].message.startswith("reč „resenje“"), issues[0].message)
 
 
 class DigraphWordsTest(unittest.TestCase):
     def setUp(self):
-        self.raw = clean_raw()
+        self.raw = helpers.fixture_raw()
 
     def test_word_with_digraph_missing_from_the_lexicon(self):
         helpers.question(self.raw, QUESTION)["explanation"] = "Reč džungla znači veliku šumu."
@@ -193,7 +200,7 @@ class DigraphWordsTest(unittest.TestCase):
     def test_lj_nj_and_dž_all_need_classification(self):
         for word, digraph in (("biljka", "lj"), ("konj", "nj"), ("džungla", "dž")):
             with self.subTest(word=word):
-                raw = clean_raw()
+                raw = helpers.fixture_raw()
                 helpers.question(raw, QUESTION)["explanation"] = f"Reč {word} je ovde nova."
                 issues = only(lint(raw), "L3-digraph")
                 self.assertEqual(len(issues), 1)
@@ -220,7 +227,7 @@ class DigraphWordsTest(unittest.TestCase):
 
 class OrthographyTest(unittest.TestCase):
     def setUp(self):
-        self.raw = clean_raw()
+        self.raw = helpers.fixture_raw()
 
     def test_decimal_point_between_digits(self):
         helpers.question(self.raw, QUESTION)["prompt"] = "Koliko je 3.5 + 1.2?"
@@ -232,7 +239,7 @@ class OrthographyTest(unittest.TestCase):
     def test_decimal_point_inside_math_url_or_tag_is_not_prose(self):
         for prompt in ("Koliko je $3.5 + 1.2$?", "Vidi https://primer.rs/v3.5/stavka.", '<a href="/v3.5">stranica</a>'):
             with self.subTest(prompt=prompt):
-                raw = clean_raw()
+                raw = helpers.fixture_raw()
                 helpers.question(raw, QUESTION)["prompt"] = prompt
                 self.assertEqual(only(lint(raw), "L4-orthography"), [])
 
@@ -249,7 +256,7 @@ class OrthographyTest(unittest.TestCase):
     def test_percent_with_space_or_in_math(self):
         for prompt in ("Koliko je 15 % od 200?", "Koliko je $15\\,\\%$ od 200?"):
             with self.subTest(prompt=prompt):
-                raw = clean_raw()
+                raw = helpers.fixture_raw()
                 helpers.question(raw, QUESTION)["prompt"] = prompt
                 self.assertEqual(only(lint(raw), "L4-orthography"), [])
 
@@ -281,7 +288,7 @@ class LengthTest(unittest.TestCase):
     def test_prompt_limit_follows_the_grade(self):
         for grade, limit in ((1, 200), (2, 200), (3, 300), (4, 300), (5, 400), (8, 400)):
             with self.subTest(grade=grade):
-                raw = clean_raw()
+                raw = helpers.fixture_raw()
                 helpers.topic(raw, TOPIC)["grade"] = grade
                 helpers.question(raw, QUESTION)["prompt"] = prose(limit)
                 self.assertEqual(only(lint(raw), "L5-length"), [])
@@ -291,7 +298,7 @@ class LengthTest(unittest.TestCase):
                 self.assertIn(str(limit), issues[0].message)
 
     def test_explanation_limit(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         helpers.question(raw, QUESTION)["explanation"] = prose(400)
         self.assertEqual(only(lint(raw), "L5-length"), [])
         helpers.question(raw, QUESTION)["explanation"] = prose(401)
@@ -300,7 +307,7 @@ class LengthTest(unittest.TestCase):
         self.assertIn("400", issues[0].message)
 
     def test_choice_text_has_no_limit(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         helpers.question(raw, "mat-geometrijski-oblici-q1")["choices"][0]["text"] = prose(450)
         self.assertEqual(only(lint(raw), "L5-length"), [])
 
@@ -340,7 +347,7 @@ class MixedScriptTest(unittest.TestCase):
         self.assertEqual(len(self.check("Koliko je")), 2)
 
     def test_run_reports_mixed_script_of_the_built_text(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         helpers.question(raw, QUESTION)["explanation"] = "Broj 6 je kuванog broja."
         issues = only(lint(raw), "L7-mixed-script")
         self.assertEqual([(i.path, i.where) for i in issues], [(G1_QUESTIONS, f"{QUESTION}.explanation")])
@@ -348,25 +355,26 @@ class MixedScriptTest(unittest.TestCase):
 
 
 class LexiconHelpersTest(unittest.TestCase):
+    def test_fixture_classifies_every_digraph_word_it_uses(self):
+        self.assertEqual(text.missing_from_lexicon(Corpus.from_raw("math", helpers.fixture_raw())), [])
+
     def test_missing_words_are_lowercase_distinct_and_in_alphabet_order(self):
-        raw = helpers.fixture_raw()
-        corpus = Corpus.from_raw("math", raw)
-        missing = text.missing_from_lexicon(corpus)
+        missing = text.missing_from_lexicon(Corpus.from_raw("math", raw_without(*UNCLASSIFIED)))
+        self.assertEqual(missing, UNCLASSIFIED_IN_ORDER)
         self.assertIn("sabiranje", missing)
-        self.assertIn("manje", missing)
         self.assertNotIn("manji", missing)
         self.assertNotIn("injekcija", missing)
-        self.assertEqual(missing, sorted(set(missing), key=rules.collation_key))
-        self.assertEqual([w.lower() for w in missing], missing)
+        self.assertEqual(missing, [word.lower() for word in missing])
 
     def test_classifying_the_missing_words_empties_the_list(self):
-        raw = helpers.fixture_raw()
+        raw = raw_without(*UNCLASSIFIED)
         corpus = Corpus.from_raw("math", raw)
-        raw.lexicon.update({word: "digraph" for word in text.missing_from_lexicon(corpus)})
+        self.assertEqual(text.missing_from_lexicon(corpus), UNCLASSIFIED_IN_ORDER)
+        raw.lexicon.update({word: "digraph" for word in UNCLASSIFIED})
         self.assertEqual(text.missing_from_lexicon(Corpus.from_raw("math", raw)), [])
 
     def test_split_entry_counts_as_classified(self):
-        raw = clean_raw()
+        raw = helpers.fixture_raw()
         helpers.question(raw, QUESTION)["explanation"] = "Dobio je injekciju u ruku."
         self.assertEqual(text.missing_from_lexicon(Corpus.from_raw("math", raw)), ["injekciju"])
         raw.lexicon["injekciju"] = "split:n|j"
@@ -380,20 +388,19 @@ class AddDigraphsToolTest(unittest.TestCase):
 
     def test_lists_unclassified_words_one_per_line(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = helpers.write_corpus(Path(tmp), helpers.fixture_raw())
+            root = helpers.write_corpus(Path(tmp), raw_without(*UNCLASSIFIED))
             result = self.run_tool(root)
         self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "manje\npoređenje\nsabiranje\n")
         lines = result.stdout.splitlines()
         self.assertIn("sabiranje", lines)
         self.assertNotIn("manji", lines)
         self.assertEqual(len(lines), len(set(lines)))
-        self.assertEqual(lines, [line.lower() for line in lines])
         self.assertEqual(lines, sorted(lines, key=rules.collation_key))
-        self.assertTrue(result.stdout.endswith("\n"))
 
     def test_silent_when_every_word_is_classified(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = helpers.write_corpus(Path(tmp), clean_raw())
+            root = helpers.write_corpus(Path(tmp), helpers.fixture_raw())
             result = self.run_tool(root)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout, "")

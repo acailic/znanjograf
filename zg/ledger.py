@@ -53,7 +53,7 @@ def load_ledger(path: Path | str | None = None) -> dict:
     return ledger
 
 
-def mark(gate: str, ids, records: dict[str, dict], path: Path | str | None = None) -> None:
+def mark(gate: str, ids: list[str], records: dict[str, dict], path: Path | str | None = None) -> None:
     """Record that every id in ``ids`` passes ``gate`` as it is now, and write the ledger.
 
     ``records`` maps id to record (``corpus.questions``, or edges keyed by ``edge_id``).
@@ -72,9 +72,10 @@ def mark(gate: str, ids, records: dict[str, dict], path: Path | str | None = Non
 def stale(gate: str, corpus: Corpus, path: Path | str | None = None) -> list[str]:
     """Ids of the gate's records whose stored hash differs, in file order.
 
-    A record missing from the gate's section counts as differing. A record that
-    left the corpus is not reported: nothing claims it any more. When the gate has
-    no section at all the result is ``[]`` — it never ran, so nothing can be stale.
+    The ledger is ``LEDGER`` unless ``path`` says otherwise. A record missing from
+    the gate's section counts as differing. A record that left the corpus is not
+    reported: nothing claims it any more. When the gate has no section at all the
+    result is ``[]`` — it never ran, so nothing can be stale.
     """
     _check_gate(gate)
     section = load_ledger(path).get(gate)

@@ -37,7 +37,9 @@ class DslError(ValueError):
 
 def parse(text: str) -> tuple | Fraction | str:
     """Parse a check into a tuple tree; a lone atom comes back as a Fraction or the symbol ``pi``."""
-    tokens = _TOKEN.findall(text) if isinstance(text, str) else []
+    if not isinstance(text, str):
+        raise DslError("izraz provere mora biti tekst")
+    tokens = _TOKEN.findall(text)
     if not tokens:
         raise DslError("izraz provere je prazan")
     parser = _Parser(tokens)
@@ -93,7 +95,7 @@ class _Parser:
         operator = self.take()
         if operator in ("(", ")"):
             raise DslError("posle otvorene zagrade ide operator, a zatim argumenti")
-        arguments = []
+        arguments: list = []
         while self.peek() != ")":
             arguments.append(self.expression(depth + 1))
         self.take()

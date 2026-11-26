@@ -162,11 +162,12 @@ function isShown(key, holdsSelection) {
   return opened.has(key) ? opened.get(key) : searching() || holdsSelection;
 }
 
+/** True while no topic is written yet: then "nothing matches your search" would be the wrong answer. */
+const nothingWritten = () => (index?.topics || []).length === 0;
+
 function listMarkup(topics) {
   if (topics.length === 0) {
-    // Nothing written yet is a different answer from "nothing matches your search".
-    const none = (index?.topics || []).length === 0;
-    return `<p class="zg-note zg-note-warn">${esc(t(none ? "map.list.none" : "map.list.empty"))}</p>`;
+    return `<p class="zg-note zg-note-warn">${esc(t(nothingWritten() ? "map.list.none" : "map.list.empty"))}</p>`;
   }
   const current = selectedId();
   const blocks = [];
@@ -194,7 +195,8 @@ function renderList() {
   for (const summary of box.querySelectorAll("summary")) {
     summary.addEventListener("click", () => opened.set(summary.parentElement.dataset.zgKey, !summary.parentElement.open));
   }
-  main.querySelector("#zg-map-count").textContent = filtering()
+  // With nothing written there is no search to answer: the list itself says so.
+  main.querySelector("#zg-map-count").textContent = filtering() && !nothingWritten()
     ? t(topics.length === 0 ? "map.list.empty" : "map.list.found", { n: topics.length })
     : "";
 }

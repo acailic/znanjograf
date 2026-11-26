@@ -316,7 +316,7 @@ function formMarkup(preset) {
     <legend>${esc(t("diag.form.legend"))}</legend>
     <div class="zg-field">
       <label for="zg-grade">${esc(t("diag.grade.label"))}</label>
-      <select class="zg-select" id="zg-grade" data-zg-grade>${grades().map((n) => option(n, t("common.grade.n", { n }), grade)).join("")}</select>
+      <select class="zg-select" id="zg-grade" data-zg-grade aria-describedby="zg-grade-empty">${grades().map((n) => option(n, t("common.grade.n", { n }), grade)).join("")}</select>
     </div>
     <div class="zg-field">
       <span class="zg-label" id="zg-kind-label">${esc(t("diag.kind.label"))}</span>
@@ -325,7 +325,7 @@ function formMarkup(preset) {
     ${field("topic", "diag.topic.label")}
     ${field("unit", "diag.unit.label")}
   </fieldset>
-  <p class="zg-note zg-note-warn" data-zg-empty role="status" hidden></p>
+  <p class="zg-note zg-note-warn" id="zg-grade-empty" data-zg-empty role="status" hidden></p>
   <p class="zg-hint" data-zg-count role="status"></p>
   <div class="zg-actions"><button type="submit" class="zg-btn zg-btn-primary">${esc(t("diag.start"))}</button></div>
 </form>`;

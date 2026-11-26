@@ -1,7 +1,7 @@
 {
   "numberline": {
     "kind": "numberline",
-    "alt": "Brojevna prava od 0 do 10 sa strelicom na kraju; iznad broja 7 stoji oznaka.",
+    "alt": "Brojevna prava od 0 do 10 sa strelicama na oba kraja; tačka na broju 7 je istaknuta.",
     "min": 0,
     "max": 10,
     "step": 1,

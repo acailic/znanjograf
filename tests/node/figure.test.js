@@ -84,6 +84,26 @@ test("a numberline mark stands above its number, over the tick", () => {
   assert.ok(Number(mark.cy) + Number(mark.r) <= Number(tick.y1), "the mark lies above the tick, clear of the line");
 });
 
+test("wide numberline labels fit the canvas and keep apart", () => {
+  const { svg, width } = renderFigure({ kind: "numberline", alt: "Brojevna prava od 1 000 do 2 000 u koracima od 250.", min: 1000, max: 2000, step: 250 });
+  const labels = texts(svg);
+  assert.deepEqual(labels, ["1 000", "1 250", "1 500", "1 750", "2 000"]); // space as thousands separator
+  const boxes = tags(svg, "text").map((tag, i) => {
+    const half = (Array.from(labels[i]).length * 8) / 2; // the module's estimate of a label's width
+    const x = Number(attrs(tag).x);
+    return [x - half, x + half];
+  });
+  for (const [left, right] of boxes) assert.ok(left >= 0 && right <= width, `a label spans ${left}…${right} in a canvas of ${width}`);
+  for (let i = 1; i < boxes.length; i += 1) assert.ok(boxes[i][0] >= boxes[i - 1][1] + 4, `labels ${labels[i - 1]} and ${labels[i]} touch`);
+});
+
+test("negative numbers on a numberline carry a minus sign, not a hyphen", () => {
+  const { svg } = renderFigure({ kind: "numberline", alt: "Brojevna prava od minus pet do pet.", min: -5, max: 5 });
+  const labels = texts(svg);
+  assert.ok(labels.includes("\u22125") && labels.includes("\u22121"), "minus five and minus one");
+  assert.ok(!labels.includes("-5"));
+});
+
 test("fractionbar divides into exactly the requested number of equal parts", () => {
   const { svg } = renderFigure({ kind: "fractionbar", alt: "Traka podeljena na sedam jednakih delova.", numerator: 7, denominator: 7 });
   const parts = withClass(tags(svg, "rect"), "zg-part");

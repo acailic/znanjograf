@@ -70,14 +70,17 @@ function numberline({ min, max, step = 1, marks = [], unit }) {
   for (let value = min; value <= max; value += step) ticks.push(value);
   ensure(ticks.length <= 60);
 
-  const span = Math.max(288, (ticks.length - 1) * 34);
-  const width = span + 2 * PAD;
+  // Ticks sit far enough apart for the widest label, and the margin holds half of it.
+  const widest = Math.max(...ticks.map((value) => chars(formatNumber(value)).length));
+  const pad = Math.max(PAD, (widest * CHAR_W) / 2 + 2);
+  const span = Math.max(288 - 2 * PAD, (ticks.length - 1) * Math.max(34, widest * CHAR_W + 6));
+  const width = span + 2 * pad;
   const axisY = 42;
-  const x = (value) => PAD + ((value - min) / (max - min)) * span;
+  const x = (value) => pad + ((value - min) / (max - min)) * span;
 
-  let body = `<path class="zg-axis" d="M${PAD - 10} ${axisY}h${span + 20}" ${STROKE}/>`;
-  body += `<path class="zg-arrow" d="M${PAD - 3} ${axisY - 4}l-9 4 9 4z" fill="currentColor"/>`;
-  body += `<path class="zg-arrow" d="M${width - PAD + 3} ${axisY - 4}l9 4-9 4z" fill="currentColor"/>`;
+  let body = `<path class="zg-axis" d="M${pad - 10} ${axisY}h${span + 20}" ${STROKE}/>`;
+  body += `<path class="zg-arrow" d="M${pad - 3} ${axisY - 4}l-9 4 9 4z" fill="currentColor"/>`;
+  body += `<path class="zg-arrow" d="M${width - pad + 3} ${axisY - 4}l9 4-9 4z" fill="currentColor"/>`;
   for (const value of ticks) {
     body += `<line class="zg-tick" x1="${px(x(value))}" y1="${axisY - 6}" x2="${px(x(value))}" y2="${axisY + 6}" ${STROKE}/>`;
     body += text(x(value), axisY + 23, formatNumber(value));
@@ -86,7 +89,7 @@ function numberline({ min, max, step = 1, marks = [], unit }) {
     // A mark stands above its number, clear of the line.
     body += `<circle class="zg-mark" cx="${px(x(value))}" cy="${axisY - 12}" r="5.5" ${ACCENT}/>`;
   }
-  if (unit) body += text(width - PAD, 20, unit, { anchor: "end" });
+  if (unit) body += text(width - pad, 20, unit, { anchor: "end" });
   return { width, height: 80, body };
 }
 
@@ -443,11 +446,11 @@ function escapeXml(text) {
   return text.replace(/[&<>"]/g, (ch) => `&${{ "&": "amp", "<": "lt", ">": "gt", '"': "quot" }[ch]};`);
 }
 
-/** Serbian notation (spec §6.2): decimal comma, space as thousands separator. */
+/** Serbian notation (spec §6.2): a minus sign, decimal comma, space as thousands separator. */
 function formatNumber(value) {
-  const [whole, fraction] = String(value).split(".");
+  const [whole, fraction] = String(Math.abs(value)).split(".");
   const grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  return fraction === undefined ? grouped : `${grouped},${fraction}`;
+  return `${value < 0 ? "\u2212" : ""}${fraction === undefined ? grouped : `${grouped},${fraction}`}`;
 }
 
 /** Tick values from min to max in a 1-2-5 step that keeps them near eight per axis. */

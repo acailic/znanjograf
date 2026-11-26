@@ -20,7 +20,6 @@ MINUS = {"pattern": r"\d\s*-\s*\d", "min_grade": 2, "outcome": "g2-2026-003", "n
 # (pattern, min_grade, outcome) of every rule data/lint/notation.json must hold.
 EXPECTED_RULES = [
     (r"\\times|\\cdot", 2, "g2-2026-004"),
-    (r"\d\s*-\s*\d", 2, "g2-2026-003"),
     (r"(?<!\\):", 3, "g2-2026-004"),
     (r"\\frac", 3, "g2-2026-004"),
     (r"\d+\{,\}\d+", 5, "g2-2026-006"),
@@ -30,11 +29,9 @@ EXPECTED_RULES = [
     (r"\\le|\\ge", 5, "g2-2026-005"),
     (r"\\neq", 5, "g2-2026-005"),
     (r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", 5, "g2-2026-004"),
-    (r"[<>]", 2, "g2-2026-005"),
 ]
 
 VARIABLE = {"pattern": r"(?<![A-Za-z\\])[a-z](?![A-Za-z])", "min_grade": 5, "outcome": "g2-2026-004", "note": "slovo kao promenljiva"}
-LESS = {"pattern": "[<>]", "min_grade": 2, "outcome": "g2-2026-005", "note": "znaci „manje“ i „veće“"}
 
 
 class NotationCase(unittest.TestCase):
@@ -260,12 +257,19 @@ class RuleFileTest(NotationCase):
                 self.assertEqual(issues[0].code, "L1-notation")
                 self.assertIn(note, issues[0].message)
 
-    def test_multiplication_and_minus_are_notation_in_grade_one(self):
-        for prompt, note in [("$3 \\times 4$", "množenje"), ("$5 - 3$", "oduzimanje")]:
+    def test_multiplication_is_notation_beyond_grade_one(self):
+        for prompt, note in [("$3 \\times 4$", "množenje"), ("$3 \\cdot 4$", "množenje"), ("$12 : 4$", "deljenje")]:
             with self.subTest(prompt):
                 issues = self.lint(self.rules, GRADE_ONE, prompt=f"Koliko je {prompt}?")
                 self.assertEqual(len(issues), 1, [issue.message for issue in issues])
                 self.assertIn(note, issues[0].message)
+
+    def test_minus_and_comparison_are_fine_in_grade_one(self):
+        # the program itself asks for +, -, =, < and > from the block of numbers to 10
+        for prompt in ("$5 - 3$", "$4 < 7$", "$9 > 2$"):
+            with self.subTest(prompt):
+                issues = self.lint(self.rules, GRADE_ONE, prompt=f"Koliko je {prompt}?")
+                self.assertEqual(issues.codes(), set())
 
     def _corpus(self) -> Corpus:
         raw = helpers.fixture_raw()
@@ -309,11 +313,13 @@ class UnitsAreNotVariablesTest(NotationCase):
         self.assertIn("L1-notation", issues.codes())
 
 
-class ComparisonSignsTest(NotationCase):
-    def test_less_or_greater_below_grade_two_is_reported(self):
-        issues = self.lint([LESS], GRADE_ONE, prompt="Koji je broj veći: $6 > 9$?")
-        self.assertIn("L1-notation", issues.codes())
+class SignsOfGradeOneTest(NotationCase):
+    """Grade 1 already uses +, -, =, < and > with the numbers to 10 (PG 10/2017, p. 26), so no rule holds them back."""
 
-    def test_less_or_greater_from_grade_two_is_fine(self):
-        issues = self.lint([LESS], GRADE_TWO, prompt="Upiši znak: $56 < 65$")
+    def test_the_rule_file_restricts_nothing_that_grade_one_may_use(self):
+        rules = jsonio.load(paths.NOTATION_FILE)
+        for pattern in ("[<>]", r"\d\s*-\s*\d", r"\+"):
+            self.assertNotIn(pattern, [rule["pattern"] for rule in rules])
+        issues = Issues()
+        notation.run(Corpus.from_raw("math", helpers.fixture_raw()), issues)
         self.assertEqual(issues.codes(), set())

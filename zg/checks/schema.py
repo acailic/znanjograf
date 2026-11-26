@@ -1,4 +1,7 @@
-"""Structural rules: V1 (files that failed to load), V2 (fields of a record), V3 (ids), V4 (enumerations and grades), V10 (formulas), V11 (aliases).
+"""Structural rules over the whole corpus.
+
+V1: files that failed to load. V2: the fields of a record. V3: ids. V4: enumerations and grades.
+V10: formulas. V11: aliases.
 
 Records are the plain dicts ``Corpus`` holds, so ``check_record`` also serves the
 other gates wherever they meet a record of a known kind.
@@ -56,6 +59,8 @@ OPTIONAL: dict[str, set[str]] = {
     "curriculum_ref": set(),
 }
 REQUIRED: dict[str, set[str]] = {kind: fields - OPTIONAL[kind] for kind, fields in FIELDS.items()}
+# Top level of an edition file (spec §5.3): the header plus the two lists.
+EDITION_FIELDS = {"edition", "grade", "applies_from", "themes", "outcomes", "notes"}
 
 Predicate = Callable[[object], bool]
 
@@ -374,7 +379,12 @@ def _editions(corpus: Corpus, issues: Issues) -> None:
         path = edition.file or f"data/curriculum/{corpus.subject}/{edition_id}.json"
         if not EDITION_ID.fullmatch(edition_id):
             issues.add(path, edition_id, "V3-id-format", f"id izdanja „{edition_id}“ ne odgovara pravilu, npr. g1-2026")
-        lists = _file_lists(edition.raw if isinstance(edition.raw, dict) else {}, edition_id, path, issues)
+        header = edition.raw if isinstance(edition.raw, dict) else {}
+        for key in sorted(set(header) - EDITION_FIELDS):
+            issues.add(path, key, "V2-unknown-field", f"nepoznato polje „{key}“ u zaglavlju izdanja „{edition_id}“")
+        if "applies_from" in header and not isinstance(header["applies_from"], str):
+            issues.add(path, "applies_from", "V2-type", "„applies_from“ mora biti niska, npr. „2026/27“")
+        lists = _file_lists(header, edition_id, path, issues)
         for index, theme in enumerate(lists["themes"]):
             where = f"themes[{index}]"
             check_record(theme, "theme", where, path, issues)

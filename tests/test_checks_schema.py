@@ -502,3 +502,24 @@ class SchemaContractTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EditionHeaderTest(unittest.TestCase):
+    def codes_after(self, mutate):
+        raw = helpers.fixture_raw()
+        mutate(raw)
+        issues = Issues()
+        schema.run(Corpus.from_raw("math", raw), issues)
+        return issues
+
+    def test_an_unknown_top_level_field_is_reported(self):
+        issues = self.codes_after(lambda raw: raw.editions["g1-2026"].update({"nesto": 1}))
+        self.assertIn("V2-unknown-field", issues.codes())
+        self.assertTrue(any(i.where == "nesto" for i in issues))
+
+    def test_applies_from_must_be_text(self):
+        issues = self.codes_after(lambda raw: raw.editions["g1-2026"].update({"applies_from": 2026}))
+        self.assertIn("V2-type", issues.codes())
+
+    def test_the_fixture_header_is_clean(self):
+        self.assertEqual(self.codes_after(lambda raw: None).codes(), set())

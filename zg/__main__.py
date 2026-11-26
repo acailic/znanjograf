@@ -32,9 +32,7 @@ def _load(module_name: str):
 
 def run_gate(name: str, args: argparse.Namespace) -> int:
     corpus = corpus_module.Corpus.load(args.subject, root=args.root)
-    issues = issues_module.Issues()
-    for path, message in corpus.load_errors:
-        issues.add(path, "-", "V1-json", message)
+    issues = issues_module.Issues()  # load errors are reported once, by zg.checks.schema
     missing = []
     for module_name in GATES[name]:
         module = _load(module_name)

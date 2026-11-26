@@ -47,6 +47,15 @@ test("parseHash maps the Serbian parameter names", () => {
   assert.deepEqual(parseHash("#razred=2&razred=3"), { grade: 3 }, "the last value wins");
 });
 
+test("a value that happens to be a property name is no script", () => {
+  for (const value of ["constructor", "__proto__", "toString", "hasOwnProperty", "valueOf"]) {
+    assert.deepEqual(parseHash(`#pismo=${value}`), {}, value);
+    assert.deepEqual(resolveScript("lat", `#pismo=${value}`, {}), { script: "lat", redirect: false, adopt: false }, value);
+  }
+  assert.deepEqual(parseHash("#pismo=constructor&pismo=cir"), { script: "cyr" }, "the last usable value wins");
+  assert.equal(formatHash({ script: "constructor" }), "");
+});
+
 test("parseHash ignores what it cannot use", () => {
   for (const junk of ["", "#", undefined, null, "#%zz&razred=pet&pismo=abc&jedinica=&rezultat=", "#razred=0", "#razred=-1", "#razred=2.5"]) {
     assert.deepEqual(parseHash(junk), {}, String(junk));
@@ -126,7 +135,9 @@ test("searchKey matches across the scripts and ignores punctuation", () => {
 test("t fills placeholders and shows a missing key by its name", () => {
   assert.equal(t("site.name"), "Znanjograf");
   assert.equal(t("common.grade.n", { n: 3 }), "3. razred");
-  assert.equal(t("common.grade.n", {}), "{n}. razred", "an unknown placeholder is left alone");
+  assert.equal(t("common.grade.n", {}), "${n}. razred", "an unknown placeholder is left alone");
+  assert.equal(t("common.grade.n"), "${n}. razred");
+  assert.equal(t("diag.result.scope", { scope: "<b>x</b>" }), "Proveravano: <b>x</b>", "the value goes in as it is; the caller escapes it");
   assert.equal(t("missing.key"), "missing.key");
   assert.equal(esc(`<a href="x">&'`), "&lt;a href=&quot;x&quot;&gt;&amp;&#39;");
 });

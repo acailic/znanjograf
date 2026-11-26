@@ -13,7 +13,7 @@ import { outcomeItemMarkup } from "../ui/result.js";
 const GRAPH_LIMIT = 60; // above this many topics around the selection only a list is shown
 const LEVELS_UP = 2; // hard prerequisites are followed this many levels up
 const ISSUES_URL = "https://github.com/acailic/znanjograf/issues/new?title=";
-const DOT = "\u00b7"; // a middle dot, written as an escape to keep this file ASCII
+const DOT = " \u00b7 "; // a spaced middle dot, written as an escape to keep this file ASCII
 
 const AREA_KEYS = { numbers: "area.numbers", geometry: "area.geometry", data: "area.data" };
 const STRENGTH_KEYS = { hard: "strength.hard", soft: "strength.soft" };
@@ -185,8 +185,10 @@ function renderList() {
   if (!box) return;
   const topics = filtered();
   box.innerHTML = listMarkup(topics);
-  for (const details of box.querySelectorAll("details[data-zg-key]")) {
-    details.addEventListener("toggle", () => opened.set(details.dataset.zgKey, details.open));
+  // Only a reader's click opens or closes a group for good. (The toggle event also fires
+  // when the list is drawn with groups already open, which would make them stick.)
+  for (const summary of box.querySelectorAll("summary")) {
+    summary.addEventListener("click", () => opened.set(summary.parentElement.dataset.zgKey, !summary.parentElement.open));
   }
   main.querySelector("#zg-map-count").textContent = filtering()
     ? t(topics.length === 0 ? "map.list.empty" : "map.list.found", { n: topics.length })
@@ -271,7 +273,7 @@ function outcomesMarkup(entries, editions) {
       `<span class="zg-badge">${esc(t(MATCH_KEYS[entry.match] ?? "match.partial"))}</span>`,
       typeof edition?.applies_from === "string" ? esc(t("map.detail.outcomes.edition", { year: edition.applies_from })) : "",
     ].filter(Boolean).join(DOT);
-    return `<li>${outcomeItemMarkup(entry, edition)}${missing}<p class="zg-hint">${meta}</p></li>`;
+    return `<li>${outcomeItemMarkup({ edition: entry.edition, id: entry.outcome }, edition)}${missing}<p class="zg-hint">${meta}</p></li>`;
   });
   return `<ul class="zg-outcomes">${items.join("")}</ul>`;
 }
@@ -374,9 +376,12 @@ function drawGraph(panel, topic) {
     event.preventDefault();
     select(node.dataset.id);
   });
-  // Bring the selected topic into view without moving the page itself.
+  // Centre the selected topic in the box without moving the page itself (a wide graph
+  // scrolls sideways on a narrow screen).
   const focus = box.querySelector(".zg-node--focus");
-  if (focus) box.scrollLeft += focus.getBoundingClientRect().left - box.getBoundingClientRect().left - box.clientWidth / 2;
+  if (focus) {
+    box.scrollLeft += focus.getBoundingClientRect().left - box.getBoundingClientRect().left - (box.clientWidth - focus.getBoundingClientRect().width) / 2;
+  }
 }
 
 boot();

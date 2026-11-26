@@ -15,7 +15,7 @@ import { esc, hrefTo, t } from "../common.js";
 import { findOutcome } from "../data.js";
 import { displayAnswer, renderMath, renderPrompt } from "./question.js";
 
-const DOT = "\u00b7"; // a middle dot, written as an escape to keep this file ASCII
+const DOT = " \u00b7 "; // a spaced middle dot, written as an escape to keep this file ASCII
 const STATUS_KEYS = {
   mastered: "status.mastered",
   shaky: "status.shaky",
@@ -143,11 +143,17 @@ function untestedMarkup(summary, index) {
   return section("untested", esc(t("result.untested.title")), body);
 }
 
-/** One curriculum outcome: its text when the edition file is at hand, otherwise its id. */
+/**
+ * One curriculum outcome: its text when the edition file is at hand, otherwise its id.
+ * `entry` is { edition, id }, as the engine's summary lists it, or a topic's own record
+ * { edition, outcome, match }, as the grade bundle holds it.
+ */
 export function outcomeItemMarkup(entry, editionData) {
-  const outcome = findOutcome(editionData, entry?.id);
-  const meta = [entry?.id, Number.isInteger(outcome?.page) ? t("map.detail.outcomes.page", { n: outcome.page }) : ""].filter(Boolean).join(DOT);
-  return `${outcome?.text ? `<p>${renderMath(outcome.text)}</p>` : `<p class="zg-muted">${esc(entry?.id ?? "")}</p>`}${meta ? `<p class="zg-hint">${esc(meta)}</p>` : ""}`;
+  if (!entry) return "";
+  const id = entry.id ?? entry.outcome;
+  const outcome = findOutcome(editionData, id);
+  const meta = [id, Number.isInteger(outcome?.page) ? t("map.detail.outcomes.page", { n: outcome.page }) : ""].filter(Boolean).join(DOT);
+  return `${outcome?.text ? `<p>${renderMath(outcome.text)}</p>` : `<p class="zg-muted">${esc(id ?? "")}</p>`}${meta ? `<p class="zg-hint">${esc(meta)}</p>` : ""}`;
 }
 
 function outcomesMarkup(summary, gradeData) {

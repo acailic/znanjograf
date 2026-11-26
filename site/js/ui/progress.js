@@ -19,4 +19,4 @@ export function progressMarkup({ asked = 0, done = 0, total = 0 } = {}) {
 }
 
 // A middle dot between the two counts, written as an escape to keep this file ASCII.
-const DOT = "\u00b7";
+const DOT = " \u00b7 ";

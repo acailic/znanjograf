@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Znanjograf — mapa znanja</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2314507d'/%3E%3Cpath%20d='M9%2023%2016%209l7%2014'%20fill='none'%20stroke='%23fff'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cg%20fill='%23fff'%3E%3Ccircle%20cx='9'%20cy='23'%20r='3.4'/%3E%3Ccircle%20cx='16'%20cy='9'%20r='3.4'/%3E%3Ccircle%20cx='23'%20cy='23'%20r='3.4'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../css/zg.css">
 <link rel="stylesheet" href="../vendor/katex/katex.min.css">
 <link rel="preload" as="font" type="font/woff2" href="../vendor/katex/fonts/KaTeX_Main-Regular.woff2" crossorigin>
@@ -15,7 +16,8 @@
 <body data-pismo="lat" data-podaci="../podaci/" data-page="map">
 <a id="zg-skip" class="zg-skip" href="#zg-main"></a>
 <header id="zg-header" class="zg-header"></header>
-<main id="zg-main" class="zg-main" tabindex="-1"></main>
+<main id="zg-main" class="zg-main" tabindex="-1"><p class="zg-noscript" id="zg-fallback" hidden>Znanjograf radi samo kad je otvoren sa servera, a ne direktno iz fajla. Ako ste ga otvorili sa sajta, osvežite stranicu.</p></main>
+<script>window.addEventListener("load",function(){var f=document.getElementById("zg-fallback");if(f)f.hidden=false;});</script>
 <noscript><p class="zg-noscript">Znanjograf radi samo sa uključenim JavaScriptom. Uključite ga u pregledaču i ponovo učitajte stranicu.</p></noscript>
 </body>
 </html>

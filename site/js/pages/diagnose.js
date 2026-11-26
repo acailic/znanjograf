@@ -61,12 +61,13 @@ async function route({ focus = false } = {}) {
   run = null;
   const params = parseHash(location.hash);
   try {
-    if (params.result) return showShared(params.result, my);
+    if (params.result) return await showShared(params.result, my); // awaited: a bundle that fails to load must reach the catch below
     const saved = loadSession();
     const wanted = scopeFromHash(params);
     let stale = false;
-    if (saved && (!wanted || sameScope(saved.scope, wanted))) {
-      const outcome = await resume(saved, my);
+    const decision = plan({ saved, wanted });
+    if (decision !== "start") {
+      const outcome = await resume(saved, my, decision);
       if (outcome === "shown") return;
       stale = outcome === "stale";
     }
@@ -81,6 +82,19 @@ async function route({ focus = false } = {}) {
   } catch (error) {
     if (my === ticket) renderError(main, error);
   }
+}
+
+/**
+ * What the page does with the session in storage when the fragment names `wanted`:
+ *   "show"    the stored session is finished and the fragment names its scope, or no
+ *             scope at all: its result is drawn again
+ *   "resume"  the stored session is unfinished under the same condition: it goes on
+ *   "start"   anything else: a fresh start (with a way back to the stored session)
+ */
+export function plan({ saved = null, wanted = null } = {}) {
+  if (!saved || typeof saved.scope !== "object" || saved.scope === null) return "start";
+  if (wanted && !sameScope(saved.scope, wanted)) return "start";
+  return saved.finished === true ? "show" : "resume";
 }
 
 // ----- scopes -------------------------------------------------------------------------------
@@ -126,6 +140,23 @@ function unitsOfGrade(grade) {
 /** The unit of `grade` whose name matches in either script; undefined when there is none. */
 function unitNamed(grade, name) {
   return unitsOfGrade(grade).find((unit) => fold(unit) === fold(name ?? ""));
+}
+
+/**
+ * The same scope with its unit named the way `topics` name it. A stored session or a
+ * shared link may have been made in the other script, where the unit is spelled
+ * differently; the name is matched without regard to script or diacritics. Any other
+ * scope, or a unit nothing matches, passes through unchanged.
+ */
+export function scopeHere(scope, topics = []) {
+  if (scope?.kind !== "unit") return scope;
+  const here = (Array.isArray(topics) ? topics : []).find((topic) => topic?.grade === scope.grade && fold(topic.unit ?? "") === fold(scope.unit ?? ""));
+  return here ? { ...scope, unit: here.unit } : scope;
+}
+
+/** Questions answered in the block that just ended; the engine's count runs over the whole session. */
+export function blockCount(asked, extensions = 0) {
+  return Math.max(0, Number(asked) - BUDGET * Math.max(0, Number(extensions) || 0));
 }
 
 /** The scope the fragment names, or null when it names none or one that does not exist. */
@@ -187,26 +218,57 @@ async function makeEngine(grades) {
 }
 
 /**
- * The history the engine must see to ask exactly the questions the log holds. It replays
- * strictly: an event whose question it would not pick ends the replay there. A logged
- * question is given the lowest counter there is, so it is the one picked at every step,
- * on this device as on the one the log came from; every other question keeps its count.
+ * The history the engine must see to ask exactly the questions the log holds. The engine
+ * replays strictly: an event whose question it would not have picked ends the replay
+ * there, and it picks the unused question of the level with the lowest history counter.
+ * So every logged question gets a counter below any real one, in the order of the log:
+ * the first question the lowest, the last the highest. That reproduces rotation as well
+ * (a later question asked before an earlier one), and every other question keeps its
+ * count, on this device as on the one the log came from.
  */
-function replayHistory(log, history) {
+export function replayHistory(log, history = {}) {
+  const events = Array.isArray(log) ? log : [];
   const forced = {};
-  for (const event of Array.isArray(log) ? log : []) {
-    if (event && typeof event.questionId === "string") forced[event.questionId] = -1;
-  }
-  return { ...(history && typeof history === "object" ? history : loadHistory()), ...forced };
+  events.forEach((event, position) => {
+    if (event && typeof event.questionId === "string") forced[event.questionId] = position - events.length;
+  });
+  return { ...(history && typeof history === "object" ? history : {}), ...forced };
 }
 
-function replay(log, scope, engine, history) {
-  return reduce(log, { scope, index: graph, bank: engine.bank, budget: BUDGET, history: replayHistory(log, history), curriculum: engine.curriculum });
+/** The state a stored or shared log comes back as: what the engine makes of it under the history above. */
+export function replay(log, scope, engine, history, index = graph) {
+  return reduce(log, {
+    scope,
+    index,
+    bank: engine.bank,
+    budget: BUDGET,
+    history: replayHistory(log, history ?? loadHistory()),
+    curriculum: engine.curriculum,
+  });
 }
 
+const SESSION_FIELDS = ["v", "scope", "log", "history", "extensions", "finished"];
+
+/** What a stored session says, without the time stamp: two sessions with one fingerprint are the same session. */
+export function sessionFingerprint(session) {
+  return JSON.stringify(SESSION_FIELDS.map((field) => session?.[field]));
+}
+
+/** True when `record` says something other than `stored` does (or nothing is stored). */
+export function changedSince(record, stored) {
+  return sessionFingerprint(record) !== sessionFingerprint(stored);
+}
+
+/**
+ * Keeps the session, but only when something in it changed. Every write wakes the other
+ * tabs (the storage event), and a tab that wakes draws the session again; a write that
+ * changed nothing would keep them waking each other for good.
+ */
 function save() {
   if (!run) return;
-  saveSession({ v: 1, scope: run.scope, log: run.log, history: run.history, extensions: run.extensions, finished: run.finished, updated: Date.now() });
+  const record = { v: 1, scope: run.scope, log: run.log, history: run.history, extensions: run.extensions, finished: run.finished };
+  if (!changedSince(record, loadSession())) return;
+  saveSession({ ...record, updated: Date.now() });
 }
 
 // ----- starting and resuming -------------------------------------------------------------------
@@ -326,6 +388,8 @@ function wireForm(preset) {
     rebuild();
   });
   for (const radio of form.querySelectorAll("input[name=zg-kind]")) radio.addEventListener("change", sync);
+  topicSelect.addEventListener("change", sync);
+  unitSelect.addEventListener("change", sync);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const scope = picked();
@@ -382,9 +446,10 @@ async function start(scope, button) {
   }
 }
 
-/** Draws the saved session again. Returns "shown", or "stale" when the data no longer fits it. */
-async function resume(saved, my) {
-  const scope = saved.scope;
+/** Draws the stored session again, as `decision` (from plan) says. Returns "shown", or "stale" when the data no longer fits it. */
+async function resume(saved, my, decision) {
+  // The session may have been started in the other script, where its unit has another name.
+  const scope = scopeHere(saved.scope, index.topics);
   const topics = scopeTopics(scope);
   if (topics.length === 0) {
     clearSession();
@@ -405,8 +470,12 @@ async function resume(saved, my) {
   const extensions = Math.max(0, Number(saved.extensions) || 0);
   while (state.extensions < extensions) state = extend(state);
   const history = saved.history && typeof saved.history === "object" ? saved.history : loadHistory();
-  run = { scope, engine, history, log: [...state.log], extensions: state.extensions, finished: saved.finished === true, state };
-  if (run.finished) return showResult(run);
+  run = { scope, engine, history, log: [...state.log], extensions: state.extensions, finished: decision === "show", state };
+  if (scope !== saved.scope) save(); // the unit now has its name in this script: keep that
+  if (run.finished) {
+    showResult(run);
+    return "shown";
+  }
   advance(run);
   return "shown";
 }
@@ -492,7 +561,7 @@ function pauseScreen(session, asked) {
   ${progressMarkup(progressOf(session))}
   <section class="zg-card zg-stack">
     <h2 class="zg-subtitle" data-zg-focus>${esc(t("diag.pause.title"))}</h2>
-    <p>${esc(t("diag.pause.text", { n: asked }))}</p>
+    <p>${esc(t("diag.pause.text", { n: blockCount(asked, session.extensions) }))}</p>
     <div class="zg-actions">
       <button type="button" class="zg-btn zg-btn-primary" data-zg-extend>${esc(t("diag.pause.extend"))}</button>
       <button type="button" class="zg-btn zg-btn-secondary" data-zg-stop>${esc(t("diag.pause.result"))}</button>
@@ -536,6 +605,8 @@ async function showShared(text, my) {
     scope = null; // a link that cannot be read is a broken link
   }
   if (!scope || !KINDS.includes(scope.kind) || !Array.isArray(log)) return brokenLink();
+  // A link made in the other script names its unit in that script.
+  scope = scopeHere(scope, index.topics);
   const topics = scopeTopics(scope);
   if (topics.length === 0) return brokenLink();
   renderLoading(main);

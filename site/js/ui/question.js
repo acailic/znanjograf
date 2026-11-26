@@ -53,6 +53,7 @@ export function displayAnswer(question) {
 // ----- the figure -------------------------------------------------------------------------
 
 function figureMarkup(figure) {
+  if (!figure || typeof figure !== "object") return ""; // no figure: no markup, and so no empty box
   let drawn = null;
   try {
     drawn = figure ? renderFigure(figure) : null;

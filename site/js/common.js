@@ -13,13 +13,13 @@ const hasLocation = () => typeof location !== "undefined";
 
 // ----- text --------------------------------------------------------------------------------
 
-/** Replaces {name} in a template with the value of that name; unknown names are left alone. */
+/**
+ * Replaces ${name} in a template with the value of that name; unknown names are left
+ * alone. The dollar is what the build leaves alone when it transliterates the mirror.
+ */
 function fill(template, params) {
   if (!params) return template;
-  return template.replace(/\{([a-z][A-Za-z0-9]*)\}/g, (name) => {
-    const key = name.slice(1, -1);
-    return key in params ? String(params[key]) : name;
-  });
+  return template.replace(/\$\{([a-z][A-Za-z0-9]*)\}/g, (name, key) => (key in params ? String(params[key]) : name));
 }
 
 /** A sentence from strings.js. The result is plain text: escape it before it goes into HTML. */
@@ -90,7 +90,8 @@ export function parseHash(hash) {
     else if (name === "jedinica" && value) params.unit = value;
     else if (name === "oblast" && value) params.area = value;
     else if (name === "rezultat" && value) params.result = value;
-    else if (name === "pismo" && value in SCRIPTS) params.script = SCRIPTS[value];
+    // hasOwn, not `in`: a value such as "constructor" or "__proto__" is no script of ours.
+    else if (name === "pismo" && Object.hasOwn(SCRIPTS, value)) params.script = SCRIPTS[value];
   }
   return params;
 }
@@ -250,7 +251,7 @@ function headerMarkup(script, pageId) {
     return `<a href="${esc(hrefTo(path))}"${current}>${esc(t(key))}</a>`;
   });
   return `<div class="zg-wrap zg-header-row">
-    <a class="zg-brand" href="${esc(home)}">${esc(t("site.name"))}</a>
+    <a class="zg-brand" href="${esc(home)}"${pageId === "home" ? ' aria-current="page"' : ""}>${esc(t("site.name"))}</a>
     <div class="zg-tools">
       <button type="button" class="zg-btn zg-btn-quiet" data-zg-script aria-label="${esc(t(toCyr ? "script.toCyr" : "script.toLat"))}">${esc(t(toCyr ? "script.cyr" : "script.lat"))}</button>
       <button type="button" class="zg-btn zg-btn-quiet" data-zg-clear>${esc(t("common.clear"))}</button>
@@ -322,6 +323,8 @@ function setDescription(text) {
  */
 export function initCommon() {
   if (!hasDom()) return null;
+  // From here on this script draws the page; the static hint for a page that cannot is gone.
+  document.getElementById("zg-fallback")?.remove();
   const page = currentScript();
   document.documentElement.lang = page === "cyr" ? "sr-Cyrl" : "sr-Latn";
   setDescription(t("site.description"));

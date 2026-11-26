@@ -107,6 +107,13 @@ a:hover {
   text-decoration-thickness: 0.14em;
 }
 
+/* A link inside a sentence keeps its line, but its target grows to the full height. */
+.zg-main p > a:not(.zg-btn):not(.zg-topiclink),
+.zg-main li > a:not(.zg-btn):not(.zg-topiclink) {
+  padding-block: 0.75rem;
+  margin-block: -0.75rem;
+}
+
 button,
 input,
 select {
@@ -128,9 +135,11 @@ svg {
   outline: none;
 }
 
-/* A heading or the main landmark that only receives the focus programmatically. */
-[tabindex="-1"]:focus {
-  outline: none;
+/* The heading of a new screen, which only receives the focus: a lighter ring, a little further out. */
+.zg-main [data-zg-focus]:focus-visible {
+  outline: 2px solid var(--zg-focus);
+  outline-offset: 6px;
+  border-radius: 4px;
 }
 
 .katex {
@@ -232,6 +241,20 @@ svg {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1.25rem;
+}
+
+/* Nothing that is still empty takes room: a note, a hint or a count line that is filled
+   in later shows as nothing until it has something to say. */
+.zg-main p:empty,
+.zg-main dd:empty,
+.zg-main li:empty,
+.zg-main h2:empty,
+.zg-main h3:empty,
+.zg-main h4:empty,
+.zg-note:empty,
+.zg-hint:empty,
+.zg-badge:empty {
+  display: none;
 }
 
 .zg-note {
@@ -849,10 +872,6 @@ svg {
   margin-bottom: 0;
 }
 
-a.zg-btn {
-  border: 1px solid transparent;
-}
-
 /* ----- diagnosis: progress and question ---------------------------------------------- */
 
 .zg-progress-track {
@@ -1088,10 +1107,6 @@ a.zg-btn {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-}
-
-.zg-path-list {
-  counter-reset: none;
 }
 
 .zg-missed .zg-prompt-text {

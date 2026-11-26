@@ -1,10 +1,8 @@
-// site/js/layout.js — positions for the topic map (spec §12.3).
+// site/js/layout.js - positions for the topic map (spec section 12.3).
 //
-// layout({ nodes, edges, focus }) is pure. It returns the canvas size and, in
-// pixels, one rectangle per node (x, y = top-left corner) and the polyline of
-// every drawable edge. Columns follow the longest path (one column per edge);
-// rows are grade bands of at most eight rows, and whatever does not fit is
-// collapsed into a single "+N" node per band.
+// layout({ nodes, edges, focus }) is pure. Columns follow the longest path (one
+// column per edge); rows are grade bands of at most eight rows, and whatever
+// does not fit is collapsed into a single "+N" node per band.
 //
 // Input:
 //   nodes  [{ id, grade, name | label }] in learning order
@@ -12,6 +10,16 @@
 //          objects { topic, requires, strength } or { from, to, strength }
 //          (from = the prerequisite, drawn on the left)
 //   focus  id of the node the map is opened at; it is never collapsed
+//
+// Output, in pixels:
+//   width, height  size of the canvas
+//   nodes          [{ id, x, y, w, h, band, label, text }], x and y being the
+//                  top-left corner; band is the grade, label the full name and
+//                  text what is shown (at most 18 characters). Nodes keep their
+//                  input order; the "+N" nodes (id "+N@<grade>") come last.
+//   edges          [{ from, to, strength, points }]; the polyline starts on the
+//                  right border of `from` and ends on the left border of `to`
+//   focus          the focus id, so that toSvg can mark the node
 
 const MARGIN = 12;
 const COL_GAP = 56; // room for the edges between two columns
@@ -55,10 +63,10 @@ export function layout({ nodes = [], edges = [], focus } = {}) {
     const source = placed.get(from);
     const target = placed.get(to);
     // Edges of hidden nodes, and the ones a cycle would send backwards, are not drawn.
-    if (source && target && layer.get(from) < layer.get(to)) {
-      const points = route(source, target, columns.spans.get(layer.get(from))[1], columns.spans.get(layer.get(to))[0], rowOf.get(to));
-      routed.push({ from, to, strength, points });
-    }
+    if (!source || !target || layer.get(from) >= layer.get(to)) continue;
+    const gapAfterSource = columns.spans.get(layer.get(from))[1]; // right edge of that column
+    const gapBeforeTarget = columns.spans.get(layer.get(to))[0]; // left edge of that column
+    routed.push({ from, to, strength, points: route(source, target, gapAfterSource, gapBeforeTarget, rowOf.get(to)) });
   }
 
   return {
@@ -75,7 +83,8 @@ function describe(node, order) {
   if (typeof node?.id !== "string" || !Number.isInteger(node.grade)) throw new TypeError("layout: every node needs a string id and an integer grade");
   const label = String(node.label ?? node.name ?? node.id);
   const letters = Array.from(label);
-  const text = letters.length > MAX_CHARS ? `${letters.slice(0, MAX_CHARS - 1).join("")}…` : label;
+  // "\u2026" is the ellipsis the user sees; the file itself stays ASCII like the rest of site/js.
+  const text = letters.length > MAX_CHARS ? `${letters.slice(0, MAX_CHARS - 1).join("")}\u2026` : label;
   return { grade: node.grade, label, text, w: Math.max(40, 2 * PAD_X + letters.length * CHAR_W), order };
 }
 
@@ -130,7 +139,7 @@ function choose(byId, layer, focus) {
   const add = (id, entry, column, row) => shown.push({ id, ...entry, column, row });
 
   for (const grade of gradesOf(byId.values())) {
-    const columns = new Map(); // layer → ids in learning order
+    const columns = new Map(); // layer -> ids in learning order
     for (const [id, entry] of byId) {
       if (entry.grade === grade) columns.set(layer.get(id), [...(columns.get(layer.get(id)) ?? []), id]);
     }
@@ -159,16 +168,16 @@ function keep(ids, count, focus) {
 
 /**
  * The strips along one axis (the columns, or the grade bands), lowest key
- * first: value → [start, end], each as wide as `size` says, `gap` in between.
+ * first: value -> [start, end], each as wide as `size` says, `gap` in between.
  * `extent` is where the last one ends, plus the margin.
  */
 function strips(entries, key, size, gap) {
   const spans = new Map();
   let at = MARGIN;
   for (const value of [...new Set(entries.map((entry) => entry[key]))].sort((a, b) => a - b)) {
-    const extent = size(entries.filter((entry) => entry[key] === value));
-    spans.set(value, [at, at + extent]);
-    at += extent + gap;
+    const measure = size(entries.filter((entry) => entry[key] === value));
+    spans.set(value, [at, at + measure]);
+    at += measure + gap;
   }
   return { spans, extent: entries.length ? at - gap + MARGIN : 0 };
 }

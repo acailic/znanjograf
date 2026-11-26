@@ -1,4 +1,4 @@
-// site/js/figure.js — declarative figures for questions (spec §12.3).
+// site/js/figure.js - declarative figures for questions (spec section 12.3).
 //
 // renderFigure(spec) turns a figure record into a standalone SVG string.
 // The parameter names are shared with the Python validator (zg/checks/figure.py)
@@ -446,7 +446,7 @@ function escapeXml(text) {
   return text.replace(/[&<>"]/g, (ch) => `&${{ "&": "amp", "<": "lt", ">": "gt", '"': "quot" }[ch]};`);
 }
 
-/** Serbian notation (spec §6.2): a minus sign, decimal comma, space as thousands separator. */
+/** Serbian notation (spec section 6.2): a minus sign, decimal comma, space as thousands separator. */
 function formatNumber(value) {
   const [whole, fraction] = String(Math.abs(value)).split(".");
   const grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, " ");

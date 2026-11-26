@@ -1,4 +1,4 @@
-// site/js/graph-view.js — draws a layout as hand-made SVG (spec §12.3).
+// site/js/graph-view.js - draws a layout as hand-made SVG (spec section 12.3).
 //
 // toSvg(layoutResult, verdicts) is pure: it returns the markup of the topic
 // map. Hard edges are solid lines and soft edges are dashed. Every node carries
@@ -11,15 +11,15 @@
 const VERDICTS = ["mastered", "shaky", "weak", "inferred", "untested"];
 const DASHED = ' stroke-dasharray="6 4"';
 
-export function toSvg(layoutResult, verdicts = {}) {
-  const { width, height, nodes = [], edges = [], focus } = layoutResult ?? {};
+export function toSvg(layoutResult, verdicts) {
+  const { width = 0, height = 0, nodes = [], edges = [], focus } = layoutResult ?? {};
   const lines = edges.map((edge) => {
     const strength = edge.strength === "soft" ? "soft" : "hard";
     const points = edge.points.map((point) => point.map(px).join(",")).join(" ");
     return `<polyline class="zg-edge zg-edge--${strength}" data-from="${escapeXml(edge.from)}" data-to="${escapeXml(edge.to)}" points="${points}" fill="none" stroke="currentColor"${strength === "soft" ? DASHED : ""}/>`;
   });
   const boxes = nodes.map((node) => {
-    const verdict = VERDICTS.includes(verdicts[node.id]) ? verdicts[node.id] : "untested";
+    const verdict = VERDICTS.includes(verdicts?.[node.id]) ? verdicts[node.id] : "untested";
     const classes = `zg-node zg-node--${verdict}${node.id === focus ? " zg-node--focus" : ""}`;
     const label = node.label ?? node.text ?? node.id;
     const shown = node.text ?? label;

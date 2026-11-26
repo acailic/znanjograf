@@ -1,0 +1,104 @@
+{
+  "numberline": {
+    "kind": "numberline",
+    "alt": "Brojevna prava od 0 do 10 sa strelicom na kraju; iznad broja 7 stoji oznaka.",
+    "min": 0,
+    "max": 10,
+    "step": 1,
+    "marks": [7]
+  },
+  "fractionbar": {
+    "kind": "fractionbar",
+    "alt": "Traka podeljena na 4 jednaka dela; 3 dela su obojena.",
+    "numerator": 3,
+    "denominator": 4,
+    "shaded": 3
+  },
+  "pie": {
+    "kind": "pie",
+    "alt": "Krug podeljen na 6 jednakih delova; 2 dela su obojena.",
+    "parts": 6,
+    "shaded": 2
+  },
+  "dots": {
+    "kind": "dots",
+    "alt": "Mreža od 2 reda i 5 kolona u kojoj su dve pozicije prazne: vidljivo je 8 tačaka.",
+    "rows": 2,
+    "cols": 5,
+    "count": 8
+  },
+  "bars": {
+    "kind": "bars",
+    "title": "Omiljeni sport",
+    "alt": "Stubičasti dijagram „Omiljeni sport“ sa tri stubca: fudbal 12, odbojka 8 i plivanje 5.",
+    "categories": ["fudbal", "odbojka", "plivanje"],
+    "values": [12, 8, 5]
+  },
+  "pictogram": {
+    "kind": "pictogram",
+    "alt": "Piktogram u kome jedan krug znači 2 sličice: Mila ima 8 sličica, a Pera 5.",
+    "symbol": "●",
+    "items": [
+      {"label": "Mila", "count": 8},
+      {"label": "Pera", "count": 5}
+    ],
+    "perSymbol": 2
+  },
+  "grid": {
+    "kind": "grid",
+    "alt": "Mreža od 3 reda i 4 kolone; obojeno je 6 polja, po dva u svakom redu.",
+    "cols": 4,
+    "rows": 3,
+    "cells": [[0, 0], [0, 1], [1, 1], [1, 2], [2, 2], [2, 3]]
+  },
+  "polygon": {
+    "kind": "polygon",
+    "alt": "Pravougli trougao ABC s katetama od 3 cm i 4 cm i hipotenuzom od 5 cm.",
+    "vertices": [[0, 0], [3, 0], [0, 4]],
+    "sides": [
+      {"index": 0, "label": "3 cm"},
+      {"index": 1, "label": "5 cm"},
+      {"index": 2, "label": "4 cm"}
+    ],
+    "labels": [
+      {"text": "A", "x": 0, "y": 0},
+      {"text": "B", "x": 3, "y": 0},
+      {"text": "C", "x": 0, "y": 4}
+    ]
+  },
+  "angle": {
+    "kind": "angle",
+    "alt": "Ugao od 35 stepeni; jedan krak ide udesno, a drugi je nagnut prema gore.",
+    "degrees": 35,
+    "label": "35°",
+    "vertex": [0, 0]
+  },
+  "axes": {
+    "kind": "axes",
+    "alt": "Koordinatni sistem od 0 do 10 na obe ose sa tačkama A (2, 3) i B (6, 8).",
+    "xmin": 0,
+    "xmax": 10,
+    "ymin": 0,
+    "ymax": 10,
+    "points": [
+      {"x": 2, "y": 3, "label": "A"},
+      {"x": 6, "y": 8, "label": "B"}
+    ]
+  },
+  "clock": {
+    "kind": "clock",
+    "alt": "Časovnik koji pokazuje pola tri: kazaljka za minute je na 6, a kazaljka za sate je na pola puta od 3 do 4.",
+    "hour": 3,
+    "minute": 30
+  },
+  "table": {
+    "kind": "table",
+    "alt": "Tabela sa dve kolone, dan i broj prodatih sladoleda: ponedeljak 12, utorak 15, sreda 9.",
+    "columns": ["dan", "prodato sladoleda"],
+    "rows": [
+      ["ponedeljak", "12"],
+      ["utorak", "15"],
+      ["sreda", "9"]
+    ]
+  }
+}

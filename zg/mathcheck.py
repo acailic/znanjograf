@@ -56,7 +56,19 @@ def _compute(node, depth: int) -> Fraction | Decimal:
     if depth > dsl.MAX_DEPTH:
         raise DslError(f"izraz provere je ugnežđen dublje od {dsl.MAX_DEPTH} nivoa", "S-check-depth")
     name, *arguments = dsl.checked(node[0], node[1:])
-    return _OPERATORS[name]([_compute(argument, depth + 1) for argument in arguments])
+    result = _OPERATORS[name]([_compute(argument, depth + 1) for argument in arguments])
+    return _bounded(result)
+
+
+def _bits(value) -> int:
+    return abs(value.numerator).bit_length() + value.denominator.bit_length() if isinstance(value, Fraction) else 0
+
+
+def _bounded(value):
+    """A fraction larger than ``MAX_BITS`` bits in numerator plus denominator would grow without bound."""
+    if _bits(value) > MAX_BITS:
+        raise DslError("rezultat je prevelik broj")
+    return value
 
 
 def _decimal(value) -> Decimal:
@@ -107,7 +119,7 @@ def _divide(values: list) -> Fraction | Decimal:
 def _power(values: list) -> Fraction | Decimal:
     base, exponent = values
     exponent = _whole_number(exponent, "stepen")
-    if isinstance(base, Fraction) and abs(base.numerator).bit_length() * abs(exponent) > MAX_BITS:
+    if isinstance(base, Fraction) and _bits(base) * abs(exponent) > MAX_BITS:
         raise DslError("stepen daje prevelik broj")
     if base == 0 and exponent < 0:
         raise DslError("deljenje nulom", "S-check-zero")

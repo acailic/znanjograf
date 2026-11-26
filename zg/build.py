@@ -80,7 +80,7 @@ def serve(root: Path | str | None = None, port: int = 8765) -> None:
 
     if not out.exists():
         build_site(root, out)
-    with ThreadingHTTPServer(("", port), factory) as httpd:
+    with ThreadingHTTPServer(("127.0.0.1", port), factory) as httpd:
         print(f"Znanjograf: http://127.0.0.1:{port}/  (Ctrl+C za kraj)")
         try:
             httpd.serve_forever()
@@ -212,14 +212,18 @@ def _write_bundles(data_dir: Path, corpus: corpus_module.Corpus, script: str) ->
         jsonio.dump(_outcomes(edition, text), data_dir / "ishodi" / f"{edition_id}.{script}.json")
 
 
-def _deep(value, text, key=None):
-    """Transliterate every string under ``value`` except machine values (see ``KEEP_KEYS``)."""
+# In a figure, ``unit`` is a unit symbol ("cm"), not the name of a program theme.
+FIGURE_KEYS = KEEP_KEYS | {"unit"}
+
+
+def _deep(value, text, key=None, keep=KEEP_KEYS):
+    """Transliterate every string under ``value`` except machine values (see ``keep``)."""
     if isinstance(value, str):
-        return value if key in KEEP_KEYS else text(value)
+        return value if key in keep else text(value)
     if isinstance(value, list):
-        return [_deep(item, text, key) for item in value]
+        return [_deep(item, text, key, keep) for item in value]
     if isinstance(value, dict):
-        return {name: _deep(item, text, name) for name, item in value.items()}
+        return {name: _deep(item, text, name, keep) for name, item in value.items()}
     return value
 
 
@@ -260,7 +264,7 @@ def _grade(corpus: corpus_module.Corpus, grade: int, text) -> dict:
             "summary": text(record.get("summary", "")),
             "mastery": [text(item) for item in record.get("mastery", [])],
             "curriculum": _deep(record.get("curriculum", []), text),
-            "review": corpus.review.get(topic_id) or None,
+            "review": _deep(corpus.review.get(topic_id) or None, text),
         }
     questions = {}
     for question_id, record in corpus.questions.items():
@@ -270,7 +274,7 @@ def _grade(corpus: corpus_module.Corpus, grade: int, text) -> dict:
         item["prompt"] = text(item.get("prompt", ""))
         item["explanation"] = text(item.get("explanation", ""))
         if "figure" in record:
-            item["figure"] = _deep(record["figure"], text)
+            item["figure"] = _deep(record["figure"], text, keep=FIGURE_KEYS)
         if "choices" in record:
             item["choices"] = [{"id": choice.get("id"), "text": text(choice.get("text"))} for choice in record["choices"]]
         if record.get("type") == "numeric" and isinstance(record.get("answer"), str):

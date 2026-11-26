@@ -29,14 +29,11 @@ jobs:
       - name: Node testovi
         run: node --test "tests/node/**/*.test.js"
 
-      - name: Sve kapije
-        run: python3 -m zg all --skip-site
-
       - name: Izgradnja sajta
         run: python3 -m zg build
 
-      - name: Izgradnja je ažurna
-        run: python3 -m zg build --check
+      - name: Sve kapije (uključuje tabelu u README-u i ažurnost izgradnje)
+        run: python3 -m zg all
 
       - uses: actions/upload-artifact@v4
         with:
@@ -55,6 +52,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/download-artifact@v4
         with:

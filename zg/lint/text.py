@@ -6,15 +6,19 @@ spans (math, markup, URLs, unit symbols). ``run`` mutates nothing and appends to
 
 from __future__ import annotations
 
+import difflib
 import re
+from pathlib import Path
 from typing import Iterator, NamedTuple
 
+from zg import jsonio, paths
 from zg.corpus import Corpus
 from zg.issues import Issues
 from zg.translit import rules
 from zg.translit.protect import split_protected
 
 LEXICON_FILE = "data/lint/digraphs.json"
+REVIEW_PATH = "data/review/teachers.json"
 # Longest text of a task by grade band (spec §6.4); explanations have one limit everywhere.
 PROMPT_LIMITS = {1: 200, 2: 200, 3: 300, 4: 300}
 EXPLANATION_LIMIT = 400
@@ -63,6 +67,9 @@ def run(corpus: Corpus, issues: Issues) -> None:
     for field in fields:
         _check_field(corpus, field, folded, issues)
     _check_lengths(corpus, issues)
+    _check_near_duplicates(corpus, issues)
+    if corpus.root.resolve() == paths.ROOT:  # the site is built from the repository, not from a test tree
+        run_built(issues)
 
 
 def check_mixed_script(text: str, where: str, path: str, issues: Issues) -> None:
@@ -96,6 +103,10 @@ def iter_text_fields(corpus: Corpus) -> Iterator[TextField]:
         path = corpus.edition_file.get(edition_id, edition.file)
         for outcome_id, outcome in edition.outcomes.items():
             yield from _fields(path, outcome_id, outcome, ("text", "unit"))
+    if isinstance(corpus.review, dict):
+        for topic_id, record in corpus.review.items():
+            if isinstance(record, dict):
+                yield from _fields(REVIEW_PATH, f"{topic_id}.review", record, ("name", "role", "note"))
 
 
 def missing_from_lexicon(corpus: Corpus) -> list[str]:
@@ -157,6 +168,99 @@ def _check_lengths(corpus: Corpus, issues: Issues) -> None:
         if isinstance(explanation, str) and len(explanation) > EXPLANATION_LIMIT:
             message = f"objašnjenje ima {len(explanation)} znakova, a najviše {EXPLANATION_LIMIT}"
             issues.add(path, f"{question_id}.explanation", "L5-length", message)
+
+
+def _check_near_duplicates(corpus: Corpus, issues: Issues) -> None:
+    """L6: two topics with the same name, or with names that differ by a slip and not by a number."""
+    names: dict[str, list[str]] = {}
+    for index, topic in enumerate(corpus.topic_list):
+        if isinstance(topic, dict) and isinstance(topic.get("name"), str) and topic["name"].strip():
+            names.setdefault(_record_id(topic, "topics", index), []).append(topic["name"].strip())
+    by_id = dict(names)
+    ids = sorted(by_id, key=lambda value: (str(rules.collation_key(rules.fold(by_id[value][0]))), value))
+    for position, first in enumerate(ids):
+        for second in ids[position + 1 :]:
+            left, right = rules.fold(by_id[first][0]), rules.fold(by_id[second][0])
+            if left[:1] != right[:1]:
+                continue
+            if left != right:
+                # names that differ only in their numbers are different ranges on purpose: do 10, do 20
+                if _DIGIT_RUN.sub("#", left) == _DIGIT_RUN.sub("#", right):
+                    continue
+                if difflib.SequenceMatcher(None, left, right).ratio() < 0.9:
+                    continue
+            _report(set(), issues, corpus.topic_file.get(second, ""), second, "L6-near-duplicate", first,
+                    f"naziv „{by_id[second][0]}“ skoro je isti kao naziv teme {first} („{by_id[first][0]}“)")
+
+
+_DIGIT_RUN = re.compile(r"\d+")
+
+
+def run_built(issues: Issues, site_out: Path | None = None) -> int:
+    """L7 on the built Cyrillic mirror: how many text strings were checked (0 when nothing is built).
+
+    A Serbian word that stayed Latin where a reader sees it is a leak the source lint cannot see,
+    because it is the build that produces the Cyrillic text.
+    """
+    mirror = (Path(site_out) if site_out is not None else paths.SITE_OUT) / "cir"
+    if not mirror.is_dir():
+        return 0
+    checked = 0
+    for file in sorted(path for path in mirror.rglob("*") if path.is_file()):
+        rel = file.relative_to(mirror.parent).as_posix()
+        if file.suffix == ".json":
+            try:
+                data = jsonio.load(file)
+            except jsonio.JsonError as exc:
+                issues.add(rel, "-", "V1-json", str(exc))
+                continue
+            for key, text in _text_strings(data):
+                checked += 1
+                _check_cyrillic(text, f"{rel}:{key}", issues)
+        elif rel == "cir/js/strings.js":
+            literals = [groups for groups in _JS_LITERAL.findall(file.read_text(encoding="utf-8")) if not groups[3]]
+            for index, groups in enumerate(literals):
+                checked += 1
+                _check_cyrillic(next(part for part in groups[:3] if part), f"{rel}:literal[{index}]", issues)
+        elif file.suffix == ".html":
+            html = file.read_text(encoding="utf-8")
+            for index, text in enumerate(_HTML_TEXT.findall(html)):
+                checked += 1
+                _check_cyrillic(text, f"{rel}:text[{index}]", issues)
+    return checked
+
+
+_JS_LITERAL = re.compile(r"""(?:"((?:[^"\\\n]|\\.)*)"|'((?:[^'\\\n]|\\.)*)'|`((?:[^`\\]|\\.)*)`)(\s*:)?""")
+_HTML_TEXT = re.compile(r"<(?:title|noscript)\b[^>]*>(.*?)</(?:title|noscript)>", re.S | re.I)
+# Values a machine reads: ids, enums, option ids. ``edges`` and ``points_to`` are lists of ids.
+_MACHINE_KEYS = frozenset({"id", "outcome", "edition", "area", "areas", "level", "kind", "type", "match", "answer", "strength", "subject", "edges", "symbol", "hours", "page", "applies_from"})
+_SKIP_SUBTREES = frozenset({"points_to", "aliases", "curriculum"})
+
+
+def _text_strings(value, key=None, in_figure=False):
+    """Every string a reader sees, as ``(key, text)``. Machine values are left out."""
+    if isinstance(value, str):
+        if key in _MACHINE_KEYS or (key == "unit" and in_figure):
+            return
+        yield key or "-", value
+    elif isinstance(value, list):
+        for item in value:
+            yield from _text_strings(item, key, in_figure)
+    elif isinstance(value, dict):
+        if key in _SKIP_SUBTREES:
+            return
+        for name, item in value.items():
+            yield from _text_strings(item, name, in_figure or key == "figure")
+
+
+_PLACEHOLDER = re.compile(r"\$\{[^{}]*\}")  # ``${name}``: a value put in at run time, never transliterated
+
+
+def _check_cyrillic(text: str, where: str, issues: Issues) -> None:
+    path = where.rsplit(":", 1)[0]
+    for segment, protected in split_protected(_PLACEHOLDER.sub(" ", text)):
+        if not protected:
+            check_mixed_script(segment, where, path, issues)
 
 
 # ----- helpers -----------------------------------------------------------------------

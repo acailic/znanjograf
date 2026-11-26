@@ -33,6 +33,10 @@ UNIT_SYMBOLS: tuple[str, ...] = (
 _LETTER = r"[^\W\d_]"
 _SPACES = " \u00a0\u2009\u202f"  # space, no-break space, thin space, narrow no-break space
 _URL_TRAILING = ".,;:!?"
+# Symbols that are no Serbian word are units anywhere they stand alone ("cm" as a figure's unit).
+# The ones that could be a word (m, g, t, l, h, s, a, min, ha, din) are units only after a number.
+_NUMBER_ONLY: frozenset[str] = frozenset({"m", "g", "t", "l", "h", "s", "a", "min", "ha", "din"})
+_UNITS_ANYWHERE: frozenset[str] = frozenset(UNIT_SYMBOLS) - _NUMBER_ONLY
 
 UNIT_PATTERN: re.Pattern = re.compile(
     rf"(?<!{_LETTER})(?:{'|'.join(re.escape(symbol) for symbol in UNIT_SYMBOLS)})(?![^\W\d_²³])"
@@ -83,7 +87,7 @@ def _unit_spans(text: str, markup: list[tuple[int, int, str]]) -> list[tuple[int
         while index < len(markup) and markup[index][0] <= match.start():
             gap_start, before = markup[index][1], markup[index][2]
             index += 1
-        if match.start() >= gap_start and _follows_number(text, match.start(), gap_start, before):
+        if match.start() >= gap_start and (match.group() in _UNITS_ANYWHERE or _follows_number(text, match.start(), gap_start, before)):
             spans.append(match.span())
     return spans
 

@@ -74,13 +74,19 @@ class SplitProtectedTest(unittest.TestCase):
         self.assertEqual(protected_spans("$5$ cm, a $5$ m"), ["$5$", "cm", "$5$", "m"])
 
     def test_two_spaces_break_the_unit(self):
-        self.assertEqual(protected_spans("5  cm"), [])
+        self.assertEqual(protected_spans("5  m"), [])
+
+    def test_a_symbol_that_is_no_word_is_a_unit_without_a_number(self):
+        for text in ("pet cm", "jedinica kg", "slika: mm", "kolona dm"):
+            with self.subTest(text=text):
+                self.assertEqual(len(protected_spans(text)), 1)
 
     def test_word_that_starts_like_a_unit_is_a_word(self):
         self.assertEqual(protected_spans("2 minute, 5 dinara, 3 sekunde i 12 sati"), [])
 
-    def test_unit_starts_with_at_least_a_digit(self):
-        for text in ("pet cm", "x cm", "(5) cm", "5.cm", "5 - cm"):
+    def test_a_short_symbol_is_a_unit_only_after_a_number(self):
+        # m, g, l, s, a, h, t and min, ha, din can be a word of the sentence, so they need a number in front
+        for text in ("pet m", "x m", "(5) m", "5.m", "5 - m", "posle min", "tri ha", "dva din"):
             with self.subTest(text=text):
                 self.assertEqual(protected_spans(text), [])
 

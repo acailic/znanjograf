@@ -131,7 +131,7 @@ S-expression parsed by `zg.dsl.parse(text) -> tuple | Fraction | str` with nesti
 
 ```python
 # zg/mathcheck.py
-def evaluate(node) -> Fraction | Decimal       # exact; sqrt of a non-square gives Decimal with 50 digits
+def evaluate(node) -> Fraction | Decimal       # exact; sqrt of a non-square gives Decimal with 60 digits
 def parse_answer(text: str) -> Fraction | Decimal | None   # "15", "3,5", "3/4", "2 3/4", "-7", "1 000", "3.14"
 def format_value(value, round_to: int | None = None) -> str  # canonical answer text
 def answers_equal(expected, given, round_to: int | None = None) -> bool

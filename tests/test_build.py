@@ -167,3 +167,83 @@ class BuildTest(unittest.TestCase):
 
     def test_check_site_on_a_missing_build(self):
         self.assertEqual(len(build.check_site(self.root, self.out, self.site)), 1)
+
+
+DRAFT_PAGE = """<!doctype html>
+<html lang="sr-Latn"><head><meta charset="utf-8"><title>Znanjograf — mapa znanja</title></head>
+<body data-pismo="lat" data-podaci="../podaci/">
+<header id="zg-header" class="zg-header"></header>
+<!--zg:draft-->
+<main id="zg-main" class="zg-main" tabindex="-1"><p>Izaberite temu.</p></main>
+</body></html>
+"""
+NOTICE = re.compile(r'<aside class="zg-wrap zg-draft"><p class="zg-note zg-note-warn">(.*?)</p></aside>')
+
+
+class DraftNoticeTest(unittest.TestCase):
+    """A page that carries the mark says what is not written yet, in both scripts, and stops saying it."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.raw = helpers.fixture_raw()
+        self.site = self.root / "site-src"
+        (self.site / "mapa").mkdir(parents=True)
+        (self.site / "mapa" / "index.html").write_text(DRAFT_PAGE, encoding="utf-8")
+        self.out = self.root / "_site"
+
+    def pages(self):
+        helpers.write_corpus(self.root, self.raw)
+        build.build_site(self.root, self.out, self.site)
+        return [(self.out / rel).read_text(encoding="utf-8") for rel in ("mapa/index.html", "cir/mapa/index.html")]
+
+    def notices(self):
+        return [match.group(1) if match else None for match in map(NOTICE.search, self.pages())]
+
+    def test_nothing_is_said_once_every_grade_has_topics_with_questions(self):
+        self.assertEqual(self.notices(), [None, None])
+        for page in self.pages():
+            self.assertNotIn("<!--zg:draft-->", page)
+            self.assertNotIn("zg-draft", page)
+        self.assertIn("<main", self.pages()[0])
+
+    def test_a_grade_without_content_is_named_in_both_scripts(self):
+        self.raw.topics[2], self.raw.edges[2], self.raw.questions[2] = [], [], []
+        self.assertEqual(self.notices(), [
+            "Sadržaj se još upisuje: ovo je rana javna verzija. Nastavni program je upisan za sve razrede; "
+            "teme i zadaci su upisani za 1. razred, a za 2. razred su u pripremi.",
+            "Садржај се још уписује: ово је рана јавна верзија. Наставни програм је уписан за све разреде; "
+            "теме и задаци су уписани за 1. разред, а за 2. разред су у припреми.",
+        ])
+
+    def test_without_any_content_the_notice_says_the_diagnosis_has_nothing_to_ask(self):
+        for grade in self.raw.grades:
+            self.raw.topics[grade], self.raw.edges[grade], self.raw.questions[grade] = [], [], []
+        self.raw.editions.pop("g2-2026")
+        self.assertEqual(self.notices(), [
+            "Sadržaj se još upisuje: ovo je rana javna verzija. Nastavni program je upisan za 1. razred; "
+            "teme i zadaci još nisu upisani ni za jedan razred, pa dijagnostika trenutno nema od čega da pita.",
+            "Садржај се још уписује: ово је рана јавна верзија. Наставни програм је уписан за 1. разред; "
+            "теме и задаци још нису уписани ни за један разред, па дијагностика тренутно нема од чега да пита.",
+        ])
+
+    def test_topics_without_questions_do_not_count_as_content(self):
+        self.raw.questions[2] = []
+        self.assertIn("su upisani za 1. razred, a za 2. razred su u pripremi", self.notices()[0])
+
+    def test_a_page_without_the_mark_is_left_alone(self):
+        (self.site / "mapa" / "index.html").write_text(PAGE, encoding="utf-8")
+        self.raw.topics[2], self.raw.edges[2], self.raw.questions[2] = [], [], []
+        for page in self.pages():
+            self.assertNotIn("zg-draft", page)
+
+    def test_grade_lists_are_written_as_a_reader_would(self):
+        every = [1, 2, 3, 4, 5, 6, 7, 8]
+        text = build._grades_text
+        self.assertEqual(text([1], every), "za 1. razred")
+        self.assertEqual(text([1, 5], every), "za 1. i 5. razred")
+        self.assertEqual(text([2, 3, 4, 5, 6, 7, 8], every), "za 2–8. razred")
+        self.assertEqual(text([1, 2, 4], every), "za 1., 2. i 4. razred")
+        self.assertEqual(text(every, every), "za sve razrede")
+        self.assertEqual(text([], every), "ni za jedan razred")

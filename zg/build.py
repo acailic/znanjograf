@@ -7,6 +7,7 @@ as they are, so the engine behaves identically in both trees.
 from __future__ import annotations
 
 import hashlib
+import html
 import re
 import shutil
 import tempfile
@@ -32,6 +33,10 @@ _JS_INTERP = re.compile(r"(\$\{[^}]*\})")  # the capturing group keeps each ${�
 # The static text of a page: its title, its <noscript> sentence and the fallback inside <main>
 # that the page script replaces (it must be readable before, or without, the script).
 _HTML_TEXT = re.compile(r"(<(?:title|noscript|main)\b[^>]*>)(.*?)(</(?:title|noscript|main)>)", re.S | re.I)
+# A page carries this line where the notice about unfinished content belongs (after the header).
+# The build replaces the whole line with the notice, or with nothing once every grade has content.
+DRAFT_MARK = "<!--zg:draft-->"
+_DRAFT_LINE = re.compile(r"^[ \t]*<!--zg:draft-->[ \t]*\r?\n?", re.M)
 
 
 # ----- public ----------------------------------------------------------------------
@@ -44,10 +49,13 @@ def build_site(root: Path | str | None = None, out: Path | str | None = None, si
     corpus = corpus_module.Corpus.load("math", root=root)
     if out.exists():
         shutil.rmtree(out)
+    notice = draft_notice(corpus)
+    notices = {LAT: notice, CYR: None if notice is None else translit.to_cyrillic(notice, corpus.lexicon)}
     for target, script in ((out, LAT), (out / MIRROR, CYR)):
         _copy_site(source, target)
         if script == CYR:
             _adapt_tree(target, corpus.lexicon)
+        _fill_draft(target, notices[script])
         _write_bundles(target / DATA_DIR, corpus, script)
     manifest = {"data": jsonio.sha256_obj(_index(corpus, _keep)), "script": _script_hash(source), "built": _now()}
     jsonio.dump(manifest, out / MANIFEST)
@@ -97,6 +105,74 @@ def _copy_site(source: Path, target: Path) -> None:
         target.mkdir(parents=True)
         return
     shutil.copytree(source, target, ignore=shutil.ignore_patterns(DATA_DIR))
+
+
+def draft_notice(corpus: corpus_module.Corpus) -> str | None:
+    """What a reader must know before relying on the site while the content is still being written.
+
+    Says which grades have their program and which have topics with questions, so that nobody is
+    sent to a diagnosis that has nothing to ask. ``None`` once every grade has both: the notice
+    must not outlast the state it describes.
+    """
+    every = sorted(corpus.grades)
+    asked = sorted({
+        corpus.topics[record["topic"]]["grade"]
+        for record in corpus.questions.values()
+        if record.get("topic") in corpus.topics
+    })
+    if not every or asked == every:
+        return None
+    with_program = sorted({edition.grade for edition in corpus.editions.values()})
+    if with_program:
+        program = f"Nastavni program je upisan {_grades_text(with_program, every)}"
+    else:
+        program = "Nastavni program nije još upisan ni za jedan razred"
+    if asked:
+        waiting = [grade for grade in every if grade not in asked]
+        content = f"teme i zadaci su upisani {_grades_text(asked, every)}, a {_grades_text(waiting, every)} su u pripremi"
+    else:
+        content = "teme i zadaci još nisu upisani ni za jedan razred, pa dijagnostika trenutno nema od čega da pita"
+    return f"Sadržaj se još upisuje: ovo je rana javna verzija. {program}; {content}."
+
+
+def _grades_text(grades: list[int], every: list[int]) -> str:
+    """„za 1. razred“, „za 1. i 5. razred“, „za 2–4. razred“, „za sve razrede“ ili „ni za jedan razred“."""
+    if not grades:
+        return "ni za jedan razred"
+    if grades == every:
+        return "za sve razrede"
+    parts: list[str] = []
+    run: list[int] = []
+    for grade in grades:
+        if run and grade == run[-1] + 1:
+            run.append(grade)
+            continue
+        parts += _run_parts(run)
+        run = [grade]
+    parts += _run_parts(run)
+    if len(parts) == 1:
+        return f"za {parts[0]} razred"
+    return "za " + ", ".join(parts[:-1]) + " i " + parts[-1] + " razred"
+
+
+def _run_parts(run: list[int]) -> list[str]:
+    """Three or more grades in a row are a range; one or two are still named one by one."""
+    if len(run) > 2:
+        return [f"{run[0]}–{run[-1]}."]
+    return [f"{grade}." for grade in run]
+
+
+def _fill_draft(target: Path, notice: str | None) -> None:
+    """Put ``notice`` where each page carries ``DRAFT_MARK``, and take the mark away when there is none."""
+    for file in target.rglob("*.html"):
+        content = file.read_text(encoding="utf-8")
+        if DRAFT_MARK not in content:
+            continue
+        block = "" if notice is None else (
+            f'<aside class="zg-wrap zg-draft"><p class="zg-note zg-note-warn">{html.escape(notice)}</p></aside>\n'
+        )
+        content = _DRAFT_LINE.sub(lambda _: block, content)  # a function: the text is not a template
+        file.write_text(content, encoding="utf-8")
 
 
 def _adapt_tree(target: Path, lexicon: dict[str, str]) -> None:

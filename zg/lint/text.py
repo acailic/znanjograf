@@ -129,7 +129,7 @@ def missing_from_lexicon(corpus: Corpus) -> list[str]:
 def _check_field(corpus: Corpus, field: TextField, folded: dict[str, str], issues: Issues) -> None:
     seen: set = set()
     for word, _ in rules.iter_words(field.text):
-        if not _has_diacritic(word):
+        if not _has_diacritic(word) and word.lower() not in _LEGITIMATE:
             twin = folded.get(rules.fold(word))
             if twin is not None:
                 message = f"reč „{word}“ nema dijakritike, a u korpusu postoji „{twin}“"
@@ -321,6 +321,11 @@ def _edge_path(corpus: Corpus, edge: dict) -> str:
 
 def _has_diacritic(word: str) -> bool:
     return any(char in _DIACRITICS for char in word.lower())
+
+
+# Words that are right as they stand although another word folds to the same letters: the table and the
+# hundred are ``sto``, not ``što`` without its diacritic, and ``mesa`` (of meat) is not ``meša``.
+_LEGITIMATE = frozenset({"sto", "mesa"})
 
 
 def _is_cyrillic(char: str) -> bool:

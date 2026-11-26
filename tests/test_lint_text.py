@@ -184,6 +184,12 @@ class FoldedWordsTest(unittest.TestCase):
         self.assertEqual(len(issues), 1)
         self.assertTrue(issues[0].message.startswith("reč „resenje“"), issues[0].message)
 
+    def test_words_that_are_right_as_they_stand_are_left_alone(self):
+        # „sto“ (the table, the hundred) folds like „što“ and „mesa“ (of meat) like „meša“: neither lacks a letter
+        helpers.topic(self.raw, TOPIC)["summary"] = "Učenik zna šta i što radi i kako meša boje."
+        helpers.question(self.raw, QUESTION)["explanation"] = "Na stolu ima sto kockica i komad mesa."
+        self.assertEqual(only(lint(self.raw), "L2-folded"), [])
+
 
 class DigraphWordsTest(unittest.TestCase):
     def setUp(self):

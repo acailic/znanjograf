@@ -666,7 +666,7 @@ Transliteracija bez rečnika čita svaki par kao jedno slovo, pa pogrešna klasi
 | `L1-notation` | zadatak koristi notaciju koju njegov razred još nije upoznao |
 | `L1-rule-outcome` | pravilo notacije navodi ishod koji izdanje nema; pravilo je preskočeno |
 | `L1-rule-invalid` | pravilo notacije nije ispravno oblikovano; pravilo je preskočeno |
-| `L2-folded` | reč bez dijakritika ima dvojnika s dijakritikom u korpusu |
+| `L2-folded` | reč bez dijakritika ima dvojnika s dijakritikom u korpusu; reči koje su ispravne i bez dijakritika uprkos dvojniku („sto“ naspram „što“, „mesa“ naspram „meša“) ne prijavljuju se |
 | `L3-digraph` | reč s `lj`, `nj` ili `dž` nije u rečniku digrafa |
 | `L4-orthography` | decimala s tačkom, `%` bez razmaka ispred, dva razmaka, razmak ispred znaka, ili ćirilično slovo u izvoru |
 | `L5-length` | tekst zadatka ili objašnjenje je duže od dozvoljenog |

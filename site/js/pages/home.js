@@ -56,7 +56,7 @@ function markup() {
 function fill(root, index) {
   root.querySelector("[data-zg-grades]").innerHTML = gradesOf(index).map((grade) => {
     const label = t("home.grades.link", { n: grade });
-    return `<li><a href="${esc(hrefTo("dijagnostika/", { grade }))}" aria-label="${esc(label)}">${esc(t("common.grade.n", { n: grade }))}</a></li>`;
+    return `<li><a class="zg-grade" href="${esc(hrefTo("dijagnostika/", { grade }))}" aria-label="${esc(label)}">${esc(t("common.grade.n", { n: grade }))}</a></li>`;
   }).join("");
 
   const questions = countQuestions(index);

@@ -163,7 +163,11 @@ function isShown(key, holdsSelection) {
 }
 
 function listMarkup(topics) {
-  if (topics.length === 0) return `<p class="zg-note zg-note-warn">${esc(t("map.list.empty"))}</p>`;
+  if (topics.length === 0) {
+    // Nothing written yet is a different answer from "nothing matches your search".
+    const none = (index?.topics || []).length === 0;
+    return `<p class="zg-note zg-note-warn">${esc(t(none ? "map.list.none" : "map.list.empty"))}</p>`;
+  }
   const current = selectedId();
   const blocks = [];
   for (const [grade, ofGrade] of groupBy(topics, (topic) => topic.grade)) {

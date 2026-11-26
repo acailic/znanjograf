@@ -325,6 +325,7 @@ function formMarkup(preset) {
     ${field("topic", "diag.topic.label")}
     ${field("unit", "diag.unit.label")}
   </fieldset>
+  <p class="zg-note zg-note-warn" data-zg-empty role="status" hidden></p>
   <p class="zg-hint" data-zg-count role="status"></p>
   <div class="zg-actions"><button type="submit" class="zg-btn zg-btn-primary">${esc(t("diag.start"))}</button></div>
 </form>`;
@@ -373,6 +374,12 @@ function wireForm(preset) {
     for (const field of form.querySelectorAll("[data-zg-for]")) field.hidden = field.dataset.zgFor !== kind();
     const scope = picked();
     count.textContent = scope ? t("diag.topics.count", { n: scopeTopics(scope).length }) : "";
+    // A grade that has no topics yet gets a sentence, not a button that does nothing.
+    const empty = !graph.topicIds.some((id) => graph.gradeOf.get(id) === grade());
+    const said = form.querySelector("[data-zg-empty]");
+    said.hidden = !empty;
+    said.textContent = empty ? t("diag.grade.empty", { n: grade() }) : "";
+    form.querySelector("button[type=submit]").disabled = empty;
   };
 
   const rebuild = () => {

@@ -108,7 +108,7 @@ class Corpus:
             corpus.edge_file[grade] = f"{base}/edges.json"
             for record in raw.topics.get(grade, []):
                 corpus.topic_list.append(record)
-                record_id = record.get("id")
+                record_id = record.get("id") if isinstance(record, dict) else None
                 if isinstance(record_id, str):
                     corpus.topic_file.setdefault(record_id, f"{base}/topics.json")
                     corpus.topics.setdefault(record_id, record)
@@ -117,13 +117,14 @@ class Corpus:
                 corpus.edge_grade.append(grade)
             for record in raw.questions.get(grade, []):
                 corpus.question_list.append(record)
-                record_id = record.get("id")
+                record_id = record.get("id") if isinstance(record, dict) else None
                 if isinstance(record_id, str):
                     corpus.question_file.setdefault(record_id, f"{base}/questions.json")
                     corpus.questions.setdefault(record_id, record)
         for edition_id, data in raw.editions.items():
-            edition = Edition(edition_id, data if isinstance(data, dict) else {}, f"data/curriculum/{subject}/{edition_id}.json")
-            corpus.editions[edition_id] = edition
+            file = f"data/curriculum/{subject}/{edition_id}.json"
+            corpus.editions[edition_id] = Edition(edition_id, data if isinstance(data, dict) else {}, file)
+            corpus.edition_file[edition_id] = file
         corpus.registry = set(raw.registry)
         corpus.aliases = copy.deepcopy(raw.aliases)
         corpus.unmapped = copy.deepcopy(raw.unmapped)
@@ -176,6 +177,7 @@ class Corpus:
             data = jsonio.load_or_none(file, corpus.load_errors, corpus._rel)
             if isinstance(data, dict):
                 corpus.editions[file.stem] = Edition(file.stem, data, corpus._rel(file))
+                corpus.edition_file[file.stem] = corpus._rel(file)
         corpus.sources = _optional(curriculum / "sources.json", corpus, dict)
         corpus.unmapped = _optional(curriculum / "unmapped.json", corpus, dict)
         registry = _optional(root / "data" / "registry.json", corpus, dict)

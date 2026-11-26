@@ -64,6 +64,16 @@ class CorpusTest(unittest.TestCase):
         self.assertEqual(len(self.corpus.prereqs("mat-poredjenje-do-100")), 2)
         self.assertEqual(len(self.corpus.prereqs("mat-poredjenje-do-100", ("soft",))), 1)
 
+    def test_edition_file_is_filled_in_memory(self):
+        self.assertEqual(self.corpus.edition_file["g2-2026"], "data/curriculum/math/g2-2026.json")
+
+    def test_a_record_that_is_not_an_object_is_kept_for_the_validators(self):
+        self.raw.topics[1].append("nije objekat")
+        self.raw.questions[1].append(7)
+        corpus = Corpus.from_raw("math", self.raw)
+        self.assertEqual(len(corpus.topic_list), 9)
+        self.assertEqual(len(corpus.questions), 32)
+
     def test_bank_keeps_file_order(self):
         self.assertEqual(
             [q["id"] for q in self.corpus.bank("mat-oduzimanje-do-100")],
@@ -81,6 +91,7 @@ class CorpusLoadTest(unittest.TestCase):
         self.assertEqual(loaded.topic_file["mat-sabiranje-do-20"], "data/math/g1/topics.json")
         self.assertEqual(loaded.edge_file[2], "data/math/g2/edges.json")
         self.assertEqual(set(loaded.editions), {"g1-2026", "g2-2026"})
+        self.assertEqual(loaded.edition_file["g1-2026"], "data/curriculum/math/g1-2026.json")
 
     def test_broken_file_is_reported_not_raised(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -16,6 +16,7 @@ Sve tri komande moraju završiti sa `OK`. Ne slabite proveru da bi sadržaj pro�
 - U formuli decimalni zarez piše se `{,}`: `$3{,}5$`. Množenje je `\cdot`, deljenje `:`, procenat `15\,\%`.
 - Van formule: decimalni zarez (`3,5`), razmak kao separator hiljada (`1 000 000`), razmak ispred procenta (`15 %`), jedinice latiničkim slovima (`5 cm`, `3 kg`, `60 km/h`), novac rečima (`150 dinara`).
 - Varijable su latinična slova u oba pisma (`$x$`, `$a$`, `$n$`). `\text{…}` služi samo za jedinice.
+- Veznik „a“ ne pisati odmah posle broja, jer se tada čita kao jedinica (ari) i ostaje latiničan. Umesto „Ima $5$ a ne $3$.“ pišite „Ima $5$, a ne $3$.“
 
 ## 2. Tema
 

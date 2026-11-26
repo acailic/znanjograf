@@ -201,7 +201,8 @@ def _edge_path(corpus: Corpus, edge: dict) -> str:
     """The edges file of the grade of the dependent topic, or any edges file when the topic is unknown."""
     topic = corpus.topics.get(edge.get("topic"))
     grade = topic.get("grade") if isinstance(topic, dict) else None
-    return next((path for edge_grade, path in corpus.edge_file.items() if edge_grade == grade), next(iter(corpus.edge_file.values()), ""))
+    any_file = next(iter(corpus.edge_file.values()), "")
+    return next((path for edge_grade, path in corpus.edge_file.items() if edge_grade == grade), any_file)
 
 
 def _has_diacritic(word: str) -> bool:

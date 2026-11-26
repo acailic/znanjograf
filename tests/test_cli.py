@@ -42,7 +42,6 @@ class CliTest(unittest.TestCase):
         self.assertIn("data/math/g1/topics.json: mat-brojevi-do-10: V2-unknown-field:", out)
         self.assertIn("1 greška", out)
 
-    @unittest.expectedFailure  # Task 14 removes this once the last gate module has landed
     def test_every_gate_is_wired(self):
         for gate, modules in cli.GATES.items():
             for module in modules:

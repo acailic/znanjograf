@@ -30,7 +30,7 @@ Potrebni su Python 3.12 ili noviji i Node 22 ili noviji. Bez pip zavisnosti i be
 
 ```
 python3 -m zg all        # sve kapije
-node --test tests/node/  # motor, slike, raspored, formule
+node --test "tests/node/**/*.test.js"  # motor, slike, raspored, formule
 python3 -m zg serve      # sajt na http://127.0.0.1:8765/
 ```
 

@@ -21,7 +21,7 @@
 - Serbian decimal comma, space as thousands separator, `15 %`, Latin unit symbols in both scripts.
 - Each topic: ≥ 2 `basic` and ≥ 2 `standard` questions.
 - One file, one owner. Agents never run `git`; the coordinator commits each task's files after review.
-- Every task ends green on: `python3 -m unittest discover -s tests -q` and `node --test tests/node/`.
+- Every task ends green on: `python3 -m unittest discover -s tests -q` and `node --test "tests/node/**/*.test.js"`.
 
 ---
 
@@ -278,7 +278,7 @@ Fixture = spec §5 shapes, 2 grades, 8 topics, 8 edges, 32 questions (2 basic + 
 
 `__main__.py`: `argparse` with sub-commands `validate, verify, lint, build, serve, report, status, all`. Each command calls a function `cmd_<name>(args) -> int`; a command whose module does not exist yet prints `nije implementirano: <name>` and returns 2. `all` runs `validate`, `verify`, `lint`, `report --check`, `build --check` and returns 1 if any returns non-zero (2 counts as failure once Task 14 wires it; before that `all` returns 0 only if every implemented command passes).
 
-CI (`.github/workflows/ci.yml`): on push/PR to `main`; Python 3.12 → `python3 -m zg all`; Node 22 → `node --test tests/node/`; upload `_site/` as artifact.
+CI (`.github/workflows/ci.yml`): on push/PR to `main`; Python 3.12 → `python3 -m zg all`; Node 22 → `node --test "tests/node/**/*.test.js"`; upload `_site/` as artifact.
 
 - [ ] **Step 1: Write `tests/test_cli.py`** (each unimplemented command exits 2; `validate` on the written fixture tree will be wired in Task 14).
 - [ ] **Step 2:** Implement; vendor KaTeX; `node -e "require('./site/vendor/katex/katex.min.js')"` prints nothing and exits 0.
@@ -447,7 +447,7 @@ All UI strings live in `strings.js` as one exported object of Serbian Latin; not
 **Files:** Modify `zg/__main__.py` (wire `validate` → `schema.run, graph.run, coverage.run, bank.run, figure.run`; `verify` → `mathcheck.verify`; `lint` → `notation.run, text.run`; `all`), `tests/helpers.py` (`dump_engine_fixture()` writing `tests/fixtures/engine-fixture.json`), `tests/test_cli.py`, `.github/workflows/ci.yml` (Pages deploy on `main`).
 
 - [ ] **Step 1:** `python3 -m zg validate` on the fixture tree → `OK`.
-- [ ] **Step 2:** `python3 -m unittest discover -s tests -q` → OK; `node --test tests/node/` → all pass.
+- [ ] **Step 2:** `python3 -m unittest discover -s tests -q` → OK; `node --test "tests/node/**/*.test.js"` → all pass.
 - [ ] **Step 3:** `python3 -m zg build` and `python3 -m zg build --check` → no differences; open `_site/` in a browser, run a scripted session on both scripts.
 - [ ] **Step 4:** Commit `feat: wire all gates and build`; push; create the public repo `acailic/znanjograf`; confirm Pages serves `_site/` and CI is green.
 

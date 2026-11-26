@@ -27,7 +27,7 @@ jobs:
         run: python3 -m unittest discover -s tests -q
 
       - name: Node testovi
-        run: node --test tests/node/
+        run: node --test "tests/node/**/*.test.js"
 
       - name: Sve kapije
         run: python3 -m zg all --skip-site

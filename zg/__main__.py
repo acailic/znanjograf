@@ -132,6 +132,36 @@ def run_report(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_unmapped(args: argparse.Namespace) -> int:
+    """Bring ``unmapped.json`` in line with the corpus: every outcome no topic carries, nothing else."""
+    corpus = corpus_module.Corpus.load(args.subject, root=args.root)
+    target = (paths.ROOT if args.root is None else Path(args.root)) / "data" / "curriculum" / "unmapped.json"
+    current = corpus.unmapped if isinstance(corpus.unmapped, dict) else {}
+    carried = {
+        entry.get("outcome")
+        for topic in corpus.topic_list
+        if isinstance(topic, dict)
+        for entry in topic.get("curriculum") or []
+        if isinstance(entry, dict)
+    }
+    grade_of = {outcome_id: edition.grade for edition in corpus.editions.values() for outcome_id in edition.outcomes}
+    wanted = {outcome_id for outcome_id in grade_of if outcome_id not in carried}
+    unknown = sorted(outcome_id for outcome_id in current if outcome_id not in grade_of)
+    added = sorted(wanted - set(current))
+    removed = sorted(set(current) - wanted)
+    merged = {outcome_id: current[outcome_id] for outcome_id in sorted(set(current) & wanted)}
+    merged.update({outcome_id: f"Teme za {grade_of[outcome_id]}. razred još nisu upisane." for outcome_id in added})
+    if args.write:
+        jsonio.dump(merged, target)
+    print(f"ishoda bez teme: {len(merged)} (dodato {len(added)}, uklonjeno {len(removed)}); nepoznatih stavki u spisku: {len(unknown)}")
+    for outcome_id in added:
+        print(f"  + {outcome_id}")
+    for outcome_id in removed:
+        print(f"  − {outcome_id}")
+    stale = 1 if (added or removed or unknown) and not args.write else 0
+    return stale
+
+
 def run_blind(args: argparse.Namespace) -> int:
     """``blind sheet`` writes what an independent solver may see; ``blind diff`` reads what it answered."""
     blind = _load("zg.blind")
@@ -261,6 +291,8 @@ def build_parser() -> argparse.ArgumentParser:
     difference = blind_action.add_parser("diff", help="poredi odgovore rešavača s bankom")
     difference.add_argument("--grade", type=int, required=True)
     difference.add_argument("--answers", type=Path, required=True)
+    unmapped = sub.add_parser("unmapped", help="spisak ishoda bez teme: pokaži razliku ili je upiši")
+    unmapped.add_argument("--write", action="store_true", help="upiši spisak koji tačno odgovara korpusu")
     ledger = sub.add_parser("ledger", help="evidencija: zabeleži da je kapija prošla za jedan razred")
     ledger_action = ledger.add_subparsers(dest="action", required=True)
     mark = ledger_action.add_parser("mark")
@@ -275,7 +307,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     runners = {
         "build": run_build, "serve": run_serve, "report": run_report, "status": run_status, "all": run_all,
-        "blind": run_blind, "ledger": run_ledger,
+        "blind": run_blind, "ledger": run_ledger, "unmapped": run_unmapped,
     }
     if args.command in GATES:
         return run_gate(args.command, args)

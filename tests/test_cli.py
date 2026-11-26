@@ -132,3 +132,28 @@ class CliTest(unittest.TestCase):
         status = json.loads(self.run_cli("--root", str(root), "status")[1])
         self.assertEqual(status["grades"]["1"]["gates"]["verify"]["verified"], 15)
         self.assertEqual(status["grades"]["1"]["gates"]["verify"]["stale"], ["mat-brojevi-do-10-q1"])
+
+    def test_unmapped_sync_follows_the_corpus(self):
+        root = self.fixture_root()
+        jsonio.dump({}, root / "data" / "curriculum" / "unmapped.json")
+        code, out = self.run_cli("--root", str(root), "unmapped")
+        self.assertEqual(code, 0, out)
+        self.assertIn("ishoda bez teme: 0", out)
+
+    def test_unmapped_sync_adds_outcomes_without_a_topic_and_drops_stale_ones(self):
+        root = self.fixture_root()
+        topics = jsonio.load(root / "data" / "math" / "g1" / "topics.json")
+        topics[0]["curriculum"] = []  # g1-2026-001 and -005 now have no topic
+        jsonio.dump(topics, root / "data" / "math" / "g1" / "topics.json")
+        jsonio.dump({"g2-2026-004": "stari razlog"}, root / "data" / "curriculum" / "unmapped.json")
+        code, out = self.run_cli("--root", str(root), "unmapped")
+        self.assertEqual(code, 1)
+        self.assertIn("+ g1-2026-001", out)
+        self.assertIn("− g2-2026-004", out)
+        self.assertEqual(self.run_cli("--root", str(root), "unmapped", "--write")[0], 0)
+        saved = jsonio.load(root / "data" / "curriculum" / "unmapped.json")
+        self.assertEqual(sorted(saved), ["g1-2026-001", "g1-2026-005"])
+        code, out = self.run_cli("--root", str(root), "validate")
+        self.assertEqual(code, 1)
+        # the list is now right; what remains is the topic I emptied, which is a different rule
+        self.assertEqual([line.split(": ")[-2] for line in out.splitlines() if line.startswith("data/")], ["V7-topic-without-outcome"])

@@ -68,8 +68,8 @@
   {
     "topic": "mat-mnozenje-nulom-i-jedinicom",
     "requires": "mat-tablicno-mnozenje",
-    "strength": "hard",
-    "reason": "Pravila o nuli i jedinici kao činiocu imaju smisla samo uz pojam proizvoda."
+    "strength": "soft",
+    "reason": "Zadaci o nuli i jedinici rešavaju se bez ijednog proizvoda iz tablice."
   },
   {
     "topic": "mat-osobine-mnozenja",
@@ -84,24 +84,6 @@
     "reason": "Isto pravilo koje važi za sabirke pomaže da se razume zašto važi i za činioce."
   },
   {
-    "topic": "mat-redosled-operacija",
-    "requires": "mat-tablicno-deljenje",
-    "strength": "hard",
-    "reason": "U izrazu s više operacija deljenje se računa pre oduzimanja i sabiranja, a i množenje stoji uz njega."
-  },
-  {
-    "topic": "mat-redosled-operacija",
-    "requires": "mat-sabiranje-do-100-u-glavi",
-    "strength": "hard",
-    "reason": "Posle množenja ili deljenja rezultat se sabira ili oduzima."
-  },
-  {
-    "topic": "mat-redosled-operacija",
-    "requires": "mat-oduzimanje-do-100-u-glavi",
-    "strength": "soft",
-    "reason": "Kad izraz sadrži oduzimanje, ono se računa posle množenja i deljenja; brojevi ostaju u okviru koji učenik već poznaje."
-  },
-  {
     "topic": "mat-jednacine-sa-jednom-operacijom",
     "requires": "mat-nepoznati-broj-u-jednakosti",
     "strength": "hard",
@@ -111,7 +93,7 @@
     "topic": "mat-jednacine-sa-jednom-operacijom",
     "requires": "mat-tablicno-deljenje",
     "strength": "hard",
-    "reason": "Nepoznati broj u jednačinama $36 : x = 4$, $x : 6 = 7$ i $7 \\cdot x = 42$ nalazi se deljenjem."
+    "reason": "Oba standardna zadatka jesu jednačine s deljenjem: s nepoznatim deljenikom i s nepoznatim deliocem."
   },
   {
     "topic": "mat-zadaci-sa-dve-operacije",
@@ -141,19 +123,7 @@
     "topic": "mat-sastavljanje-novca",
     "requires": "mat-novac",
     "strength": "hard",
-    "reason": "Sumu novca učenik sastavlja od apoena čiju vrednost prepoznaje."
-  },
-  {
-    "topic": "mat-sastavljanje-novca",
-    "requires": "mat-sabiranje-do-100-u-glavi",
-    "strength": "hard",
-    "reason": "Da bi proverio da li sastavljeni apoeni daju traženu sumu, učenik sabira njihove vrednosti."
-  },
-  {
-    "topic": "mat-rimske-cifre",
-    "requires": "mat-brojevi-do-100",
-    "strength": "hard",
-    "reason": "Rimskim ciframa se zapisuju brojevi do $100$, jer cifra $C$ znači $100$."
+    "reason": "Oba standardna zadatka traže poznavanje apoena: koja kombinacija daje $70$ dinara i koja je najveća kovanica."
   },
   {
     "topic": "mat-prikaz-podataka",
@@ -188,20 +158,8 @@
   {
     "topic": "mat-crtanje-figura-na-mrezi",
     "requires": "mat-kvadratna-mreza",
-    "strength": "hard",
-    "reason": "Stranice se crtaju duž linija mreže, a njihova dužina se broji u poljima mreže."
-  },
-  {
-    "topic": "mat-crtanje-figura-na-mrezi",
-    "requires": "mat-geometrijske-figure",
-    "strength": "hard",
-    "reason": "Pravougaonik, kvadrat i trougao crtaju se onako kako im stoje stranice i uglovi."
-  },
-  {
-    "topic": "mat-podudarne-figure",
-    "requires": "mat-geometrijske-figure",
-    "strength": "hard",
-    "reason": "Podudarnost se prepoznaje po obliku i veličini poznatih figura."
+    "strength": "soft",
+    "reason": "Zadaci traže brojanje polja, a ne red, kolonu ni pomeranje."
   },
   {
     "topic": "mat-podudarne-figure",
@@ -210,22 +168,10 @@
     "reason": "Na mreži se veličina figure može uporediti brojanjem polja."
   },
   {
-    "topic": "mat-simetricne-figure",
-    "requires": "mat-geometrijske-figure",
-    "strength": "hard",
-    "reason": "Simetrija figure ocenjuje se na poznatim figurama."
-  },
-  {
     "topic": "mat-dopunjavanje-simetricne-figure",
     "requires": "mat-simetricne-figure",
     "strength": "hard",
     "reason": "Dopunjavanje zahteva pojam simetrije i ose simetrije."
-  },
-  {
-    "topic": "mat-dopunjavanje-simetricne-figure",
-    "requires": "mat-kvadratna-mreza",
-    "strength": "hard",
-    "reason": "Odraz tačke na mreži nalazi se brojanjem polja s druge strane ose."
   },
   {
     "topic": "mat-jedinice-duzine",
@@ -242,14 +188,14 @@
   {
     "topic": "mat-merenje-duzine",
     "requires": "mat-jedinice-duzine",
-    "strength": "hard",
-    "reason": "Duž se meri u centimetrima, pa učenik mora da poznaje tu jedinicu."
+    "strength": "soft",
+    "reason": "Zadaci su celim zadatkom u centimetrima, bez pretvaranja jedinica."
   },
   {
     "topic": "mat-merenje-duzine",
     "requires": "mat-crtanje-lenjirom",
-    "strength": "hard",
-    "reason": "Duž date dužine crta se lenjirom."
+    "strength": "soft",
+    "reason": "Zadaci broje na lenjiru, a ne crtaju."
   },
   {
     "topic": "mat-citanje-vremena",
@@ -274,5 +220,35 @@
     "requires": "mat-sabiranje-do-100-u-glavi",
     "strength": "soft",
     "reason": "Trajanje izraženo u časovima i minutima sabira se u okviru $100$."
+  },
+  {
+    "topic": "mat-rimske-cifre",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "hard",
+    "reason": "Treći zadatak sabira $XII + XV$, to jest $12 + 15$, bez prelaska desetice."
+  },
+  {
+    "topic": "mat-prikaz-podataka",
+    "requires": "mat-sabiranje-preko-desetice",
+    "strength": "hard",
+    "reason": "Oba standardna zadatka traže zbir do $20$ s prelaskom preko desetice: $8 + 5 + 6$ i $9 + 5$."
+  },
+  {
+    "topic": "mat-simetricne-figure",
+    "requires": "mat-kvadratna-mreza",
+    "strength": "hard",
+    "reason": "Likovi su nacrtani na kvadratnoj mreži, a osa simetrije traži se brojanjem kolona s leva."
+  },
+  {
+    "topic": "mat-redosled-operacija",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "hard",
+    "reason": "Treći zadatak zahteva tablično množenje ($4 \\cdot 9 = 36$) da bi se dobio zbir $66$; četvrti zadatak dovoljno je rešiti pravilom redosleda."
+  },
+  {
+    "topic": "mat-redosled-operacija",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "soft",
+    "reason": "Treći zadatak na kraju sabira $36 + 30$ bez prelaska desetice."
   }
 ]

@@ -933,7 +933,7 @@
     "choices": [
       {
         "id": "a",
-        "text": "pravu liniju"
+        "text": "pravu liniju koja nema krajeve"
       },
       {
         "id": "b",

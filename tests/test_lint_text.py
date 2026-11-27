@@ -188,6 +188,8 @@ class FoldedWordsTest(unittest.TestCase):
         # „sto“ (the table, the hundred) folds like „što“ and „mesa“ (of meat) like „meša“: neither lacks a letter
         helpers.topic(self.raw, TOPIC)["summary"] = "Učenik zna šta i što radi i kako meša boje."
         helpers.question(self.raw, QUESTION)["explanation"] = "Na stolu ima sto kockica i komad mesa."
+        # ``zapisu`` (of a notation) is not ``zapišu``, although both fold to the same letters
+        helpers.question(self.raw, QUESTION)["prompt"] = "U decimalnom zapisu broja učenici zapišu cifru 5 jednom."
         self.assertEqual(only(lint(self.raw), "L2-folded"), [])
 
 

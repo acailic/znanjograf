@@ -11,7 +11,7 @@ Za sve fajlove važe dva pravila:
 
 Primeri su uzeti iz oglednog korpusa za testove (`tests/fixtures/raw.py`) ili su sastavljeni po istim pravilima. Id-jevi ishoda u tim primerima pripadaju oglednom korpusu i ne odgovaraju ishodima pravog izdanja `g1-2026`.
 
-U `data/` su u trenutku pisanja upisani `data/math/meta.json`, izdanje za 1. razred (`data/curriculum/math/g1-2026.json`), `data/curriculum/sources.json`, `data/curriculum/unmapped.json` i pravila u `data/lint/`; tema i zadataka još nema.
+U `data/` su u trenutku pisanja upisani `data/math/meta.json`, izdanja za svih osam razreda (`data/curriculum/math/g1-2026.json` do `g8-2026.json`), `data/curriculum/sources.json`, `data/curriculum/unmapped.json`, pravila u `data/lint/` i, za 1. i 2. razred, teme, grane i zadaci u `data/math/g1/` i `data/math/g2/`.
 
 ## 1. Pregled fajlova
 
@@ -666,7 +666,7 @@ Transliteracija bez rečnika čita svaki par kao jedno slovo, pa pogrešna klasi
 | `L1-notation` | zadatak koristi notaciju koju njegov razred još nije upoznao |
 | `L1-rule-outcome` | pravilo notacije navodi ishod koji izdanje nema; pravilo je preskočeno |
 | `L1-rule-invalid` | pravilo notacije nije ispravno oblikovano; pravilo je preskočeno |
-| `L2-folded` | reč bez dijakritika ima dvojnika s dijakritikom u korpusu; reči koje su ispravne i bez dijakritika uprkos dvojniku („sto“ naspram „što“, „mesa“ naspram „meša“) ne prijavljuju se |
+| `L2-folded` | reč bez dijakritika ima dvojnika s dijakritikom u korpusu; reči koje su ispravne i bez dijakritika uprkos dvojniku („sto“ naspram „što“, „mesa“ naspram „meša“, „zapisu“ naspram „zapišu“) ne prijavljuju se |
 | `L3-digraph` | reč s `lj`, `nj` ili `dž` nije u rečniku digrafa |
 | `L4-orthography` | decimala s tačkom, `%` bez razmaka ispred, dva razmaka, razmak ispred znaka, ili ćirilično slovo u izvoru |
 | `L5-length` | tekst zadatka ili objašnjenje je duže od dozvoljenog |

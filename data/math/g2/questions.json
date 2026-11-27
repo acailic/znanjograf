@@ -294,10 +294,10 @@
     "topic": "mat-mnozenje-nulom-i-jedinicom",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Mila ima $6$ kutija i u svakoj kutiji je $0$ loptica. Koliko Mila ima loptica?",
-    "answer": "0",
-    "check": "(* 6 0)",
-    "explanation": "Šest kutija, a u svakoj nula loptica: $6 \\cdot 0 = 0$."
+    "prompt": "Mila ima $1$ paket s $9$ sličica, a Luka ima $9$ paketa s $0$ sličica. Koliko sličica imaju zajedno?",
+    "answer": "9",
+    "check": "(+ (* 1 9) (* 9 0))",
+    "explanation": "Mila ima $1 \\cdot 9 = 9$ sličica, a Luka $9 \\cdot 0 = 0$ sličica. Zajedno imaju $9 + 0 = 9$ sličica."
   },
   {
     "id": "mat-osobine-mnozenja-q1",
@@ -334,10 +334,10 @@
     "topic": "mat-osobine-mnozenja",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Luka združuje činioce u $5 \\cdot 4 \\cdot 6$ tako da prvo pomnoži dva broja čiji je proizvod $20$. Koji broj dobije na kraju?",
-    "answer": "120",
-    "check": "(* 5 4 6)",
-    "explanation": "$5 \\cdot 4 = 20$, pa $20 \\cdot 6 = 120$."
+    "prompt": "Luka združuje činioce u $5 \\cdot 3 \\cdot 4$ tako da prvo pomnoži dva broja čiji je proizvod $20$. Koji broj dobije na kraju?",
+    "answer": "60",
+    "check": "(* (* 5 4) 3)",
+    "explanation": "$5 \\cdot 4 = 20$, pa $20 \\cdot 3 = 60$."
   },
   {
     "id": "mat-redosled-operacija-q1",
@@ -374,7 +374,7 @@
     "topic": "mat-redosled-operacija",
     "level": "standard",
     "type": "choice",
-    "prompt": "Koju operaciju treba prvo izračunati u izrazu $30 + 6 : 2$?",
+    "prompt": "Koju operaciju treba prvo izračunati u izrazu $20 + 4 \\cdot 5$?",
     "choices": [
       {
         "id": "a",
@@ -382,7 +382,7 @@
       },
       {
         "id": "b",
-        "text": "deljenje"
+        "text": "množenje"
       },
       {
         "id": "c",
@@ -390,8 +390,8 @@
       }
     ],
     "answer": "b",
-    "check": "deljenje",
-    "explanation": "Prvo se računa deljenje: $6 : 2 = 3$, pa $30 + 3 = 33$. Ako se prvo sabere, ispadne $36 : 2 = 18$. Zato redosled nije svejedan."
+    "check": "množenje",
+    "explanation": "Prvo se računa množenje: $4 \\cdot 5 = 20$, pa $20 + 20 = 40$. Ako se prvo sabere, ispadne $24 \\cdot 5$, a to nije $40$. Zato redosled nije svejedan."
   },
   {
     "id": "mat-jednacine-sa-jednom-operacijom-q1",
@@ -428,10 +428,10 @@
     "topic": "mat-jednacine-sa-jednom-operacijom",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Mila je imala $62$ dinara. Potrošila je $x$ dinara, a ostalo joj je $40$ dinara. Koliko iznosi $x$?",
-    "answer": "22",
-    "check": "(- 62 40)",
-    "explanation": "Jednačina je $62 - x = 40$. Zato je $x = 62 - 40 = 22$. Provera: $62 - 22 = 40$."
+    "prompt": "Pera je $36$ sličica rasporedio u $x$ kutija, u svaku po $4$ sličice. Koliko iznosi $x$?",
+    "answer": "9",
+    "check": "(/ 36 4)",
+    "explanation": "Jednačina je $36 : x = 4$. Zato je $x = 36 : 4 = 9$. Provera: $36 : 9 = 4$."
   },
   {
     "id": "mat-zadaci-sa-dve-operacije-q1",
@@ -521,7 +521,7 @@
     "topic": "mat-razlomci-oblika-jedna-n",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Luka je imao $40$ dinara. Za sladoled je dao $8$ dinara. Kojim razlomkom se zapisuje deo novca koji je potrošio? Upiši razlomak.",
+    "prompt": "Luka je imao $40$ dinara. Za sladoled je dao $8$ dinara. Koji deo novca je potrošio? Odgovori razlomkom čiji je brojilac $1$.",
     "answer": "1/5",
     "check": "(/ 1 (/ 40 8))",
     "explanation": "$40 : 8 = 5$, znači $8$ dinara je jedan od $5$ jednakih delova. Potrošeni deo je $\\frac{1}{5}$ novca."
@@ -550,21 +550,35 @@
     "id": "mat-sastavljanje-novca-q3",
     "topic": "mat-sastavljanje-novca",
     "level": "standard",
-    "type": "numeric",
-    "prompt": "Luka ima novčanicu od $20$ dinara i još jednu novčanicu. Skupa vrede $70$ dinara. Koliko dinara vredi druga novčanica?",
-    "answer": "50",
-    "check": "(- 70 20)",
-    "explanation": "Od $70$ dinara oduzmi $20$: $70 - 20 = 50$. Druga novčanica je novčanica od $50$ dinara."
+    "type": "choice",
+    "prompt": "Koja kombinacija novčanica i kovanica daje tačno $70$ dinara?",
+    "answer": "a",
+    "check": "novčanica od $50$ dinara i dve kovanice od $10$ dinara",
+    "explanation": "Novčanica od $50$ dinara i dve kovanice od $10$ dinara daju $70$ dinara. Novčanica od $60$ dinara ne postoji, a novčanica od $50$ i kovanica od $10$ dinara daju samo $60$ dinara.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "novčanica od $50$ dinara i dve kovanice od $10$ dinara"
+      },
+      {
+        "id": "b",
+        "text": "novčanica od $60$ dinara i kovanica od $10$ dinara"
+      },
+      {
+        "id": "c",
+        "text": "novčanica od $50$ dinara i kovanica od $10$ dinara"
+      }
+    ]
   },
   {
     "id": "mat-sastavljanje-novca-q4",
     "topic": "mat-sastavljanje-novca",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Ana je $60$ dinara složila od novčanice od $50$ i kovanice od $10$ dinara. Luka je $60$ dinara složio od dve novčanice po $20$ dinara i jedne kovanice. Koliko dinara vredi Lukina kovanica?",
-    "answer": "20",
-    "check": "(- 60 (+ 20 20))",
-    "explanation": "Dve novčanice od $20$ dinara vrede $40$ dinara. Do $60$ dinara treba još $20$ dinara. Lukina kovanica vredi $20$ dinara."
+    "prompt": "Koju najveću sumu dinara možeš složiti od tri kovanice? Kovanice mogu biti iste. Upiši broj.",
+    "answer": "60",
+    "check": "(+ 20 20 20)",
+    "explanation": "Najveća kovanica je od $20$ dinara. Tri takve kovanice vrede $20 + 20 + 20 = 60$ dinara."
   },
   {
     "id": "mat-rimske-cifre-q1",
@@ -850,7 +864,7 @@
     "topic": "mat-duzina-izlomljene-linije",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Na lenjiru su tri duži jedna do druge. Prva ide od broja $3$ do broja $7$, druga od $7$ do $10$, a treća od $10$ do $16$. Kolika je dužina te izlomljene linije?",
+    "prompt": "Razmak između susednih brojeva na lenjiru je $1\\text{ cm}$. Tri duži su jedna do druge: od broja $3$ do $7$, od $7$ do $10$ i od $10$ do $16$. Kolika je dužina te izlomljene linije?",
     "answer": "13",
     "check": "(+ (- 7 3) (- 10 7) (- 16 10))",
     "explanation": "Prva duž je duga $4\\text{ cm}$, druga $3\\text{ cm}$ i treća $6\\text{ cm}$: zajedno $13\\text{ cm}$.",
@@ -864,7 +878,7 @@
         10,
         16
       ],
-      "alt": "Lenjar od nule do 16 sa oznakama na brojevima 3, 7, 10 i 16."
+      "alt": "Lenjir sa brojevima od 0 do 16 i oznakama na brojevima 3, 7, 10 i 16."
     }
   },
   {
@@ -902,10 +916,10 @@
     "topic": "mat-obim-figure",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Obim pravougaonika je $34\\text{ cm}$, a jedna njegova stranica je $10\\text{ cm}$. Kolika je druga stranica?",
-    "answer": "7",
-    "check": "(/ (- 34 10 10) 2)",
-    "explanation": "Dve poznate stranice zajedno su $20\\text{ cm}$. Preostale dve su $14\\text{ cm}$, pa je svaka $14 : 2 = 7\\text{ cm}$."
+    "prompt": "Pera je celu žicu savio u četvorougao. Stranice su mu dugačke $9\\text{ cm}$, $7\\text{ cm}$, $8\\text{ cm}$ i $6\\text{ cm}$. Kolika je dužina žice?",
+    "answer": "30",
+    "check": "(+ 9 7 8 6)",
+    "explanation": "Dužina žice jednaka je zbiru svih stranica: $9 + 7 + 8 + 6 = 30\\text{ cm}$."
   },
   {
     "id": "mat-crtanje-figura-na-mrezi-q1",
@@ -970,7 +984,7 @@
           4
         ]
       ],
-      "alt": "Mreža ima 6 kolona i 5 redova. Pravougaonik čije su stranice duž linija mreže zauzima drugu, treću i četvrtu kolonu i prvi, drugi i treći red: širok je 4 polja, a visok 3 polja."
+      "alt": "Mreža ima 6 kolona i 5 redova. Pravougaonik čije su stranice duž linija mreže zauzima od druge do pete kolone i od drugog do četvrtog reda: širok je 4 polja, a visok 3 polja."
     }
   },
   {
@@ -1046,7 +1060,7 @@
           6
         ]
       ],
-      "alt": "Mreža ima 8 kolona i 5 redova. Pravougaonik čije su stranice duž linija mreže zauzima od druge do sedme kolone i prvi i drugi red: širok je 6 polja, a visok 2 polja."
+      "alt": "Mreža ima 8 kolona i 5 redova. Pravougaonik čije su stranice duž linija mreže zauzima od druge do sedme kolone i od drugog do trećeg reda: širok je 6 polja, a visok 2 polja."
     }
   },
   {
@@ -1164,7 +1178,7 @@
           5
         ]
       ],
-      "alt": "Mreža ima 7 kolona i 6 redova. Kvadrat čije su stranice duž linija mreže zauzima od druge do šeste kolone i od prvog do petog reda: svaka mu je stranica duga 5 polja."
+      "alt": "Mreža ima 7 kolona i 6 redova. Kvadrat čije su stranice duž linija mreže zauzima od druge do šeste kolone i od drugog do šestog reda: svaka mu je stranica duga 5 polja."
     }
   },
   {
@@ -1460,10 +1474,10 @@
     "topic": "mat-dopunjavanje-simetricne-figure",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Simetrična figura nacrtana je na mreži. Levo od ose simetrije obojena su $4$ polja, a desno samo $2$. Koliko polja treba dopuniti da figura bude simetrična?",
+    "prompt": "Figura treba da bude simetrična u odnosu na osu. Levo od ose obojena su $4$ polja, a desno $2$ polja, svako naspram jednog obojenog polja levo od ose. Koliko polja treba dopuniti desno?",
     "answer": "2",
     "check": "(- 4 2)",
-    "explanation": "S obe strane ose mora biti jednako polja: $4 - 2 = 2$ polja nedostaje."
+    "explanation": "S obe strane ose mora biti jednako polja: $4 - 2 = 2$, pa desno nedostaju $2$ polja."
   },
   {
     "id": "mat-jedinice-duzine-q1",
@@ -1490,17 +1504,17 @@
     "topic": "mat-jedinice-duzine",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Vrata u učionici visoka su $2\\text{ m}$. Koliko su centimetara visoka vrata?",
-    "answer": "200",
-    "check": "(* 2 100)",
-    "explanation": "U $1\\text{ m}$ ima $100\\text{ cm}$. $2\\text{ m}$ su $100\\text{ cm}$ i još $100\\text{ cm}$, a to je $200\\text{ cm}$."
+    "prompt": "Traka je dugačka $50\\text{ cm}$. Koliko joj centimetara nedostaje do $1\\text{ m}$?",
+    "answer": "50",
+    "check": "(- 100 50)",
+    "explanation": "U $1\\text{ m}$ ima $100\\text{ cm}$. Do $100\\text{ cm}$ traci nedostaje $100 - 50 = 50\\text{ cm}$."
   },
   {
     "id": "mat-jedinice-duzine-q4",
     "topic": "mat-jedinice-duzine",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Luka ima dve trake. Jedna je dugačka $1\\text{ m}$, a druga je dugačka $90\\text{ cm}$. Koja je traka duža? Koliko centimetara je dugačka ta traka?",
+    "prompt": "Luka ima dve trake. Jedna je dugačka $1\\text{ m}$, a druga je dugačka $90\\text{ cm}$. Koja je traka duža? Upiši koliko centimetara ima duža traka.",
     "answer": "100",
     "check": "(* 1 100)",
     "explanation": "$1\\text{ m}$ je $100\\text{ cm}$, a $100$ je više od $90$. Duža je traka od $1\\text{ m}$, a to je $100\\text{ cm}$."
@@ -1530,7 +1544,7 @@
     "topic": "mat-merenje-duzine",
     "level": "basic",
     "type": "numeric",
-    "prompt": "Mila crta duž lenjirom. Počela je kod broja $4$, a duž je dugačka $3\\text{ cm}$. Na kom broju se duž završava?",
+    "prompt": "Mila crta duž lenjirom na kome je razmak između susednih brojeva $1\\text{ cm}$. Počela je kod broja $4$ i crtala je ka većim brojevima. Duž je dugačka $3\\text{ cm}$. Na kom broju se duž završava?",
     "figure": {
       "kind": "numberline",
       "alt": "Lenjir sa brojevima od 0 do 10. Jedna tačka stoji iznad broja 4.",
@@ -1569,7 +1583,7 @@
     "topic": "mat-merenje-duzine",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Ana crta duž lenjirom. Počela je kod obeleženog broja, nacrtala je $6\\text{ cm}$ i stala. Na kom broju je stala?",
+    "prompt": "Ana crta duž lenjirom na kome je razmak između susednih brojeva $1\\text{ cm}$. Počela je kod obeleženog broja, nacrtala je $6\\text{ cm}$ ka većim brojevima i stala. Na kom broju je stala?",
     "figure": {
       "kind": "numberline",
       "alt": "Lenjir sa brojevima od 0 do 10. Jedna tačka stoji iznad broja 2.",

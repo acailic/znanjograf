@@ -273,6 +273,11 @@
         "edition": "g2-2026",
         "outcome": "g2-2026-011",
         "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-002",
+        "match": "partial"
       }
     ]
   },
@@ -293,6 +298,16 @@
         "edition": "g2-2026",
         "outcome": "g2-2026-012",
         "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-014",
+        "match": "exact"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-027",
+        "match": "partial"
       }
     ]
   },
@@ -346,7 +361,7 @@
     "summary": "Obim figure zbir je dužina svih njenih stranica; pravougaonik sa stranicama od $5\\text{ cm}$ i $3\\text{ cm}$ ima obim $16\\text{ cm}$.",
     "mastery": [
       "izračuna obim figure sabiranjem dužina svih stranica",
-      "za dati obim i poznate stranice nađe dužinu nedostajuće strane"
+      "u zadatku iz života izračuna obim figure čije su sve stranice poznate"
     ],
     "curriculum": [
       {
@@ -373,6 +388,11 @@
         "edition": "g2-2026",
         "outcome": "g2-2026-017",
         "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-016",
+        "match": "partial"
       }
     ]
   },
@@ -413,6 +433,11 @@
         "edition": "g2-2026",
         "outcome": "g2-2026-019",
         "match": "exact"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-028",
+        "match": "partial"
       }
     ]
   },

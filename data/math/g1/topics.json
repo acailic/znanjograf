@@ -595,6 +595,11 @@
         "edition": "g1-2026",
         "outcome": "g1-2026-012",
         "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-003",
+        "match": "partial"
       }
     ]
   },
@@ -689,6 +694,16 @@
         "edition": "g2-2026",
         "outcome": "g2-2026-013",
         "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-014",
+        "match": "partial"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-015",
+        "match": "partial"
       }
     ]
   },
@@ -729,6 +744,11 @@
       {
         "edition": "g1-2026",
         "outcome": "g1-2026-020",
+        "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-015",
         "match": "exact"
       }
     ]
@@ -813,6 +833,11 @@
       {
         "edition": "g1-2026",
         "outcome": "g1-2026-022",
+        "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-022",
         "match": "exact"
       }
     ]

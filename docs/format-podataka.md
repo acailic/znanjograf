@@ -11,7 +11,7 @@ Za sve fajlove važe dva pravila:
 
 Primeri su uzeti iz oglednog korpusa za testove (`tests/fixtures/raw.py`) ili su sastavljeni po istim pravilima. Id-jevi ishoda u tim primerima pripadaju oglednom korpusu i ne odgovaraju ishodima pravog izdanja `g1-2026`.
 
-U `data/` su u trenutku pisanja upisani `data/math/meta.json`, izdanja za svih osam razreda (`data/curriculum/math/g1-2026.json` do `g8-2026.json`), `data/curriculum/sources.json`, `data/curriculum/unmapped.json`, pravila u `data/lint/` i, za 1. i 2. razred, teme, grane i zadaci u `data/math/g1/` i `data/math/g2/`.
+U `data/` su u trenutku pisanja upisani `data/math/meta.json`, izdanja za svih osam razreda (`data/curriculum/math/g1-2026.json` do `g8-2026.json`), `data/curriculum/sources.json`, `data/curriculum/unmapped.json`, pravila u `data/lint/` i, za 1–3. razred, teme, grane i zadaci u `data/math/g1/` do `data/math/g3/`.
 
 ## 1. Pregled fajlova
 

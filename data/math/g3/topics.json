@@ -1,0 +1,650 @@
+[
+  {
+    "id": "mat-brojevi-do-1000",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Brojevi do 1000",
+    "summary": "Brojevi prve hiljade: čitaju se, zapisuju, upoređuju i pokazuju na brojevnoj pravoj. Stotina je $100$ jedinica, a u $1000$ ima deset stotina.",
+    "mastery": [
+      "čita i zapisuje brojeve do $1000$",
+      "uporedi dva broja do $1000$",
+      "nađe najveći i najmanji broj među datim brojevima do $1000$"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-001",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-pismeno-sabiranje",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Pismeno sabiranje do 1000",
+    "summary": "Sabiranje brojeva do $1000$ u pisanom postupku, stupca po stupca, s prenošenjem desetice kad zbir u stupcu bude veći od $9$.",
+    "mastery": [
+      "pismeno sabere dva broja do $1000$ uz prenošenje",
+      "pismeno sabere tri broja do $1000$"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-003",
+        "match": "partial"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-pismeno-oduzimanje",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Pismeno oduzimanje do 1000",
+    "summary": "Oduzimanje brojeva do $1000$ u pisanom postupku, s pozajmicom kad se jedinice ne mogu oduzeti jedna od druge.",
+    "mastery": [
+      "pismeno oduzme dva broja do $1000$ uz pozajmicu",
+      "proveri razliku sabiranjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-003",
+        "match": "partial"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-mnozenje-jednocifrenim-brojem",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Množenje jednocifrenim brojem",
+    "summary": "Množenje višecifrenog broja jednocifrenim u pisanom postupku i množenje brojem $10$ ($234 \\cdot 3$, $45 \\cdot 10$).",
+    "mastery": [
+      "pismeno pomnoži broj do $1000$ jednocifrenim brojem",
+      "pomnoži ceo broj brojem $10$"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-deljenje-sa-ostatkom",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Deljenje s ostatkom",
+    "summary": "Deljenje broja brojem iz prve desetice, sa i bez ostatka ($45 : 6 = 7$ i ostatak $3$), i provera rezultata.",
+    "mastery": [
+      "podeli broj do $100$ brojem do $10$ i nađe količnik i ostatak",
+      "proveri deljenje množenjem i sabiranjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-004",
+        "match": "exact"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-najbliza-desetica-i-stotina",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Najbliža desetica i stotina",
+    "summary": "Za broj do $1000$ nalazi najbližu deseticu i najbližu stoticu ($472$ je bliži $500$ nego $400$).",
+    "mastery": [
+      "nađe stotinu najbližu datom broju do $1000$",
+      "nađe deseticu i stotinu najbližu datom broju i uporedi ih"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-007",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-procena-vrednosti-izraza",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Procena vrednosti izraza",
+    "summary": "Pre izračunavanja proceni vrednost izraza s jednom operacijom, zaokruživanjem brojeva na najbližu deseticu ili stotinu.",
+    "mastery": [
+      "proceni zbir ili razliku zaokruživanjem na desetice ili stotine",
+      "kaže da li je tačan rezultat manji ili veći od procene"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-005",
+        "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-007",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-izraz-sa-tri-operacije",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Izraz s tri operacije",
+    "summary": "Vrednost brojevnog izraza s najviše tri računske operacije, po redu množenja i deljenja pre sabiranja i oduzimanja.",
+    "mastery": [
+      "izračuna vrednost izraza s tri operacije",
+      "izračuna vrednost izraza s tri operacije u kome ima množenja i deljenja"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-006",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-jednacine-do-1000",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Jednačine do 1000",
+    "summary": "Jednačina s jednom operacijom i brojevima do $1000$ rešava se istim postupkom kao u 2. razredu, uz pismeno računanje kad treba ($x + 345 = 600$).",
+    "mastery": [
+      "nađe nepoznati broj u jednačini s jednom operacijom i brojevima do $1000$",
+      "proveri rešenje unosom u jednačinu"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-008",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Nejednačine sa sabiranjem i oduzimanjem",
+    "summary": "Nejednačina poput $x + 7 < 20$ traži sve brojeve koji je ispunjavaju; skup rešenja je svaki broj manji od $13$.",
+    "mastery": [
+      "nađe najveći broj koji ispunjava nejednačinu sa sabiranjem ili oduzimanjem",
+      "proveri da li dati broj ispunjava nejednačinu"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-009",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-zadaci-sa-izrazom-ili-jednacinom",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Zadaci s izrazom ili jednačinom",
+    "summary": "Problemski zadatak rešava tako što sastavi brojevni izraz ili jednačinu, izračuna je i odgovori na pitanje.",
+    "mastery": [
+      "za tekstualni zadatak odluči da li ga rešava izrazom ili jednačinom i sastavi ga",
+      "izračuna sastavljeni izraz ili jednačinu i odgovori na pitanje"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-010",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-razlomci-oblika-m-preko-n",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Razlomci s više delova celine",
+    "summary": "Razlomak $\\frac{m}{n}$ pokazuje koliko je od $n$ jednakih delova celine uzeto ($m \\le n \\le 10$): $\\frac{3}{4}$ su tri od četiri jednaka dela.",
+    "mastery": [
+      "za celinu podeljenu na jednake delove zapiše obojeni deo kao razlomak $\\frac{m}{n}$",
+      "na osnovu razlomka $\\frac{m}{n}$ odredi koliko je delova uzeto"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-011",
+        "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-009",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Upoređivanje razlomaka s istim imeniocem",
+    "summary": "Razlomci kojima su imenioci jednaki porede se po brojiocu: od $n$ jednakih delova više je ono što ih uzima više ($\\frac{5}{8} > \\frac{3}{8}$).",
+    "mastery": [
+      "uporedi dva razlomka s istim imeniocem",
+      "poreda tri razlomka s istim imeniocem od najmanjeg do najvećeg"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-012",
+        "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-010",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-decimalni-zapis-jedne-decimale",
+    "grade": 3,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Decimalni zapis s jednom decimalom",
+    "summary": "Dužina od $3$ celih centimetara i $5$ milimetara zapisuje se kao $3{,}5$ centimetra: decimalni zapis pokazuje jedan deo od deset.",
+    "mastery": [
+      "dužinu izraženu u celim centimetrima i milimetrima zapiše decimalno s jednom decimalom",
+      "pročita decimalni broj s jednom decimalom i kaže koliko ima celih i koliko desetina"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-013",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-paralelne-i-normalne-prave",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Paralelne i normalne prave",
+    "summary": "Paralelne prave se nikad ne seku, a normalne prave se seku pod pravim uglom. Uz lenjir i trougao crtaju se prava paralelna i normalna datoj pravoj, i pravougaonik i kvadrat.",
+    "mastery": [
+      "prepozna paralelne i normalne prave na crtežu",
+      "kaže kroz koju tačku prolazi prava paralelna (normalna) datoj pravoj i dužinu stranice kvadrata ili pravougaonika nacrtanog uz pomoć lenjira i trougla"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-016",
+        "match": "partial"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-023",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-ugao-i-vrste-uglova",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Ugao i vrste uglova",
+    "summary": "Ugao nastaje od dve poluprave sa zajedničkim početkom; može biti pravi, oštri ili tupi. Pravi ugao ima $90$ stepeni, a poredi se s uglom kvadrata.",
+    "mastery": [
+      "razlikuje pravi, oštri i tupi ugao",
+      "uporedi dva ugla po veličini nezavisno od dužine krakova"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-019",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-014",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-elementi-figura",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Elementi geometrijskih figura",
+    "summary": "Trougao ima tri temena, tri stranice i tri ugla; pravougaonik i kvadrat imaju četiri temena, četiri stranice, četiri ugla i dve dijagonale; krug ima centar, poluprečnik i prečnik; ugao ima teme i krakove.",
+    "mastery": [
+      "imenuje temena, stranice i uglove trougla, pravougaonika i kvadrata",
+      "imenuje centar, poluprečnik i prečnik kruga i teme i krakove ugla",
+      "na crtežu prebroji dijagonale četvorougla"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-018",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-vrste-trouglova",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Vrste trouglova",
+    "summary": "Trouglovi se razlikuju po stranicama (raznostrani, jednakokraki, jednakostranični) i po uglovima (pravougli, oštrougli, tupougli).",
+    "mastery": [
+      "prepozna jednakokraki, jednakostranični i raznostrani trougao po stranicama",
+      "prepozna pravougli, oštrougli i tupougli trougao po uglovima"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-019",
+        "match": "partial"
+      },
+      {
+        "edition": "g6-2026",
+        "outcome": "g6-2026-008",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-krug-i-kruznica",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Krug i kružnica",
+    "summary": "Kružnica je linija čije su sve tačke jednako udaljene od centra, a krug je deo ravni koji ona oivičava. Šestarom se crta kružnica zadatog poluprečnika.",
+    "mastery": [
+      "imenuje centar, poluprečnik i prečnik na crtežu kruga",
+      "kaže koliki je poluprečnik kružnice povučene šestarom sa zadatim rastojanjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-017",
+        "match": "partial"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-018",
+        "match": "partial"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-023",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-009",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-osobine-pravougaonika-i-kvadrata",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Osobine pravougaonika i kvadrata",
+    "summary": "Pravougaonik ima naspramne stranice jednake i četiri prava ugla; kvadrat je pravougaonik kome su sve stranice jednake. Dijagonale su im jednake i polove se.",
+    "mastery": [
+      "opisuje osobine stranica i uglova pravougaonika",
+      "opisuje čime se kvadrat razlikuje od pravougaonika",
+      "na osnovu dužine jedne stranice kvadrata nađe dužinu druge"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-021",
+        "match": "exact"
+      },
+      {
+        "edition": "g6-2026",
+        "outcome": "g6-2026-008",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-obim-po-obrascu",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Obim po obrascu",
+    "summary": "Obim se može izračunati obrascem umesto sabiranja stranica: pravougaonik $2 \\cdot a + 2 \\cdot b$, kvadrat $4 \\cdot a$, trougao zbir stranica.",
+    "mastery": [
+      "izračuna obim pravougaonika obrascem $2 \\cdot a + 2 \\cdot b$",
+      "izračuna obim kvadrata obrascem $4 \\cdot a$"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-020",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-konstrukcija-trougla",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Konstrukcija trougla",
+    "summary": "Trougao sastavlja (konstruiše) lenjirom i šestarom kad su mu zadate tri stranice, i prepoznaje da li se od datih duži trougao može sastaviti.",
+    "mastery": [
+      "kaže koja se pomagala koriste za konstrukciju trougla sa zadatim stranicama",
+      "proveri zbir dužina stranica i kaže da li se trougao može sastaviti"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-017",
+        "match": "partial"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-023",
+        "match": "partial"
+      },
+      {
+        "edition": "g6-2026",
+        "outcome": "g6-2026-012",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-mase",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Jedinice mase",
+    "summary": "Masa se meri kilogramom, gramom i tonom: $1\\text{ kg} = 1000\\text{ g}$ i $1\\text{ t} = 1000\\text{ kg}$; jedinice se čitaju, upoređuju i pretvaraju jedna u drugu.",
+    "mastery": [
+      "pretvori kilograme u grame i tone u kilograme",
+      "uporedi mase izražene u različitim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-024",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-duzine-mm-i-km",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Milimetar i kilometar",
+    "summary": "Milimetar i kilometar dopunjuju jedinice dužine: $1\\text{ cm} = 10\\text{ mm}$, $1\\text{ km} = 1000\\text{ m}$.",
+    "mastery": [
+      "pretvori centimetre u milimetre i kilometre u metre",
+      "uporedi dužine izražene u različitim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-024",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-zapremine",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Jedinice zapremine tečnosti",
+    "summary": "Zapremina tečnosti meri se litrom i njegovim delovima: $1\\text{ l} = 10\\text{ dl} = 100\\text{ cl} = 1000\\text{ ml}$, a hektolitar je $100$ litara.",
+    "mastery": [
+      "pretvori litre u decilitre, centilitre i mililitre",
+      "uporedi zapremine izražene u različitim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-024",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-vremena-vek-i-sekund",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "concept",
+    "name": "Vek, decenija i sekund",
+    "summary": "Vreme se meri i manjim i većim jedinicama: $1\\text{ min} = 60\\text{ s}$, godina ima $365$ ili $366$ dana, decenija je $10$ godina, a vek $100$ godina.",
+    "mastery": [
+      "zna koliko sekundi ima minut i koliko godina decenija i vek",
+      "u jednostavnoj situaciji uporedi vremena izražena u tim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-024",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-uporedjivanje-velicina",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Upoređivanje jedinica",
+    "summary": "Mase, dužine, vremena i zapremine upoređuju se tako što se prevedu u istu jedinicu ($1\\text{ t}$ je više od $500\\text{ kg}$).",
+    "mastery": [
+      "uporedi dve veličine iste vrste izražene različitim jedinicama",
+      "poreda tri veličine od najmanje do najveće"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-025",
+        "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-027",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-povrsina-zadatom-merom",
+    "grade": 3,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Površina zadatom merom",
+    "summary": "Površina figure meri se time koliko puta u nju stane jedinica koja je zadana: kvadrat od $n$ polja mreže ima površinu $n$ takvih kvadrata.",
+    "mastery": [
+      "izbroji koliko zadatih kvadrata pokriva data figura na mreži",
+      "uporedi površine dve figure po broju kvadrata"
+    ],
+    "curriculum": [
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-026",
+        "match": "exact"
+      },
+      {
+        "edition": "g3-2026",
+        "outcome": "g3-2026-027",
+        "match": "partial"
+      }
+    ]
+  }
+]

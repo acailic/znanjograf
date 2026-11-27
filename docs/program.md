@@ -99,6 +99,6 @@ Koliko temu pokriva ishod kaže polje `match`: `exact` znači da tema pokriva ce
 
 U trenutku pisanja, 27. novembra 2026, upisana su izdanja za svih osam razreda: u `data/curriculum/math/` stoji po jedan fajl za svaki razred, s temama programa i ishodima upisanim po pravilu parafraze, uz uputu na akt i stranu. U `data/curriculum/sources.json` stoje unosi za svih sedam akata (5. i 6. razred dele isti pravilnik).
 
-Teme su upisane za 1. i 2. razred (62 teme s 248 zadataka), i svaki ishod izdanja `g1-2026` i `g2-2026` pokriva bar jedna tema. Za razrede 3–8 teme još nisu upisane, pa njihovi ishodi privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Izdanja za 2027/28. za 1. i 5. razred planirana su, a nisu upisana.
+Teme su upisane za 1–3. razred (90 tema s 360 zadataka), i svaki ishod izdanja `g1-2026`, `g2-2026` i `g3-2026` pokriva bar jedna tema. Za razrede 4–8 teme još nisu upisane, pa njihovi ishodi privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Izdanja za 2027/28. za 1. i 5. razred planirana su, a nisu upisana.
 
 Svaku parafrazu je alat uporedio s izvornikom i nije našao preuzete nizove reči, a čitalac koji nije pisao izdanje čita značenje naspram izvornika. To nije nastavnik.

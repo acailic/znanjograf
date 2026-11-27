@@ -1,0 +1,314 @@
+[
+  {
+    "topic": "mat-brojevi-do-1000",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Brojevi prve hiljade grade se od stotina i desetica, pa učenik mora da poznaje brojeve do $100$."
+  },
+  {
+    "topic": "mat-pismeno-sabiranje",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Pismeno sabiranje radi se s brojevima do $1000$."
+  },
+  {
+    "topic": "mat-pismeno-sabiranje",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Pismeno sabiranje koristi samo zbirove jednocifrenih brojeva do $20$, pa usmeno sabiranje dvocifrenih brojeva samo pomaže."
+  },
+  {
+    "topic": "mat-pismeno-oduzimanje",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Pismeno oduzimanje radi se s brojevima do $1000$."
+  },
+  {
+    "topic": "mat-pismeno-oduzimanje",
+    "requires": "mat-oduzimanje-do-100-u-glavi",
+    "strength": "hard",
+    "reason": "Provera rezultata sabiranjem razlike i umanjenika ista je kao pri oduzimanju do $100$ u glavi, pa bez nje učenik ne zna kojim sabiranjem da proveri rezultat."
+  },
+  {
+    "topic": "mat-mnozenje-jednocifrenim-brojem",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "hard",
+    "reason": "Pismeno množenje jednocifrenim brojem je tablica množenja po stupcima."
+  },
+  {
+    "topic": "mat-mnozenje-jednocifrenim-brojem",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Proizvodi su brojevi do $1000$."
+  },
+  {
+    "topic": "mat-mnozenje-jednocifrenim-brojem",
+    "requires": "mat-pismeno-sabiranje",
+    "strength": "soft",
+    "reason": "Prenošenje iz stupca u stupac isto je kao kod pismenog sabiranja."
+  },
+  {
+    "topic": "mat-deljenje-sa-ostatkom",
+    "requires": "mat-tablicno-deljenje",
+    "strength": "hard",
+    "reason": "Količnik pri deljenju s ostatkom nalazi se iz tablice deljenja."
+  },
+  {
+    "topic": "mat-deljenje-sa-ostatkom",
+    "requires": "mat-oduzimanje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Ostatak se nalazi oduzimanjem proizvoda od deljenika, ali su u standardnim zadacima brojevi mali, pa oduzimanje u glavi samo pomaže."
+  },
+  {
+    "topic": "mat-najbliza-desetica-i-stotina",
+    "requires": "mat-najbliza-desetica",
+    "strength": "hard",
+    "reason": "Najbliža stotina nalazi se isto kao najbliža desetica, samo na višem mestu."
+  },
+  {
+    "topic": "mat-najbliza-desetica-i-stotina",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Najbliža stotina traži se za brojeve do $1000$, a stotina se upoznaje uz brojeve prve hiljade."
+  },
+  {
+    "topic": "mat-procena-vrednosti-izraza",
+    "requires": "mat-najbliza-desetica-i-stotina",
+    "strength": "hard",
+    "reason": "Procena polazi od zaokruživanja brojeva na najbližu deseticu ili stotinu."
+  },
+  {
+    "topic": "mat-procena-vrednosti-izraza",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Procenjeni zbir računa se u glavi."
+  },
+  {
+    "topic": "mat-izraz-sa-tri-operacije",
+    "requires": "mat-redosled-operacija",
+    "strength": "hard",
+    "reason": "Izraz s tri operacije računa se po istom redosledu kao i onaj s dve."
+  },
+  {
+    "topic": "mat-izraz-sa-tri-operacije",
+    "requires": "mat-pismeno-sabiranje",
+    "strength": "soft",
+    "reason": "Kad su brojevi veliki, sabiranje u izrazu radi se pismeno."
+  },
+  {
+    "topic": "mat-izraz-sa-tri-operacije",
+    "requires": "mat-pismeno-oduzimanje",
+    "strength": "soft",
+    "reason": "Kad su brojevi veliki, oduzimanje u izrazu radi se pismeno."
+  },
+  {
+    "topic": "mat-jednacine-do-1000",
+    "requires": "mat-jednacine-sa-jednom-operacijom",
+    "strength": "hard",
+    "reason": "Jednačina s jednom operacijom rešava se istim postupkom, samo s većim brojevima."
+  },
+  {
+    "topic": "mat-jednacine-do-1000",
+    "requires": "mat-pismeno-oduzimanje",
+    "strength": "soft",
+    "reason": "Kad su brojevi veliki, nepoznati sabirak nalazi se pismenim oduzimanjem."
+  },
+  {
+    "topic": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem",
+    "requires": "mat-jednacine-do-1000",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste brojeve do $100$, pa im jednačine s većim brojevima samo pomažu."
+  },
+  {
+    "topic": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem",
+    "requires": "mat-poredjenje-do-100",
+    "strength": "hard",
+    "reason": "Da bi zapisao skup rešenja, učenik mora da upoređuje brojeve."
+  },
+  {
+    "topic": "mat-zadaci-sa-izrazom-ili-jednacinom",
+    "requires": "mat-zadaci-sa-dve-operacije",
+    "strength": "hard",
+    "reason": "Zadatak s izrazom ili jednačinom raste iz zadatka s dvema operacijama."
+  },
+  {
+    "topic": "mat-zadaci-sa-izrazom-ili-jednacinom",
+    "requires": "mat-jednacine-do-1000",
+    "strength": "soft",
+    "reason": "Treći zadatak je izraz, a u četvrtom se jednačina samo bira, pa im rešavanje jednačina do $1000$ samo pomaže."
+  },
+  {
+    "topic": "mat-razlomci-oblika-m-preko-n",
+    "requires": "mat-razlomci-oblika-jedna-n",
+    "strength": "hard",
+    "reason": "Razlomak $\\frac{m}{n}$ je više delova od $\\frac{1}{n}$."
+  },
+  {
+    "topic": "mat-uporedjivanje-razlomaka",
+    "requires": "mat-razlomci-oblika-m-preko-n",
+    "strength": "hard",
+    "reason": "Razlomke s istim imeniocem poredi se po brojiocu."
+  },
+  {
+    "topic": "mat-decimalni-zapis-jedne-decimale",
+    "requires": "mat-razlomci-oblika-m-preko-n",
+    "strength": "soft",
+    "reason": "Pojam desetine kao jednog od deset jednakih delova pomaže razumevanju decimalnog zapisa, ali ga standardni zadaci ne traže."
+  },
+  {
+    "topic": "mat-decimalni-zapis-jedne-decimale",
+    "requires": "mat-merenje-duzine",
+    "strength": "hard",
+    "reason": "Decimalni zapis nastaje od merenja dužine lenjirom."
+  },
+  {
+    "topic": "mat-decimalni-zapis-jedne-decimale",
+    "requires": "mat-jedinice-duzine-mm-i-km",
+    "strength": "hard",
+    "reason": "Za zapis s jednom decimalom treba milimetar, jer je $1\\text{ cm} = 10\\text{ mm}$."
+  },
+  {
+    "topic": "mat-paralelne-i-normalne-prave",
+    "requires": "mat-prava-poluprava-duz",
+    "strength": "soft",
+    "reason": "Pojam prave pomaže, ali standardni zadaci traže samo pravi ugao između pravih."
+  },
+  {
+    "topic": "mat-ugao-i-vrste-uglova",
+    "requires": "mat-geometrijske-figure",
+    "strength": "soft",
+    "reason": "Ugao kvadrata dobar je uzor pravog ugla, ali standardni zadaci ne traže prepoznavanje figura."
+  },
+  {
+    "topic": "mat-elementi-figura",
+    "requires": "mat-ugao-i-vrste-uglova",
+    "strength": "soft",
+    "reason": "Pojam ugla kao dve stranice sa zajedničkim temenom pomaže kad se broje uglovi trougla, ali se vrste uglova ne razlikuju, a drugi zadatak broji samo stranice i dijagonale."
+  },
+  {
+    "topic": "mat-vrste-trouglova",
+    "requires": "mat-elementi-figura",
+    "strength": "soft",
+    "reason": "Znanje da trougao ima tri stranice, a kvadrat temena i dijagonale, pomaže u oba standardna zadatka, ali se vrsta trougla prepoznaje po stranicama i uglovima, a ne brojanjem elemenata."
+  },
+  {
+    "topic": "mat-krug-i-kruznica",
+    "requires": "mat-merenje-duzine",
+    "strength": "soft",
+    "reason": "Merenje lenjirom treba tek za crtanje, a u standardnim zadacima poluprečnik je zadat brojem."
+  },
+  {
+    "topic": "mat-osobine-pravougaonika-i-kvadrata",
+    "requires": "mat-elementi-figura",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste jednakost naspramnih stranica, a ne imenovanje temena, uglova ni dijagonala."
+  },
+  {
+    "topic": "mat-obim-po-obrascu",
+    "requires": "mat-obim-figure",
+    "strength": "hard",
+    "reason": "Obrazac je skraćeni oblik sabiranja stranica."
+  },
+  {
+    "topic": "mat-obim-po-obrascu",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "soft",
+    "reason": "Obim se u standardnim zadacima može naći i sabiranjem stranica, pa tablica množenja samo olakšava."
+  },
+  {
+    "topic": "mat-konstrukcija-trougla",
+    "requires": "mat-merenje-duzine",
+    "strength": "soft",
+    "reason": "Merenje lenjirom treba tek za samo crtanje trougla, a u standardnim zadacima dužine su zadate brojem."
+  },
+  {
+    "topic": "mat-jedinice-mase",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Pretvaranje tone u kilograme i oduzimanje $2000 - 600$ zahteva sigurno poznavanje brojeva prve hiljade i njihovih stotina."
+  },
+  {
+    "topic": "mat-jedinice-duzine-mm-i-km",
+    "requires": "mat-jedinice-duzine",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste samo odnose milimetra i kilometra, a metre, decimetre i centimetre iz 2. razreda samo kao poznat oslonac."
+  },
+  {
+    "topic": "mat-jedinice-duzine-mm-i-km",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "U kilometru ima $1000$ metara."
+  },
+  {
+    "topic": "mat-jedinice-zapremine",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "U litru ima $1000$ mililitara."
+  },
+  {
+    "topic": "mat-jedinice-vremena-vek-i-sekund",
+    "requires": "mat-jedinice-vremena",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste samo nove odnose $1\\text{ min} = 60\\text{ s}$, decenije i veka, a iz 2. razreda treba samo poznati minut i godinu kao oslonac."
+  },
+  {
+    "topic": "mat-jedinice-vremena-vek-i-sekund",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "soft",
+    "reason": "Zbir veka i dveju decenija ($100 + 20 = 120$) jeste trocifren broj, pa sigurno zapisivanje brojeva do $1000$ pomaže."
+  },
+  {
+    "topic": "mat-uporedjivanje-velicina",
+    "requires": "mat-jedinice-mase",
+    "strength": "soft",
+    "reason": "Standardni zadaci porede zapremine i vremena, a pretvaranje masa iz 3. razreda samo proširuje istu veštinu."
+  },
+  {
+    "topic": "mat-uporedjivanje-velicina",
+    "requires": "mat-jedinice-duzine-mm-i-km",
+    "strength": "soft",
+    "reason": "Standardni zadaci porede zapremine i vremena, a pretvaranje milimetara i kilometara samo proširuje istu veštinu."
+  },
+  {
+    "topic": "mat-uporedjivanje-velicina",
+    "requires": "mat-jedinice-zapremine",
+    "strength": "hard",
+    "reason": "Zapremine se upoređuju tako što se prevedu u istu jedinicu."
+  },
+  {
+    "topic": "mat-uporedjivanje-velicina",
+    "requires": "mat-jedinice-vremena-vek-i-sekund",
+    "strength": "hard",
+    "reason": "Vremena se upoređuju tako što se prevedu u istu jedinicu."
+  },
+  {
+    "topic": "mat-povrsina-zadatom-merom",
+    "requires": "mat-kvadratna-mreza",
+    "strength": "soft",
+    "reason": "Standardni zadaci traže brojanje polja, a ne određivanje reda, kolone ni pomeranje."
+  },
+  {
+    "topic": "mat-povrsina-zadatom-merom",
+    "requires": "mat-brojevi-do-100",
+    "strength": "soft",
+    "reason": "Odgovori u standardnim zadacima su brojevi do $20$, pa brojevi do $100$ samo pomažu."
+  },
+  {
+    "topic": "mat-konstrukcija-trougla",
+    "requires": "mat-sabiranje-preko-desetice",
+    "strength": "hard",
+    "reason": "Oba standardna zadatka traže zbir dveju kraćih stranica s prelaskom preko desetice (u prvom $4 + 7$, u drugom $4 + 8$ i $3 + 8$)."
+  },
+  {
+    "topic": "mat-paralelne-i-normalne-prave",
+    "requires": "mat-ugao-i-vrste-uglova",
+    "strength": "soft",
+    "reason": "Normalne prave se seku pod pravim uglom, pa pojam pravog ugla pomaže u zadatku o preseku prave paralelne i prave normalne na istu pravu, dok brojanje parova paralelnih stranica pravougaonika ne traži pojmove uglova."
+  },
+  {
+    "topic": "mat-zadaci-sa-izrazom-ili-jednacinom",
+    "requires": "mat-izraz-sa-tri-operacije",
+    "strength": "soft",
+    "reason": "Oba standardna zadatka koriste izraz s dvema računskim operacijama, koji se može izračunati i korak po korak."
+  }
+]

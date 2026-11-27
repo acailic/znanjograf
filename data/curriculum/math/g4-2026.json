@@ -13,11 +13,11 @@
         "Dekadni sistem kao način zapisivanja brojeva",
         "Mesna vrednost cifre, to jest koliko ona vredi na svom mestu u broju",
         "Svojstva koja ima skup prirodnih brojeva",
-        "Sabiranje i oduzimanje pisanim postupkom",
-        "Množenje i deljenje pisanim postupkom",
+        "Sabiranje i oduzimanje pismenim postupkom",
+        "Množenje i deljenje pismenim postupkom",
         "Svojstva računskih operacija zapisana u obliku formula",
         "Izrazi sa više operacija, i to brojevni izrazi i izrazi u kojima ima promenljive",
-        "Jednačine i nejednačine čija se rešenja traže u skupu $N_0$",
+        "Jednačine i nejednačine čija se rešenja traže u skupu $\\mathbb{N}_0$",
         "Razlomci oblika $\\frac{m}{n}$, gde su $m$ i $n$ najviše $10$",
         "Upoređivanje razlomaka čiji su brojioci jednaki",
         "Kada su razlomci jednaki",
@@ -66,7 +66,7 @@
     },
     {
       "id": "g4-2026-003",
-      "text": "izvršava četiri osnovne računske operacije, i to u skupu $N_0$",
+      "text": "izvršava četiri osnovne računske operacije, i to u skupu $\\mathbb{N}_0$",
       "page": 39,
       "area": "numbers",
       "unit": "Brojevi"

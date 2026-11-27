@@ -227,7 +227,7 @@ Zadatak iznad (`type: "numeric"`) je potpun primer. Razlomak se piše kosom crto
 - `answer` je id tačne ponude, a ne uvek `a`.
 - Svaka pogrešna ponuda je uobičajena zabluda, ne slučajan broj. `points_to` za svaku pogrešnu ponudu sme da navede čvrstog pretka kog učenik verovatno nema; u primeru je to `mat-brojevi-do-10`, čvrsti predak teme `mat-poredjenje-do-100`.
 - Ako su ponude brojevi (smeju stajati u `$…$`), `check` je izraz čija vrednost mora biti vrednost samo tačne ponude: tekst tačne ponude mora dati tu vrednost, a nijedna pogrešna ne sme; svaka pogrešna ponuda mora biti broj (`S-choice-value`).
-- Ako nijedna ponuda nije broj (reči, znakovi), `check` je tekst tačne ponude bez `$`, a `{,}` se čita kao zarez.
+- Ako nijedna ponuda nije broj (reči, znakovi), `check` je tekst tačne ponude: kad je cela ponuda jedna formula (`$<$`), piše se bez `$` (`<`), a kad su oznake unutar rečenice, piše se onakav kakav je ponuda (`novčanica od $50$ dinara`). `{,}` se čita kao zarez.
 
 ### 5.4 Odgovor koji nije racionalan broj
 

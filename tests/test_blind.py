@@ -194,6 +194,16 @@ class DiffTest(unittest.TestCase):
         self.answers[NUMERIC]["check"] = "\t(+   8\n7) "
         self.assertEqual(self.diff(), [])
 
+    def test_check_ignores_the_dollar_signs_of_a_formula(self):
+        # a word choice that reads „novčanica od $50$ dinara“ is answered „novčanica od 50 dinara“
+        question = next(q for q in self.corpus.question_list if q["id"] == CHOICE)
+        right = next(choice for choice in question["choices"] if choice["id"] == question["answer"])
+        right["text"] = question["check"] = "novčanica od $50$ dinara"
+        self.answers[CHOICE]["check"] = "novčanica od 50 dinara"
+        self.assertEqual(self.diff(), [])
+        self.answers[CHOICE]["check"] = "novčanica od 40 dinara"
+        self.assertEqual(self.diff(), [{"id": CHOICE, "reasons": ["check"]}])
+
     def test_unique_must_be_exactly_true(self):
         for value in (False, 1, "true", None):
             self.answers[NUMERIC]["unique"] = value

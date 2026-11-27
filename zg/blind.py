@@ -67,7 +67,9 @@ def _other_answer(question: dict, entry: dict) -> bool:
 
 
 def _other_check(question: dict, entry: dict) -> bool:
-    return _squeeze(entry.get("check")) != _squeeze(question.get("check"))
+    # The dollar signs a formula wears in the bank are not part of the check: a word choice that reads
+    # ``novčanica od $50$ dinara`` is answered ``novčanica od 50 dinara``.
+    return _squeeze(entry.get("check")).replace("$", "") != _squeeze(question.get("check")).replace("$", "")
 
 
 def _not_unique(question: dict, entry: dict) -> bool:

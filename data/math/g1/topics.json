@@ -13,7 +13,11 @@
       "nalazi predmet po opisanom položaju"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-001", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-001",
+        "match": "exact"
+      }
     ],
     "root_reason": "Orijentacija u prostoru polazi od svakodnevnog iskustva deteta i ne treba joj nijedna druga tema iz razreda."
   },
@@ -31,7 +35,11 @@
       "poreda tri predmeta od najmanjeg do najvećeg"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-002", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-002",
+        "match": "exact"
+      }
     ],
     "root_reason": "Poređenje veličine dete uviđa gledajući i opipavajući predmete, pre nego što upozna ijedan broj ili oblik."
   },
@@ -49,8 +57,16 @@
       "razlikuje kocku od kvadra i valjak od kupe"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-004", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-003", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-004",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-003",
+        "match": "partial"
+      }
     ],
     "root_reason": "Prepoznavanje oblika polazi od opažanja predmeta i ne treba mu nijedan prethodni pojam iz razreda."
   },
@@ -68,8 +84,16 @@
       "razlikuje kvadrat od pravougaonika i kaže da krug nema uglove"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-004", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-003", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-004",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-003",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -86,7 +110,11 @@
       "nalazi predmet koji ne pripada grupi"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-005", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-005",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -103,7 +131,11 @@
       "slaže figuru od zadatih oblika"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-006", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-006",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -119,7 +151,11 @@
       "određuje koje su linije na crtežu prave, a koje krive ili izlomljene"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-007", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-007",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -135,7 +171,11 @@
       "određuje da li linija na crtežu zatvara figuru"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-007", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-007",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -152,7 +192,11 @@
       "razlikuje duž od prave linije po tome što duž ima dva kraja"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-008", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-008",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -169,7 +213,11 @@
       "kaže kada je nacrtana duž, a kada prava linija"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-008", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-008",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -186,7 +234,11 @@
       "nabraja brojeve do $10$ unapred i unazad"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      }
     ],
     "root_reason": "Razvoj pojma broja nastavlja se na znanje iz predškolskog programa i ne polazi ni od jedne druge teme u razredu."
   },
@@ -203,7 +255,11 @@
       "pokaže zadati broj tačkom na brojevnoj pravoj"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -220,8 +276,16 @@
       "poreda tri broja od najmanjeg do najvećeg"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-012",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -237,7 +301,11 @@
       "određuje koliko je predmeta pre ili posle predmeta zadatog rednog broja"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-011", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-011",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -254,7 +322,11 @@
       "rastavlja isti broj na sabirke na više načina"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-016",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -270,8 +342,16 @@
       "imenuje sabirke i zbir u zapisu sabiranja"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-013", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-014",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-013",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -287,8 +367,16 @@
       "imenuje umanjenik, umanjilac i razliku u zapisu oduzimanja"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-013", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-014",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-013",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -305,8 +393,16 @@
       "proverava rešenje: leva i desna strana jednakosti moraju biti jednake"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-016",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-014",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -323,7 +419,11 @@
       "prebroji predmete grupisane u deseticu i jedinice"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -340,7 +440,11 @@
       "pokaže sabiranje s prelaskom na brojevnoj pravoj"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-014",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -357,7 +461,11 @@
       "proverava rezultat sabiranjem"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-014", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-014",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -374,7 +482,16 @@
       "izračunava zbir tri broja lakše, pomoću zamene mesta ili združivanja"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-016", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-016",
+        "match": "partial"
+      },
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-004",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -391,7 +508,11 @@
       "nabroji desetice od $10$ do $100$"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -408,7 +529,11 @@
       "nastavlja niz brojeva sa preskokom (za dva, pet ili deset)"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-009", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-009",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -425,7 +550,11 @@
       "određuje šta znači ista cifra na mestu desetica i na mestu jedinica ($5$ u $56$ i u $65$)"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -441,7 +570,11 @@
       "određuje sledbenika broja do $100$"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-012",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -458,7 +591,11 @@
       "nabraja neparne, odnosno parne brojeve do $20$"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-012",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -475,8 +612,16 @@
       "nađe najveći i najmanji broj među datim brojevima"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-010", "match": "partial"},
-      {"edition": "g1-2026", "outcome": "g1-2026-012", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-010",
+        "match": "partial"
+      },
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-012",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -493,7 +638,11 @@
       "pokaže sabiranje bez prelaska na brojevnoj pravoj"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-015", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-015",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -510,7 +659,11 @@
       "pokaže oduzimanje bez prelaska na brojevnoj pravoj"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-015", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-015",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -527,7 +680,16 @@
       "nastavlja niz za dva ili tri člana"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-019", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-019",
+        "match": "exact"
+      },
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-013",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -543,7 +705,11 @@
       "uporedi vrednost dva apoena i kaže koji vredi više"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-018", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-018",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -560,7 +726,11 @@
       "odgovara na pitanje pomoću podataka iz dijagrama ili tabele"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-020", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-020",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -577,7 +747,11 @@
       "odgovara na pitanje iz zadatka"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-017", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-017",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -594,7 +768,11 @@
       "odgovara na pitanje iz zadatka"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-017", "match": "partial"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-017",
+        "match": "partial"
+      }
     ]
   },
   {
@@ -611,7 +789,11 @@
       "upoređuje dve duži po broju jedinica"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-021", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-021",
+        "match": "exact"
+      }
     ]
   },
   {
@@ -628,7 +810,11 @@
       "precrtava figuru u kvadratnu mrežu prema datom uputstvu"
     ],
     "curriculum": [
-      {"edition": "g1-2026", "outcome": "g1-2026-022", "match": "exact"}
+      {
+        "edition": "g1-2026",
+        "outcome": "g1-2026-022",
+        "match": "exact"
+      }
     ]
   }
 ]

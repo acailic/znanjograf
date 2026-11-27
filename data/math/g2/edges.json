@@ -1,0 +1,278 @@
+[
+  {
+    "topic": "mat-najbliza-desetica",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Da bi našao najbližu deseticu, učenik mora da čita brojeve do $100$ i da zna njihov redosled."
+  },
+  {
+    "topic": "mat-najbliza-desetica",
+    "requires": "mat-brojevna-prava",
+    "strength": "soft",
+    "reason": "Na brojevnoj pravoj vidi se između kojih desetica broj leži, ali se to nađe i bez nje."
+  },
+  {
+    "topic": "mat-sabiranje-do-100-u-glavi",
+    "requires": "mat-sabiranje-do-100-bez-prelaska",
+    "strength": "hard",
+    "reason": "Sabiranje u glavi polazi od sabiranja do $100$ bez prelaska: desetice i jedinice se sabiraju posebno."
+  },
+  {
+    "topic": "mat-sabiranje-do-100-u-glavi",
+    "requires": "mat-sabiranje-preko-desetice",
+    "strength": "hard",
+    "reason": "Kad zbir jedinica premašuje deset, učenik dopunjuje do desetice i dodaje ostatak."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-u-glavi",
+    "requires": "mat-oduzimanje-do-100-bez-prelaska",
+    "strength": "hard",
+    "reason": "Oduzimanje u glavi polazi od oduzimanja do $100$ bez prelaska."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-u-glavi",
+    "requires": "mat-oduzimanje-preko-desetice",
+    "strength": "hard",
+    "reason": "Kad se jedinice ne mogu oduzeti jedna od druge, učenik prvo silazi do desetice, pa oduzima ostatak."
+  },
+  {
+    "topic": "mat-oduzimanje-do-100-u-glavi",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Razliku je moguće proveriti sabiranjem, ali se i bez provere dolazi do nje."
+  },
+  {
+    "topic": "mat-tablicno-mnozenje",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Proizvod dva mala broja prvo se razume kao zbir jednakih sabiraka ($2 + 2 + 2$), pa učenik mora da sabira."
+  },
+  {
+    "topic": "mat-tablicno-mnozenje",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Proizvodi tabličnog množenja su brojevi do $100$."
+  },
+  {
+    "topic": "mat-tablicno-deljenje",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "hard",
+    "reason": "Deljenje je obrnuto množenje: $42 : 6$ se nalazi iz $6 \\cdot 7 = 42$."
+  },
+  {
+    "topic": "mat-tablicno-deljenje",
+    "requires": "mat-oduzimanje-do-10",
+    "strength": "soft",
+    "reason": "Deljenje se može zamisliti kao oduzimanje istog broja više puta, ali to nije jedini način."
+  },
+  {
+    "topic": "mat-mnozenje-nulom-i-jedinicom",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "hard",
+    "reason": "Pravila o nuli i jedinici kao činiocu imaju smisla samo uz pojam proizvoda."
+  },
+  {
+    "topic": "mat-osobine-mnozenja",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "hard",
+    "reason": "Zamenu mesta i združivanje činilaca učenik proverava na proizvodima iz tablice množenja."
+  },
+  {
+    "topic": "mat-osobine-mnozenja",
+    "requires": "mat-osobine-sabiranja",
+    "strength": "soft",
+    "reason": "Isto pravilo koje važi za sabirke pomaže da se razume zašto važi i za činioce."
+  },
+  {
+    "topic": "mat-redosled-operacija",
+    "requires": "mat-tablicno-deljenje",
+    "strength": "hard",
+    "reason": "U izrazu s više operacija deljenje se računa pre oduzimanja i sabiranja, a i množenje stoji uz njega."
+  },
+  {
+    "topic": "mat-redosled-operacija",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "hard",
+    "reason": "Posle množenja ili deljenja rezultat se sabira ili oduzima."
+  },
+  {
+    "topic": "mat-redosled-operacija",
+    "requires": "mat-oduzimanje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Kad izraz sadrži oduzimanje, ono se računa posle množenja i deljenja; brojevi ostaju u okviru koji učenik već poznaje."
+  },
+  {
+    "topic": "mat-jednacine-sa-jednom-operacijom",
+    "requires": "mat-nepoznati-broj-u-jednakosti",
+    "strength": "hard",
+    "reason": "Nalaženje nepoznatog broja u jednakosti s jednom operacijom naučeno je u 1. razredu; sada se proširuje na sve četiri operacije."
+  },
+  {
+    "topic": "mat-jednacine-sa-jednom-operacijom",
+    "requires": "mat-tablicno-deljenje",
+    "strength": "hard",
+    "reason": "Nepoznati broj u jednačinama $36 : x = 4$, $x : 6 = 7$ i $7 \\cdot x = 42$ nalazi se deljenjem."
+  },
+  {
+    "topic": "mat-zadaci-sa-dve-operacije",
+    "requires": "mat-redosled-operacija",
+    "strength": "hard",
+    "reason": "Sastavljeni izraz s dve operacije izračunava se po redosledu operacija."
+  },
+  {
+    "topic": "mat-zadaci-sa-dve-operacije",
+    "requires": "mat-zadaci-sa-sabiranjem",
+    "strength": "hard",
+    "reason": "Zadatak s jednim sabiranjem prvi je oblik iz koga raste zadatak s dvema operacijama."
+  },
+  {
+    "topic": "mat-zadaci-sa-dve-operacije",
+    "requires": "mat-zadaci-sa-oduzimanjem",
+    "strength": "hard",
+    "reason": "Zadatak s jednim oduzimanjem prvi je oblik iz koga raste zadatak s dvema operacijama."
+  },
+  {
+    "topic": "mat-razlomci-oblika-jedna-n",
+    "requires": "mat-tablicno-deljenje",
+    "strength": "hard",
+    "reason": "Jedan od $n$ jednakih delova date veličine nalazi se deljenjem."
+  },
+  {
+    "topic": "mat-sastavljanje-novca",
+    "requires": "mat-novac",
+    "strength": "hard",
+    "reason": "Sumu novca učenik sastavlja od apoena čiju vrednost prepoznaje."
+  },
+  {
+    "topic": "mat-sastavljanje-novca",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "hard",
+    "reason": "Da bi proverio da li sastavljeni apoeni daju traženu sumu, učenik sabira njihove vrednosti."
+  },
+  {
+    "topic": "mat-rimske-cifre",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Rimskim ciframa se zapisuju brojevi do $100$, jer cifra $C$ znači $100$."
+  },
+  {
+    "topic": "mat-prikaz-podataka",
+    "requires": "mat-citanje-dijagrama-tabela",
+    "strength": "hard",
+    "reason": "Pre nego što podatke prikaže, učenik mora da čita tabele i dijagrame."
+  },
+  {
+    "topic": "mat-prava-poluprava-duz",
+    "requires": "mat-tacka-linija-duz",
+    "strength": "hard",
+    "reason": "Razlikovanje prave, poluprave i duži gradi se na pojmu duži kao dela prave s dva kraja."
+  },
+  {
+    "topic": "mat-duzina-izlomljene-linije",
+    "requires": "mat-merenje-duzine",
+    "strength": "hard",
+    "reason": "Dužinu svakog dela izlomljene linije učenik meri lenjirom."
+  },
+  {
+    "topic": "mat-duzina-izlomljene-linije",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "hard",
+    "reason": "Dužina izlomljene linije računski je zbir dužina njenih delova."
+  },
+  {
+    "topic": "mat-obim-figure",
+    "requires": "mat-duzina-izlomljene-linije",
+    "strength": "hard",
+    "reason": "Obim je dužina zatvorene izlomljene linije kojom je figura oivičena."
+  },
+  {
+    "topic": "mat-crtanje-figura-na-mrezi",
+    "requires": "mat-kvadratna-mreza",
+    "strength": "hard",
+    "reason": "Stranice se crtaju duž linija mreže, a njihova dužina se broji u poljima mreže."
+  },
+  {
+    "topic": "mat-crtanje-figura-na-mrezi",
+    "requires": "mat-geometrijske-figure",
+    "strength": "hard",
+    "reason": "Pravougaonik, kvadrat i trougao crtaju se onako kako im stoje stranice i uglovi."
+  },
+  {
+    "topic": "mat-podudarne-figure",
+    "requires": "mat-geometrijske-figure",
+    "strength": "hard",
+    "reason": "Podudarnost se prepoznaje po obliku i veličini poznatih figura."
+  },
+  {
+    "topic": "mat-podudarne-figure",
+    "requires": "mat-kvadratna-mreza",
+    "strength": "soft",
+    "reason": "Na mreži se veličina figure može uporediti brojanjem polja."
+  },
+  {
+    "topic": "mat-simetricne-figure",
+    "requires": "mat-geometrijske-figure",
+    "strength": "hard",
+    "reason": "Simetrija figure ocenjuje se na poznatim figurama."
+  },
+  {
+    "topic": "mat-dopunjavanje-simetricne-figure",
+    "requires": "mat-simetricne-figure",
+    "strength": "hard",
+    "reason": "Dopunjavanje zahteva pojam simetrije i ose simetrije."
+  },
+  {
+    "topic": "mat-dopunjavanje-simetricne-figure",
+    "requires": "mat-kvadratna-mreza",
+    "strength": "hard",
+    "reason": "Odraz tačke na mreži nalazi se brojanjem polja s druge strane ose."
+  },
+  {
+    "topic": "mat-jedinice-duzine",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Pretvaranje jedinica koristi brojeve do $100$, jer je $1\\text{ m} = 100\\text{ cm}$."
+  },
+  {
+    "topic": "mat-jedinice-duzine",
+    "requires": "mat-merenje-nestandardnom-jedinicom",
+    "strength": "soft",
+    "reason": "Merenje različitim jedinicama u 1. razredu pokazuje zašto je potrebna ista jedinica za sve."
+  },
+  {
+    "topic": "mat-merenje-duzine",
+    "requires": "mat-jedinice-duzine",
+    "strength": "hard",
+    "reason": "Duž se meri u centimetrima, pa učenik mora da poznaje tu jedinicu."
+  },
+  {
+    "topic": "mat-merenje-duzine",
+    "requires": "mat-crtanje-lenjirom",
+    "strength": "hard",
+    "reason": "Duž date dužine crta se lenjirom."
+  },
+  {
+    "topic": "mat-citanje-vremena",
+    "requires": "mat-brojevi-do-100",
+    "strength": "hard",
+    "reason": "Minuti na časovniku idu do $60$, pa učenik mora da čita te brojeve."
+  },
+  {
+    "topic": "mat-citanje-vremena",
+    "requires": "mat-tablicno-mnozenje",
+    "strength": "soft",
+    "reason": "Minuti se čitaju u koracima od po $5$, što je tablica množenja brojem $5$."
+  },
+  {
+    "topic": "mat-jedinice-vremena",
+    "requires": "mat-citanje-vremena",
+    "strength": "soft",
+    "reason": "Jedinice vremena sreću se i pri čitanju časovnika."
+  },
+  {
+    "topic": "mat-jedinice-vremena",
+    "requires": "mat-sabiranje-do-100-u-glavi",
+    "strength": "soft",
+    "reason": "Trajanje izraženo u časovima i minutima sabira se u okviru $100$."
+  }
+]

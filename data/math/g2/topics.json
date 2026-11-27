@@ -1,0 +1,519 @@
+[
+  {
+    "id": "mat-najbliza-desetica",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Najbliža desetica",
+    "summary": "Za svaki broj do $100$ nalazi onu deseticu ($10$, $20$, $30$…) koja mu je najbliža. To je prvi korak u proceni rezultata.",
+    "mastery": [
+      "nađe deseticu koja je najbliža datom broju do $100$",
+      "kaže između kojih se dve desetice broj nalazi"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-001",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-sabiranje-do-100-u-glavi",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje do 100 u glavi",
+    "summary": "Sabira brojeve do $100$ u glavi, i kad zbir prelazi deseticu: $47 + 28$ se računa kao $47 + 3 = 50$ i još $25$.",
+    "mastery": [
+      "sabira u glavi dva broja do $100$ i kad zbir prelazi deseticu",
+      "za sabiranje koristi dopunjavanje do desetice ili rastavljanje sabiraka"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-002",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-oduzimanje-do-100-u-glavi",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Oduzimanje do 100 u glavi",
+    "summary": "Oduzima brojeve do $100$ u glavi u dva koraka: prvo do desetice, pa ostatak ($63 - 28$ je $63 - 3 = 60$ i još $25$).",
+    "mastery": [
+      "oduzima u glavi broj čija razlika prelazi deseticu",
+      "rezultat oduzimanja proverava sabiranjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-002",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-tablicno-mnozenje",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Tablično množenje",
+    "summary": "Množenje brojeva do $10$ napamet ($6 \\cdot 7 = 42$), kao skraćeno sabiranje jednakih sabiraka. Uz to nazivi činilac i proizvod.",
+    "mastery": [
+      "izračuna proizvod dva broja do $10$",
+      "imenuje činioce i proizvod u zapisu množenja",
+      "množenje prepozna kao sabiranje jednakih sabiraka"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-003",
+        "match": "partial"
+      },
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-005",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-tablicno-deljenje",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Tablično deljenje",
+    "summary": "Deljenje brojeva prve stotine brojem do $10$ napamet ($42 : 6 = 7$), kao obrnuto množenje. Uz to nazivi deljenik, delilac i količnik.",
+    "mastery": [
+      "izračuna količnik kad se broj do $100$ deli brojem do $10$",
+      "imenuje deljenik, delilac i količnik u zapisu deljenja",
+      "za dati proizvod množenja upiše oba deljenja"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-003",
+        "match": "partial"
+      },
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-005",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-mnozenje-nulom-i-jedinicom",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Množenje nulom i jedinicom",
+    "summary": "Nula i jedinica kao činioci: broj pomnožen nulom daje nulu, a pomnožen jedinicom ostaje isti. Nula podeljena bilo kojim brojem je nula.",
+    "mastery": [
+      "izračuna proizvod u kome je jedan činilac nula ili jedinica",
+      "podeli nulu brojem različitim od nule"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-003",
+        "match": "partial"
+      },
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-005",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-osobine-mnozenja",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Osobine množenja",
+    "summary": "Proizvod se ne menja kad se činioci zamene mesta ($3 \\cdot 4 = 4 \\cdot 3$) i kad se združe ($2 \\cdot 5 \\cdot 3$ se lakše računa kao $10 \\cdot 3$).",
+    "mastery": [
+      "proveri da proizvod ostaje isti kad se činioci zamene mesta",
+      "združi činioce čiji je proizvod $10$ i lakše izračuna proizvod tri broja"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-004",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-redosled-operacija",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Redosled računskih operacija",
+    "summary": "U izrazu s više operacija prvo se računa množenje i deljenje, pa sabiranje i oduzimanje ($3 + 4 \\cdot 2 = 11$).",
+    "mastery": [
+      "izračuna vrednost izraza s dve različite operacije držeći se redosleda",
+      "kaže koju operaciju u izrazu treba izračunati prvu"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-006",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-jednacine-sa-jednom-operacijom",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Jednačine s jednom operacijom",
+    "summary": "U jednačini s jednom operacijom nalazi nepoznati broj, bilo da je označen kvadratićem ili slovom: $\\square + 38 = 60$, $7 \\cdot x = 42$, $36 : x = 4$.",
+    "mastery": [
+      "nađe nepoznati broj u jednačini sa sabiranjem ili oduzimanjem",
+      "nađe nepoznati broj u jednačini sa množenjem ili deljenjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-008",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-zadaci-sa-dve-operacije",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Zadaci s dve računske operacije",
+    "summary": "Tekstualni zadatak rešava tako što sastavi izraz s najviše dve operacije, izračuna ga i proveri da li odgovor odgovara pitanju.",
+    "mastery": [
+      "za tekstualni zadatak sastavi izraz s najviše dve operacije",
+      "izračuna sastavljeni izraz i odgovori na pitanje iz zadatka"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-007",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-razlomci-oblika-jedna-n",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Razlomci oblika 1/n",
+    "summary": "Kad se celina podeli na jednake delove, svaki od njih je razlomak oblika $\\frac{1}{n}$: jedan od četiri jednaka dela je $\\frac{1}{4}$.",
+    "mastery": [
+      "za celinu podeljenu na jednake delove zapiše jedan deo kao razlomak oblika $\\frac{1}{n}$",
+      "nađe jedan od $n$ jednakih delova date veličine, na primer $\\frac{1}{3}$ od $12$"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-009",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-sastavljanje-novca",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Sastavljanje sume novca",
+    "summary": "Datu sumu novca do $100$ dinara izražava pomoću različitih apoena, na više načina: $50$ dinara je novčanica od $50$, ili dve novčanice od $20$ i kovanica od $10$.",
+    "mastery": [
+      "datu sumu dinara sastavi od više apoena",
+      "nađe drugi način da se ista suma sastavi od drugih apoena"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-010",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-rimske-cifre",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Rimske cifre",
+    "summary": "Brojevi se mogu zapisati rimskim ciframa: $I$, $V$, $X$, $L$ i $C$ su $1$, $5$, $10$, $50$ i $100$, a npr. $XIV$ je $14$.",
+    "mastery": [
+      "pročita broj zapisan rimskim ciframa",
+      "zapiše dati broj rimskim ciframa"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-011",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-prikaz-podataka",
+    "grade": 2,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Prikaz podataka tabelom i dijagramom",
+    "summary": "Manji broj podataka prikazuje u tabeli i stubičastim dijagramom: svakom podatku odgovara jedan red tabele, odnosno jedan stub čija visina pokazuje koliko čega ima.",
+    "mastery": [
+      "za dati skup podataka odredi koliku vrednost upisuje u red tabele",
+      "odredi visinu svakog stuba dijagrama za date podatke"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-012",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-prava-poluprava-duz",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Prava, poluprava i duž",
+    "summary": "Prava nema krajeve, poluprava ima jedan kraj, a duž dva kraja. Sve se crtaju lenjirom i obeležavaju velikim slovima.",
+    "mastery": [
+      "razlikuje pravu, polupravu i duž po broju krajeva",
+      "za opisanu liniju kaže koliko ima krajeva i kako se zove"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-014",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-duzina-izlomljene-linije",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Dužina izlomljene linije",
+    "summary": "Dužina izlomljene linije zbir je dužina od kojih se sastoji; može se dobiti merenjem na crtežu ili sabiranjem dužina ($3\\text{ cm} + 4\\text{ cm} + 2\\text{ cm}$).",
+    "mastery": [
+      "sabere dužine delova i izračuna dužinu izlomljene linije",
+      "odredi dužinu izlomljene linije merenjem na crtežu"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-015",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-obim-figure",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Obim figure",
+    "summary": "Obim figure zbir je dužina svih njenih stranica; pravougaonik sa stranicama od $5\\text{ cm}$ i $3\\text{ cm}$ ima obim $16\\text{ cm}$.",
+    "mastery": [
+      "izračuna obim figure sabiranjem dužina svih stranica",
+      "za dati obim i poznate stranice nađe dužinu nedostajuće strane"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-016",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-crtanje-figura-na-mrezi",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Crtanje figura na mreži",
+    "summary": "Na kvadratnoj i tačkastoj mreži crta pravougaonik, kvadrat i trougao zadatih stranica: stranice prate linije mreže ili spajaju tačke mreže.",
+    "mastery": [
+      "odredi koliko polja kvadratne mreže zauzima svaka stranica pravougaonika zadatih stranica",
+      "prepozna da li lik nacrtan na mreži ima zadatu dužinu stranica"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-017",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-podudarne-figure",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Podudarne figure",
+    "summary": "Dve figure su podudarne kad su istog oblika i iste veličine, pa se jedna može poklopiti s drugom makar bila okrenuta ili prevrnuta.",
+    "mastery": [
+      "prepozna figure istog oblika i iste veličine na crtežu",
+      "izabere koja od ponuđenih figura je podudarna s datom"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-018",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-simetricne-figure",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Simetrične figure",
+    "summary": "Figura je simetrična ako se pravom linijom, osom simetrije, može podeliti na dva dela koja se poklapaju kad se jedan preko nje preklopi.",
+    "mastery": [
+      "prepozna da li je data figura simetrična",
+      "nađe osu simetrije simetrične figure"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-019",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-dopunjavanje-simetricne-figure",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Dopunjavanje simetrične figure",
+    "summary": "Za dati deo figure i osu simetrije dopunjuje crtež tako da celina bude simetrična: svaka tačka ima odraz jednako udaljen s druge strane ose.",
+    "mastery": [
+      "za datu tačku nađe njen odraz s druge strane ose simetrije",
+      "dopuni figuru na mreži tako da bude simetrična u odnosu na datu pravu"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-020",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-duzine",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Jedinice dužine",
+    "summary": "Dužina se meri metrom, decimetrom i centimetrom: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$. Dužinu izraženu u jednoj jedinici izražava u drugoj.",
+    "mastery": [
+      "pretvori dužinu iz centimetara u decimetre i metre, i obrnuto",
+      "uporedi dužine izražene različitim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-021",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-merenje-duzine",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Merenje dužine lenjirom",
+    "summary": "Duž meri lenjirom u centimetrima i crta duž zadate dužine: lenjir se postavi tako da duž počinje kod nule, a pri crtanju se stane na zadatom broju.",
+    "mastery": [
+      "odredi dužinu duži na crtežu u centimetrima",
+      "kaže na kom broju lenjira se završava duž date dužine"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-022",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-citanje-vremena",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Čitanje vremena",
+    "summary": "Sa časovnika čita koliko je sati i minuta i zapisuje to vreme: mala kazaljka pokazuje sate, a velika minute.",
+    "mastery": [
+      "odredi koliko je sati i minuta pokazano na časovniku",
+      "zapiše vreme koje pokazuje časovnik"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-023",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-vremena",
+    "grade": 2,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "concept",
+    "name": "Jedinice vremena",
+    "summary": "Vreme se meri u danima, mesecima, godinama, časovima i minutima: $1$ čas ima $60$ minuta, $1$ dan ima $24$ časa, a godina $12$ meseci.",
+    "mastery": [
+      "zna koliko minuta ima čas, koliko časa dan i koliko meseci godina",
+      "u jednostavnoj situaciji uporedi i sabere vremena izražena u časovima i minutima"
+    ],
+    "curriculum": [
+      {
+        "edition": "g2-2026",
+        "outcome": "g2-2026-024",
+        "match": "exact"
+      }
+    ]
+  }
+]

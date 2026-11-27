@@ -926,10 +926,10 @@
     "topic": "mat-tacka-linija-duz",
     "level": "standard",
     "type": "choice",
-    "prompt": "Mila je lenjirom nacrtala ravnu liniju od jedne tačke do druge tačke i tu stala. Šta je nacrtala?",
+    "prompt": "Mila je povukla olovku uz lenjir od jedne tačke do druge tačke i tu stala. Šta je nacrtala?",
     "answer": "c",
     "check": "duž",
-    "explanation": "Linija je ravna i stala je na drugoj tački: ima početak i kraj, a ne nastavlja se dalje. To je duž.",
+    "explanation": "Olovka je uz lenjir išla pravo od jedne tačke do druge i tu stala: linija ima početak i kraj, a ne nastavlja se dalje. To je duž.",
     "choices": [
       {
         "id": "a",

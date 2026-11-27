@@ -354,7 +354,7 @@
       },
       {
         "id": "b",
-        "text": "kockica za igru"
+        "text": "lopta"
       },
       {
         "id": "c",
@@ -362,22 +362,22 @@
       },
       {
         "id": "d",
-        "text": "lopta"
+        "text": "kornet za sladoled"
       }
     ],
     "answer": "a",
     "check": "kutija za cipele",
-    "explanation": "Kutija za cipele ima oblik kvadra. Kockica za igru je kocka, a limenka je valjak."
+    "explanation": "Kutija za cipele ima oblik kvadra. Lopta je lopta, limenka je valjak, a kornet je kupa."
   },
   {
     "id": "mat-geometrijska-tela-q3",
     "topic": "mat-geometrijska-tela",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Valjak je telo oblika limenke soka. U kutiji su baterija, čep za flašu, kornet za sladoled i lopta. Koliko predmeta u kutiji ima takav oblik? Upiši broj.",
+    "prompt": "Valjak je telo oblika limenke soka. U kutiji su baterija, konzerva, kornet za sladoled i lopta. Koliko predmeta u kutiji ima oblik valjka? Upiši broj.",
     "answer": "2",
     "check": "(+ 1 1)",
-    "explanation": "Takav oblik imaju baterija i čep za flašu, a kornet ima oblik kupe. To su $2$ predmeta."
+    "explanation": "Oblik valjka imaju baterija i konzerva, a kornet ima oblik kupe. To su $2$ predmeta."
   },
   {
     "id": "mat-geometrijska-tela-q4",
@@ -461,24 +461,24 @@
     "prompt": "Koliko uglova ima krug? Upiši broj.",
     "answer": "0",
     "check": "0",
-    "explanation": "Krug je obao i nema ni jedan ugao. Zato je odgovor $0$."
+    "explanation": "Krug je okrugao i nema ni jedan ugao. Zato je odgovor $0$."
   },
   {
     "id": "mat-geometrijske-figure-q3",
     "topic": "mat-geometrijske-figure",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Na stolu su novčić, dugme, točak od autića, kutija šibica i kockica za igru. Mila traži predmete koji imaju oblik kruga. Koliko ih ima? Upiši broj.",
+    "prompt": "Na stolu su novčić, okruglo dugme, točak od autića, kutija šibica i kockica za igru. Mila traži predmete koji imaju oblik kruga. Koliko ih ima? Upiši broj.",
     "answer": "3",
     "check": "(+ 1 1 1)",
-    "explanation": "Novčić, dugme i točak su obli, pa imaju oblik kruga. Mila će naći $3$ predmeta."
+    "explanation": "Novčić, okruglo dugme i točak su okrugli, pa imaju oblik kruga. Mila će naći $3$ predmeta."
   },
   {
     "id": "mat-geometrijske-figure-q4",
     "topic": "mat-geometrijske-figure",
     "level": "standard",
     "type": "choice",
-    "prompt": "Luka je nacrtao lik sa $4$ strane. Dve strane su duže, a dve kraće. Koji lik je Luka nacrtao?",
+    "prompt": "Luka je nacrtao lik sa $4$ strane. Dve strane su duže, a dve kraće. Koji od ovih likova je Luka nacrtao?",
     "choices": [
       {
         "id": "a",
@@ -506,7 +506,7 @@
     "topic": "mat-grupisanje",
     "level": "basic",
     "type": "choice",
-    "prompt": "U grupi su crvena lopta, crveni autić i plava kocka. Koja igračka ne pripada grupi?",
+    "prompt": "Mila je grupisala igračke po boji. U grupi su crvena lopta, crveni autić i plava kocka. Koja igračka ne pripada grupi?",
     "choices": [
       {
         "id": "a",
@@ -574,7 +574,7 @@
     "topic": "mat-slaganje-figura",
     "level": "basic",
     "type": "choice",
-    "prompt": "Dva jednaka kvadrata stavljena su jedan pored drugog. Koji lik su zajedno čine?",
+    "prompt": "Dva jednaka kvadrata stavljena su jedan pored drugog tako da se dodiruju celom stranicom. Koji lik zajedno čine?",
     "answer": "b",
     "check": "pravougaonik",
     "explanation": "Kvadrati se dotiču jednom stranicom. Zajedno čine lik sa četiri ugla čija je gornja i donja stranica duža: pravougaonik.",
@@ -754,7 +754,7 @@
     "topic": "mat-prava-kriva-izlomljena",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Na papiru su četiri linije: dve su prave, jedna je kriva i jedna je izlomljena. Koliko linija nije pravo?",
+    "prompt": "Na papiru su četiri linije: dve su prave, jedna je kriva i jedna je izlomljena. Koliko linija nije prave?",
     "answer": "2",
     "check": "(+ 1 1)",
     "explanation": "Prave su samo dve linije. Kriva i izlomljena nisu prave: to su $2$ linije."
@@ -898,10 +898,10 @@
     "topic": "mat-tacka-linija-duz",
     "level": "standard",
     "type": "choice",
-    "prompt": "Mila je nacrtala liniju od jedne tačke do druge tačke i tu stala. Koju liniju je nacrtala?",
+    "prompt": "Mila je lenjirom nacrtala ravnu liniju od jedne tačke do druge tačke i tu stala. Šta je nacrtala?",
     "answer": "c",
     "check": "duž",
-    "explanation": "Linija je pošla od jedne tačke i stala na drugoj. Ima početak i kraj: to je duž.",
+    "explanation": "Linija je ravna i stala je na drugoj tački: ima početak i kraj, a ne nastavlja se dalje. To je duž.",
     "choices": [
       {
         "id": "a",
@@ -980,10 +980,10 @@
     "topic": "mat-crtanje-lenjirom",
     "level": "standard",
     "type": "choice",
-    "prompt": "Ana je postavila lenjir kroz obe tačke i povukla olovku od jedne ivice papira do druge. Šta je nacrtala?",
+    "prompt": "Ana je postavila lenjir kroz obe tačke i povukla olovku kroz njih dalje na obe strane, sve do ivica papira. Šta je nacrtala?",
     "answer": "b",
     "check": "pravu liniju",
-    "explanation": "Olovka je uz lenjir išla od ivice do ivice papira, bez stajanja: nacrtana je prava linija.",
+    "explanation": "Olovka je prošla kroz obe tačke i nastavila dalje na obe strane. Linija nema početak ni kraj: to je prava linija.",
     "choices": [
       {
         "id": "a",
@@ -1065,10 +1065,10 @@
     "topic": "mat-brojevi-do-10",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Ana broji sličice u kutiji. Poslednji broj koji je rekla je $9$. Koliko sličica ima u kutiji?",
+    "prompt": "Ana broji sličice u kutiji jedna po jedna, počevši od $1$. Kad je izbrojala sve, poslednji broj koji je rekla je $9$. Koliko sličica ima u kutiji?",
     "answer": "9",
     "check": "9",
-    "explanation": "Kad brojimo, poslednji broj koji kažemo pokazuje koliko predmeta ima. Ana je stala na broju $9$, pa u kutiji ima $9$ sličica."
+    "explanation": "Kad se predmeti broje jedna po jedna od $1$, poslednji izgovoreni broj pokazuje koliko ih ima. Poslednji broj je $9$, pa u kutiji ima $9$ sličica."
   },
   {
     "id": "mat-brojevna-prava-q1",
@@ -1292,7 +1292,7 @@
     "topic": "mat-redni-brojevi",
     "level": "standard",
     "type": "choice",
-    "prompt": "U redu ispred škole stoje Ana, Pera, Luka i Mila. Pera je drugi. Koja je po redu Mila?",
+    "prompt": "U redu ispred škole stoje od početka reda Ana, Pera, Luka i Mila. Koja je po redu Mila?",
     "choices": [
       {
         "id": "a",
@@ -1309,7 +1309,7 @@
     ],
     "answer": "c",
     "check": "četvrta",
-    "explanation": "Brojimo od početka reda: Ana je prva, Pera je drugi, Luka je treći, a Mila je četvrta."
+    "explanation": "Od početka reda: Ana je prva, Pera drugi, Luka treći, a Mila četvrta."
   },
   {
     "id": "mat-redni-brojevi-q4",
@@ -2780,9 +2780,21 @@
     "topic": "mat-kvadratna-mreza",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Tačka je u drugom redu i trećoj koloni. Pomeri je dva polja nadole. U kom je redu sada?",
+    "prompt": "Obojeno polje je tačka u drugom redu i trećoj koloni. Pomeri tačku dva polja nadole. U kom je redu sada?",
     "answer": "4",
     "check": "(+ 2 2)",
-    "explanation": "Od $2$ reda idi dva polja nadole: prvo $3$ red, pa $4$ red. Tačka je sada u $4$ redu."
+    "explanation": "Od $2$ reda idi dva polja nadole: prvo $3$ red, pa $4$ red. Tačka je sada u $4$ redu.",
+    "figure": {
+      "kind": "grid",
+      "cols": 5,
+      "rows": 5,
+      "cells": [
+        [
+          1,
+          2
+        ]
+      ],
+      "alt": "Mreža ima 5 redova i 5 kolona. Obojeno je jedno polje: drugi red od gore i treća kolona s leva."
+    }
   }
 ]

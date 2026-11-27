@@ -2,7 +2,7 @@
 
 Ovo je spisak onoga što Znanjograf jeste, a šta nije, bez uljepšavanja. Namenjen je pre svega nastavnicima. Kraći oblik ovih ograničenja stoji i na sajtu, na stranici „O projektu“.
 
-U trenutku pisanja, 27. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoje izdanja nastavnog programa za 1–6. razred (parafraze ishoda) i sadržaj za 1. razred: 37 tema, 73 grane i 148 zadataka. Za razrede 2–8 tema i zadataka još nema. Programske kapije i slepi prolaz sprovedeni su na sadržaju 1. razreda; nijedan nastavnik ga još nije pregledao.
+U trenutku pisanja, 27. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoje izdanja nastavnog programa za 1–8. razred (parafraze ishoda) i sadržaj za 1. razred: 37 tema, 73 grane i 148 zadataka. Za razrede 2–8 tema i zadataka još nema. Programske kapije i slepi prolaz sprovedeni su na sadržaju 1. razreda; nijedan nastavnik ga još nije pregledao.
 
 Zato na svakoj stranici sajta, odmah ispod zaglavlja, stoji napomena o tome šta je upisano. Gradnja je ispisuje iz podataka i sama je sklanja kad svaki razred dobije teme s zadacima, pa ne može da ostane da stoji kad više ne važi.
 
@@ -79,7 +79,7 @@ Svaku izmenu u `data/` propuštaju tri programske kapije. One vide oblik i raču
 
 `python3 -m zg all` pokreće sve tri. Pad bilo koje znači da sadržaj nije gotov; provera se ne sme slabiti da bi sadržaj prošao.
 
-Pravila notacije u `data/lint/notation.json` navode ishode pravih izdanja, osim za stepen, kvadratni koren i broj pi: za njih još upućuju na mesto koje čeka izdanje 7. razreda (privremena oznaka `g7-2026-000`), pa se ta pravila ne mogu proveriti protiv programa. I uopšte, `lint` vidi samo ono što pravila navedu: ne vidi da li je tekst razumljiv, pa ni tačan zadatak ne mora biti razumljiv detetu.
+Pravila notacije u `data/lint/notation.json` navode ishode pravih izdanja za sve razrede. I uopšte, `lint` vidi samo ono što pravila navedu: ne vidi da li je tekst razumljiv, pa ni tačan zadatak ne mora biti razumljiv detetu.
 
 ### Ono što nijedna kapija ne vidi
 

@@ -17,10 +17,10 @@ U školskoj 2026/27. godini svih osam razreda radi po programima donetim 2017–
 | 3. | „…za treći razred…“ | 5/2019, 1/2020, 6/2020, 7/2022 i 13/2023 |
 | 4. | „…za četvrti razred…“ | 11/2019, 6/2020, 7/2021, 1/2023 i 13/2023 |
 | 5. i 6. | „Pravilnik o planu nastave i učenja za peti i šesti razred osnovnog obrazovanja i vaspitanja i programu nastave i učenja za peti i šesti razred osnovnog obrazovanja i vaspitanja“ | 15/2018, 18/2018, 3/2019, 3/2020, 6/2020, 17/2021, 16/2022, 13/2023, 14/2023, 3/2024 i 6/2025 |
-| 7. | plan za 7. i 8. razred, i „…o programu nastave i učenja za sedmi razred…“ | plan: 18/2018 i 13/2023; program: 5/2019 … 6/2025 |
-| 8. | isti plan za 7. i 8. razred, i „…za osmi razred…“ | plan: 18/2018 i 13/2023; program: 11/2019 … 4/2024 |
+| 7. | plan za 7. i 8. razred, i „…o programu nastave i učenja za sedmi razred…“ | plan: 18/2018 i 13/2023; program: 5/2019, 1/2020, 6/2020, 8/2020, 5/2021, 17/2021, 16/2022, 13/2023, 14/2023 i 6/2025 |
+| 8. | isti plan za 7. i 8. razred, i „…za osmi razred…“ | plan: 18/2018 i 13/2023; program: 11/2019, 2/2020, 6/2020, 5/2021, 17/2021, 16/2022, 13/2023, 14/2023, 4/2024 i 6/2025 |
 
-Znak „…“ u tabeli znači da je naziv ili spisak brojeva glasnika ovde skraćen. Puni naziv svakog akta, s brojevima glasnika, adresom teksta i danom preuzimanja, čuva se u `data/curriculum/sources.json`; unosi za akte razreda 1–6 su upisani.
+Znak „…“ u tabeli znači da je naziv ili spisak brojeva glasnika ovde skraćen. Puni naziv svakog akta, s brojevima glasnika, adresom teksta i danom preuzimanja, čuva se u `data/curriculum/sources.json`; unosi za svih sedam akata su upisani.
 
 ## 2. Novi programi od 2027/28.
 
@@ -97,8 +97,8 @@ Koliko temu pokriva ishod kaže polje `match`: `exact` znači da tema pokriva ce
 
 ## Šta još nije upisano
 
-U trenutku pisanja, 27. novembra 2026, upisana su izdanja za 1–6. razred: u `data/curriculum/math/` stoji po jedan fajl za svaki od tih razreda, s temama programa i ishodima upisanim po pravilu parafraze, uz uputu na akt i stranu. U `data/curriculum/sources.json` stoje unosi za svih pet akata (5. i 6. razred dele isti pravilnik).
+U trenutku pisanja, 27. novembra 2026, upisana su izdanja za svih osam razreda: u `data/curriculum/math/` stoji po jedan fajl za svaki razred, s temama programa i ishodima upisanim po pravilu parafraze, uz uputu na akt i stranu. U `data/curriculum/sources.json` stoje unosi za svih sedam akata (5. i 6. razred dele isti pravilnik).
 
-Teme su upisane za 1. razred (37 tema s 148 zadataka), i svaki ishod izdanja `g1-2026` pokriva bar jedna tema. Za razrede 2–6 teme još nisu upisane, pa njihovi ishodi privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Izdanja za 7. i 8. razred, i izdanja za 2027/28. za 1. i 5. razred, planirana su, a nisu upisana.
+Teme su upisane za 1. razred (37 tema s 148 zadataka), i svaki ishod izdanja `g1-2026` pokriva bar jedna tema. Za razrede 2–8 teme još nisu upisane, pa njihovi ishodi privremeno stoje u `data/curriculum/unmapped.json` s tom naznakom. Izdanja za 2027/28. za 1. i 5. razred planirana su, a nisu upisana.
 
 Svaku parafrazu je alat uporedio s izvornikom i nije našao preuzete nizove reči, a čitalac koji nije pisao izdanje čita značenje naspram izvornika. To nije nastavnik.

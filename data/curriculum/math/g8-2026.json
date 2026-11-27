@@ -1,0 +1,174 @@
+{
+  "edition": "g8-2026",
+  "grade": 8,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Sličnost",
+      "area": "geometry",
+      "hours": 16,
+      "page": 127,
+      "content": [
+        "Proporcionalne veličine",
+        "Talesova teorema",
+        "Sličnost trouglova",
+        "Primene sličnosti"
+      ]
+    },
+    {
+      "name": "Tačka, prava i ravan",
+      "area": "geometry",
+      "hours": 12,
+      "page": 127,
+      "content": [
+        "Kako se tačka odnosi prema pravoj i prema ravni; kako se prave odnose jedna prema drugoj, pa i kad su mimoilazne; odnos prave prema ravni, normala na ravan i kolika je udaljenost tačke od ravni; kako se dve ravni odnose",
+        "Ortogonalna projekcija tačke, duži i prave na ravan; ugao koji prava zaklapa s ravanju",
+        "Poliedar"
+      ]
+    },
+    {
+      "name": "Linearne jednačine i nejednačine s jednom nepoznatom",
+      "area": "numbers",
+      "hours": 18,
+      "page": 127,
+      "content": [
+        "Linearna jednačina",
+        "Kako se rešava linearna jednačina s jednom nepoznatom",
+        "Linearna nejednačina i kako se rešava",
+        "Primena u situacijama iz stvarnog života"
+      ]
+    },
+    {
+      "name": "Prizma",
+      "area": "geometry",
+      "hours": 14,
+      "page": 127,
+      "content": [
+        "Prizma: njen pojam, vrste i elementi",
+        "Mreža prave prizme i njena površina",
+        "Zapremina prave prizme"
+      ]
+    },
+    {
+      "name": "Piramida",
+      "area": "geometry",
+      "hours": 16,
+      "page": 127,
+      "content": [
+        "Piramida: njen pojam, vrste i elementi",
+        "Mreža piramide i njena površina",
+        "Zapremina piramide"
+      ]
+    },
+    {
+      "name": "Linearna funkcija",
+      "area": "numbers",
+      "hours": 12,
+      "page": 127,
+      "content": [
+        "Linearna funkcija $y = kx + n$; njen grafik, nula i znak funkcije i monotonost; implicitni oblik u kome se ona zadaje; crtanje grafika linearne funkcije i čitanje grafika"
+      ]
+    },
+    {
+      "name": "Sistemi linearnih jednačina s dve nepoznate",
+      "area": "numbers",
+      "hours": 15,
+      "page": 127,
+      "content": [
+        "Šta je linearna jednačina s dve nepoznate i šta je sistem od dve takve jednačine",
+        "Kako se sistem rešava zamenom i metodom suprotnih koeficijenata; kako se sistem prikazuje i tumači grafikom",
+        "Primena u situacijama iz stvarnog života"
+      ]
+    },
+    {
+      "name": "Valjak, kupa i lopta",
+      "area": "geometry",
+      "hours": 16,
+      "page": 128,
+      "content": [
+        "Elementi valjka i njegova mreža; koliku površinu i zapreminu ima pravi valjak",
+        "Elementi kupe i njena mreža; koliku površinu i zapreminu ima prava kupa",
+        "Šta su lopta i sfera; kako ravan seče loptu (sferu); koliku površinu i zapreminu ima lopta"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g8-2026-001",
+      "text": "primenjuje Talesovu teoremu u zadacima iz geometrije i u situacijama iz stvarnog života",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Sličnost"
+    },
+    {
+      "id": "g8-2026-002",
+      "text": "primenjuje sličnost trouglova u zadacima iz geometrije i u situacijama iz stvarnog života",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Sličnost"
+    },
+    {
+      "id": "g8-2026-003",
+      "text": "analizira kako se tačke, prave i ravni odnose u prostoru i te odnose zapisuje matematičkim pismom",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Tačka, prava i ravan"
+    },
+    {
+      "id": "g8-2026-004",
+      "text": "crtežom pokazuje kako se geometrijski objekti odnose u ravni i u prostoru, i koristi te crteže kad rešava zadatke",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Tačka, prava i ravan"
+    },
+    {
+      "id": "g8-2026-005",
+      "text": "prepoznaje pravougli trougao u prostoru i primenjuje Pitagorinu teoremu u zadacima iz geometrije i u situacijama iz stvarnog života",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Tačka, prava i ravan"
+    },
+    {
+      "id": "g8-2026-006",
+      "text": "rešava linearnu jednačinu, linearnu nejednačinu i sistem od dve linearne jednačine s dve nepoznate",
+      "page": 127,
+      "area": "numbers",
+      "unit": "Sistemi linearnih jednačina s dve nepoznate"
+    },
+    {
+      "id": "g8-2026-007",
+      "text": "rešava probleme iz stvarnog života pomoću linearne jednačine, linearne nejednačine ili sistema linearnih jednačina s dve nepoznate",
+      "page": 127,
+      "area": "numbers",
+      "unit": "Sistemi linearnih jednačina s dve nepoznate"
+    },
+    {
+      "id": "g8-2026-008",
+      "text": "izračunava površinu i zapreminu prave prizme, četvorostrane piramide čija je osnova pravougaonik, te pravilne trostrane i šestostrane piramide",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Piramida"
+    },
+    {
+      "id": "g8-2026-009",
+      "text": "izračunava koliku površinu i zapreminu imaju valjak, kupa i lopta",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Valjak, kupa i lopta"
+    },
+    {
+      "id": "g8-2026-010",
+      "text": "primenjuje obrasce za površinu i zapreminu tela u situacijama iz stvarnog života",
+      "page": 127,
+      "area": "geometry",
+      "unit": "Valjak, kupa i lopta"
+    },
+    {
+      "id": "g8-2026-011",
+      "text": "crta grafik linearne funkcije i analizira ga",
+      "page": 127,
+      "area": "numbers",
+      "unit": "Linearna funkcija"
+    }
+  ]
+}

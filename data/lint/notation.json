@@ -26,19 +26,19 @@
   {
     "pattern": "(?<![})\\\\\\s])\\^(?!\\\\circ)",
     "min_grade": 7,
-    "outcome": "g7-2026-000",
+    "outcome": "g7-2026-001",
     "note": "stepen"
   },
   {
     "pattern": "\\\\sqrt",
     "min_grade": 7,
-    "outcome": "g7-2026-000",
+    "outcome": "g7-2026-001",
     "note": "kvadratni koren"
   },
   {
     "pattern": "\\\\pi",
     "min_grade": 7,
-    "outcome": "g7-2026-000",
+    "outcome": "g7-2026-017",
     "note": "broj pi"
   },
   {

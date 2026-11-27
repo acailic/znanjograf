@@ -1,0 +1,213 @@
+{
+  "edition": "g7-2026",
+  "grade": 7,
+  "applies_from": "2026/27",
+  "themes": [
+    {
+      "name": "Realni brojevi",
+      "area": "numbers",
+      "hours": 21,
+      "page": 120,
+      "content": [
+        "Kvadrat racionalnog broja",
+        "Jednačine oblika $x^2 = a$ gde je $a \\ge 0$, i brojevi koji pri tome nastaju a nisu racionalni (tako ih daje jednačina $x^2 = 2$)",
+        "Realni brojevi i brojevna prava",
+        "Kvadratni koren i jednakost $\\sqrt{a^2} = |a|$",
+        "Kako se realan broj zapisuje decimalno, kolika mu je približna vrednost i kolika je apsolutna greška; osnovna svojstva računanja s realnim brojevima",
+        "Funkcija direktne proporcionalnosti $y = kx$, gde je $k \\in \\mathbb{R} \\setminus \\{0\\}$",
+        "Produžena proporcija"
+      ]
+    },
+    {
+      "name": "Pitagorina teorema",
+      "area": "geometry",
+      "hours": 19,
+      "page": 120,
+      "content": [
+        "Pitagorina teorema, direktna i obratna, i njene važnije primene",
+        "Konstrukcija na brojevnoj pravoj tačaka za brojeve $\\sqrt{2}$, $\\sqrt{3}$, $\\sqrt{5}$ i takve",
+        "Rastojanje dveju tačaka u koordinatnom sistemu"
+      ]
+    },
+    {
+      "name": "Celi algebarski izrazi",
+      "area": "numbers",
+      "hours": 48,
+      "page": 120,
+      "content": [
+        "Prvi deo teme",
+        "Stepen s prirodnim izložiocem; stepen dekadne jedinice s celobrojnim izložiocem; računanje sa stepenima, i to stepen proizvoda, količnika i stepena",
+        "Drugi deo teme",
+        "Algebarski izrazi; polinomi i računanje s njima (monomi, sređeni oblik, i kako se zbir, razlika i proizvod polinoma svode na sređeni oblik); formula za kvadrat binoma i formula za razliku kvadrata; rastavljanje polinoma na činioce primenom distributivnog zakona, odnosno tih formula; primene"
+      ]
+    },
+    {
+      "name": "Mnogougao",
+      "area": "geometry",
+      "hours": 21,
+      "page": 120,
+      "content": [
+        "Pojam mnogougla i vrste mnogouglova",
+        "Zbir uglova mnogougla i broj njegovih dijagonala; pravilni mnogouglovi (pojam, svojstva i konstrukcije); obim i površina mnogougla",
+        "Težišna duž trougla, te ortocentar i težište trougla",
+        "Složenije primene stavova podudarnosti"
+      ]
+    },
+    {
+      "name": "Krug",
+      "area": "geometry",
+      "hours": 18,
+      "page": 120,
+      "content": [
+        "Centralni ugao i periferijski ugao u krugu",
+        "Obim kruga i broj $\\pi$; dužina kružnog luka",
+        "Površina kruga, površina kružnog isečka i površina kružnog prstena",
+        "Rotacija"
+      ]
+    },
+    {
+      "name": "Obrada podataka",
+      "area": "data",
+      "hours": 5,
+      "page": 120,
+      "content": [
+        "Srednja vrednost, medijana i mod"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "g7-2026-001",
+      "text": "izračunava stepen realnog broja i koren potpunog kvadrata, služeći se svojstvima operacija",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-002",
+      "text": "nalazi koliku brojevnu vrednost ima jednostavniji izraz u kome su realni brojevi",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-003",
+      "text": "za dati problem iz stvarnog života sastavlja jednostavniji brojevni izraz s realnim brojevima i izračunava njegovu vrednost",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-004",
+      "text": "određuje približnu vrednost realnog broja i procenjuje kolika je apsolutna greška",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-005",
+      "text": "crta grafik funkcije $y = kx$, gde je $k \\in \\mathbb{R} \\setminus \\{0\\}$",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-006",
+      "text": "primenjuje produženu proporciju u situacijama iz stvarnog života",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Realni brojevi"
+    },
+    {
+      "id": "g7-2026-007",
+      "text": "primenjuje Pitagorinu teoremu u zadacima koji se rešavaju računski ili konstrukcijom",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Pitagorina teorema"
+    },
+    {
+      "id": "g7-2026-008",
+      "text": "preobražava zbir, razliku i proizvod polinoma",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Celi algebarski izrazi"
+    },
+    {
+      "id": "g7-2026-009",
+      "text": "koristi formule za razliku kvadrata i za kvadrat binoma",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Celi algebarski izrazi"
+    },
+    {
+      "id": "g7-2026-010",
+      "text": "rastavlja polinom na činioce, i to tako što koristi distributivni zakon, odnosno formule za kvadrat binoma i za razliku kvadrata",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Celi algebarski izrazi"
+    },
+    {
+      "id": "g7-2026-011",
+      "text": "koristi preobražavanje polinoma kad rešava jednačine",
+      "page": 120,
+      "area": "numbers",
+      "unit": "Celi algebarski izrazi"
+    },
+    {
+      "id": "g7-2026-012",
+      "text": "primenjuje osobine stranica, uglova i dijagonala mnogougla",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Mnogougao"
+    },
+    {
+      "id": "g7-2026-013",
+      "text": "izračunava koliku površinu ima mnogougao, i to pomoću obrazaca ili razložive jednakosti",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Mnogougao"
+    },
+    {
+      "id": "g7-2026-014",
+      "text": "konstrukcijom nalazi ortocentar trougla i njegovo težište",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Mnogougao"
+    },
+    {
+      "id": "g7-2026-015",
+      "text": "poziva se na stavove podudarnosti kad dokazuje jednostavnija tvrđenja i kad rešava zadatke konstrukcijom",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Mnogougao"
+    },
+    {
+      "id": "g7-2026-016",
+      "text": "primenjuje osobine centralnog ugla i periferijskog ugla u krugu",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Krug"
+    },
+    {
+      "id": "g7-2026-017",
+      "text": "izračunava obim i površinu kruga, kao i njegovih delova",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Krug"
+    },
+    {
+      "id": "g7-2026-018",
+      "text": "rotacijom preslikava dati geometrijski objekat",
+      "page": 120,
+      "area": "geometry",
+      "unit": "Krug"
+    },
+    {
+      "id": "g7-2026-019",
+      "text": "nalazi srednju vrednost, medijanu i mod",
+      "page": 120,
+      "area": "data",
+      "unit": "Obrada podataka"
+    }
+  ]
+}

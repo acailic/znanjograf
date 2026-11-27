@@ -48,12 +48,6 @@
     "reason": "Da bi nacrtao duž, učenik mora da zna da je duž deo prave sa početkom i krajem."
   },
   {
-    "topic": "mat-crtanje-lenjirom",
-    "requires": "mat-prava-kriva-izlomljena",
-    "strength": "hard",
-    "reason": "Lenjirom se crta samo prava linija, pa učenik mora da je razlikuje od krive i izlomljene."
-  },
-  {
     "topic": "mat-brojevna-prava",
     "requires": "mat-brojevi-do-10",
     "strength": "hard",
@@ -147,7 +141,7 @@
     "topic": "mat-oduzimanje-preko-desetice",
     "requires": "mat-oduzimanje-do-10",
     "strength": "hard",
-    "reason": "Oduzimanje s prelaskom svodi se na dva oduzimanja u okviru $10$."
+    "reason": "Oduzimanje s prelaskom radi se u dva koraka, do desetice i od nje, a oba koraka traže oduzimanje koje učenik radi u okviru $10$ ($16 - 6 = 10$, pa $10 - 1 = 9$)."
   },
   {
     "topic": "mat-oduzimanje-preko-desetice",
@@ -176,8 +170,8 @@
   {
     "topic": "mat-osobine-sabiranja",
     "requires": "mat-brojevi-do-20",
-    "strength": "soft",
-    "reason": "Združivanje sabiraka radi lakšeg računanja daje zbirove veće od $10$, pa pomaže znanje brojeva do $20$."
+    "strength": "hard",
+    "reason": "Združivanjem sabiraka dobijaju se zbirovi veći od $10$ ($13$, $17$), pa učenik mora da poznaje brojeve druge desetice."
   },
   {
     "topic": "mat-brojevi-do-100",
@@ -430,5 +424,17 @@
     "requires": "mat-uporedjivanje-po-velicini",
     "strength": "soft",
     "reason": "Merenje dužine polazi od poređenja po dužini, ali se duž može izmeriti i bez tog poređenja."
+  },
+  {
+    "topic": "mat-nepoznati-broj-u-jednakosti",
+    "requires": "mat-sabiranje-do-10",
+    "strength": "hard",
+    "reason": "Jednakost s jednom operacijom rešava se sabiranjem do $10$: ako je posle poklanjanja $3$ sličice ostalo $6$, bilo ih je $6 + 3 = 9$."
+  },
+  {
+    "topic": "mat-grupisanje",
+    "requires": "mat-brojevi-do-10",
+    "strength": "hard",
+    "reason": "Da bi odgovorio koliko igračaka ima u grupi, učenik prebrojava predmete i zapiše broj do $10$."
   }
 ]

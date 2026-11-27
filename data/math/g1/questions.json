@@ -241,8 +241,8 @@
     "id": "mat-uporedjivanje-po-velicini-q3",
     "topic": "mat-uporedjivanje-po-velicini",
     "level": "standard",
-    "type": "numeric",
-    "prompt": "Na slici su tri kule. Poredaj ih od najniže do najviše. Koliko kvadrata ima druga kula u tom redu? Upiši broj.",
+    "type": "choice",
+    "prompt": "Na slici su tri kule. Poredaj ih od najniže do najviše. Koja kula je druga po redu?",
     "figure": {
       "kind": "grid",
       "alt": "Tri kule od kvadrata stoje na istoj osnovi. Leva kula je visoka 5 kvadrata, kula u sredini 3 kvadrata, a desna kula 4 kvadrata.",
@@ -299,19 +299,47 @@
         ]
       ]
     },
-    "answer": "4",
-    "check": "4",
-    "explanation": "Od najniže do najviše: kula u sredini ($3$), desna kula ($4$), leva kula ($5$). Druga po redu je desna kula, koja ima $4$ kvadrata."
+    "answer": "c",
+    "check": "desna kula",
+    "explanation": "Najniža je kula u sredini ($3$ kvadrata), pa desna kula ($4$ kvadrata), a najviša je leva kula ($5$ kvadrata). Druga po redu je desna kula.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "leva kula"
+      },
+      {
+        "id": "b",
+        "text": "kula u sredini"
+      },
+      {
+        "id": "c",
+        "text": "desna kula"
+      }
+    ]
   },
   {
     "id": "mat-uporedjivanje-po-velicini-q4",
     "topic": "mat-uporedjivanje-po-velicini",
     "level": "standard",
-    "type": "numeric",
-    "prompt": "Crvena olovka je duža od plave. Plava olovka je duža od žute. Koliko olovaka je duže od žute? Upiši broj.",
-    "answer": "2",
-    "check": "(+ 1 1)",
-    "explanation": "Plava olovka je duža od žute, a crvena je duža od plave, pa je i crvena duža od žute. Duže od žute su $2$ olovke."
+    "type": "choice",
+    "prompt": "Crvena olovka je duža od plave. Plava olovka je duža od žute. Koja olovka je najkraća?",
+    "answer": "c",
+    "check": "žuta olovka",
+    "explanation": "Žuta olovka je kraća od plave, a plava je kraća od crvene. Zato je žuta olovka najkraća.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "crvena olovka"
+      },
+      {
+        "id": "b",
+        "text": "plava olovka"
+      },
+      {
+        "id": "c",
+        "text": "žuta olovka"
+      }
+    ]
   },
   {
     "id": "mat-geometrijska-tela-q1",
@@ -1997,20 +2025,20 @@
     "topic": "mat-parni-neparni",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Nastavi niz parnih brojeva: $12$, $14$, $16$, ____.",
-    "answer": "18",
-    "check": "(+ 16 2)",
-    "explanation": "Parni brojevi rastu za po $2$: posle $16$ sledeći je $18$."
+    "prompt": "Nastavi niz parnih brojeva: $34$, $36$, $38$, ____.",
+    "answer": "40",
+    "check": "(+ 38 2)",
+    "explanation": "Brojevi rastu za po $2$: posle $38$ dolazi $40$. Svi završavaju cifrom $4$, $6$ ili $8$, pa su parni."
   },
   {
     "id": "mat-parni-neparni-q4",
     "topic": "mat-parni-neparni",
     "level": "standard",
     "type": "numeric",
-    "prompt": "Nikola je ređao svoje sličice u parove. Svaka sličica dobila je par i nijedna nije ostala sama. Koji je broj sličica: $15$, $16$ ili $17$? Upiši taj broj.",
-    "answer": "16",
-    "check": "16",
-    "explanation": "Ako se sve sličice ređaju u parove i nijedna ne ostane, broj sličica je paran. Od $15$, $16$ i $17$ samo je $16$ paran."
+    "prompt": "Nikola je ređao svoje sličice u parove. Svaka sličica dobila je par i nijedna nije ostala sama. Koji je broj sličica: $45$, $46$ ili $47$? Upiši taj broj.",
+    "answer": "46",
+    "check": "46",
+    "explanation": "Ako se sve sličice ređaju u parove i nijedna ne ostane, broj sličica je paran. Od $45$, $46$ i $47$ samo je $46$ paran: završava cifrom $6$."
   },
   {
     "id": "mat-poredjenje-do-100-q1",

@@ -2,7 +2,7 @@
 
 Ovo je spisak onoga što Znanjograf jeste, a šta nije, bez uljepšavanja. Namenjen je pre svega nastavnicima. Kraći oblik ovih ograničenja stoji i na sajtu, na stranici „O projektu“.
 
-U trenutku pisanja, 27. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoje izdanja nastavnog programa za 1–6. razred (parafraze ishoda) i sadržaj za 1. razred: 37 tema, 72 grane i 148 zadataka. Za razrede 2–8 tema i zadataka još nema. Programske kapije i slepi prolaz sprovedeni su na sadržaju 1. razreda; nijedan nastavnik ga još nije pregledao.
+U trenutku pisanja, 27. novembra 2026, pravi sadržaj je tek počeo da se upisuje. Postoje izdanja nastavnog programa za 1–6. razred (parafraze ishoda) i sadržaj za 1. razred: 37 tema, 73 grane i 148 zadataka. Za razrede 2–8 tema i zadataka još nema. Programske kapije i slepi prolaz sprovedeni su na sadržaju 1. razreda; nijedan nastavnik ga još nije pregledao.
 
 Zato na svakoj stranici sajta, odmah ispod zaglavlja, stoji napomena o tome šta je upisano. Gradnja je ispisuje iz podataka i sama je sklanja kad svaki razred dobije teme s zadacima, pa ne može da ostane da stoji kad više ne važi.
 
@@ -27,7 +27,7 @@ Slepi prolaz je jedina provera da li je tekst zadatka dvosmislen. Rešavaču se 
 
 Taj rešavač je AI model, iz iste porodice modela koja je pisala i same zadatke. Zato „slep“ nije potpuno slep: model može da razume zadatak onako kako ga je pisac mislio, a ne onako kako bi ga razumelo dete. Slepi prolaz ne zamenjuje nezavisnu ljudsku proveru.
 
-Slepi prolaz sproveden je jednom, 27. novembra 2026, na zadacima 1. razreda. Tri rešavača su rešila svih 148 zadataka bez odgovora, objašnjenja i tema. Nijedan odgovor se nije razlikovao od banke i nijedna pogrešna ponuda nije ocenjena branjivom; jedan zadatak je imao dva branjiva odgovora, a trinaest ih je označeno zbog onoga što je rešavač morao da pretpostavi. Svi ti zadaci su doradjeni. Ponovni slepi prolaz tih trinaest još nije učinjen, pa evidencija (`data/ledger.json`) za njih ne beleži prolaz: `python3 -m zg status` pokazuje, za kapiju `blind-solve`, 135 proverenih i 13 zastarelih.
+Slepi prolaz sproveden je jednom, 27. novembra 2026, na zadacima 1. razreda. Tri rešavača su rešila svih 148 zadataka bez odgovora, objašnjenja i tema. Nijedan odgovor se nije razlikovao od banke i nijedna pogrešna ponuda nije ocenjena branjivom; jedan zadatak je imao dva branjiva odgovora, a trinaest ih je označeno zbog onoga što je rešavač morao da pretpostavi. Svi ti zadaci su doradjeni. Ponovni slepi prolaz tih trinaest, i još četiri zadatka koje je izmenio pregled grana (odeljak 4), još nije učinjen, pa evidencija (`data/ledger.json`) za njih ne beleži prolaz: `python3 -m zg status` pokazuje, za kapiju `blind-solve`, 131 proveren i 17 zastarelih.
 
 ## 3. Nema kalibracije na stvarnoj deci
 
@@ -41,7 +41,7 @@ Za svaku granu neko je procenio da li je prethodna tema obavezna (`hard`) ili sa
 
 Od toga direktno zavisi rezultat, jer dijagnostika ide unazad samo po obaveznim granama. Greška u jednom smeru šalje dijagnostiku da traži rupu gde je nema; greška u drugom preskače pravi uzrok.
 
-Predviđen je protivnički pregled svake obavezne grane, pri kome nezavisni pregledač pita da li učenik koji nema prethodnu temu može da reši oba standardna zadatka ove. Za taj pregled ne postoji komanda; obavljenost se može samo zapisati u `data/ledger.json`. Grane 1. razreda je koordinator projekta jednom pročitao pre nego što su zadaci napisani, prema ciljevima tema, i dodao šest mekih grana koje su nedostajale. Protivnički pregled s zadacima u ruci nije učinjen, niti je išta zapisano u evidenciji.
+Predviđen je protivnički pregled svake obavezne grane, pri kome nezavisni pregledač pita da li učenik koji nema prethodnu temu može da reši oba standardna zadatka ove. Za taj pregled ne postoji komanda; obavljenost se može samo zapisati u `data/ledger.json`. Protivnički pregled grana 1. razreda učinjen je jednom, 27. novembra 2026: čitalac koji nije pisao ni grane ni zadatke primenio je protivni test na svih tadašnjih 72 grane. Šezdeset sedam ih je prošlo. Devet primedbi razrešeno je istog dana: jedna grana je uklonjena, jedna od meke postala čvrsta, dve čvrste grane su dodate, jedan razlog je ispravljen, a četiri zadatka su preoblikovana da bi njihove grane opravdale. Te četiri nove ili izmenjene grane niko posle toga nije pregledao, pa u evidenciji stoje kao zastarele (`python3 -m zg status`: 69 važećih i 4 zastarele za kapiju `edges`). Za razrede 2–8 grana još nema.
 
 ## 5. Rezultat dijagnostike je trag, ne ocena
 
@@ -89,4 +89,4 @@ Pravila notacije u `data/lint/notation.json` navode ishode pravih izdanja, osim 
 
 Predviđena su još dva pregleda: slepi klasifikator, koji vidi samo tekst zadatka i imenuje temu, nivo i najniži razred koji ga razume, i test ponuda, koji proverava da ponude ne odaju odgovor. Za oba još ne postoje komande; u evidenciji postoje samo mesta za njih (`classify` i `cueing`).
 
-Slepi prolaz sproveden je jednom, na zadacima 1. razreda (odeljak 2). Protivnički pregled grana i oba planska pregleda nisu sprovedeni ni jednom. Evidencija prolaza (`data/ledger.json`) postoji i pokazuje šta je koja kapija videla; `python3 -m zg status` ispisuje po razredu koliko je zapisa važeće, a koliko ih je zastarelo jer se sadržaj posle promenio. `python3 -m zg all` ne proverava ni da je nešto od toga obavljeno: zapis o prolazu može biti i zastareo, a da sve kapije budu zelene.
+Slepi prolaz i protivnički pregled grana sprovedeni su po jedanput, za 1. razred (odeljci 2 i 4); zadaci i grane izmenjeni posle njih u evidenciji stoje kao zastareli. Oba planska pregleda, slepi klasifikator i test ponuda, nisu sprovedeni ni jednom. Evidencija prolaza (`data/ledger.json`) postoji i pokazuje šta je koja kapija videla; `python3 -m zg status` ispisuje po razredu koliko je zapisa važeće, a koliko ih je zastarelo jer se sadržaj posle promenio. `python3 -m zg all` ne proverava ni da je nešto od toga obavljeno: zapis o prolazu može biti i zastareo, a da sve kapije budu zelene.

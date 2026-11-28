@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from zg import paths
 from zg.corpus import Corpus, RawCorpus
@@ -185,12 +186,20 @@ class FoldedWordsTest(unittest.TestCase):
         self.assertTrue(issues[0].message.startswith("reč „resenje“"), issues[0].message)
 
     def test_words_that_are_right_as_they_stand_are_left_alone(self):
+        # Each word of the set stands in the fixture beside the word it folds to.
         # „sto“ (the table, the hundred) folds like „što“ and „mesa“ (of meat) like „meša“: neither lacks a letter
-        helpers.topic(self.raw, TOPIC)["summary"] = "Učenik zna šta i što radi i kako meša boje."
+        helpers.topic(self.raw, TOPIC)["summary"] = "Učenik zna šta i što radi i kako meša boje. Zbir je suma brojeva, a šuma je puna drveta."
         helpers.question(self.raw, QUESTION)["explanation"] = "Na stolu ima sto kockica i komad mesa."
-        # ``zapisu`` (of a notation) is not ``zapišu``, although both fold to the same letters
-        helpers.question(self.raw, QUESTION)["prompt"] = "U decimalnom zapisu broja učenici zapišu cifru 5 jednom."
+        # ``zapisu`` (of a notation) is not ``zapišu``, ``sume`` (of sums) is not ``šume`` (of forests)
+        helpers.question(self.raw, QUESTION)["prompt"] = "U decimalnom zapisu broja učenici zapišu cifru 5 jednom; sume su zbirovi, a šume su velike."
         self.assertEqual(only(lint(self.raw), "L2-folded"), [])
+        # Without its exception every such word is reported, and only that word: the check above tests something.
+        for word in sorted(text._LEGITIMATE):
+            without = text._LEGITIMATE - {word}
+            with self.subTest(word=word), mock.patch.object(text, "_LEGITIMATE", without):
+                issues = only(lint(self.raw), "L2-folded")
+                self.assertEqual(len(issues), 1, [issue.message for issue in issues])
+                self.assertTrue(issues[0].message.startswith(f"reč „{word}“"), issues[0].message)
 
 
 class DigraphWordsTest(unittest.TestCase):

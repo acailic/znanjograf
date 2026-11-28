@@ -32,12 +32,12 @@ Ovu tabelu ispisuje alat (`python3 -m zg report --write`); brojevi u njoj su ono
 | 1. razred | 22 | 37 | 73 | 148 |
 | 2. razred | 24 | 25 | 42 | 100 |
 | 3. razred | 27 | 28 | 52 | 112 |
-| 4. razred | 23 | 0 | 0 | 0 |
+| 4. razred | 23 | 22 | 36 | 88 |
 | 5. razred | 31 | 0 | 0 | 0 |
 | 6. razred | 17 | 0 | 0 | 0 |
 | 7. razred | 19 | 0 | 0 | 0 |
 | 8. razred | 11 | 0 | 0 | 0 |
-| Ukupno | 174 | 90 | 167 | 360 |
+| Ukupno | 174 | 112 | 203 | 448 |
 <!-- /zg:stats -->
 
 „Ishodi programa“ su ishodi nastavnog programa upisani u repozitorijum. Tema sme da stoji samo s bar dva osnovna i dva standardna zadatka, a odgovor svakog zadatka alat posebno izračuna i poredi s upisanim; ako se ne poklapa, provera pada.

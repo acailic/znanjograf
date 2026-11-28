@@ -1,0 +1,483 @@
+[
+  {
+    "id": "mat-prirodni-brojevi-do-milion",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Prirodni brojevi do milion",
+    "summary": "Prirodni brojevi i nula do milion: čitaju se, zapisuju i upoređuju. Milion ima šest nula, a svako mesto u zapisu ima svoju vrednost.",
+    "mastery": [
+      "čita i zapisuje brojeve do $1000000$",
+      "uporedi dva broja do $1000000$",
+      "na brojevnoj pravoj nađe mesto datog broja"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-001",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-mesna-vrednost-cifre",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Mesna vrednost cifre",
+    "summary": "Vrednost cifre zavisi od mesta na kom stoji: u broju $3527$ cifra $5$ vredi $500$, a u broju $53$ vredi $50$.",
+    "mastery": [
+      "kaže koliko vredi data cifra u zapisu broja",
+      "nađe broj u kome cifra ima zadatu mesnu vrednost"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-002",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-pismeno-mnozenje",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Pismeno množenje",
+    "summary": "Pismeno množenje višecifrenim brojem: broj se množi posebno jedinicama, deseticama i stotinama drugog broja, pa se rezultati saberu.",
+    "mastery": [
+      "pismeno pomnoži broj dvocifrenim brojem",
+      "pomnoži broj od više cifara brojem koji ima nulu na kraju"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-pismeno-deljenje",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Pismeno deljenje",
+    "summary": "Pismeno deljenje brojem od jedne ili dve cifre, procenjivanjem količnika i proverom množenjem.",
+    "mastery": [
+      "pismeno podeli broj dvocifrenim brojem",
+      "proveri rezultat pismenog deljenja množenjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-003",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-svojstva-racunskih-operacija",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "reasoning",
+    "name": "Svojstva računskih operacija",
+    "summary": "Svojstva sabiranja i množenja zapisuju se slovima: $a + b = b + a$, $a \\cdot (b + c) = a \\cdot b + a \\cdot c$.",
+    "mastery": [
+      "prepozna koje svojstvo iskazuje data jednakost s slovima",
+      "koristi svojstvo da lakše izračuna vrednost izraza"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-004",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-001",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-izrazi-sa-promenljivom",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Izrazi s promenljivom",
+    "summary": "Vrednost izraza u kome ima slova računa se tako što se umesto slova stavi dati broj ($3 \\cdot a + 12$ za $a = 5$ je $27$).",
+    "mastery": [
+      "izračuna vrednost izraza s promenljivom za datu vrednost slova",
+      "sastavi izraz s promenljivom za dati opis"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-004",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-001",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jednacine-i-nejednacine-u-n0",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Jednačine i nejednačine u skupu N₀",
+    "summary": "Jednačine i nejednačine rešavaju se u skupu prirodnih brojeva i nule, s proverom da li su rešenja tačna.",
+    "mastery": [
+      "nađe rešenje jednačine u skupu prirodnih brojeva",
+      "nađe skup rešenja nejednačine i proveri da li su tačna"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-005",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-zadaci-izraz-jednacina-nejednacina",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "problem",
+    "name": "Zadaci s izrazom, jednačinom ili nejednačinom",
+    "summary": "Problemski zadatak rešava uz pomoć brojevnog izraza, jednačine ili nejednačine, a problem može prikazati na više načina: rečima, tabelom, crtežom.",
+    "mastery": [
+      "za tekstualni zadatak sastavi izraz, jednačinu ili nejednačinu i reši ga",
+      "isti problem prikaže na dva načina"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-006",
+        "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-016",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-002",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-visestruke-dekadne-jedinice",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Višestruke dekadne jedinice",
+    "summary": "Broj se zaokružuje na najbližu deseticu, stotinu, hiljadu ili desethiljadu, zavisno koliko preciznosti treba ($4726$ na stotine je $4700$).",
+    "mastery": [
+      "zaokruži broj na najbližu deseticu, stotinu, hiljadu ili desethiljadu",
+      "kaže na koju je dekadnu jedinicu broj zaokružen"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-008",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Upoređivanje razlomaka s jednakim brojiocima",
+    "summary": "Razlomci kojima su brojioci jednaki porede se po imeniocu: što je celina podeljena na više delova, svaki deo je manji ($\\frac{2}{3} > \\frac{2}{5}$).",
+    "mastery": [
+      "uporedi dva razlomka s istim brojiocem",
+      "poreda razlomke s istim brojiocem ili istim imeniocem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-010",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jednakost-razlomaka",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Jednakost razlomaka",
+    "summary": "Dva razlomka su jednaki kad pokazuju isti deo celine: $\\frac{1}{2}$ i $\\frac{2}{4}$ isti su deo, jer se svaka polovina podeli na dva.",
+    "mastery": [
+      "prepozna razlomak jednak datom razlomku",
+      "proširi razlomak množenjem brojioca i imenioca istim brojem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-010",
+        "match": "partial"
+      },
+      {
+        "edition": "g5-2026",
+        "outcome": "g5-2026-019",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje i oduzimanje razlomaka s jednakim imeniocima",
+    "summary": "Razlomci s istim imeniocem sabiraju se i oduzimaju tako što se saberu ili oduzmu brojioci, a imenilac ostaje ($\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{7}$).",
+    "mastery": [
+      "sabere dva razlomka s istim imeniocem",
+      "oduzme razlomke s istim imeniocem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-011",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-decimalni-zapis-dve-decimale",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "concept",
+    "name": "Decimalni zapis s dve decimale",
+    "summary": "Dužina od $3$ centimetra, $2$ milimetra i pol milimetra iznosi $3{,}25$ centimetara. Broj s dve decimale pokazuje cele, desetine i stotine: $3{,}25$ je $3$ i $25$ stotina.",
+    "mastery": [
+      "dužinu izraženu u centimetrima i milimetrima zapiše decimalno s dve decimale",
+      "pročita decimalni broj s dve decimale i kaže koliko ima celih, desetina i stotina"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-012",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-sabiranje-decimalnih-brojeva",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Sabiranje decimalnih brojeva",
+    "summary": "Decimalni brojevi sabiraju se pismeno tako što se zaravnaju po zarezu, pa se saberu kao celi brojevi ($2{,}45 + 1{,}3 = 3{,}75$).",
+    "mastery": [
+      "sabere dva decimalna broja s najviše dve decimale",
+      "sabere iznos novca u dinarima s dinarima i parama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-013",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-oduzimanje-decimalnih-brojeva",
+    "grade": 4,
+    "area": "numbers",
+    "unit": "Brojevi",
+    "kind": "procedure",
+    "name": "Oduzimanje decimalnih brojeva",
+    "summary": "Decimalni brojevi oduzimaju se pismeno zaravnavanjem po zarezu ($5{,}6 - 2{,}38 = 3{,}22$).",
+    "mastery": [
+      "oduzme decimalne brojeve s najviše dve decimale",
+      "proveri razliku sabiranjem"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-013",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-kvadar-i-kocka",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Kvadar i kocka",
+    "summary": "Kvadar i kocka imaju $6$ strana, $12$ ivica i $8$ temena; kocka je kvadar kome su sve stranice jednake.",
+    "mastery": [
+      "imenuje i prebroji strane, ivice i temena kvadra i kocke",
+      "opisuje čime se kocka razlikuje od kvadra"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-017",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-mreze-kvadra-i-kocke",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "procedure",
+    "name": "Mreže kvadra i kocke",
+    "summary": "Mreža kvadra ili kocke je rastvoren crtež svih strana tela u jednoj ravni; od mreže se slaže model tela.",
+    "mastery": [
+      "kaže koliko pravougaonika ima mreža kvadra, a koliko kvadrata mreža kocke",
+      "prepozna koji od ponuđenih oblika može biti mreža kocke"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-018",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-pogled-na-telo",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Geometrija",
+    "kind": "concept",
+    "name": "Pogled na telo sa različitih strana",
+    "summary": "Isto telo izgleda drugačije kad se posmatra odozgo, s boka ili spreda; slika tela pokazuje šta se vidi sa svake strane.",
+    "mastery": [
+      "kaže koji se oblik vidi kad se kocka posmatra odozgo",
+      "prepozna sliku tela posmatranog s zadate strane"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-019",
+        "match": "exact"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-povrsine",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Jedinice površine",
+    "summary": "Površina se meri kvadratnim jedinicama: $1\\text{ cm}^2$ je kvadrat sa stranicom od $1\\text{ cm}$; $1\\text{ m}^2 = 100\\text{ dm}^2$, a hektar i ar mere veće površine.",
+    "mastery": [
+      "pretvori kvadratne jedinice u manje i veće ($1\\text{ m}^2 = 100\\text{ dm}^2$)",
+      "uporedi površine izražene u različitim jedinicama"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-020",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-jedinice-zapremine-tela",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Jedinice zapremine tela",
+    "summary": "Zapremina tela meri se kubnim jedinicama: $1\\text{ cm}^3$ je kocka ivice $1\\text{ cm}$; $1\\text{ dm}^3 = 1000\\text{ cm}^3$ i $1\\text{ dm}^3 = 1\\text{ l}$.",
+    "mastery": [
+      "pretvori kubne jedinice u manje i veće",
+      "poveže kubni decimetar i litar"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-020",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-povrsina-kvadrata-i-pravougaonika",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Površina kvadrata i pravougaonika",
+    "summary": "Površina pravougaonika je proizvod njegovih stranica ($P = a \\cdot b$), a kvadrata kvadrat stranice ($P = a \\cdot a$).",
+    "mastery": [
+      "izračuna površinu pravougaonika zadatih stranica",
+      "izračuna površinu kvadrata zadate stranice"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-021",
+        "match": "exact"
+      },
+      {
+        "edition": "g6-2026",
+        "outcome": "g6-2026-017",
+        "match": "partial"
+      }
+    ]
+  },
+  {
+    "id": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "grade": 4,
+    "area": "geometry",
+    "unit": "Merenje i mere",
+    "kind": "procedure",
+    "name": "Površina i zapremina kvadra i kocke",
+    "summary": "Površina kvadra zbir je površina svih strana; zapremina je proizvod tri ivice ($V = a \\cdot b \\cdot c$, za kocku $V = a \\cdot a \\cdot a$).",
+    "mastery": [
+      "izračuna površinu kvadra i kocke zadatih ivica",
+      "izračuna zapreminu kvadra i kocke zadatih ivica"
+    ],
+    "curriculum": [
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-022",
+        "match": "exact"
+      },
+      {
+        "edition": "g4-2026",
+        "outcome": "g4-2026-023",
+        "match": "partial"
+      },
+      {
+        "edition": "g8-2026",
+        "outcome": "g8-2026-008",
+        "match": "partial"
+      }
+    ]
+  }
+]

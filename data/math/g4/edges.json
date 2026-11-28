@@ -1,0 +1,218 @@
+[
+  {
+    "topic": "mat-prirodni-brojevi-do-milion",
+    "requires": "mat-brojevi-do-1000",
+    "strength": "hard",
+    "reason": "Brojevi do milion grade se od hiljada, pa učenik mora da poznaje brojeve do $1000$."
+  },
+  {
+    "topic": "mat-mesna-vrednost-cifre",
+    "requires": "mat-prirodni-brojevi-do-milion",
+    "strength": "hard",
+    "reason": "Mesna vrednost određuje se za cifre u zapisu brojeva do milion."
+  },
+  {
+    "topic": "mat-pismeno-mnozenje",
+    "requires": "mat-mnozenje-jednocifrenim-brojem",
+    "strength": "hard",
+    "reason": "Pismeno množenje dvocifrenim brojem više je puta ponovljeno množenje jednocifrenim brojem."
+  },
+  {
+    "topic": "mat-pismeno-deljenje",
+    "requires": "mat-deljenje-sa-ostatkom",
+    "strength": "hard",
+    "reason": "Pismeno deljenje je deljenje s ostatkom po stupcima."
+  },
+  {
+    "topic": "mat-pismeno-deljenje",
+    "requires": "mat-pismeno-oduzimanje",
+    "strength": "soft",
+    "reason": "U svakom koraku oduzima se proizvod količnika i delioca, ali su ta oduzimanja kratka i na nivou osnovnih zadataka pismenog oduzimanja."
+  },
+  {
+    "topic": "mat-pismeno-deljenje",
+    "requires": "mat-pismeno-mnozenje",
+    "strength": "soft",
+    "reason": "Količnik se procenjuje i proverava množenjem dvocifrenim deliocem (npr. $38 \\cdot 26$), ali se proizvodi potrebni za standardne zadatke mogu dobiti i bez pismenog množenja dvocifrenim brojem, pa grana ostaje meka."
+  },
+  {
+    "topic": "mat-svojstva-racunskih-operacija",
+    "requires": "mat-osobine-mnozenja",
+    "strength": "hard",
+    "reason": "Svojstva zapisana slovima su ista ona koja su u 2. razredu uočena na brojevima."
+  },
+  {
+    "topic": "mat-izrazi-sa-promenljivom",
+    "requires": "mat-izraz-sa-tri-operacije",
+    "strength": "hard",
+    "reason": "Vrednost izraza s promenljivom računa se po istom redosledu operacija."
+  },
+  {
+    "topic": "mat-izrazi-sa-promenljivom",
+    "requires": "mat-svojstva-racunskih-operacija",
+    "strength": "soft",
+    "reason": "Svojstva operacija olakšavaju računanje izraza s promenljivom, ali se oba standardna zadatka rešavaju i bez njih."
+  },
+  {
+    "topic": "mat-izrazi-sa-promenljivom",
+    "requires": "mat-jednacine-do-1000",
+    "strength": "hard",
+    "reason": "Slovo u izrazu znači isto što i slovo u jednačini: broj koji treba naći."
+  },
+  {
+    "topic": "mat-jednacine-i-nejednacine-u-n0",
+    "requires": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem",
+    "strength": "hard",
+    "reason": "Nejednačine u većem skupu brojeva rešavaju se istim postupkom."
+  },
+  {
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "requires": "mat-jednacine-i-nejednacine-u-n0",
+    "strength": "hard",
+    "reason": "Kad zadatak rešava jednačinom ili nejednačinom, učenik mora da ume da je reši."
+  },
+  {
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "requires": "mat-izrazi-sa-promenljivom",
+    "strength": "soft",
+    "reason": "Da bi zapisao nejednačinu za zadatak, učenik najpre sastavlja izraz s promenljivom, ali to može i ako slovo doživljava samo kao nepoznat broj iz jednačina, pa grana ostaje meka."
+  },
+  {
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "requires": "mat-najbliza-desetica-i-stotina",
+    "strength": "hard",
+    "reason": "Zaokruživanje na hiljadu i desethiljadu nastavlja isto načelo."
+  },
+  {
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "requires": "mat-prirodni-brojevi-do-milion",
+    "strength": "soft",
+    "reason": "Zaokruživanje na hiljadu i desethiljadu traži samo poznavanje mesta u zapisu brojeva do milion, a ne njihovo poređenje ni slaganje."
+  },
+  {
+    "topic": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "requires": "mat-uporedjivanje-razlomaka",
+    "strength": "hard",
+    "reason": "Upoređivanje po brojiocu dopunjuje upoređivanje po imeniocu iz 3. razreda."
+  },
+  {
+    "topic": "mat-jednakost-razlomaka",
+    "requires": "mat-razlomci-oblika-m-preko-n",
+    "strength": "hard",
+    "reason": "Jednakost razlomaka govori o istom delu celine koji pokazuju razlomci $\\frac{m}{n}$."
+  },
+  {
+    "topic": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "requires": "mat-uporedjivanje-razlomaka",
+    "strength": "soft",
+    "reason": "Standardni zadaci porede zbir ili ostatak s drugim razlomkom s istim imeniocem, što je osnovni nivo upoređivanja razlomaka."
+  },
+  {
+    "topic": "mat-decimalni-zapis-dve-decimale",
+    "requires": "mat-decimalni-zapis-jedne-decimale",
+    "strength": "hard",
+    "reason": "Druga decimala dodaje stotine na desetine iz 3. razreda."
+  },
+  {
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "requires": "mat-decimalni-zapis-dve-decimale",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste samo osnovne pretvorbe iz decimalnog zapisa s dve decimale: dinare i pare, odnosno centimetre i milimetre u decimalni broj."
+  },
+  {
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "requires": "mat-pismeno-sabiranje",
+    "strength": "hard",
+    "reason": "Decimalni brojevi saberu se pismeno po istom postupku kao celi."
+  },
+  {
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "requires": "mat-pismeno-oduzimanje",
+    "strength": "hard",
+    "reason": "Decimalni brojevi oduzimaju se pismeno po istom postupku kao celi."
+  },
+  {
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "requires": "mat-sabiranje-decimalnih-brojeva",
+    "strength": "soft",
+    "reason": "Razlika se proverava sabiranjem."
+  },
+  {
+    "topic": "mat-kvadar-i-kocka",
+    "requires": "mat-elementi-figura",
+    "strength": "soft",
+    "reason": "Standardni zadaci koriste samo osnovne činjenice da kvadrat ima četiri stranice, a pravougaonik četiri temena."
+  },
+  {
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "requires": "mat-kvadar-i-kocka",
+    "strength": "soft",
+    "reason": "Standardni zadaci mreža koriste samo osnovno znanje da kocka ima šest kvadratnih strana, a ne računanje ukupnog broja stranica i temena izrezanih likova."
+  },
+  {
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "requires": "mat-slaganje-figura",
+    "strength": "hard",
+    "reason": "Oba standardna zadatka traže da učenik prebroji kvadrate od kojih je nacrtana složena figura, a to je veština koju vežbaju standardni zadaci slaganja i rastavljanja figura."
+  },
+  {
+    "topic": "mat-pogled-na-telo",
+    "requires": "mat-kvadar-i-kocka",
+    "strength": "hard",
+    "reason": "Da bi prebrojao strane koje se ne vide, učenik mora da zna da kocka ima šest strana."
+  },
+  {
+    "topic": "mat-jedinice-povrsine",
+    "requires": "mat-jedinice-duzine-mm-i-km",
+    "strength": "hard",
+    "reason": "Oba standardna zadatka počinju pretvaranjem stranice od pola kilometra u $500$ metara, što je standardni zadatak tema o jedinicama dužine."
+  },
+  {
+    "topic": "mat-jedinice-povrsine",
+    "requires": "mat-povrsina-zadatom-merom",
+    "strength": "soft",
+    "reason": "Meriti površinu kvadratima učenik je naučio u 3. razredu, ali standardni zadaci traže samo prebrojavanje obojenih polja."
+  },
+  {
+    "topic": "mat-jedinice-povrsine",
+    "requires": "mat-prirodni-brojevi-do-milion",
+    "strength": "soft",
+    "reason": "U jedinici kvadratnog kilometra ima milion kvadratnih metara, ali standardni zadaci traže samo zapisivanje brojeva do milion."
+  },
+  {
+    "topic": "mat-jedinice-zapremine-tela",
+    "requires": "mat-jedinice-zapremine",
+    "strength": "hard",
+    "reason": "Kubni decimetar je isto što i litar."
+  },
+  {
+    "topic": "mat-jedinice-zapremine-tela",
+    "requires": "mat-kvadar-i-kocka",
+    "strength": "soft",
+    "reason": "Kubna jedinica je kocka čija je ivica jedinica dužine, ali standardni zadaci traže zapreminu kocke, a ne prebrojavanje strana i temena."
+  },
+  {
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "requires": "mat-jedinice-povrsine",
+    "strength": "hard",
+    "reason": "U četvrtom zadatku učenik mora da pretvori $1\\text{ km}^2$ u $1000000\\text{ m}^2$ da bi izračunao razliku u odnosu na voćnjak u metrima."
+  },
+  {
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "requires": "mat-pismeno-mnozenje",
+    "strength": "soft",
+    "reason": "Površina je proizvod stranica, ali su proizvodi u standardnim zadacima lakši od pismenog množenja dvocifrenim brojem."
+  },
+  {
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "requires": "mat-povrsina-kvadrata-i-pravougaonika",
+    "strength": "soft",
+    "reason": "Strane kvadra su pravougaonici, a kocke kvadrati, ali su površine strana u standardnim zadacima na nivou osnovnog zadatka te teme."
+  },
+  {
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "requires": "mat-jedinice-zapremine-tela",
+    "strength": "hard",
+    "reason": "Oba standardna zadatka pretvaraju kubne decimetre u litre i decilitre, što je standardni zadatak teme o jedinicama zapremine tela."
+  }
+]

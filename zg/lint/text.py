@@ -324,9 +324,9 @@ def _has_diacritic(word: str) -> bool:
 
 
 # Words that are right as they stand although another word folds to the same letters: the table and the
-# hundred are ``sto``, not ``što`` without its diacritic, ``mesa`` (of meat) is not ``meša``, and ``zapisu``
-# (of a notation) is not ``zapišu``.
-_LEGITIMATE = frozenset({"sto", "mesa", "zapisu"})
+# hundred are ``sto``, not ``što`` without its diacritic, ``mesa`` (of meat) is not ``meša``, ``zapisu``
+# (of a notation) is not ``zapišu``, and ``suma`` (a sum) is not ``šuma`` (a forest).
+_LEGITIMATE = frozenset({"sto", "mesa", "zapisu", "suma", "sume"})
 
 
 def _is_cyrillic(char: str) -> bool:

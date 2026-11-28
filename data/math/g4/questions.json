@@ -1,0 +1,1456 @@
+[
+  {
+    "id": "mat-prirodni-brojevi-do-milion-q1",
+    "topic": "mat-prirodni-brojevi-do-milion",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji broj ima $4$ stotine hiljada, $6$ desetica hiljada, $0$ hiljada, $2$ stotine, $5$ desetica i $8$ jedinica? Upiši ga ciframa.",
+    "answer": "460258",
+    "check": "(+ (* 4 100000) (* 6 10000) (* 2 100) (* 5 10) 8)",
+    "explanation": "$4$ stotine hiljada i $6$ desetica hiljada daju $460000$. Na to dodaj $2$ stotine, $5$ desetica i $8$ jedinica: $460000 + 200 + 50 + 8 = 460258$."
+  },
+  {
+    "id": "mat-prirodni-brojevi-do-milion-q2",
+    "topic": "mat-prirodni-brojevi-do-milion",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Na brojevnoj pravoj od $0$ do $1000000$ oznake su na svakih $100000$. Koji broj je označen tačkom? Upiši ga.",
+    "figure": {
+      "kind": "numberline",
+      "min": 0,
+      "max": 1000000,
+      "step": 100000,
+      "marks": [
+        600000
+      ],
+      "alt": "Brojevna prava od 0 do 1 000 000 na kojoj su upisani brojevi 0, 100 000, 200 000, 300 000, 400 000, 500 000, 600 000, 700 000, 800 000, 900 000 i 1 000 000. Tačka stoji iznad broja 600 000."
+    },
+    "answer": "600000",
+    "check": "600000",
+    "explanation": "Od $0$ do tačke ima šest oznaka: $100000$, $200000$, $300000$, $400000$, $500000$ i $600000$. Tačka stoji iznad broja $600000$."
+  },
+  {
+    "id": "mat-prirodni-brojevi-do-milion-q3",
+    "topic": "mat-prirodni-brojevi-do-milion",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U salonu polovnih automobila brojači tri auta pokazuju $134528$ km, $134852$ km i $134582$ km. Koliko kilometara pokazuje brojač auta koji je najmanje vozio? Upiši taj broj.",
+    "answer": "134528",
+    "check": "(min 134528 134852 134582)",
+    "explanation": "Sva tri broja imaju $134$ hiljade, pa uporedi ostatak: $528$ je manje od $582$ i od $852$. Najmanje je vozio auto čiji brojač pokazuje $134528$ kilometara."
+  },
+  {
+    "id": "mat-prirodni-brojevi-do-milion-q4",
+    "topic": "mat-prirodni-brojevi-do-milion",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Od cifara $2$, $9$, $5$, $7$, $0$ i $3$ sastavi najmanji šestocifren broj u kome svaku cifru upotrebiš samo jednom. Upiši taj broj.",
+    "answer": "203579",
+    "check": "(+ (* 2 100000) (* 3 1000) (* 5 100) (* 7 10) 9)",
+    "explanation": "Nula ne može stajati na prvom mestu, jer bi broj imao pet cifara. Zato prvo ide $2$, a za njim ostale cifre od najmanje ka najvećoj: $0$, $3$, $5$, $7$ i $9$. Taj broj je $203579$."
+  },
+  {
+    "id": "mat-mesna-vrednost-cifre-q1",
+    "topic": "mat-mesna-vrednost-cifre",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko vredi cifra $4$ u broju $534276$?",
+    "answer": "4000",
+    "check": "(* 4 1000)",
+    "explanation": "U broju $534276$ cifra $4$ stoji na mestu hiljada. Zato vredi $4000$."
+  },
+  {
+    "id": "mat-mesna-vrednost-cifre-q2",
+    "topic": "mat-mesna-vrednost-cifre",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "U kom broju cifra $6$ vredi $60000$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$253614$"
+      },
+      {
+        "id": "b",
+        "text": "$256314$"
+      },
+      {
+        "id": "c",
+        "text": "$265314$"
+      },
+      {
+        "id": "d",
+        "text": "$625314$"
+      }
+    ],
+    "answer": "c",
+    "check": "265314",
+    "explanation": "Cifra $6$ vredi $60000$ kada stoji na mestu desetica hiljada. U broju $265314$ ona stoji druga s leva, pa je to traženi broj."
+  },
+  {
+    "id": "mat-mesna-vrednost-cifre-q3",
+    "topic": "mat-mesna-vrednost-cifre",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na tri sata koji broje korake piše $345678$, $346578$ i $354678$ koraka. Koliko vredi cifra $5$ u najvećem od tih brojeva?",
+    "answer": "50000",
+    "check": "(* 5 10000)",
+    "explanation": "Najveći je broj $354678$, jer on ima $354$ hiljade, a druga dva imaju $345$, odnosno $346$ hiljada. U njemu cifra $5$ stoji na mestu desetica hiljada, pa vredi $50000$."
+  },
+  {
+    "id": "mat-mesna-vrednost-cifre-q4",
+    "topic": "mat-mesna-vrednost-cifre",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Od cifara $3$, $0$, $5$, $7$ i $2$ sastavi najmanji petocifren broj u kome cifra $7$ vredi $700$. Upiši taj broj.",
+    "answer": "20735",
+    "check": "(+ 20000 (* 7 100) 30 5)",
+    "explanation": "Cifra $7$ mora stajati na mestu stotina. Na prvo mesto ne ide $0$, pa ide $2$, a zatim ostale cifre od najmanje ka najvećoj: $0$, $3$ i $5$. Taj broj je $20735$."
+  },
+  {
+    "id": "mat-pismeno-mnozenje-q1",
+    "topic": "mat-pismeno-mnozenje",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj pismeno: $324 \\cdot 23$.",
+    "answer": "7452",
+    "check": "(* 324 23)",
+    "explanation": "$324 \\cdot 3 = 972$, a $324 \\cdot 20 = 6480$. Kad se ova dva proizvoda saberu, bude $972 + 6480 = 7452$."
+  },
+  {
+    "id": "mat-pismeno-mnozenje-q2",
+    "topic": "mat-pismeno-mnozenje",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj pismeno: $2345 \\cdot 30$.",
+    "answer": "70350",
+    "check": "(* 2345 30)",
+    "explanation": "Pomnoži sa $3$, a nulu dopiši na kraju: $2345 \\cdot 3 = 7035$, pa je $2345 \\cdot 30 = 70350$."
+  },
+  {
+    "id": "mat-pismeno-mnozenje-q3",
+    "topic": "mat-pismeno-mnozenje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U školskoj biblioteci ima $26$ polica, a na svakoj polici stoji $138$ knjiga. Koliko knjiga stoji na tim policama?",
+    "answer": "3588",
+    "check": "(* 26 138)",
+    "explanation": "$138 \\cdot 6 = 828$, a $138 \\cdot 20 = 2760$. Kad se ova dva proizvoda saberu, bude $828 + 2760 = 3588$ knjiga."
+  },
+  {
+    "id": "mat-pismeno-mnozenje-q4",
+    "topic": "mat-pismeno-mnozenje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Štamparija svakog dana odštampa $24$ paketa novina, a u svakom paketu je $30$ novina. Koliko novina odštampa za $15$ dana?",
+    "answer": "10800",
+    "check": "(* 24 30 15)",
+    "explanation": "Za jedan dan bude $24 \\cdot 30 = 720$ novina. Za $15$ dana bude $720 \\cdot 5 + 720 \\cdot 10 = 3600 + 7200 = 10800$ novina."
+  },
+  {
+    "id": "mat-pismeno-deljenje-q1",
+    "topic": "mat-pismeno-deljenje",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj pismeno: $928 : 32$.",
+    "answer": "29",
+    "check": "(/ 928 32)",
+    "explanation": "Prvo podeli $92$ sa $32$: stane $2$ puta, jer je $32 \\cdot 2 = 64$, a ostaje $92 - 64 = 28$. Spusti $8$: $288 : 32 = 9$. Količnik je $29$."
+  },
+  {
+    "id": "mat-pismeno-deljenje-q2",
+    "topic": "mat-pismeno-deljenje",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Mila je pismeno podelila $936 : 24$ i dobila $39$. Kojim množenjem može da proveri rezultat?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$936 \\cdot 24$"
+      },
+      {
+        "id": "b",
+        "text": "$39 \\cdot 24$"
+      },
+      {
+        "id": "c",
+        "text": "$936 \\cdot 39$"
+      }
+    ],
+    "answer": "b",
+    "check": "39 \\cdot 24",
+    "explanation": "Količnik pomnoži deliocem: $39 \\cdot 24 = 936$. Dobija se deljenik, pa je rezultat tačan."
+  },
+  {
+    "id": "mat-pismeno-deljenje-q3",
+    "topic": "mat-pismeno-deljenje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Kamion je za $26$ sati putovanja prešao $988$ kilometara. Svakog sata je prešao isto toliko kilometara. Koliko kilometara je prešao u jednom satu?",
+    "answer": "38",
+    "check": "(/ 988 26)",
+    "explanation": "Prvo podeli $98$ sa $26$: stane $3$ puta, jer je $26 \\cdot 3 = 78$, a ostaje $98 - 78 = 20$. Spusti $8$: $208 : 26 = 8$. Kamion je u jednom satu prešao $38$ kilometara."
+  },
+  {
+    "id": "mat-pismeno-deljenje-q4",
+    "topic": "mat-pismeno-deljenje",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na ekskurziju ide $575$ učenika. U svaki autobus može da stane $45$ učenika. Koliko najmanje autobusa treba da se svi povezu?",
+    "answer": "13",
+    "check": "(ceil (/ 575 45))",
+    "explanation": "$45 \\cdot 12 = 540$, pa u $575$ stane $45$ dvanaest puta i ostane $35$. U $12$ autobusa stane $540$ učenika, a za ostalih $35$ treba još jedan autobus. Treba $13$ autobusa."
+  },
+  {
+    "id": "mat-svojstva-racunskih-operacija-q1",
+    "topic": "mat-svojstva-racunskih-operacija",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj koristeći svojstva množenja: $25 \\cdot 7 \\cdot 4$.",
+    "answer": "700",
+    "check": "(* 25 7 4)",
+    "explanation": "Zameni mesta činiocima i združi $25 \\cdot 4 = 100$. Onda je $100 \\cdot 7 = 700$."
+  },
+  {
+    "id": "mat-svojstva-racunskih-operacija-q2",
+    "topic": "mat-svojstva-racunskih-operacija",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koje svojstvo iskazuje jednakost $a \\cdot (b + c) = a \\cdot b + a \\cdot c$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "zamenjivost množenja"
+      },
+      {
+        "id": "b",
+        "text": "raspoređivanje množenja u odnosu na sabiranje"
+      },
+      {
+        "id": "c",
+        "text": "udruživanje množenja"
+      }
+    ],
+    "answer": "b",
+    "check": "raspoređivanje množenja u odnosu na sabiranje",
+    "explanation": "Činilac $a$ se raspoređuje na sabirke $b$ i $c$: pomnoži svaki sabirak, pa proizvode saberi. To je raspoređivanje množenja u odnosu na sabiranje."
+  },
+  {
+    "id": "mat-svojstva-racunskih-operacija-q3",
+    "topic": "mat-svojstva-racunskih-operacija",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "U prodavnici je $25$ kutija, u svakoj $37$ paketa, a u svakom paketu $4$ sličice. Pera je izračunao: $25 \\cdot 37 \\cdot 4 = (25 \\cdot 4) \\cdot 37 = 100 \\cdot 37 = 3700$. Koja svojstva množenja je upotrebio da bi lakše računao?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "zamenjivost i udruživanje množenja"
+      },
+      {
+        "id": "b",
+        "text": "raspoređivanje množenja u odnosu na sabiranje"
+      },
+      {
+        "id": "c",
+        "text": "zamenjivost i raspoređivanje množenja"
+      }
+    ],
+    "answer": "a",
+    "check": "zamenjivost i udruživanje množenja",
+    "explanation": "Pera je zamenio mesta činiocima $37$ i $4$, pa je združio $25 \\cdot 4 = 100$. To su zamenjivost i udruživanje množenja.",
+    "points_to": {
+      "b": "mat-osobine-mnozenja",
+      "c": "mat-osobine-mnozenja"
+    }
+  },
+  {
+    "id": "mat-svojstva-racunskih-operacija-q4",
+    "topic": "mat-svojstva-racunskih-operacija",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Koristeći svojstva množenja, dopuni jednakost: $37 \\cdot 125 \\cdot 8 = 37 \\cdot$ ____. Upiši broj koji nedostaje.",
+    "answer": "1000",
+    "check": "(* 125 8)",
+    "explanation": "Združi činioce $125 \\cdot 8 = 1000$, jer im je proizvod okrugao broj. Onda je $37 \\cdot 125 \\cdot 8 = 37 \\cdot 1000 = 37000$."
+  },
+  {
+    "id": "mat-izrazi-sa-promenljivom-q1",
+    "topic": "mat-izrazi-sa-promenljivom",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj vrednost izraza $3 \\cdot a + 12$, ako je $a = 5$.",
+    "answer": "27",
+    "check": "(+ (* 3 5) 12)",
+    "explanation": "Umesto $a$ stavi $5$: $3 \\cdot 5 + 12$. Prvo je $3 \\cdot 5 = 15$, pa $15 + 12 = 27$."
+  },
+  {
+    "id": "mat-izrazi-sa-promenljivom-q2",
+    "topic": "mat-izrazi-sa-promenljivom",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Sveska košta $35$ dinara. Koji izraz pokazuje koliko koštaju $n$ sveski?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$35 + n$"
+      },
+      {
+        "id": "b",
+        "text": "$35 \\cdot n$"
+      },
+      {
+        "id": "c",
+        "text": "$n : 35$"
+      }
+    ],
+    "answer": "b",
+    "check": "35 \\cdot n",
+    "explanation": "Cena je $35$ dinara $n$ puta: $35 \\cdot n$. Ako je na primer $n = 3$, tri sveske koštaju $35 \\cdot 3 = 105$ dinara."
+  },
+  {
+    "id": "mat-izrazi-sa-promenljivom-q3",
+    "topic": "mat-izrazi-sa-promenljivom",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U prodavnici je $a$ kutija sličica. U svakoj kutiji je $25$ paketa, a u svakom paketu $4$ sličice. Prodato je $45$ sličica i ostalo je $755$ sličica. Koliko kutija je u prodavnici?",
+    "answer": "8",
+    "check": "(/ (+ 755 45) 25 4)",
+    "explanation": "Izraz je $a \\cdot 25 \\cdot 4 - 45$, a njegova vrednost je $755$. Združi $25 \\cdot 4 = 100$, pa je $a \\cdot 100 - 45 = 755$, odnosno $a \\cdot 100 = 800$ i $a = 8$. Provera: $8 \\cdot 25 \\cdot 4 - 45 = 755$."
+  },
+  {
+    "id": "mat-izrazi-sa-promenljivom-q4",
+    "topic": "mat-izrazi-sa-promenljivom",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Kraća stranica pravougaonika je $a$, a duža stranica je $3 \\cdot a$. Obim pravougaonika je $240$ cm. Zapiši izraz za obim, a zatim nađi dužinu $a$. Upiši broj centimetara.",
+    "answer": "30",
+    "check": "(/ 240 8)",
+    "explanation": "Duža stranica je $3 \\cdot a$, pa je obim $a + 3 \\cdot a + a + 3 \\cdot a = 8 \\cdot a$. Zato je $8 \\cdot a = 240$ i $a = 240 : 8 = 30$. Provera: $30 + 90 + 30 + 90 = 240$ cm."
+  },
+  {
+    "id": "mat-jednacine-i-nejednacine-u-n0-q1",
+    "topic": "mat-jednacine-i-nejednacine-u-n0",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Reši jednačinu u skupu prirodnih brojeva i nule: $x \\cdot 32 = 736$.",
+    "answer": "23",
+    "check": "(/ 736 32)",
+    "explanation": "Nepoznati činilac nađi deljenjem: $x = 736 : 32 = 23$. Provera: $23 \\cdot 32 = 736$."
+  },
+  {
+    "id": "mat-jednacine-i-nejednacine-u-n0-q2",
+    "topic": "mat-jednacine-i-nejednacine-u-n0",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko brojeva iz skupa prirodnih brojeva i nule ispunjava nejednačinu $x + 3 \\le 7$? Upiši koliko ih ima.",
+    "answer": "5",
+    "check": "(+ (- 7 3) 1)",
+    "explanation": "Rešenje je svaki broj koji daje zbir $7$ ili manji: $0$, $1$, $2$, $3$ i $4$. Broj $5$ nije rešenje, jer je $5 + 3 = 8$, a $8 > 7$. Ima $5$ rešenja."
+  },
+  {
+    "id": "mat-jednacine-i-nejednacine-u-n0-q3",
+    "topic": "mat-jednacine-i-nejednacine-u-n0",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila za priredbu kupuje sličice po $35$ dinara. Ima $500$ dinara, pa mora da važi $35 \\cdot x \\le 500$. Koliko najviše sličica može da kupi? Upiši $x$.",
+    "answer": "14",
+    "check": "(floor (/ 500 35))",
+    "explanation": "$35 \\cdot 14 = 490$, pa je to najviše $500$, i ostaje $500 - 490 = 10$. Ako uzme $15$ sličica, plati $35 \\cdot 15 = 525$, što je više od $500$. Zato je najveće rešenje $x = 14$."
+  },
+  {
+    "id": "mat-jednacine-i-nejednacine-u-n0-q4",
+    "topic": "mat-jednacine-i-nejednacine-u-n0",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Koja nejednačina nema nijedno rešenje u skupu prirodnih brojeva i nule?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$x + 5 > 5$"
+      },
+      {
+        "id": "b",
+        "text": "$x + 5 < 5$"
+      },
+      {
+        "id": "c",
+        "text": "$x \\cdot 5 < 5$"
+      },
+      {
+        "id": "d",
+        "text": "$5 - x < 5$"
+      }
+    ],
+    "answer": "b",
+    "check": "x + 5 < 5",
+    "explanation": "Proveri sa $0$: $0 + 5 = 5$, pa nije manje od $5$, a svaki veći broj daje još više. Zato $x + 5 < 5$ nema rešenje. U ostalim nejednačinama bar jedan broj jeste rešenje: $1 + 5 > 5$, $0 \\cdot 5 < 5$ i $5 - 1 < 5$.",
+    "points_to": {
+      "a": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem",
+      "d": "mat-nejednacine-sa-sabiranjem-i-oduzimanjem"
+    }
+  },
+  {
+    "id": "mat-zadaci-izraz-jednacina-nejednacina-q1",
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Mila ima $35$ sličica, a Pera $3$ puta više. Koliko sličica imaju ukupno? Zapiši izraz i izračunaj njegovu vrednost.",
+    "answer": "140",
+    "check": "(+ 35 (* 35 3))",
+    "explanation": "Pera ima $3 \\cdot 35$ sličica. Zajedno imaju $35 + 3 \\cdot 35 = 35 + 105 = 140$ sličica."
+  },
+  {
+    "id": "mat-zadaci-izraz-jednacina-nejednacina-q2",
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Zadatak glasi: Mila je kupila $4$ iste sveske i jednu torbu od $120$ dinara, a ukupno je platila $280$ dinara. Koliko košta jedna sveska? Koja jednačina odgovara tom zadatku?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$x + 120 = 280$"
+      },
+      {
+        "id": "b",
+        "text": "$4 \\cdot x - 120 = 280$"
+      },
+      {
+        "id": "c",
+        "text": "$4 \\cdot x + 120 = 280$"
+      },
+      {
+        "id": "d",
+        "text": "$4 \\cdot x = 280 + 120$"
+      }
+    ],
+    "answer": "c",
+    "check": "4 \\cdot x + 120 = 280",
+    "explanation": "Neka sveska košta $x$ dinara. Četiri sveske i torba zajedno koštaju $4 \\cdot x + 120$ dinara, a to je $280$ dinara: $4 \\cdot x + 120 = 280$.",
+    "points_to": {
+      "d": "mat-jednacine-i-nejednacine-u-n0"
+    }
+  },
+  {
+    "id": "mat-zadaci-izraz-jednacina-nejednacina-q3",
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila štedi za rolenke koje koštaju $2500$ dinara. Već ima $700$ dinara, a svake nedelje odvoji po $150$ dinara. Posle koliko najmanje nedelja će imati dovoljno novca? Zapiši nejednačinu i reši je.",
+    "answer": "12",
+    "check": "(/ (- 2500 700) 150)",
+    "explanation": "Posle $x$ nedelja Mila ima $700 + 150 \\cdot x$ dinara, a to mora biti najmanje $2500$: $700 + 150 \\cdot x \\ge 2500$. Zato je $150 \\cdot x \\ge 1800$, pa je $x \\ge 12$. Provera: $700 + 150 \\cdot 12 = 2500$, pa treba najmanje $12$ nedelja."
+  },
+  {
+    "id": "mat-zadaci-izraz-jednacina-nejednacina-q4",
+    "topic": "mat-zadaci-izraz-jednacina-nejednacina",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera ide na izlet. Kupuje $1$ ulaznicu po $250$ dinara i $2$ ručka, a ima $1000$ dinara. Podaci su prikazani i u tabeli. Zapiši nejednačinu i izračunaj koliko najviše može da košta jedan ručak, a da Pera ima dovoljno novca.",
+    "figure": {
+      "kind": "table",
+      "columns": [
+        "Podaci",
+        "Ulaznica",
+        "Ručak"
+      ],
+      "rows": [
+        [
+          "Komada",
+          "1",
+          "2"
+        ],
+        [
+          "Cena",
+          "250 dinara",
+          "x dinara"
+        ]
+      ],
+      "alt": "Tabela sa tri kolone: podaci, ulaznica i ručak. Ulaznica: 1 komad po ceni od 250 dinara. Ručak: 2 komada po ceni od x dinara."
+    },
+    "answer": "375",
+    "check": "(/ (- 1000 250) 2)",
+    "explanation": "Pera troši $250 + 2 \\cdot x$ dinara, a to mora biti najviše $1000$: $250 + 2 \\cdot x \\le 1000$. Zato je $2 \\cdot x \\le 750$, pa je $x \\le 375$. Provera: $250 + 2 \\cdot 375 = 1000$, pa ručak najviše košta $375$ dinara."
+  },
+  {
+    "id": "mat-visestruke-dekadne-jedinice-q1",
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Zaokruži broj $4726$ na najbližu hiljadu. Upiši taj broj.",
+    "answer": "5000",
+    "check": "(* 1000 (round (/ 4726 1000)))",
+    "explanation": "Broj $4726$ nalazi se između $4000$ i $5000$. Od $5000$ je udaljen $274$, a od $4000$ čak $726$, pa je najbliža hiljada $5000$."
+  },
+  {
+    "id": "mat-visestruke-dekadne-jedinice-q2",
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Tačan broj je zaokružen i dobijen je broj $47\\,350$. Na koju je dekadnu jedinicu zaokružen?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Na deseticu"
+      },
+      {
+        "id": "b",
+        "text": "Na stotinu"
+      },
+      {
+        "id": "c",
+        "text": "Na hiljadu"
+      },
+      {
+        "id": "d",
+        "text": "Na desethiljadu"
+      }
+    ],
+    "answer": "a",
+    "check": "Na deseticu",
+    "explanation": "Broj $47\\,350$ završava se jednom nulom, pa je zaokružen na deseticu. Pri zaokruživanju na stotinu dobio bi dve nule na kraju, a na hiljadu tri."
+  },
+  {
+    "id": "mat-visestruke-dekadne-jedinice-q3",
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Gradski muzej je prošle godine posetilo $236480$ učenika. Novinar je taj broj zaokružio na najbližu desethiljadu. Koji je broj napisao u novinama? Upiši ga.",
+    "answer": "240000",
+    "check": "(* 10000 (round (/ 236480 10000)))",
+    "explanation": "Broj $236480$ nalazi se između $230000$ i $240000$. Od $240000$ je udaljen $3520$, a od $230000$ čak $6480$, pa je novinar napisao $240000$."
+  },
+  {
+    "id": "mat-visestruke-dekadne-jedinice-q4",
+    "topic": "mat-visestruke-dekadne-jedinice",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na stadionu je bilo $18467$ gledalaca. Ana je taj broj zaokrugila na najbližu stotinu, a Pera na najbližu hiljadu. Kolika je razlika između njihova dva broja? Upiši je.",
+    "answer": "500",
+    "check": "(- (* 100 (round (/ 18467 100))) (* 1000 (round (/ 18467 1000))))",
+    "explanation": "Ana je dobila $18500$, a Pera $18000$. Razlika je $18500 - 18000 = 500$."
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka-po-brojiocu-q1",
+    "topic": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koji znak treba upisati: $\\frac{3}{7}$ ____ $\\frac{3}{5}$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$<$"
+      },
+      {
+        "id": "b",
+        "text": "$>$"
+      },
+      {
+        "id": "c",
+        "text": "$=$"
+      }
+    ],
+    "answer": "a",
+    "check": "<",
+    "explanation": "Brojioci su jednaki. Kad se celina podeli na $7$ delova, svaki deo je manji nego kad se podeli na $5$ delova. Zato je $\\frac{3}{7} < \\frac{3}{5}$."
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka-po-brojiocu-q2",
+    "topic": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koji je veći: $\\frac{4}{9}$ ili $\\frac{4}{6}$? Upiši veći razlomak.",
+    "answer": "4/6",
+    "check": "(/ 4 6)",
+    "explanation": "Brojioci su jednaki, pa se porede imenioci. Kad se celina podeli na $6$ jednakih delova, delovi su veći nego kad se podeli na $9$. Veći je $\\frac{4}{6}$."
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka-po-brojiocu-q3",
+    "topic": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Ana, Luka i Mila imaju tri jednake čokolade. Ana je pojela $\\frac{2}{8}$ svoje, Luka $\\frac{2}{5}$ svoje, a Mila $\\frac{1}{5}$ svoje. Ko je pojeo najviše čokolade? Upiši razlomak čiji je imenilac $5$.",
+    "answer": "2/5",
+    "check": "(/ 2 5)",
+    "explanation": "Luka i Mila imaju isti imenilac $5$, a $2 > 1$, pa je Luka pojeo više od Mile. Luka i Ana imaju isti brojilac $2$, a $5 < 8$, pa je Luka pojeo više i od Ane. Najviše čokolade pojeo je Luka: $\\frac{2}{5}$."
+  },
+  {
+    "id": "mat-uporedjivanje-razlomaka-po-brojiocu-q4",
+    "topic": "mat-uporedjivanje-razlomaka-po-brojiocu",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Poredaj od najmanjeg do najvećeg razlomke $\\frac{1}{6}$, $\\frac{3}{6}$ i $\\frac{3}{4}$. Koji je tačan redosled?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$\\frac{1}{6}$, $\\frac{3}{4}$, $\\frac{3}{6}$"
+      },
+      {
+        "id": "b",
+        "text": "$\\frac{3}{6}$, $\\frac{1}{6}$, $\\frac{3}{4}$"
+      },
+      {
+        "id": "c",
+        "text": "$\\frac{1}{6}$, $\\frac{3}{6}$, $\\frac{3}{4}$"
+      },
+      {
+        "id": "d",
+        "text": "$\\frac{3}{4}$, $\\frac{3}{6}$, $\\frac{1}{6}$"
+      }
+    ],
+    "answer": "c",
+    "check": "$\\frac{1}{6}$, $\\frac{3}{6}$, $\\frac{3}{4}$",
+    "explanation": "Od $\\frac{1}{6}$ i $\\frac{3}{6}$ veći je $\\frac{3}{6}$, jer su im imenioci jednaki. Od $\\frac{3}{6}$ i $\\frac{3}{4}$ veći je $\\frac{3}{4}$, jer su im brojioci jednaki. Redosled je $\\frac{1}{6}$, $\\frac{3}{6}$, $\\frac{3}{4}$.",
+    "points_to": {
+      "b": "mat-uporedjivanje-razlomaka"
+    }
+  },
+  {
+    "id": "mat-jednakost-razlomaka-q1",
+    "topic": "mat-jednakost-razlomaka",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koji je razlomak jednak razlomku $\\frac{1}{2}$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$\\frac{1}{4}$"
+      },
+      {
+        "id": "b",
+        "text": "$\\frac{2}{3}$"
+      },
+      {
+        "id": "c",
+        "text": "$\\frac{2}{4}$"
+      }
+    ],
+    "answer": "c",
+    "check": "\\frac{2}{4}",
+    "explanation": "Kad se svaka polovina podeli na dva jednaka dela, celina ima $4$ dela, a polovina čini $2$ od njih. Zato je $\\frac{2}{4} = \\frac{1}{2}$."
+  },
+  {
+    "id": "mat-jednakost-razlomaka-q2",
+    "topic": "mat-jednakost-razlomaka",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Proširi razlomak $\\frac{2}{3}$ tako da mu imenilac bude $12$. Upiši razlomak čiji je imenilac $12$.",
+    "answer": "8/12",
+    "check": "(/ 8 12)",
+    "explanation": "Imenilac $3$ pomnožen je sa $4$: $3 \\cdot 4 = 12$. I brojilac pomnoži sa $4$: $2 \\cdot 4 = 8$. Dobija se $\\frac{8}{12}$."
+  },
+  {
+    "id": "mat-jednakost-razlomaka-q3",
+    "topic": "mat-jednakost-razlomaka",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mama je kolač isekla na $12$ jednakih komada. Deca su pojela obojeni deo kolača na slici. Kojim razlomkom se zapisuje pojedeni deo kolača? Upiši razlomak čiji je imenilac $4$.",
+    "figure": {
+      "kind": "pie",
+      "parts": 12,
+      "shaded": 9,
+      "alt": "Kolač u obliku kruga ima 12 jednakih delova. Obojeno je 9 delova, a 3 dela nisu obojena."
+    },
+    "answer": "3/4",
+    "check": "(/ 3 4)",
+    "explanation": "Kolač ima $12$ jednakih komada, a pojelo se $9$: to je $\\frac{9}{12}$ kolača. Svaka četvrtina kolača ima $3$ komada, a $9$ komada su $3$ četvrtine. Pojelo se $\\frac{3}{4}$ kolača."
+  },
+  {
+    "id": "mat-jednakost-razlomaka-q4",
+    "topic": "mat-jednakost-razlomaka",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Luka je imao čokoladu od $6$ jednakih kockica. Pojeo je $2$ kockice, a $1$ kockicu je dao sestri. Koji deo čokolade više nema? Upiši razlomak čiji je imenilac $12$.",
+    "answer": "6/12",
+    "check": "(/ (* (+ 2 1) 2) (* 6 2))",
+    "explanation": "Luka više nema $2 + 1 = 3$ kockice od $6$, to jest $\\frac{3}{6}$ čokolade. Brojilac i imenilac pomnoži sa $2$: $3 \\cdot 2 = 6$ i $6 \\cdot 2 = 12$. Traženi razlomak je $\\frac{6}{12}$."
+  },
+  {
+    "id": "mat-sabiranje-razlomaka-jednaki-imenioci-q1",
+    "topic": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $\\frac{2}{7} + \\frac{3}{7}$. Upiši razlomak čiji je imenilac $7$.",
+    "answer": "5/7",
+    "check": "(+ (/ 2 7) (/ 3 7))",
+    "explanation": "Imenioci su jednaki, pa se saberu brojioci, a imenilac ostaje: $2 + 3 = 5$. Zbir je $\\frac{5}{7}$."
+  },
+  {
+    "id": "mat-sabiranje-razlomaka-jednaki-imenioci-q2",
+    "topic": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $\\frac{7}{10} - \\frac{3}{10}$. Upiši razlomak čiji je imenilac $10$.",
+    "answer": "4/10",
+    "check": "(- (/ 7 10) (/ 3 10))",
+    "explanation": "Imenioci su jednaki, pa se oduzmu brojioci, a imenilac ostaje: $7 - 3 = 4$. Razlika je $\\frac{4}{10}$."
+  },
+  {
+    "id": "mat-sabiranje-razlomaka-jednaki-imenioci-q3",
+    "topic": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Ana je pojela $\\frac{3}{10}$ čokolade, njen brat $\\frac{2}{10}$, a mama $\\frac{4}{10}$ iste čokolade. Ko je pojeo više: mama ili deca zajedno? Upiši taj veći deo čokolade razlomkom čiji je imenilac $10$.",
+    "answer": "5/10",
+    "check": "(+ (/ 3 10) (/ 2 10))",
+    "explanation": "Deca su zajedno pojela $\\frac{3}{10} + \\frac{2}{10} = \\frac{5}{10}$ čokolade. Pošto su imenioci jednaki, a $5 > 4$, deca su pojela više od mame."
+  },
+  {
+    "id": "mat-sabiranje-razlomaka-jednaki-imenioci-q4",
+    "topic": "mat-sabiranje-razlomaka-jednaki-imenioci",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Luka je pojeo $\\frac{2}{8}$ pice, a Mila $\\frac{1}{8}$ iste pice. Šta je više: deo pice koji su pojeli ili deo pice koji je ostao? Upiši taj veći deo razlomkom čiji je imenilac $8$.",
+    "answer": "5/8",
+    "check": "(- 1 (/ 3 8))",
+    "explanation": "Zajedno su pojeli $\\frac{2}{8} + \\frac{1}{8} = \\frac{3}{8}$ pice. Cela pica je $\\frac{8}{8}$, pa je ostalo $\\frac{8}{8} - \\frac{3}{8} = \\frac{5}{8}$. Pošto je $5 > 3$, više je ostalo nego što su pojeli."
+  },
+  {
+    "id": "mat-decimalni-zapis-dve-decimale-q1",
+    "topic": "mat-decimalni-zapis-dve-decimale",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Duž je dugačka $2\\text{ cm}$, $5\\text{ mm}$ i pol milimetra. Koliko je centimetara dugačka? Odgovori decimalnim brojem s dve decimale.",
+    "answer": "2.55",
+    "check": "(+ 2 (/ 5.5 10))",
+    "explanation": "$5\\text{ mm}$ je $0{,}5\\text{ cm}$, a pol milimetra je $0{,}05\\text{ cm}$. Zajedno je to $0{,}55\\text{ cm}$, pa je duž dugačka $2{,}55\\text{ cm}$."
+  },
+  {
+    "id": "mat-decimalni-zapis-dve-decimale-q2",
+    "topic": "mat-decimalni-zapis-dve-decimale",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko para ima $3{,}45$ dinara?",
+    "answer": "345",
+    "check": "(+ (* 3 100) 45)",
+    "explanation": "U $1$ dinaru ima $100$ para. Tri cela dinara su $300$ para, a $45$ stotina dinara je $45$ para. Zajedno je $345$ para."
+  },
+  {
+    "id": "mat-decimalni-zapis-dve-decimale-q3",
+    "topic": "mat-decimalni-zapis-dve-decimale",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je stavila lenjir pored olovke. Razmak između susednih brojeva je $1\\text{ cm}$, to jest $10\\text{ mm}$. Prva tačka pokazuje početak olovke, a druga njen kraj, na četvrtini puta između brojeva $2$ i $3$. Koliko je centimetara dugačka olovka? Odgovori decimalnim brojem s dve decimale.",
+    "figure": {
+      "kind": "numberline",
+      "min": 0,
+      "max": 6,
+      "marks": [
+        0,
+        2.25
+      ],
+      "alt": "Lenjir sa brojevima od 0 do 6. Jedna tačka stoji iznad broja 0, a druga tačka stoji na četvrtini puta između brojeva 2 i 3."
+    },
+    "answer": "2.25",
+    "check": "2.25",
+    "explanation": "Četvrtina puta između $2$ i $3$ je $2\\text{ mm}$ i pol, to jest $0{,}25\\text{ cm}$. Olovka je dugačka $2{,}25\\text{ cm}$."
+  },
+  {
+    "id": "mat-decimalni-zapis-dve-decimale-q4",
+    "topic": "mat-decimalni-zapis-dve-decimale",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je nacrtala duž od $2{,}75\\text{ cm}$, a Luka duž od $3\\text{ cm}$, $7\\text{ mm}$ i pol milimetra. Koliko milimetara je Lukina duž duža od Miline?",
+    "answer": "10",
+    "check": "(- (+ 30 7 0.5) (* 2.75 10))",
+    "explanation": "Duž od $2{,}75\\text{ cm}$ ima $27\\text{ mm}$ i pol, to jest $27{,}5\\text{ mm}$. Lukina duž ima $37{,}5\\text{ mm}$. Lukina je duža za $37{,}5 - 27{,}5 = 10\\text{ mm}$."
+  },
+  {
+    "id": "mat-sabiranje-decimalnih-brojeva-q1",
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $2{,}45 + 1{,}3$.",
+    "answer": "3.75",
+    "check": "(+ 2.45 1.3)",
+    "explanation": "Dopiši nulu: $1{,}3 = 1{,}30$. Saberi po stupcima: stotine $5 + 0 = 5$, desetine $4 + 3 = 7$, celi deo $2 + 1 = 3$. Zbir je $3{,}75$."
+  },
+  {
+    "id": "mat-sabiranje-decimalnih-brojeva-q2",
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Izračunaj: $1{,}75 + 1{,}5$.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$3{,}25$"
+      },
+      {
+        "id": "b",
+        "text": "$2{,}125$"
+      },
+      {
+        "id": "c",
+        "text": "$1{,}90$"
+      }
+    ],
+    "answer": "a",
+    "check": "(+ 1.75 1.5)",
+    "explanation": "Dopiši nulu: $1{,}5 = 1{,}50$. Stotine: $5 + 0 = 5$. Desetine: $7 + 5 = 12$, upiši $2$ i prenesi $1$. Celi deo: $1 + 1 + 1 = 3$. Zbir je $3{,}25$."
+  },
+  {
+    "id": "mat-sabiranje-decimalnih-brojeva-q3",
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "U kiosku je Pera platio svesku $85$ dinara, a bojice $46$ dinara i $75$ para. Koliko je ukupno platio? Odgovori u dinarima, decimalnim brojem.",
+    "answer": "131.75",
+    "check": "(+ 85 46 (/ 75 100))",
+    "explanation": "Bojice koštaju $46{,}75$ dinara. Zaravni brojeve po zarezu: $85 + 46{,}75$. Para: $0 + 75 = 75$. Dinara: $85 + 46 = 131$. Ukupno je platio $131{,}75$ dinara."
+  },
+  {
+    "id": "mat-sabiranje-decimalnih-brojeva-q4",
+    "topic": "mat-sabiranje-decimalnih-brojeva",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je nacrtala dve duži: prvu od $3\\text{ cm}$, $4\\text{ mm}$ i pol milimetra, a drugu od $2\\text{ cm}$ i $8\\text{ mm}$. Koliko su zajedno dugačke? Odgovori u centimetrima, decimalnim brojem s dve decimale.",
+    "answer": "6.25",
+    "check": "(+ 3 (/ 4.5 10) 2 (/ 8 10))",
+    "explanation": "Prva duž je dugačka $3{,}45\\text{ cm}$, a druga $2{,}80\\text{ cm}$. Zaravni ih po zarezu: desetine $4 + 8 = 12$, upiši $2$ i prenesi $1$. Zajedno su dugačke $6{,}25\\text{ cm}$."
+  },
+  {
+    "id": "mat-oduzimanje-decimalnih-brojeva-q1",
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj: $7{,}5 - 3{,}26$.",
+    "answer": "4.24",
+    "check": "(- 7.5 3.26)",
+    "explanation": "Dopiši nulu: $7{,}5 = 7{,}50$. Od $0$ ne može se oduzeti $6$: pozajmi desetinu, pa je $10 - 6 = 4$. Od $4$ oduzmi $2$: $2$. Celi deo: $7 - 3 = 4$. Razlika je $4{,}24$."
+  },
+  {
+    "id": "mat-oduzimanje-decimalnih-brojeva-q2",
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Izračunaj: $6 - 2{,}45$.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$4{,}45$"
+      },
+      {
+        "id": "b",
+        "text": "$3{,}55$"
+      },
+      {
+        "id": "c",
+        "text": "$4{,}55$"
+      }
+    ],
+    "answer": "b",
+    "check": "(- 6 2.45)",
+    "explanation": "Zapiši $6{,}00 - 2{,}45$. Pozajmi jedan ceo deo: $100 - 45 = 55$ stotina, a celih ostaje $5$. Od $5$ oduzmi $2$: $3$. Razlika je $3{,}55$.",
+    "points_to": {
+      "a": "mat-pismeno-oduzimanje",
+      "c": "mat-pismeno-oduzimanje"
+    }
+  },
+  {
+    "id": "mat-oduzimanje-decimalnih-brojeva-q3",
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mama je u prodavnici platila $200$ dinara, a račun je iznosio $148$ dinara i $60$ para. Koliko je kusura dobila? Odgovori u dinarima, decimalnim brojem.",
+    "answer": "51.4",
+    "check": "(- 200 148.6)",
+    "explanation": "Račun iznosi $148{,}60$ dinara. Oduzmi: $200{,}00 - 148{,}60 = 51{,}40$. Mama je dobila $51{,}4$ dinara kusura, to jest $51$ dinar i $40$ para."
+  },
+  {
+    "id": "mat-oduzimanje-decimalnih-brojeva-q4",
+    "topic": "mat-oduzimanje-decimalnih-brojeva",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je pismeno izračunala $5{,}2 - 2{,}65 = 3{,}45$. Proveri njen rezultat sabiranjem razlike i umanjioca. Ako je Mila pogrešila, upiši tačnu razliku.",
+    "answer": "2.55",
+    "check": "(- 5.2 2.65)",
+    "explanation": "Provera: $3{,}45 + 2{,}65 = 6{,}10$, a treba da bude $5{,}20$, pa je Mila pogrešila. Zapiši $5{,}20 - 2{,}65$ i pozajmljuj: stotine $10 - 5 = 5$, desetine $11 - 6 = 5$, celi deo $4 - 2 = 2$. Tačna razlika je $2{,}55$."
+  },
+  {
+    "id": "mat-kvadar-i-kocka-q1",
+    "topic": "mat-kvadar-i-kocka",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko ivica ima kvadar? Upiši broj.",
+    "answer": "12",
+    "check": "12",
+    "explanation": "Kvadar ima $6$ strana, $12$ ivica i $8$ temena. I kocka ima jednako, jer je i ona kvadar."
+  },
+  {
+    "id": "mat-kvadar-i-kocka-q2",
+    "topic": "mat-kvadar-i-kocka",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Čime se kocka razlikuje od kvadra?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Kocka ima više strana od kvadra."
+      },
+      {
+        "id": "b",
+        "text": "Kocka ima više temena od kvadra."
+      },
+      {
+        "id": "c",
+        "text": "Sve strane kocke su kvadrati."
+      }
+    ],
+    "answer": "c",
+    "check": "Sve strane kocke su kvadrati.",
+    "explanation": "Kocka i kvadar imaju jednako strana, ivica i temena. Kocka je kvadar kome su sve ivice jednake, pa su sve njene strane kvadrati."
+  },
+  {
+    "id": "mat-kvadar-i-kocka-q3",
+    "topic": "mat-kvadar-i-kocka",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je za model kocke isekla onoliko kvadrata koliko strana ima kocka. Koliko stranica imaju svi ti kvadrati zajedno? Upiši broj.",
+    "answer": "24",
+    "check": "(* 6 4)",
+    "explanation": "Kocka ima $6$ strana, pa je Mila isekla $6$ kvadrata. Svaki kvadrat ima $4$ stranice, a $6 \\cdot 4 = 24$ stranice. Kad se model slepi, svaku ivicu kocke grade dve stranice, pa kocka ima $12$ ivica."
+  },
+  {
+    "id": "mat-kvadar-i-kocka-q4",
+    "topic": "mat-kvadar-i-kocka",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera je za model kvadra isekao onoliko pravougaonika koliko strana ima kvadar, a Ana je za model kocke isekla onoliko kvadrata koliko strana ima kocka. Koliko temena imaju svi njihovi likovi zajedno? Upiši broj.",
+    "answer": "48",
+    "check": "(* (+ 6 6) 4)",
+    "explanation": "Kvadar i kocka imaju po $6$ strana, pa su Pera i Ana isekli ukupno $12$ likova. Pravougaonik i kvadrat imaju po $4$ temena, a $12 \\cdot 4 = 48$ temena. Kad se model slepi, po tri se temena spajaju u jedno teme tela, pa svaki model ima $8$ temena."
+  },
+  {
+    "id": "mat-mreze-kvadra-i-kocke-q1",
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Od koliko kvadrata je sastavljena mreža kocke? Upiši broj.",
+    "answer": "6",
+    "check": "6",
+    "explanation": "Mreža je rastvoren crtež svih strana tela, a kocka ima $6$ strana. Svaka strana kocke je kvadrat, pa mreža kocke ima $6$ kvadrata."
+  },
+  {
+    "id": "mat-mreze-kvadra-i-kocke-q2",
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Od čega je sastavljena mreža kvadra?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Od $6$ pravougaonika"
+      },
+      {
+        "id": "b",
+        "text": "Od $6$ kvadrata"
+      },
+      {
+        "id": "c",
+        "text": "Od $12$ pravougaonika"
+      }
+    ],
+    "answer": "a",
+    "check": "Od $6$ pravougaonika",
+    "explanation": "Kvadar ima $6$ strana, a svaka strana je pravougaonik. Zato je mreža kvadra sastavljena od $6$ pravougaonika."
+  },
+  {
+    "id": "mat-mreze-kvadra-i-kocke-q3",
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Za tehničko Pera je na kvadratnoj mreži nacrtao tri oblika: levi, srednji i desni. Svako obojeno polje je jedan kvadrat. Od kog oblika može da slepi kocku?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "levi"
+      },
+      {
+        "id": "b",
+        "text": "srednji"
+      },
+      {
+        "id": "c",
+        "text": "desni"
+      }
+    ],
+    "answer": "a",
+    "check": "levi",
+    "explanation": "Mreža kocke ima $6$ kvadrata, jer kocka ima $6$ strana. Levi oblik ima $6$ kvadrata, srednji $5$, a desni $8$, pa se samo od levog oblika može slepiti kocka.",
+    "figure": {
+      "kind": "grid",
+      "cols": 12,
+      "rows": 4,
+      "cells": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ]
+      ],
+      "alt": "Mreža ima 12 kolona i 4 reda. Levi oblik ima 6 kvadrata: 4 kvadrata u uspravnom stupcu kroz sva 4 reda i po jedan kvadrat levo i desno od drugog kvadrata odozgo. Srednji oblik je krst od 5 kvadrata u prva 3 reda: jedan kvadrat u sredini, po jedan iznad i ispod njega i po jedan levo i desno od njega. Desni oblik je pravougaonik od 8 kvadrata u 2 reda i 4 kolone, u drugom i trećem redu. Četvrta i osma kolona s leva su prazne."
+    }
+  },
+  {
+    "id": "mat-mreze-kvadra-i-kocke-q4",
+    "topic": "mat-mreze-kvadra-i-kocke",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Za tehničko Ana je na kvadratnoj mreži nacrtala oblik sa slike. Svako obojeno polje je jedan kvadrat. Od tog oblika hoće da dobije mrežu kocke. Koliko kvadrata mora da obriše? Upiši broj.",
+    "answer": "2",
+    "check": "(- 8 6)",
+    "explanation": "Oblik na slici ima $8$ kvadrata: $1 + 3 + 1 + 3$. Mreža kocke ima $6$ kvadrata, jer kocka ima $6$ strana. $8 - 6 = 2$, pa Ana mora da obriše $2$ kvadrata, na primer dva donja kvadrata sa strane.",
+    "figure": {
+      "kind": "grid",
+      "cols": 3,
+      "rows": 4,
+      "cells": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "alt": "Mreža ima 3 kolone i 4 reda. Obojena su polja u obliku krsta kome je donji kraj proširen: u prvom redu 1 srednje polje, u drugom redu sva 3 polja, u trećem redu 1 srednje polje i u četvrtom redu sva 3 polja."
+    }
+  },
+  {
+    "id": "mat-pogled-na-telo-q1",
+    "topic": "mat-pogled-na-telo",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Šta se vidi kad se kocka posmatra tačno odozgo?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "tri kvadrata"
+      },
+      {
+        "id": "b",
+        "text": "jedan kvadrat"
+      },
+      {
+        "id": "c",
+        "text": "dva kvadrata"
+      }
+    ],
+    "answer": "b",
+    "check": "jedan kvadrat",
+    "explanation": "Svaka strana kocke je kvadrat. Kad se kocka posmatra tačno odozgo, vidi se samo njena gornja strana, pa se vidi jedan kvadrat."
+  },
+  {
+    "id": "mat-pogled-na-telo-q2",
+    "topic": "mat-pogled-na-telo",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Kvadar na stolu nema nijednu stranu u obliku kvadrata. Šta se vidi kad se taj kvadar posmatra tačno s boka?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "jedan pravougaonik"
+      },
+      {
+        "id": "b",
+        "text": "jedan kvadrat"
+      },
+      {
+        "id": "c",
+        "text": "dva pravougaonika"
+      }
+    ],
+    "answer": "a",
+    "check": "jedan pravougaonik",
+    "explanation": "Bočne strane kvadra su pravougaonici. Kad se kvadar posmatra s boka, vidi se samo jedna bočna strana, pa se vidi jedan pravougaonik."
+  },
+  {
+    "id": "mat-pogled-na-telo-q3",
+    "topic": "mat-pogled-na-telo",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je stavila kocku na sto i gleda je tačno odozgo. Koliko strana kocke Mila pri tom ne vidi? Upiši broj.",
+    "answer": "5",
+    "check": "(- 6 1)",
+    "explanation": "Kocka ima $6$ strana. Odozgo se vidi samo gornja strana, pa Mila ne vidi $6 - 1 = 5$ strana."
+  },
+  {
+    "id": "mat-pogled-na-telo-q4",
+    "topic": "mat-pogled-na-telo",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera je od dve jednake kocke složio kulu tako što je jednu tačno stavio na drugu, poravnato s njom. Kulu je stavio na sto i gleda je tačno odozgo. Koliko strana obe kocke Pera pri tom ne vidi? Upiši broj.",
+    "answer": "11",
+    "check": "(- (* 2 6) 1)",
+    "explanation": "Dve kocke imaju ukupno $2 \\cdot 6 = 12$ strana. Odozgo Pera vidi samo gornju stranu gornje kocke, pa ne vidi $12 - 1 = 11$ strana."
+  },
+  {
+    "id": "mat-jedinice-povrsine-q1",
+    "topic": "mat-jedinice-povrsine",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko kvadratnih decimetara ima $7\\text{ m}^2$? Upiši broj.",
+    "answer": "700",
+    "check": "(* 7 100)",
+    "explanation": "$1\\text{ m}^2$ je kvadrat čija je stranica $1\\text{ m}$, a u njega stane $10 \\cdot 10 = 100$ kvadrata od $1\\text{ dm}^2$. Zato je $1\\text{ m}^2 = 100\\text{ dm}^2$, pa $7 \\cdot 100 = 700\\text{ dm}^2$."
+  },
+  {
+    "id": "mat-jedinice-povrsine-q2",
+    "topic": "mat-jedinice-povrsine",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koliko kvadratnih metara ima $800\\text{ dm}^2$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$80$"
+      },
+      {
+        "id": "b",
+        "text": "$8000$"
+      },
+      {
+        "id": "c",
+        "text": "$8$"
+      }
+    ],
+    "answer": "c",
+    "check": "8",
+    "explanation": "U $1\\text{ m}^2$ ima $100\\text{ dm}^2$, pa se $800$ deli sa $100$. $800 : 100 = 8$, pa $800\\text{ dm}^2$ ima $8\\text{ m}^2$."
+  },
+  {
+    "id": "mat-jedinice-povrsine-q3",
+    "topic": "mat-jedinice-povrsine",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Na geografskoj karti svako polje mreže je kvadrat čija je stranica pola kilometra. Jezero zauzima obojena polja na slici. Koliko kvadratnih metara površine ima jezero? Upiši broj.",
+    "answer": "750000",
+    "check": "(* 3 500 500)",
+    "explanation": "Jezero zauzima $3$ polja. Pola kilometra je $500\\text{ m}$, pa se svako polje može prekriti sa $500 \\cdot 500 = 250000$ kvadrata od $1\\text{ m}^2$. $3 \\cdot 250000 = 750000$, pa jezero ima $750000\\text{ m}^2$.",
+    "figure": {
+      "kind": "grid",
+      "cols": 3,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "alt": "Mreža ima 3 kolone i 2 reda. Obojena su 3 polja u obliku slova L: u gornjem redu prva dva polja s leva i u donjem redu prvo polje s leva. Ostala polja su prazna."
+    }
+  },
+  {
+    "id": "mat-jedinice-povrsine-q4",
+    "topic": "mat-jedinice-povrsine",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je na karti uporedila dve šume. Prva šuma ima površinu $1\\text{ km}^2$. Druga šuma zauzima obojena polja na slici, a svako polje mreže je kvadrat čija je stranica pola kilometra. Koliku površinu ima veća šuma? Upiši broj kvadratnih metara.",
+    "answer": "1000000",
+    "check": "(max (* 1000 1000) (* 3 500 500))",
+    "explanation": "Prva šuma ima $1000 \\cdot 1000 = 1000000\\text{ m}^2$, jer je $1\\text{ km} = 1000\\text{ m}$. Druga šuma zauzima $3$ polja, a svako polje ima $500 \\cdot 500 = 250000\\text{ m}^2$, pa ima $750000\\text{ m}^2$. $1000000$ je više od $750000$, pa veća šuma ima $1000000\\text{ m}^2$.",
+    "figure": {
+      "kind": "grid",
+      "cols": 3,
+      "rows": 2,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "alt": "Mreža ima 3 kolone i 2 reda. Obojena su sva 3 polja gornjeg reda, pa je nastala vodoravna traka. Donji red je prazan."
+    }
+  },
+  {
+    "id": "mat-jedinice-zapremine-tela-q1",
+    "topic": "mat-jedinice-zapremine-tela",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Koliko kubnih centimetara ima $4\\text{ dm}^3$? Upiši broj.",
+    "answer": "4000",
+    "check": "(* 4 1000)",
+    "explanation": "$1\\text{ dm}^3$ je kocka ivice $1\\text{ dm}$, a u nju stane $10 \\cdot 10 \\cdot 10 = 1000$ kockica ivice $1\\text{ cm}$. Zato je $1\\text{ dm}^3 = 1000\\text{ cm}^3$, pa $4 \\cdot 1000 = 4000\\text{ cm}^3$."
+  },
+  {
+    "id": "mat-jedinice-zapremine-tela-q2",
+    "topic": "mat-jedinice-zapremine-tela",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koliko litara vode stane u kocku ivice $1\\text{ dm}$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$1$"
+      },
+      {
+        "id": "b",
+        "text": "$1000$"
+      },
+      {
+        "id": "c",
+        "text": "$10$"
+      }
+    ],
+    "answer": "a",
+    "check": "1",
+    "explanation": "Kocka ivice $1\\text{ dm}$ ima zapreminu $1\\text{ dm}^3$. Kubni decimetar i litar su jednaki: $1\\text{ dm}^3 = 1\\text{ l}$, pa u kocku stane $1$ litar vode.",
+    "points_to": {
+      "c": "mat-jedinice-zapremine"
+    }
+  },
+  {
+    "id": "mat-jedinice-zapremine-tela-q3",
+    "topic": "mat-jedinice-zapremine-tela",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Mila je u kockastu posudu čija je ivica dugačka $2\\text{ dm}$ sipala vodu do vrha. Koliko decilitara vode stalo je u posudu? Upiši broj decilitara.",
+    "answer": "80",
+    "check": "(* 2 2 2 10)",
+    "explanation": "U jednom sloju posude stane $2 \\cdot 2 = 4$ kockice ivice $1\\text{ dm}$, a slojeva ima $2$, pa je zapremina $8\\text{ dm}^3$. To je $8$ litara, a $8 \\cdot 10 = 80$, pa u posudu stane $80$ decilitara vode."
+  },
+  {
+    "id": "mat-jedinice-zapremine-tela-q4",
+    "topic": "mat-jedinice-zapremine-tela",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Pera je napunio kockasti akvarijum čija je ivica dugačka $3\\text{ dm}$, pa je svu vodu sipao u flaše od $500\\text{ ml}$. Koliko je flaša napunio? Upiši broj.",
+    "answer": "54",
+    "check": "(/ (* 3 3 3 1000) 500)",
+    "explanation": "Akvarijum ima zapreminu $3 \\cdot 3 \\cdot 3 = 27\\text{ dm}^3$, što je $27$ litara. $27\\text{ l}$ je $27000\\text{ ml}$, a $27000 : 500 = 54$, pa je Pera napunio $54$ flaše."
+  },
+  {
+    "id": "mat-povrsina-kvadrata-i-pravougaonika-q1",
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj površinu pravougaonika čije su stranice $12\\text{ cm}$ i $7\\text{ cm}$. Upiši broj kvadratnih centimetara.",
+    "answer": "84",
+    "check": "(* 12 7)",
+    "explanation": "$P = a \\cdot b = 12 \\cdot 7 = 84$. Površina pravougaonika je $84\\text{ cm}^2$."
+  },
+  {
+    "id": "mat-povrsina-kvadrata-i-pravougaonika-q2",
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koliku površinu u kvadratnim decimetrima ima kvadrat čija je stranica $9\\text{ dm}$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$36$"
+      },
+      {
+        "id": "b",
+        "text": "$81$"
+      },
+      {
+        "id": "c",
+        "text": "$18$"
+      }
+    ],
+    "answer": "b",
+    "check": "81",
+    "explanation": "$P = a \\cdot a = 9 \\cdot 9 = 81$. Površina kvadrata je $81\\text{ dm}^2$."
+  },
+  {
+    "id": "mat-povrsina-kvadrata-i-pravougaonika-q3",
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Park ima oblik pravougaonika dugačkog $1\\text{ km}$ i $500\\text{ m}$, a širokog $240\\text{ m}$. Koliko kvadratnih metara površine ima park? Upiši broj.",
+    "answer": "360000",
+    "check": "(* 1500 240)",
+    "explanation": "$1\\text{ km}$ je $1000\\text{ m}$, pa je park dugačak $1500\\text{ m}$. $P = 1500 \\cdot 240 = 360000$, pa park ima $360000\\text{ m}^2$."
+  },
+  {
+    "id": "mat-povrsina-kvadrata-i-pravougaonika-q4",
+    "topic": "mat-povrsina-kvadrata-i-pravougaonika",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Kvadratni voćnjak ima stranicu od $320\\text{ m}$, a njiva pored njega ima površinu $1\\text{ km}^2$. Za koliko kvadratnih metara je njiva veća od voćnjaka? Upiši broj.",
+    "answer": "897600",
+    "check": "(- (* 1000 1000) (* 320 320))",
+    "explanation": "Voćnjak ima površinu $320 \\cdot 320 = 102400\\text{ m}^2$. Njiva ima $1000 \\cdot 1000 = 1000000\\text{ m}^2$, jer je $1\\text{ km} = 1000\\text{ m}$. $1000000 - 102400 = 897600$, pa je njiva veća za $897600\\text{ m}^2$."
+  },
+  {
+    "id": "mat-povrsina-i-zapremina-kvadra-i-kocke-q1",
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "level": "basic",
+    "type": "numeric",
+    "prompt": "Izračunaj zapreminu kvadra čije su ivice $4\\text{ cm}$, $3\\text{ cm}$ i $2\\text{ cm}$. Upiši broj kubnih centimetara.",
+    "answer": "24",
+    "check": "(* 4 3 2)",
+    "explanation": "$V = a \\cdot b \\cdot c = 4 \\cdot 3 \\cdot 2 = 24$. Zapremina kvadra je $24\\text{ cm}^3$."
+  },
+  {
+    "id": "mat-povrsina-i-zapremina-kvadra-i-kocke-q2",
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "level": "basic",
+    "type": "choice",
+    "prompt": "Koliku površinu u kvadratnim decimetrima ima kocka čija je ivica $7\\text{ dm}$?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$49$"
+      },
+      {
+        "id": "b",
+        "text": "$28$"
+      },
+      {
+        "id": "c",
+        "text": "$294$"
+      }
+    ],
+    "answer": "c",
+    "check": "294",
+    "explanation": "Kocka ima $6$ strana, a svaka strana je kvadrat površine $7 \\cdot 7 = 49\\text{ dm}^2$. $P = 6 \\cdot 49 = 294\\text{ dm}^2$."
+  },
+  {
+    "id": "mat-povrsina-i-zapremina-kvadra-i-kocke-q3",
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "level": "standard",
+    "type": "numeric",
+    "prompt": "Plastični bazen ima oblik kocke čija je ivica dugačka $1\\text{ m}$ i $5\\text{ dm}$. Koliko decilitara vode stane u bazen? Upiši broj decilitara.",
+    "answer": "33750",
+    "check": "(* 15 15 15 10)",
+    "explanation": "$1\\text{ m}$ i $5\\text{ dm}$ je $15\\text{ dm}$, pa je zapremina $V = 15 \\cdot 15 \\cdot 15 = 3375\\text{ dm}^3$. To je $3375$ litara, a $3375 \\cdot 10 = 33750$, pa u bazen stane $33750$ decilitara vode."
+  },
+  {
+    "id": "mat-povrsina-i-zapremina-kvadra-i-kocke-q4",
+    "topic": "mat-povrsina-i-zapremina-kvadra-i-kocke",
+    "level": "standard",
+    "type": "choice",
+    "prompt": "Akvarijum je od stakla i ima oblik kvadra: dugačak je $1\\text{ m}$ i $20\\text{ cm}$, širok $8\\text{ dm}$ i visok $6\\text{ dm}$. Gornja strana mu je otvorena. Koliko je stakla utrošeno, a koliko decilitara vode stane u akvarijum?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$432\\text{ dm}^2$ stakla i $5760\\text{ dl}$ vode"
+      },
+      {
+        "id": "b",
+        "text": "$336\\text{ dm}^2$ stakla i $5760\\text{ dl}$ vode"
+      },
+      {
+        "id": "c",
+        "text": "$336\\text{ dm}^2$ stakla i $576\\text{ dl}$ vode"
+      }
+    ],
+    "answer": "b",
+    "check": "$336\\text{ dm}^2$ stakla i $5760\\text{ dl}$ vode",
+    "explanation": "Akvarijum je dugačak $12\\text{ dm}$, a staklo ima $5$ strana: $12 \\cdot 8 = 96$, dve po $12 \\cdot 6 = 72$ i dve po $8 \\cdot 6 = 48$, što je ukupno $336\\text{ dm}^2$. Zapremina je $V = 12 \\cdot 8 \\cdot 6 = 576\\text{ dm}^3$, a to je $576$ litara, odnosno $5760$ decilitara vode."
+  }
+]

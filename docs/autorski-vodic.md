@@ -51,14 +51,16 @@ Redosled tema u `topics.json` je redosled iz programa. On je ujedno redosled uč
 
 Grana kaže da tema A zahteva temu B pre nego što se uči.
 
-- `hard`: bez B učenik ne može uraditi nijedan zadatak teme A. Primer: „Sabiranje do 20“ zahteva „Brojeve do 20“.
+- `hard`: bez znanja teme B u meri u kojoj je B proverena, učenik ne može da reši standardne zadatke teme A. Primer: „Sabiranje do 20“ zahteva „Brojeve do 20“.
 - `soft`: B pomaže, ali nije uslov. Primer: brzo usmeno računanje pomaže pri rešavanju tekstualnih zadataka, ali nije uslov.
 
-**Protivnički test za `hard` grane.** Zamislite učenika koji nije savladao B, a zna sve ostale prethodne teme. Može li da reši oba standardna zadatka teme A? Ako može, grana je `soft` ili je nema.
+**Protivnički test za `hard` grane.** Zamislite učenika koji nije savladao B, a zna sve ostale prethodne teme: ne ume da reši standardne zadatke teme B, a osnovne zadatke te teme može da zna. Može li da reši oba standardna zadatka teme A? Ako može, grana je `soft` ili je nema.
 
-`reason` je jednom rečenicom, ljudski: „Pisano sabiranje dvocifrenih brojeva koristi usmeno sabiranje do 20.“
+Test se čita tako strogo zato što tako radi dijagnostika: čim učenik tačno reši standardni zadatak teme A čiji se odgovor ne može pogoditi, ona izvodi da zna sve što toj temi čvrsto prethodi, i ne ispituje to. Zaključak je tačan samo ako taj zadatak zaista traži znanje iz B na nivou na kom se B proverava, a ne samo osnovni nivo. Zato u višim razredima čvrstih grana ima manje nego što se na prvi pogled čini: površina kvadrata koristi množenje, ali samo ono osnovno, pa je grana ka pismenom množenju meka.
 
-Alat sam odbacuje suvišne grane. Ako postoji drugi put od A do B preko čvrstih grana, direktna grana je suvišna. Prethodna tema nikad nije iz višeg razreda od teme.
+`reason` je jednom rečenicom, ljudski: „Pisano sabiranje dvocifrenih brojeva koristi usmeno sabiranje do 20.“ Kod meke grane rečenica kaže čime prethodna tema pomaže, a ne samo da nije potrebna.
+
+Alat sam odbacuje suvišne grane. Čvrsta grana je suvišna ako postoji drugi put od A do B samo preko čvrstih grana; meka grana je suvišna ako postoji bilo koji put. Prethodna tema nikad nije iz višeg razreda od teme.
 
 ## 4. Zadaci
 
@@ -101,6 +103,6 @@ Slika je deklarativna (`figure`) i ima `alt` od najmanje 20 znakova koji opisuje
 2. `python3 -m zg validate` — šema, graf, pokrivenost.
 3. `python3 -m zg verify` — da li se odgovor poklapa s računom.
 4. `python3 -m zg lint` — notacija po razredu, pravopis, rečnik digrafa.
-5. Slepi prolaz: nezavisnom agentu se daju samo tekstovi ćirilicom. Svaka njegova suma ruši zadatak.
+5. Slepi prolaz: nezavisnom agentu se daju samo tekstovi ćirilicom. Zadatak koji on reši pogrešno, ili za koji kaže da ima dva odgovora, vraća se na doradu.
 
 Greška u bilo kom koraku znači da zadatak ili tema ostaju neprovereni. Ne zaobilazite kapiju; popravite sadržaj.

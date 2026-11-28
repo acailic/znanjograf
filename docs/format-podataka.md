@@ -278,11 +278,11 @@ Kad u `check` uđe `pi` ili koren broja koji nije kvadrat, vrednost nije tačan 
 - `alt` je običan tekst od najmanje 20 znakova (`V9-figure-alt`) koji opisuje sliku dovoljno da se zadatak reši i bez nje. Sajt ga ispisuje i kad sliku ne može da nacrta, i čita ga čitaču ekrana. Prikaže se onakav kakav je, bez iscrtavanja formula: brojevi se u njemu pišu ciframa, a ne u `$…$`.
 - Parametri koje vrsta nema, obavezni parametar koji nedostaje i vrednosti koje se ne slažu prijavljuju `V9-figure-param`.
 
-Obavezni parametri su podebljani; ostali mogu da izostanu.
+Obavezni parametri su podebljani; ostali mogu da izostanu. Kod `numberline` parametar `subticks` deli razmak između dve susedne oznake na toliko jednakih delova; crtići između su kraći i bez natpisa (za razlomke i decimale na pravoj).
 
 | `kind` | Parametri | Šta mora da se slaže |
 |---|---|---|
-| `numberline` | **`min`**, **`max`** (celi brojevi), `step` (pozitivan ceo broj, podrazumevano 1), `marks` (niz brojeva), `unit` (tekst) | `max` veći od `min`; najviše 60 oznaka na pravoj; svaka oznaka u `marks` između `min` i `max` |
+| `numberline` | **`min`**, **`max`** (celi brojevi), `step` (pozitivan ceo broj, podrazumevano 1), `subticks` (ceo broj od 2 do 12), `marks` (niz brojeva), `unit` (tekst) | `max` veći od `min`; najviše 60 oznaka i najviše 120 podeoka na pravoj; svaka oznaka u `marks` između `min` i `max` |
 | `fractionbar` | **`numerator`** (pozitivan ceo broj), **`denominator`** (ceo broj od 1 do 24), `shaded` (ceo broj) | `shaded` od 0 do `numerator` |
 | `pie` | **`parts`** (ceo broj od 2 do 12), `shaded` (ceo broj) | `shaded` od 0 do `parts` |
 | `dots` | **`rows`**, **`cols`** (celi brojevi od 1 do 12), `count` (ceo broj) | `count` od 0 do umnoška `rows` i `cols` |

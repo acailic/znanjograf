@@ -21,6 +21,7 @@ KINDS = (
 MIN_ALT = 20  # characters, after stripping
 SIDE_TOLERANCE = 0.01  # a side label may differ from the length of its side by this share
 MAX_TICKS = 60  # a longer number line is more than site/js/figure.js draws
+MAX_PARTS = 120  # equal parts (``subticks``) a number line may be cut into: the renderer keeps them 12 px apart
 
 KIND_CODE, ALT_CODE, PARAM_CODE, GEOMETRY_CODE = (
     "V9-figure-kind", "V9-figure-alt", "V9-figure-param", "V9-figure-geometry",
@@ -47,6 +48,7 @@ PARAMS = {
     "numberline": {
         "min": (ANY_INT, True), "max": (ANY_INT, True),
         "step": (POSITIVE_INT, False),
+        "subticks": (_int(2, 12), False),
         "marks": (("list", ANY_NUMBER), False),
         "unit": (TEXT, False),
     },
@@ -190,6 +192,17 @@ def _numberline(spec: dict, out: list[str]) -> None:
         out.append(
             f"„step“ = {step} daje {_count(ticks, 'oznaku', 'oznake', 'oznaka')} na pravoj, "
             f"a slika crta najviše {MAX_TICKS}; povećaj „step“"
+        )
+    subticks = spec.get("subticks")
+    if subticks and (high - low) % step:
+        out.append(
+            f"„subticks“ deli razmak između susednih oznaka, a sa „step“ = {step} poslednja oznaka ne dospeva do „max“; "
+            "podesi „step“ ili „max“"
+        )
+    elif subticks and (ticks - 1) * subticks > MAX_PARTS:
+        out.append(
+            f"„subticks“ = {subticks} daje {(ticks - 1) * subticks} podeoka na pravoj, "
+            f"a slika crta najviše {MAX_PARTS}; smanji „subticks“ ili povećaj „step“"
         )
     if any(not low <= mark <= high for mark in spec.get("marks", [])):
         out.append(f"svaka oznaka u „marks“ mora biti od „min“ do „max“ ({low} do {high})")

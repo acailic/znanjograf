@@ -97,6 +97,48 @@ test("wide numberline labels fit the canvas and keep apart", () => {
   for (let i = 1; i < boxes.length; i += 1) assert.ok(boxes[i][0] >= boxes[i - 1][1] + 4, `labels ${labels[i - 1]} and ${labels[i]} touch`);
 });
 
+test("numberline subticks divide every gap between two ticks into short unlabelled ticks", () => {
+  const { svg, width } = renderFigure({ kind: "numberline", alt: "Prava od 0 do 3 sa četvrtinama.", min: 0, max: 3, subticks: 4, marks: [1.75] });
+  const all = tags(svg, "line").map(attrs);
+  const major = all.filter((a) => a.class === "zg-tick");
+  const minor = withClass(tags(svg, "line"), "zg-tick--minor").map(attrs);
+  assert.equal(major.length, 4); // 0, 1, 2, 3
+  assert.equal(minor.length, 9); // three in each of the three gaps
+  const xs = [...all].map((a) => Number(a.x1)).sort((a, b) => a - b);
+  const gaps = spacings(xs);
+  assert.ok(gaps.every((gap) => gap >= 12), "neighbouring ticks keep apart");
+  nearEqual(gaps, (xs[xs.length - 1] - xs[0]) / 12, 0.011); // twelve equal gaps from 0 to 3
+  assert.ok(Number(minor[0].y2) - Number(minor[0].y1) < Number(major[0].y2) - Number(major[0].y1), "a minor tick is shorter");
+  assert.deepEqual(texts(svg), ["0", "1", "2", "3"]); // the minor ticks carry no label
+  const mark = withClass(tags(svg, "circle"), "zg-mark").map(attrs)[0];
+  assert.ok(Number(mark.cx) > Number(xs[6]) && Number(mark.cx) < Number(xs[8])); // 1.75 lies between the ticks at 1.5 and 2
+});
+
+test("a numberline with many subticks is drawn wider, so that neighbouring ticks keep 12 px apart", () => {
+  // 0 to 6 in quarters: 24 gaps, and 24 × 12 is more than the line would be wide for its labels alone.
+  const { svg, width } = renderFigure({ kind: "numberline", alt: "Lenjir od 0 do 6 sa crticama na svaku četvrtinu.", min: 0, max: 6, subticks: 4 });
+  assert.equal(withClass(tags(svg, "line"), "zg-tick--minor").length, 18);
+  const xs = tags(svg, "line").map((a) => Number(attrs(a).x1)).sort((a, b) => a - b);
+  nearEqual(spacings(xs), 12, 0.011);
+  assert.equal(width, 288 + 2 * 16); // the gaps decide the width here; the margin holds one-digit labels
+});
+
+test("numberline subticks divide the gap between ticks where ticks are not neighbouring numbers", () => {
+  // Ticks at 0, 5 and 10: the halves are at 2.5 and 7.5, and no tick marks the units between.
+  const { svg } = renderFigure({ kind: "numberline", alt: "Prava od 0 do 10 u koracima od 5, sa polovinama.", min: 0, max: 10, step: 5, subticks: 2 });
+  const all = tags(svg, "line").map(attrs);
+  assert.equal(withClass(tags(svg, "line"), "zg-tick--minor").length, 2);
+  assert.equal(all.filter((a) => a.class === "zg-tick").length, 3);
+  const xs = all.map((a) => Number(a.x1)).sort((a, b) => a - b);
+  nearEqual(spacings(xs), (xs[xs.length - 1] - xs[0]) / 4, 0.011); // 0, 2.5, 5, 7.5, 10
+  assert.deepEqual(texts(svg), ["0", "5", "10"]);
+});
+
+test("a numberline without subticks draws no minor tick", () => {
+  const { svg } = renderFigure({ kind: "numberline", alt: "Prava od 0 do 3.", min: 0, max: 3, marks: [1.75] });
+  assert.equal(withClass(tags(svg, "line"), "zg-tick--minor").length, 0);
+});
+
 test("negative numbers on a numberline carry a minus sign, not a hyphen", () => {
   const { svg } = renderFigure({ kind: "numberline", alt: "Brojevna prava od minus pet do pet.", min: -5, max: 5 });
   const labels = texts(svg);
@@ -235,6 +277,11 @@ test("an unknown or malformed spec throws ZG_FIGURE", () => {
     { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 1.5 },
     { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, step: 0 },
     { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, marks: [11] },
+    { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, subticks: 1 },
+    { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, subticks: 13 },
+    { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, subticks: 2.5 },
+    { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 11, subticks: 11 }, // 121 parts: more than a figure can draw
+    { kind: "numberline", alt: "Brojevna prava.", min: 0, max: 10, step: 3, subticks: 2 }, // the last tick does not reach max
     { kind: "fractionbar", alt: "Razlomak.", numerator: 3 },
     { kind: "fractionbar", alt: "Razlomak.", numerator: 3, denominator: 25 },
     { kind: "fractionbar", alt: "Razlomak.", numerator: 1, denominator: 4, shaded: 2 },

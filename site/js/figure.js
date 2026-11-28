@@ -15,6 +15,7 @@ export const FIGURE_KINDS = Object.freeze([
 const PAD = 16; // canvas margin, px
 const FONT = 14; // label font size, px
 const CHAR_W = 8; // estimated width of one label character at FONT
+const MINOR_GAP = 12; // least distance between two neighbouring minor ticks, px
 const STROKE = 'stroke="currentColor" fill="none"';
 const ACCENT = 'fill="var(--zg-accent, currentColor)"';
 
@@ -60,20 +61,27 @@ const PAINTERS = {
   table,
 };
 
-function numberline({ min, max, step = 1, marks = [], unit }) {
+function numberline({ min, max, step = 1, marks = [], unit, subticks }) {
   ensure(Number.isInteger(min) && Number.isInteger(max) && min < max);
   ensure(Number.isInteger(step) && step > 0);
   ensure(Array.isArray(marks) && marks.every((mark) => isNumber(mark) && min <= mark && mark <= max));
   ensure(unit === undefined || typeof unit === "string");
+  // `subticks` divides the gap between two neighbouring ticks into that many equal parts; the ticks in
+  // between are short and carry no label. It needs ticks that reach `max`, or the last stretch stays undivided.
+  ensure(subticks === undefined || (Number.isInteger(subticks) && subticks >= 2 && subticks <= 12));
+  ensure(subticks === undefined || (max - min) % step === 0);
 
   const ticks = [];
   for (let value = min; value <= max; value += step) ticks.push(value);
   ensure(ticks.length <= 60);
+  const parts = subticks === undefined ? 1 : subticks;
+  const gaps = (ticks.length - 1) * parts;
+  ensure(gaps <= 120);
 
   // Ticks sit far enough apart for the widest label, and the margin holds half of it.
   const widest = Math.max(...ticks.map((value) => chars(formatNumber(value)).length));
   const pad = Math.max(PAD, (widest * CHAR_W) / 2 + 2);
-  const span = Math.max(288 - 2 * PAD, (ticks.length - 1) * Math.max(34, widest * CHAR_W + 6));
+  const span = Math.max(288 - 2 * PAD, (ticks.length - 1) * Math.max(34, widest * CHAR_W + 6), gaps * MINOR_GAP);
   const width = span + 2 * pad;
   const axisY = 42;
   const x = (value) => pad + ((value - min) / (max - min)) * span;
@@ -84,6 +92,12 @@ function numberline({ min, max, step = 1, marks = [], unit }) {
   for (const value of ticks) {
     body += `<line class="zg-tick" x1="${px(x(value))}" y1="${axisY - 6}" x2="${px(x(value))}" y2="${axisY + 6}" ${STROKE}/>`;
     body += text(x(value), axisY + 23, formatNumber(value));
+  }
+  for (let index = 0; index < ticks.length - 1; index += 1) {
+    for (let part = 1; part < parts; part += 1) {
+      const at = px(x(ticks[index] + (step * part) / parts));
+      body += `<line class="zg-tick zg-tick--minor" x1="${at}" y1="${axisY - 3}" x2="${at}" y2="${axisY + 3}" ${STROKE}/>`;
+    }
   }
   for (const value of marks) {
     // A mark stands above its number, clear of the line.

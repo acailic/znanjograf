@@ -48,6 +48,11 @@ BROKEN = [
     (numberline(min=10, max=10, marks=[]), "„max“"),
     (numberline(marks=[3, 11]), "„marks“"),  # a mark off the line
     (numberline(min=0, max=100, marks=[]), "„step“"),  # 101 ticks: more than a figure can draw
+    (numberline(subticks=1), "„subticks“"),  # a gap cannot be divided into one part
+    (numberline(subticks=13), "„subticks“"),
+    (numberline(subticks=4.0), "„subticks“"),  # a JSON float is not an integer here
+    (numberline(min=0, max=11, marks=[], subticks=11), "„subticks“"),  # 121 parts: one more than a figure can draw
+    (numberline(min=0, max=10, step=3, marks=[], subticks=2), "„subticks“"),  # the last tick (9) does not reach max
     (fig("fractionbar", numerator=3, denominator=25), "„denominator“"),
     (fig("fractionbar", numerator=3, denominator=4, shaded=4), "„shaded“"),
     (fig("pie", parts=1, shaded=0), "„parts“"),
@@ -84,6 +89,9 @@ BROKEN = [
 SOUND = [
     numberline(min=-5, max=5, step=2, marks=[-5, 0, 5], unit="cm"),
     numberline(min=0, max=59, marks=[]),  # exactly as many ticks as a figure can draw
+    numberline(subticks=2, marks=[2.5]),
+    numberline(min=0, max=10, step=2, subticks=12),
+    numberline(min=0, max=60, step=2, marks=[], subticks=4),  # exactly as many parts as a figure can draw (120)
     fig("fractionbar", numerator=1, denominator=24),
     fig("fractionbar", numerator=5, denominator=6, shaded=0),
     fig("fractionbar", numerator=3, denominator=3, shaded=3),

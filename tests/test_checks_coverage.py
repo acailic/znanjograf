@@ -97,6 +97,44 @@ class CoverageTest(unittest.TestCase):
         helpers.topic(self.raw, "mat-sabiranje-do-10")["curriculum"] = []
         self.assertEqual(located(of_code(run(self.raw), "V7-topic-without-outcome")), [(TOPIC_FILE["g1"], "mat-sabiranje-do-10")])
 
+    def test_unit_must_be_a_theme_of_an_edition_the_topic_names(self):
+        helpers.topic(self.raw, "mat-geometrijski-oblici")["unit"] = "Merenje i mere"
+        found = of_code(run(self.raw), "V7-topic-unit")
+        self.assertEqual(located(found), [(TOPIC_FILE["g1"], "mat-geometrijski-oblici")])
+        self.assertIn("„Merenje i mere“", found[0].message)
+        self.assertIn("Geometrija", found[0].message)  # the message names the themes the edition does have
+
+    def test_unit_may_be_a_theme_of_any_edition_the_topic_names(self):
+        self.raw.editions["g2-2026"]["themes"].append({"name": "Merenje i mere", "area": "geometry", "hours": 10, "content": ["Dužina"], "page": 22})
+        topic = helpers.topic(self.raw, "mat-geometrijski-oblici")
+        topic["curriculum"].append({"edition": "g2-2026", "outcome": "g2-2026-001", "match": "partial"})
+        topic["unit"] = "Merenje i mere"  # a theme of the second edition only
+        self.assertEqual(of_code(run(self.raw), "V7-topic-unit"), [])
+        topic["unit"] = "Celi brojevi"  # a theme of neither
+        found = of_code(run(self.raw), "V7-topic-unit")
+        self.assertIn("u izdanju „g2-2026“: Brojevi, Merenje i mere", found[0].message)  # the message says which edition has what
+
+    def test_empty_unit_is_reported_once_by_the_field_check_only(self):
+        for unit in ("", "   "):
+            with self.subTest(unit=unit):
+                raw = helpers.fixture_raw()
+                helpers.topic(raw, "mat-sabiranje-do-10")["unit"] = unit
+                self.assertEqual(of_code(run(raw), "V7-topic-unit"), [])
+
+    def test_unit_is_not_checked_against_an_edition_the_topic_names_nothing_of(self):
+        topic = helpers.topic(self.raw, "mat-geometrijski-oblici")
+        topic["curriculum"] = [{"edition": "g2-2026", "outcome": "g1-2026-004", "match": "exact"}]  # no outcome of g2
+        self.assertEqual(of_code(run(self.raw), "V7-topic-unit"), [])  # the missing outcome is reported instead
+
+    def test_unit_of_a_topic_without_outcome_is_left_alone(self):
+        topic = helpers.topic(self.raw, "mat-sabiranje-do-10")
+        topic["curriculum"], topic["unit"] = [], "Nepostojeća celina"
+        self.assertEqual([issue.code for issue in run(self.raw) if issue.where == "mat-sabiranje-do-10"], ["V7-topic-without-outcome"])
+
+    def test_unit_that_is_not_text_is_the_field_check_s(self):
+        helpers.topic(self.raw, "mat-sabiranje-do-10")["unit"] = 7
+        self.assertEqual(of_code(run(self.raw), "V7-topic-unit"), [])
+
     def test_broken_citation_is_left_to_the_field_check(self):
         """A ``curriculum`` that is not a list, or entries without ids, are field problems (V2), not coverage ones."""
         helpers.topic(self.raw, "mat-sabiranje-do-10")["curriculum"] = None

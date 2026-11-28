@@ -81,6 +81,7 @@ Odluka je zapisana u `data/curriculum/sources.json` (`rule`, `evidence`, `acts`)
 Pokrivenost se proverava u oba smera, komandom `python3 -m zg validate`:
 
 - Svaka tema navodi bar jedan ishod koji stvarno postoji u izdanju (`V7-topic-without-outcome`, `V7-outcome-missing`).
+- Tematska celina teme (`unit`) jeste tema bar jednog izdanja koje tema navodi (`V7-topic-unit`).
 - Svaki ishod svakog izdanja ili pokriva bar jedna tema, ili je upisan u `data/curriculum/unmapped.json` s razlogom (`V7-outcome-unmapped`).
 - Unos u `unmapped.json` koji više ne treba je greška (`V7-unmapped-stale`).
 - Zaglavlje fajla izdanja mora odgovarati svom imenu (`V7-edition-grade`).

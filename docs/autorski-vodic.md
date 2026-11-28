@@ -39,6 +39,8 @@ Novi postupak (prelaz preko desetice, pisano deljenje) jeste nova tema. Prošire
 
 **Oblast:** `numbers` (brojevi i algebra), `geometry` (geometrija i merenje), `data` (obrada podataka i slučajnost).
 
+**Tematska celina** (`unit`) zove se onako kako se zove u izdanju programa, u polju `name` jedne njegove teme: „Brojevi“, „Geometrija“, „Merenje i mere“. Alat prijavljuje naziv koji u izdanju ne postoji.
+
 **Kriterijumi savladanosti** su dva do tri uočljiva iskaza u infinitivu ili prezentu: „sabira dva broja sa zbirom do 20“, „prelazi preko desetice pri sabiranju“. Kriterijum mora da se može videti u jednom zadatku.
 
 **Opis** je jednu do dve rečenice roditelju: šta ovo znanje omogućava i čemu služi.

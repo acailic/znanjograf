@@ -102,7 +102,7 @@ Niz tema. Redosled u fajlu je redosled iz programa i ujedno redosled učenja unu
 | `id` | tekst | da | `mat-`, pa mala slova, cifre i crtice, do 48 znakova, bez razreda u imenu (`V3-id-format`); jedinstven (`V3-id-duplicate`); upisan u `data/registry.json` (`V3-id-unregistered`) |
 | `grade` | ceo broj | da | od 1 do 8 (`V4-grade`) |
 | `area` | tekst | da | `numbers`, `geometry` ili `data` (`V4-enum`) |
-| `unit` | tekst | da | naziv tematske celine onako kako se zove u važećem izdanju |
+| `unit` | tekst | da | naziv tematske celine onako kako se zove u važećem izdanju: `name` jedne teme (`themes`) izdanja koje tema navodi (`V7-topic-unit`) |
 | `kind` | tekst | da | `concept`, `procedure`, `problem` ili `reasoning` (`V4-enum`) |
 | `name` | tekst | da | kratak naziv; ne sme biti isti kao ili skoro isti kao naziv druge teme (`L6-near-duplicate`) |
 | `summary` | tekst | da | jednu do dve rečenice roditelju |
@@ -632,6 +632,7 @@ Transliteracija bez rečnika čita svaki par kao jedno slovo, pa pogrešna klasi
 | `V7-outcome-unmapped` | ishod nema nijednu temu, a nije u `data/curriculum/unmapped.json` |
 | `V7-unmapped-stale` | unos u `unmapped.json` odnosi se na ishod koji ne postoji ili koji teme pokrivaju |
 | `V7-topic-without-outcome` | tema ne navodi nijedan ishod |
+| `V7-topic-unit` | tematska celina teme (`unit`) nije tema nijednog izdanja koje tema navodi |
 | `V7-edition-grade` | polje `edition` ili `grade` u zaglavlju izdanja ne odgovara imenu fajla |
 | `V8-bank-count` | tema ima manje od 2 osnovna ili 2 standardna zadatka |
 | `V8-choice-count` | zadatak nema 3 ili 4 ponude |

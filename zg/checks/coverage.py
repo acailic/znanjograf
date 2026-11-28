@@ -1,5 +1,6 @@
 """Coverage of the curriculum in both directions: every topic names outcomes that exist, and every
-outcome is either named by a topic or listed in ``unmapped.json`` with a reason. The same pass
+outcome is either named by a topic or listed in ``unmapped.json`` with a reason. A topic also sits in a
+theme (``unit``) of an edition it names. The same pass
 checks what it alone checks in the edition files: that the header agrees with the file's id, and
 that a page is positive. The shape of a record and the format of an id are ``zg.checks.schema``'s.
 """
@@ -24,12 +25,14 @@ def run(corpus: Corpus, issues: Issues) -> None:
 
 
 def _cited_outcomes(corpus: Corpus, issues: Issues, existing: set[tuple[str, str]]) -> set[tuple[str, str]]:
-    """Every (edition, outcome) pair that a topic names; a pair that does not exist is reported."""
+    """Every (edition, outcome) pair that a topic names; a pair that does not exist is reported, and so is
+    a topic whose ``unit`` is the name of no theme of the editions it names."""
     cited: set[tuple[str, str]] = set()
     for topic_id, topic in corpus.topics.items():
         curriculum = topic.get("curriculum")
         if not isinstance(curriculum, list):
             continue  # a missing or malformed list is a field problem (V2), not a coverage one
+        named: set[str] = set()  # the editions this topic names an outcome of
         if not curriculum:
             issues.add(corpus.topic_file[topic_id], topic_id, "V7-topic-without-outcome", "tema ne navodi nijedan ishod nastavnog programa")
         for entry in curriculum:
@@ -40,6 +43,7 @@ def _cited_outcomes(corpus: Corpus, issues: Issues, existing: set[tuple[str, str
                 continue  # the shape of the entry is schema's to report
             if (edition_id, outcome_id) in existing:
                 cited.add((edition_id, outcome_id))
+                named.add(edition_id)
             elif edition_id in corpus.editions:
                 issues.add(
                     corpus.topic_file[topic_id], topic_id, "V7-outcome-missing",
@@ -50,7 +54,26 @@ def _cited_outcomes(corpus: Corpus, issues: Issues, existing: set[tuple[str, str
                     corpus.topic_file[topic_id], topic_id, "V7-outcome-missing",
                     f"tema navodi ishod „{outcome_id}“ izdanja „{edition_id}“, a to izdanje ne postoji",
                 )
+        _check_unit(corpus, topic_id, topic, named, issues)
     return cited
+
+
+def _check_unit(corpus: Corpus, topic_id: str, topic: dict, named: set[str], issues: Issues) -> None:
+    """``unit`` is the name of a theme (``themes[].name``) of an edition the topic names an outcome of."""
+    unit = topic.get("unit")
+    if not named or not (isinstance(unit, str) and unit.strip()):
+        return  # nothing named is ``V7-topic-without-outcome``; an empty or non-text unit is ``V2-type``
+    themes: dict[str, list[str]] = {}
+    for edition_id in sorted(named):
+        names = [theme["name"] for theme in _records(corpus.editions[edition_id].raw.get("themes")) if isinstance(theme.get("name"), str)]
+        if names:
+            themes[edition_id] = sorted(names)
+    if themes and not any(unit in names for names in themes.values()):
+        listed = "; ".join(f"u izdanju „{edition_id}“: {', '.join(names)}" for edition_id, names in themes.items())
+        issues.add(
+            corpus.topic_file[topic_id], topic_id, "V7-topic-unit",
+            f"tematska celina „{unit}“ nije celina nijednog izdanja koje tema navodi ({listed})",
+        )
 
 
 def _check_unmapped(corpus: Corpus, issues: Issues, existing: set[tuple[str, str]], cited: set[tuple[str, str]]) -> None:
